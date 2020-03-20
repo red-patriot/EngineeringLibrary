@@ -27,7 +27,7 @@ namespace eng {
       const physics::SecondMomentOfArea& xy = 0_m4);
   };
 
-  /* A base class for any 2D geometric shape */
+  /* A generic 2D geometry */
   class ENGINEERINGLIBRARY_API Geometry {
   public:
     Geometry(const physics::Length& xx = 0_m, const physics::Length& yy = 0_m);
