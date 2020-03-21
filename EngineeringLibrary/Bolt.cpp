@@ -25,8 +25,9 @@ namespace eng {
       std::vector<std::pair<Material, physics::Length>> top, bottom;
       // TODO: write function to split members into top and bottom half and put them into top and bottom, respectively
 
-      for (auto& m : members) {
+      for (const auto& m : members) {
         // determine D
+        // TODO: Write a better way to determine D
         physics::Length D = 1.5*d + 2*pos*std::tan(0.523598775598);
 
         ret += (0.577 * pi * m.first.E() * d) /

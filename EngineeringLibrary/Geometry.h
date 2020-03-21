@@ -54,6 +54,9 @@ namespace eng {
     AreaMomentofInertia MOI;
   };
 
+  /* Create a generic Geometry object from one of its children */
+  Geometry create_geometry(const Geometry& geo);
+
 
   /* ***********************************************************************************************
    * Geometry children - specifications of some common geometric shapes

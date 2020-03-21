@@ -11,26 +11,36 @@
 #include "PhysicsLibrary/Area.h"
 #include "PhysicsLibrary/Force.h"
 
+/* TODO: Fix this set of functions. 
+   Figure out some way to implement a Bolt class which can define a bolt will all necessary values of a bolt
+   */
+
 namespace eng {
 
+  /* A model of Metric or Unified series thread standard 
+     specifying nominal diameter, pitch, and tensile area */
   class ENGINEERINGLIBRARY_API ThreadStandard {
-    /* A model of Metric or Unified series screws and bolts. */
   public:
     enum Series {
       METRIC, UNIFIED
     };
-    // TODO: Add a constructor here
+    // TODO: Add a constructor 
     ~ThreadStandard() = default;
 
+  private:
+    physics::Length _diameter;
+    physics::Length _pitch;
+    physics::Area _tensile_area;
 
+    Series _series;
+  };
+
+  /* A model of a bolt */
+  class ENGINEERINGLIBRARY_API Bolt {
+  public:
 
   private:
-    // TODO: Maybe add more members (L, Lt, ld, l)?
-    physics::Length diameter;
-    physics::Length pitch;
-    physics::Area tensile_area;
-
-    Series series;
+    ThreadStandard _standard;
   };
 
   namespace bolt {

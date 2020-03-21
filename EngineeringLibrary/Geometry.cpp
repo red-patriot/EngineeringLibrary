@@ -52,6 +52,10 @@ namespace eng {
     return ret;
   }
 
+  Geometry create_geometry(const Geometry& geo) {
+    return Geometry(geo.area(), geo.moment_of_inertia(), geo.centroid().x, geo.centroid().y);
+  }
+
   /* ***********************************************************************************************
    * Circle
    */

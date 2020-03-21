@@ -1,9 +1,7 @@
 #ifndef Engineering_h_INCLUDED
 #define Engineering_h_INCLUDED
-
-// TODO: Fix the documentation and comments
-
 // use the entire physics library
+//? Maybe update this section to allow use fo this library without configuring for PhysicsLibrary
 #include "PhysicsLibrary/Physics.h"
 
 // Materials properties
