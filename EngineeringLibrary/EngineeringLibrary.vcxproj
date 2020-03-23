@@ -181,7 +181,8 @@
     <ClInclude Include="GeometricProperty.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Material.h" />
-    <ClInclude Include="MaterialStress.h" />
+    <ClInclude Include="Strain.h" />
+    <ClInclude Include="Stress.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -191,7 +192,8 @@
     <ClCompile Include="GeometricProperty.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="Material.cpp" />
-    <ClCompile Include="MaterialStress.cpp" />
+    <ClCompile Include="Strain.cpp" />
+    <ClCompile Include="Stress.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
