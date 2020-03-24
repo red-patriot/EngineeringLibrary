@@ -6,31 +6,33 @@
 
 #include "Stress.h"
 
+#include "PhysicsLibrary/Angle.h"
+
 namespace eng {
 
   /* ***********************************************************************************************
    * Strain analysis
    */
 
-  struct ENGINEERINGLIBRARY_API Strain {
+  struct ENGINEERINGLIBRARY_API NormalStrain {
     double epsilon_x;
     double epsilon_y;
     double epsilon_z;
 
-    Strain(const double& xx = 0, const double& yy = 0, const double& zz = 0);
+    NormalStrain(const double& xx = 0, const double& yy = 0, const double& zz = 0);
   };
 
-  struct StrainShear {
+  struct ShearStrain{
     //? Maybe unused?
   };
 
   /* Hooke's Law to determine strain from stress for a material alone a single axis */
   double ENGINEERINGLIBRARY_API hookes_law(const Material& material, const Stress& stress);
   /* Hooke's Law to determine strain from stress for a material loaded in planar stress */
-  Strain ENGINEERINGLIBRARY_API hookes_law(const Material& material, const StressElement2& stress);
+  NormalStrain ENGINEERINGLIBRARY_API hookes_law(const Material& material, const StressElement2& stress);
   // TODO: Hooke's Law for material loaded in general 3D stress
   /* Hooke's Law to determine strain from stress for a material loaded in Cylindrical stress */
-  Strain ENGINEERINGLIBRARY_API hookes_law(const Material& material, const StressCylindrical& stress);
+  NormalStrain ENGINEERINGLIBRARY_API hookes_law(const Material& material, const StressElement3& stress);
 
   // TODO: Hooke's Law in shear
 

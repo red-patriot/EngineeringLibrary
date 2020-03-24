@@ -4,7 +4,7 @@
 
 namespace eng {
 
-  Strain::Strain(const double& xx, const double& yy, const double& zz) :
+  NormalStrain::NormalStrain(const double& xx, const double& yy, const double& zz) :
     epsilon_x(xx),
     epsilon_y(yy),
     epsilon_z(zz) { }
@@ -13,18 +13,15 @@ namespace eng {
     return stress / material.E();
   }
 
-  Strain hookes_law(const Material& material, const StressElement2& stress) {
-    Strain ret;
-    ret.epsilon_x = (stress.sigma_x - material.nu()*stress.sigma_y)/material.E();
-    ret.epsilon_y = (stress.sigma_y - material.nu()*stress.sigma_x)/material.E();
-    ret.epsilon_z = material.nu()*(stress.sigma_x + stress.sigma_y)/material.E();
-
-    return ret;
+  NormalStrain hookes_law(const Material& material, const StressElement2& stress) {
+    return hookes_law(material, StressElement3(stress.sigma_x, stress.sigma_y));
   }
 
-  Strain hookes_law(const Material& material, const StressCylindrical& stress) {
-    Strain ret;
-    ret.epsilon_x = (stress.sigma_
+  NormalStrain hookes_law(const Material& material, const StressElement3& stress) {
+    NormalStrain ret;
+    ret.epsilon_x = (stress.sigma_x - material.nu()*(stress.sigma_y + stress.sigma_z))/material.E();
+    ret.epsilon_y = (stress.sigma_y - material.nu()*(stress.sigma_x + stress.sigma_z))/material.E();
+    ret.epsilon_z = (stress.sigma_z - material.nu()*(stress.sigma_x + stress.sigma_y))/material.E();
 
     return ret;
   }
