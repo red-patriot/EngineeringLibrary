@@ -26,7 +26,7 @@ namespace eng {
     AreaMomentofInertia(const class physics::SecondMomentOfArea& xx = 0_m4, const class physics::SecondMomentOfArea& yy = 0_m4,
       const physics::SecondMomentOfArea& xy = 0_m4);
   };
-  /// const physics::Length& xx = 0_m, const physics::Length& yy = 0_m
+  
   /* A generic 2D geometry */
   class ENGINEERINGLIBRARY_API Geometry {
   public:
@@ -46,6 +46,7 @@ namespace eng {
     /* Calculate the moment of inertia of a shape using a Parallel Axis shift. */
     AreaMomentofInertia moment_of_inertia(const Centroid& pt) const;
 
+    // TODO: This operator should allow implicit conversions from Geometry children to Geometry?
     operator Geometry() const;
 
   protected:
