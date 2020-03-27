@@ -1,5 +1,5 @@
-#ifndef Materials_Stress_h_INCLUDED
-#define Materials_Stress_h_INCLUDED
+#ifndef Stress_h_INCLUDED
+#define Stress_h_INCLUDED
 
 #include "EngineeringExport.h"
 #include "Material.h"
@@ -59,7 +59,7 @@ namespace eng {
   // TODO(unimplemented): 3D Stress analysis
   //! This probably requires the implmentation of Stress Tensors and it might be difficult to implement.
   //! Look into this
-  PrincipalStress3 ENGINEERINGLIBRARY_API principal_stress(const StressElement3& s) { }
+  // TODO: PrincipalStress3 ENGINEERINGLIBRARY_API principal_stress(const StressElement3& s);
   /* Calculate the principal stresses in a Cylindrical pressure vessel. */
   PrincipalStress3 ENGINEERINGLIBRARY_API principal_stress(const physics::Length& a, const physics::Length& b,
     const physics::Length& r, const physics::Force& F, const physics::Pressure& Pi,
