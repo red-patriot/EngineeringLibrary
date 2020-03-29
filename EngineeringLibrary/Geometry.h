@@ -46,7 +46,8 @@ namespace eng {
     /* Calculate the moment of inertia of a shape using a Parallel Axis shift. */
     AreaMomentofInertia moment_of_inertia(const Centroid& pt) const;
 
-    // TODO: This operator should allow implicit conversions from Geometry children to Geometry?
+    // TODO: This operator should allow implicit conversions from Geometry children to Geometry
+    // TODO: Fix this functionality
     operator Geometry() const;
 
   protected:

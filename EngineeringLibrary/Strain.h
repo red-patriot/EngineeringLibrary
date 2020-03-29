@@ -23,7 +23,11 @@ namespace eng {
   };
 
   struct ShearStrain{
-    //? Maybe unused?
+    physics::Angle gamma_xy;
+    physics::Angle gamma_xz;
+    physics::Angle gamma_yz;
+
+    ShearStrain(const physics::Angle& xy = 0_rad, const physics::Angle& xz = 0_rad, const physics::Angle& yz = 0_rad);
   };
 
   /* Hooke's Law to determine strain from stress for a material alone a single axis */
@@ -35,6 +39,9 @@ namespace eng {
   NormalStrain ENGINEERINGLIBRARY_API hookes_law(const Material& material, const StressElement3& stress);
 
   // TODO: Hooke's Law in shear
+  ShearStrain ENGINEERINGLIBRARY_API hookes_law_shear(const Material& material, const StressElement2& stress);
+  ShearStrain ENGINEERINGLIBRARY_API hookes_law_shear(const Material& material, const StressElement3& stress);
+
 
 };  // namespace eng
 

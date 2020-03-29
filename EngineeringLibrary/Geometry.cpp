@@ -65,7 +65,7 @@ namespace eng {
   }
 
   Geometry::operator Geometry() const { 
-    return Geometry(area(), moment_of_inertia(), centroid());
+    return create_geometry(*this);
   }
 
   physics::Area Geometry::calculate_area() const {
