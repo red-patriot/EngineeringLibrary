@@ -11,51 +11,39 @@
 #include "PhysicsLibrary/Area.h"
 #include "PhysicsLibrary/Force.h"
 
-/* TODO: Fix this set of functions. 
-   Figure out some way to implement a Bolt class which can define a bolt will all necessary values of a bolt
-   */
-
 namespace eng {
 
-  /* A model of Metric or Unified series thread standard 
-     specifying nominal diameter, pitch, and tensile area */
-  class ENGINEERINGLIBRARY_API ThreadStandard {
-  public:
-    enum Series {
-      METRIC, UNIFIED
-    };
-    // TODO: Add a constructor 
-    ~ThreadStandard() = default;
+  struct joint_member {
+    Material material;
+    physics::Length thickness;
 
-  private:
-    physics::Length _diameter;
-    physics::Length _pitch;
-    physics::Area _tensile_area;
-
-    Series _series;
+    joint_member(const Material& mat, const physics::Length& thi);
   };
 
-  /* A model of a bolt */
-  class ENGINEERINGLIBRARY_API Bolt {
-  public:
+  /* Calculate the stiffness of a bolt */
+  physics::Stiffness ENGINEERINGLIBRARY_API bolt_stiffness(const physics::Area& Ad, const physics::Area& At,
+                                                           const Stress& E, const physics::Length& lt, 
+                                                           const physics::Length& ld);
+  /* Calculate the stiffess of members bolted by a bolt */
+  physics::Stiffness ENGINEERINGLIBRARY_API members_stiffness(const std::vector<joint_member>& members,
+                                                              const physics::Length& d, const physics::Length& t);
+  /* Calculate the thickness of a bolted joint. */
+  physics::Length joint_thickness(const std::vector<joint_member> members);
+  /* Split the joint members into the top and bottom half 
+     Both vectors will have their first elements on the outside of the joint and continue inwards. */
+  void split_members (const std::vector<joint_member>& members, std::vector<joint_member>& top, 
+                      std::vector<joint_member>& bottom, const physics::Length& thickness);
 
-  private:
-    ThreadStandard _standard;
-  };
-
-  namespace bolt {
-
-    physics::Stiffness ENGINEERINGLIBRARY_API bolt_stiffness(const physics::Area& Ad, const physics::Area& At,
-      const Stress& E, const physics::Length& lt, const physics::Length& ld);
-    physics::Stiffness ENGINEERINGLIBRARY_API members_stiffness(const std::vector<std::pair<Material, physics::Length> >& members,
-      const physics::Length& d, const physics::Length& t);
-    double ENGINEERINGLIBRARY_API factor_of_safety_yield(const Stress& Sp, const physics::Area& At,
-      const double& C, const physics::Force& P, const physics::Force& Fi);
-    double ENGINEERINGLIBRARY_API factor_of_safety_load(const Stress& Sp, const physics::Area& At,
-      const double& C, const physics::Force& P, const physics::Force& Fi);
-    double ENGINEERINGLIBRARY_API factor_of_safety_separation(const physics::Force& Fi, const physics::Force& P, const double& C);
-
-  };  // namespace bolt
+  /* Calculate the factor of safety against yielding of a bolted joint */
+  double ENGINEERINGLIBRARY_API factor_of_safety_yield(const Stress& Sp, const physics::Area& At,
+    const double& C, const physics::Force& P, const physics::Force& Fi);
+  /* Calculate the load factor of a bolted joint */
+  double ENGINEERINGLIBRARY_API factor_of_safety_load(const Stress& Sp, const physics::Area& At,
+                                                      const double& C, const physics::Force& P, 
+                                                      const physics::Force& Fi);
+  /* Calculate the factor of safety against joint separation of a bolted joint */
+  double ENGINEERINGLIBRARY_API factor_of_safety_separation(const physics::Force& Fi, const physics::Force& P, 
+                                                            const double& C);
 
 };  // namespace eng
 
