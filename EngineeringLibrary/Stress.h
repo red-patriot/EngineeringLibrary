@@ -1,6 +1,8 @@
 #ifndef Stress_h_INCLUDED
 #define Stress_h_INCLUDED
 
+#include <Eigen/Dense>
+
 #include "EngineeringExport.h"
 #include "Material.h"
 
@@ -11,6 +13,9 @@
 #include "PhysicsLibrary/Angle.h"
 
 namespace eng {
+
+  // Stress and Pressure have the same units, so define them as "equal" here
+  using Stress = physics::Pressure;
 
   /* The stress of one 2 Dimensional stress element in a member */
   struct ENGINEERINGLIBRARY_API StressElement2 {
@@ -36,6 +41,8 @@ namespace eng {
       const Stress& xxyy = 0_Pa, const Stress& xxzz = 0_Pa, const Stress& yyzz = 0_Pa);
   };
 
+  using StressTensor = Eigen::Matrix<physics::Pressure, 3, 3>;
+
   /* The Principal stresses of a 2D stress element*/
   struct ENGINEERINGLIBRARY_API PrincipalStress2 {
     Stress sigma_1;
@@ -56,10 +63,8 @@ namespace eng {
 
   /* Calculate ths principal stresses of a planar stress state */
   PrincipalStress2 ENGINEERINGLIBRARY_API principal_stress(const StressElement2& s);
-  // TODO(unimplemented): 3D Stress analysis
-  //! This probably requires the implmentation of Stress Tensors and it might be difficult to implement.
-  //! Look into this
-  // TODO: PrincipalStress3 ENGINEERINGLIBRARY_API principal_stress(const StressElement3& s);
+  /* Calculate the principal stresses of a general 3D stress state */
+  PrincipalStress3 ENGINEERINGLIBRARY_API principal_stress(const StressElement3& s);
   /* Calculate the principal stresses in a Cylindrical pressure vessel. */
   PrincipalStress3 ENGINEERINGLIBRARY_API principal_stress(const physics::Length& a, const physics::Length& b,
     const physics::Length& r, const physics::Force& F, const physics::Pressure& Pi,

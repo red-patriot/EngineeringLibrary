@@ -1,5 +1,8 @@
 #include "pch.h"
 
+#include <algorithm>
+#include <Eigen/Dense>
+
 #include "Stress.h"
 #include "Material.h"
 
@@ -41,6 +44,28 @@ namespace eng {
     ret.sigma_2 = (s.sigma_x + s.sigma_y)/2
       - physics::sqrt(((s.sigma_x - s.sigma_y)*(s.sigma_x - s.sigma_y))/4 + (s.tau_xy * s.tau_xy));
 
+    return ret;
+  }
+
+  PrincipalStress3 principal_stress(const StressElement3& s) {
+    // create a stress tensor with the stress element
+    Eigen::Matrix3d tensor;
+    tensor << s.sigma_x.Pa(), s.tau_xy.Pa(), s.tau_xz.Pa(),
+              s.tau_xy.Pa(), s.sigma_y.Pa(), s.tau_yz.Pa(),
+              s.tau_xz.Pa(), s.tau_yz.Pa(), s.sigma_z.Pa();
+
+    // calculate the eigenvalues of the stress tensor
+    auto eig = tensor.eigenvalues();
+    physics::Pressure s_a = Stress(eig(0).real());
+    physics::Pressure s_b = Stress(eig(1).real());
+    physics::Pressure s_c = Stress(eig(2).real());
+
+    // Sort the principal stresses by size
+    PrincipalStress3 ret;
+    ret.sigma_1 = s_a > s_b ? (s_a > s_c ? s_a : s_c) : (s_b > s_c ? s_b : s_c);
+    ret.sigma_2 = s_a > s_b ? (s_c > s_a ? s_a : (s_b > s_c ? s_b : s_c)) : (s_c > s_b ? s_b : (s_a > s_c ? s_a : s_c));
+    ret.sigma_3 = s_a > s_b ? (s_b > s_c ? s_c : s_b) : (s_a > s_c ? s_c : s_a);
+    
     return ret;
   }
 

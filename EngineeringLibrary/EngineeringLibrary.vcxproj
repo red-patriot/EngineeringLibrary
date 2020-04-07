@@ -100,11 +100,10 @@
       <AdditionalDependencies>PhysicsLibrary.lib;PhysicsLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"
+      <Command>
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -126,9 +125,12 @@
       <AdditionalDependencies>PhysicsLibrary.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"
+      <Command>
 </Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -152,11 +154,10 @@
       <AdditionalDependencies>PhysicsLibrary.lib;PhysicsLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"
+      <Command>
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -182,9 +183,12 @@
       <AdditionalDependencies>PhysicsLibrary.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"
+      <Command>
 </Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bolt.h" />
