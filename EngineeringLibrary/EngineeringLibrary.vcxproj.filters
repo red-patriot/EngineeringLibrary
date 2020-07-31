@@ -48,6 +48,9 @@
     <ClInclude Include="Strain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SystemDynamics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -75,6 +78,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Strain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemDynamics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

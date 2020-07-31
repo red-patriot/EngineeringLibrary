@@ -59,6 +59,7 @@ namespace eng {
 }; // namespace eng
 
 namespace basic_materials {
+
   // Some basic materials for use
   const static eng::MaterialBase aluminum{ 71.7_GPa,  26.9_GPa, 0.333 };
   const static eng::MaterialBase brass{ 106.0_GPa, 40.1_GPa, 0.324 };
@@ -96,6 +97,7 @@ namespace basic_materials {
     {"1080 HR", eng::Material{420_MPa, 770_MPa, steel}},
     {"1095 HR", eng::Material{460_MPa, 830_MPa, steel}}
     });
+
 }; // namespace basic_materials
 
 #endif

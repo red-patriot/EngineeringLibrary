@@ -104,7 +104,7 @@
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
-</Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -126,7 +126,7 @@
     </Link>
     <PostBuildEvent>
       <Command>
-</Command>
+      </Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
@@ -158,7 +158,7 @@
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
-</Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -184,7 +184,7 @@
     </Link>
     <PostBuildEvent>
       <Command>
-</Command>
+      </Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
@@ -202,6 +202,7 @@
     <ClInclude Include="Strain.h" />
     <ClInclude Include="Stress.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SystemDynamics.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bolt.cpp" />
@@ -218,6 +219,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SystemDynamics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

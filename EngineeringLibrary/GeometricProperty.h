@@ -1,5 +1,5 @@
-#ifndef Moments_Of_Inertia_h_INCLUDED
-#define Moments_Of_Inertia_h_INCLUDED
+#ifndef Geometric_Property_h_INCLUDED
+#define Geometric_Property_h_INCLUDED
 
 /* GeometricProperty.h
  * A set of functions which calculate geometric properties (first and second moment of area and controid)
@@ -29,7 +29,7 @@ namespace eng {
   AreaMomentofInertia ENGINEERINGLIBRARY_API moment_of_inertia(const std::vector<Geometry*>& geo, 
     const std::vector<Geometry*>& neg);
 
-  /* The axis about which a Moment of Inertia is calculated */
+  /* The axis about which a Radius of Gyration is calculated */
   enum class Axis { X,Y };
   /* Calculate Radius of Gyration of a Moment of Inertia and an Area */
   class physics::Length ENGINEERINGLIBRARY_API radius_of_gyration(const class physics::SecondMomentOfArea& I,
