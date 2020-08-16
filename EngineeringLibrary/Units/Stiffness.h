@@ -5,7 +5,7 @@
  * Simulation of a linear stiffness in force per unit length
  */
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -14,14 +14,14 @@ namespace physics {
   /**
    * \class Stiffness a linear resistance to deformation measured in force/length
    */
-  class ENGINEERINGLIBRARY_API Stiffness : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Stiffness : public UnitBase {
   public:
     /**
      * \brief Construct a stiffness
      * 
      * \param _newtons_per_meter the measure of stiffness in Newtons/meter
      */
-    explicit Stiffness(double _newtons_per_meter = 0) : PhysicsBase(_newtons_per_meter) { }
+    explicit Stiffness(double _newtons_per_meter = 0) : UnitBase(_newtons_per_meter) { }
     Stiffness(const Stiffness&) = default;
     ~Stiffness() = default;
 

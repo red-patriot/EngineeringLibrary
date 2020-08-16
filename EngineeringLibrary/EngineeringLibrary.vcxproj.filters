@@ -102,6 +102,12 @@
     <ClInclude Include="Units\Volume.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Units\UnitBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Units.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

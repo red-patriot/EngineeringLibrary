@@ -1,7 +1,7 @@
 #ifndef Length_h_INCLUDED
 #define Length_h_INCLUDED
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -14,14 +14,14 @@ namespace physics {
   /**
    * \class Length A 1D geometry
    */
-  class ENGINEERINGLIBRARY_API Length : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Length : public UnitBase {
   public:
     /**
      * \brief Construct a Length
      * 
      * \param _meters the measure of the length in meters
      */
-    explicit Length(double _meters = 0) : PhysicsBase(_meters) { }
+    explicit Length(double _meters = 0) : UnitBase(_meters) { }
     Length(const Length&) = default;
     ~Length() = default;
 

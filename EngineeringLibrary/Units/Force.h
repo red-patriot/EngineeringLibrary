@@ -1,7 +1,7 @@
 #ifndef Force_h_INCLUDED
 #define Force_h_INCLUDED
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -10,14 +10,14 @@ namespace physics {
   /**
    * \class Force The magnitude of a force in space
    */
-  class ENGINEERINGLIBRARY_API Force : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Force : public UnitBase {
   public:
     /**
      * \brief Construct a Force
      * 
      * \param _newtons The magnitude of the force in Newtons
      */
-    explicit Force(double _newtons=0) : PhysicsBase(_newtons) { }
+    explicit Force(double _newtons=0) : UnitBase(_newtons) { }
     Force(const Force&) = default;
     ~Force() = default;
 

@@ -1,7 +1,7 @@
 #ifndef Time_h_INCLUDED
 #define Time_h_INCLUDED
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -10,14 +10,14 @@ namespace physics {
   /**
    * \class Time a time
    */
-  class ENGINEERINGLIBRARY_API Time : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Time : public UnitBase {
   public:
     /**
      * \brief Construct a Time
      * 
      * \param _seconds the measure of time in seconds
      */
-    explicit Time(const double _seconds = 0) : PhysicsBase(_seconds) { }
+    explicit Time(const double _seconds = 0) : UnitBase(_seconds) { }
     Time(const Time&) = default;
     ~Time() = default;
 

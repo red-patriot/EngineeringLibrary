@@ -4,12 +4,12 @@
 namespace physics {
 
   /**
-   * \class PhysicsBase An internal base class for any physics object
+   * \class UnitBase An internal base class for any physics object
    */
-  class PhysicsBase {
+  class UnitBase {
   public:
-    explicit PhysicsBase(const double n) : _value(n) { }
-    virtual ~PhysicsBase() = default;
+    explicit UnitBase(const double n) : _value(n) { }
+    virtual ~UnitBase() = default;
 
     double value() const { return _value; }
 

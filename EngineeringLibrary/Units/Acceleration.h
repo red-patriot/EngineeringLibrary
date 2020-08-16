@@ -1,7 +1,7 @@
 #ifndef Acceleration_h_INCLUDED
 #define Acceleration_h_INCLUDED
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -10,14 +10,14 @@ namespace physics {
   /**
    * \class Acceleration The change in speed of an object moginv through space
    */
-  class ENGINEERINGLIBRARY_API Acceleration : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Acceleration : public UnitBase {
   public:
     /**
      * \brief Construct an Acceleration
      * 
      * \param _meters_per_second2 The measure of acceleration in meters per second per second.
      */
-    Acceleration(const double _meters_per_second2=0) : PhysicsBase(_meters_per_second2) { }
+    Acceleration(const double _meters_per_second2=0) : UnitBase(_meters_per_second2) { }
     Acceleration(const Acceleration&) = default;
     ~Acceleration() = default;
 

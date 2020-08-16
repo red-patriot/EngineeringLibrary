@@ -5,7 +5,7 @@
  * A representation of an angular measurement
  */
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -14,14 +14,14 @@ namespace physics {
   /**
    * \class Angle The geometry formed by two non-colinear, coplanar lines. 
    */
-  class ENGINEERINGLIBRARY_API Angle : public PhysicsBase{
+  class ENGINEERINGLIBRARY_API Angle : public UnitBase{
   public:
     /**
      * \brief Construct an Angle
      * 
      * \param _radians The measure of the angle in radians
      */
-    explicit Angle(const double& _radians = 0) : PhysicsBase(_radians) { }  //? Becuase radians are "imaginary" units, maybe this should be implicit?
+    explicit Angle(const double& _radians = 0) : UnitBase(_radians) { }  //? Becuase radians are "imaginary" units, maybe this should be implicit?
     Angle(const Angle&) = default;
     ~Angle() = default;
 

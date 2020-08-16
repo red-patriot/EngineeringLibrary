@@ -5,7 +5,7 @@
  * A class to represent pressures or anything with units of pressure
  */
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -17,14 +17,14 @@ namespace physics {
   /**
    * \class Pressure A force distributed over an area
    */
-  class ENGINEERINGLIBRARY_API Pressure : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Pressure : public UnitBase {
   public:
     /**
      * \brief Construct a pressure
      * 
      * \param _pascals the measure of pressure in Pascals
      */
-    explicit Pressure(double _pascals = 0) : PhysicsBase(_pascals) { }
+    explicit Pressure(double _pascals = 0) : UnitBase(_pascals) { }
     Pressure(const Pressure&) = default;
     ~Pressure() = default;
 
@@ -93,14 +93,14 @@ namespace physics {
    * this class is only for use in intermetiate operations of.
    * equations; it has limited functionality. 
    */
-  class ENGINEERINGLIBRARY_API Pressure2 : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Pressure2 : public UnitBase {
   public:
     /**
      * \brief Construct a Pressure2
      * 
      * \param _pascals2 the measure of Pascals^2
      */
-    explicit Pressure2(const double _pascals2 = 0) : PhysicsBase(_pascals2) { }
+    explicit Pressure2(const double _pascals2 = 0) : UnitBase(_pascals2) { }
     Pressure2(const Pressure2&) = default;
     ~Pressure2() = default;
   };

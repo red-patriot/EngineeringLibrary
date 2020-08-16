@@ -10,14 +10,14 @@ namespace physics {
   /**
    * \class Mass a mass
    */
-  class ENGINEERINGLIBRARY_API Mass : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Mass : public UnitBase {
   public:
     /**
      * \brief Construct a Mass
      * 
      * \param _kilograms the measure of the mass in kilograms
      */
-    explicit Mass(const double _kilograms=0) : PhysicsBase(_kilograms) { }
+    explicit Mass(const double _kilograms=0) : UnitBase(_kilograms) { }
     Mass(const Mass&) = default;
     ~Mass() = default;
 

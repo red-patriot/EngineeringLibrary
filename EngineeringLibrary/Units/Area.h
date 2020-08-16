@@ -1,7 +1,7 @@
 #ifndef Area_h_INCLUDED
 #define Area_h_INCLUDED
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -14,14 +14,14 @@ namespace physics {
   /**
    * \class Area A 2D geometry
    */
-  class ENGINEERINGLIBRARY_API Area : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Area : public UnitBase {
   public:
     /**
      * \brief Construct an Area
      * 
      * \param _meters2 The meaasure of the area in meters^2
      */
-    explicit Area(const double _meters2 = 0) : PhysicsBase(_meters2) { }
+    explicit Area(const double _meters2 = 0) : UnitBase(_meters2) { }
     Area(const Area&) = default;
     ~Area() = default;
 

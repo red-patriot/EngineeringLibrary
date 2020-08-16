@@ -226,6 +226,8 @@
     <ClInclude Include="Units\Pressure.h" />
     <ClInclude Include="Units\Stiffness.h" />
     <ClInclude Include="Units\Time.h" />
+    <ClInclude Include="Units\UnitBase.h" />
+    <ClInclude Include="Units\Units.h" />
     <ClInclude Include="Units\Velocity.h" />
     <ClInclude Include="Units\Volume.h" />
   </ItemGroup>

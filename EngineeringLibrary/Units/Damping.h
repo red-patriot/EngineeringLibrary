@@ -1,7 +1,7 @@
 #ifndef Damping_h_INCLUDED
 #define Damping_h_INCLUDED
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen\Core>
 
@@ -10,14 +10,14 @@ namespace physics {
   /**
    * \class Damping A resistance to motion proportional to velocity
    */
-  class ENGINEERINGLIBRARY_API Damping : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Damping : public UnitBase {
   public:
     /**
      * \brief Construct a Damping
      * 
      * \param _Newton_seconds_per_meter the measure of Damping in Newton seconds per meter.
      */
-    explicit Damping(const double _Newton_seconds_per_meter = 0) : PhysicsBase(_Newton_seconds_per_meter) { }
+    explicit Damping(const double _Newton_seconds_per_meter = 0) : UnitBase(_Newton_seconds_per_meter) { }
     Damping(const Damping&) = default;
     ~Damping() = default;
 

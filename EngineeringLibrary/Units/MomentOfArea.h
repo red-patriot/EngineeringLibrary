@@ -1,7 +1,7 @@
 #ifndef Moment_Of_Inertia_h_INCLUDED
 #define Moment_Of_Inertia_h_INCLUDED
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -17,14 +17,14 @@ namespace physics {
   /**
    * \class SecondMomentOfArea A 4D measure of the Area Moment of Inertia of a geometry
    */
-  class ENGINEERINGLIBRARY_API SecondMomentOfArea : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API SecondMomentOfArea : public UnitBase {
   public:
     /**
      * \brief Construct a SecondMomentOfArea
      * 
      * \param _meters4 the measure of the area moment of inertia in meters^4
      */
-    explicit SecondMomentOfArea(const double& _meters4 = 0) : PhysicsBase(_meters4) { }
+    explicit SecondMomentOfArea(const double& _meters4 = 0) : UnitBase(_meters4) { }
     SecondMomentOfArea(const SecondMomentOfArea&) = default;
     ~SecondMomentOfArea() = default;
 

@@ -1,7 +1,7 @@
 #ifndef Velocity_h_INCLUDED
 #define Velocity_h_INCLUDED
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen/Core>
 
@@ -10,14 +10,14 @@ namespace physics {
   /**
    * \class Velocity The speed of an object moving through space.
    */
-  class ENGINEERINGLIBRARY_API Velocity : public PhysicsBase {
+  class ENGINEERINGLIBRARY_API Velocity : public UnitBase {
   public:
     /**
      * \brief Construct a Velocity
      * 
      * \param _meters_per_second The measure of speed in meters per second
      */
-    explicit Velocity(const double _meters_per_second = 0) : PhysicsBase(_meters_per_second) { }
+    explicit Velocity(const double _meters_per_second = 0) : UnitBase(_meters_per_second) { }
     Velocity(const Velocity&) = default;
     ~Velocity() = default;
 

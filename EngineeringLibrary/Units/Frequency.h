@@ -1,7 +1,7 @@
 #ifndef Frequency_h_INCLUDED
 #define Frequency_h_INCLUDED
 
-#include "PhysicsBase.h"
+#include "UnitBase.h"
 
 #include <Eigen\Core>
 
@@ -11,14 +11,14 @@ namespace physics {
   /**
    * \class Frequency a measure of cycles/repetitions per unit time
    */
-  class ENGINEERINGLIBRARY_API Frequency : public PhysicsBase { 
+  class ENGINEERINGLIBRARY_API Frequency : public UnitBase { 
   public:
     /**
      * \brief Construct a frequency
      * 
      * \param _hertz the measure of cycles per second
      */
-    explicit Frequency(const double _hertz=0) : PhysicsBase(_hertz) { }
+    explicit Frequency(const double _hertz=0) : UnitBase(_hertz) { }
     Frequency(const Frequency&) = default;
     ~Frequency() = default;
 
@@ -75,14 +75,14 @@ namespace physics {
    * this class is only for use in intermetiate operations of.
    * equations; it has limited functionality. 
    */
-  class ENGINEERINGLIBRARY_API Frequency2 : public PhysicsBase { 
+  class ENGINEERINGLIBRARY_API Frequency2 : public UnitBase { 
   public:
     /**
      * \brief Construct a Frequency2
      * 
      * \param _hertz2 the measure of Hertz^2
      */
-    explicit Frequency2(const double _hertz2 = 0): PhysicsBase(_hertz2) { }
+    explicit Frequency2(const double _hertz2 = 0): UnitBase(_hertz2) { }
     Frequency2(const Frequency2&) = default;
     ~Frequency2() = default;
   };
