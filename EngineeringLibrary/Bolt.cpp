@@ -4,12 +4,12 @@
 #include <algorithm>
 
 #include "Bolt.h"
-#include "PhysicsLibrary/Angle.h"
-#include "PhysicsLibrary/Length.h"
-#include "PhysicsLibrary/Volume.h"
-#include "PhysicsLibrary/MomentOfArea.h"
-#include "PhysicsLibrary/Stiffness.h"
-#include "PhysicsLibrary/PhysicsMath.h"
+#include "Units/Angle.h"
+#include "Units/Length.h"
+#include "Units/Volume.h"
+#include "Units/MomentOfArea.h"
+#include "Units/Stiffness.h"
+#include "Units/PhysicsMath.h"
 
 namespace eng {
 

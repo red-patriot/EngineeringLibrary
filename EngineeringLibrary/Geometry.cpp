@@ -1,8 +1,7 @@
 #include "pch.h"
 #include "Geometry.h"
 
-#include "PhysicsLibrary/PhysicsMath.h"
-#include "PhysicsLibrary/Area.h"
+#include "Units/PhysicsMath.h"
 
 namespace eng {
 

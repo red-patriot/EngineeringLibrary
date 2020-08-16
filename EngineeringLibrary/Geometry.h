@@ -3,9 +3,9 @@
 
 #include "EngineeringExport.h"
 
-#include "PhysicsLibrary/Length.h"
-#include "PhysicsLibrary/Area.h"
-#include "PhysicsLibrary/MomentOfArea.h"
+#include "Units/Length.h"
+#include "Units/Area.h"
+#include "Units/MomentOfArea.h"
 
 namespace eng {
 

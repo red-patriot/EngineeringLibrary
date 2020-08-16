@@ -5,9 +5,9 @@
 
 #include "GeometricProperty.h"
 
-#include "PhysicsLibrary/PhysicsMath.h"
-#include "PhysicsLibrary/MomentOfArea.h"
-#include "PhysicsLibrary/Force.h"
+#include "Units/PhysicsMath.h"
+#include "Units/MomentOfArea.h"
+#include "Units/Force.h"
 
 namespace eng {
 

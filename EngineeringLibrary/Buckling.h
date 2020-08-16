@@ -5,8 +5,8 @@
 #include "Material.h"
 #include "Geometry.h"
 
-#include "PhysicsLibrary/Area.h"
-#include "PhysicsLibrary/Length.h"
+#include "Units/Area.h"
+#include "Units/Length.h"
 
 // These defined constants will determine which value of the end condition constant wil be used.
 #define COL_THEORETICAL_VALUE 0   /* Use the theoretical value of C. */

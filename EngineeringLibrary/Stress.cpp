@@ -6,11 +6,11 @@
 #include "Stress.h"
 #include "Material.h"
 
-#include "PhysicsLibrary\PhysicsMath.h"
-#include "PhysicsLibrary\Force.h"
-#include "PhysicsLibrary\Pressure.h"
-#include "PhysicsLibrary\Area.h"
-#include "PhysicsLibrary\Length.h"
+#include "Units/PhysicsMath.h"
+#include "Units/Force.h"
+#include "Units/Pressure.h"
+#include "Units/Area.h"
+#include "Units/Length.h"
 
 namespace eng {
 

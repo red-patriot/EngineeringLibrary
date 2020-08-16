@@ -3,10 +3,10 @@
 
 #include "EngineeringExport.h"
 
-#include "PhysicsLibrary\Mass.h"
-#include "PhysicsLibrary\Damping.h"
-#include "PhysicsLibrary\Stiffness.h"
-#include "PhysicsLibrary\Frequency.h"
+#include "Units/Mass.h"
+#include "Units/Damping.h"
+#include "Units/Stiffness.h"
+#include "Units/Frequency.h"
 
 namespace eng {
 

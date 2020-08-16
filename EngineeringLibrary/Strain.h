@@ -6,7 +6,7 @@
 
 #include "Stress.h"
 
-#include "PhysicsLibrary/Angle.h"
+#include "Units/Angle.h"
 
 namespace eng {
 

@@ -90,17 +90,19 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;ENGINEERINGLIBRARY_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\bltan\source\custom libs\PhysicsLibrary</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\Users\bltan\source\custom libs\PhysicsLibrary\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>PhysicsLibrary.lib;PhysicsLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -115,21 +117,23 @@
       <PreprocessorDefinitions>_DEBUG;ENGINEERINGLIBRARY_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\bltan\source\custom libs\PhysicsLibrary</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\Users\bltan\source\custom libs\PhysicsLibrary\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>PhysicsLibrary.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
       </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,7 +146,8 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;ENGINEERINGLIBRARY_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\bltan\source\custom libs\PhysicsLibrary</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -150,11 +155,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\Users\bltan\source\custom libs\PhysicsLibrary\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>PhysicsLibrary.lib;PhysicsLibrary.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -171,7 +177,8 @@
       <PreprocessorDefinitions>NDEBUG;ENGINEERINGLIBRARY_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\Users\bltan\source\custom libs\PhysicsLibrary</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -179,15 +186,16 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalLibraryDirectories>C:\Users\bltan\source\custom libs\PhysicsLibrary\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>PhysicsLibrary.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
       </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>xcopy /y "C:\Users\bltan\source\custom libs\PhysicsLibrary\$(IntDir)PhysicsLibrary.dll" "$(OutDir)"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -203,6 +211,23 @@
     <ClInclude Include="Stress.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SystemDynamics.h" />
+    <ClInclude Include="Units\Acceleration.h" />
+    <ClInclude Include="Units\Angle.h" />
+    <ClInclude Include="Units\Area.h" />
+    <ClInclude Include="Units\Damping.h" />
+    <ClInclude Include="Units\Force.h" />
+    <ClInclude Include="Units\Frequency.h" />
+    <ClInclude Include="Units\Length.h" />
+    <ClInclude Include="Units\Mass.h" />
+    <ClInclude Include="Units\MomentOfArea.h" />
+    <ClInclude Include="Units\Physics.h" />
+    <ClInclude Include="Units\PhysicsBase.h" />
+    <ClInclude Include="Units\PhysicsMath.h" />
+    <ClInclude Include="Units\Pressure.h" />
+    <ClInclude Include="Units\Stiffness.h" />
+    <ClInclude Include="Units\Time.h" />
+    <ClInclude Include="Units\Velocity.h" />
+    <ClInclude Include="Units\Volume.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bolt.cpp" />
@@ -220,6 +245,21 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SystemDynamics.cpp" />
+    <ClCompile Include="Units\Acceleration.cpp" />
+    <ClCompile Include="Units\Angle.cpp" />
+    <ClCompile Include="Units\Area.cpp" />
+    <ClCompile Include="Units\Damping.cpp" />
+    <ClCompile Include="Units\Force.cpp" />
+    <ClCompile Include="Units\Frequency.cpp" />
+    <ClCompile Include="Units\Length.cpp" />
+    <ClCompile Include="Units\Mass.cpp" />
+    <ClCompile Include="Units\MomentOfArea.cpp" />
+    <ClCompile Include="Units\PhysicsMath.cpp" />
+    <ClCompile Include="Units\Pressure.cpp" />
+    <ClCompile Include="Units\Stiffness.cpp" />
+    <ClCompile Include="Units\Time.cpp" />
+    <ClCompile Include="Units\Velocity.cpp" />
+    <ClCompile Include="Units\Volume.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

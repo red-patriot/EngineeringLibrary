@@ -6,11 +6,11 @@
 #include "EngineeringExport.h"
 #include "Material.h"
 
-#include "PhysicsLibrary/PhysicsMath.h"
-#include "PhysicsLibrary/Pressure.h"
-#include "PhysicsLibrary/Area.h"
-#include "PhysicsLibrary/Length.h"
-#include "PhysicsLibrary/Angle.h"
+#include "Units/PhysicsMath.h"
+#include "Units/Pressure.h"
+#include "Units/Area.h"
+#include "Units/Length.h"
+#include "Units/Angle.h"
 
 namespace eng {
 

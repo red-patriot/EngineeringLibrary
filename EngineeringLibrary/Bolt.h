@@ -7,9 +7,9 @@
 #include "EngineeringExport.h"
 #include "Material.h"
 
-#include "PhysicsLibrary/Length.h"
-#include "PhysicsLibrary/Area.h"
-#include "PhysicsLibrary/Force.h"
+#include "Units/Length.h"
+#include "Units/Area.h"
+#include "Units/Force.h"
 
 namespace eng {
 
