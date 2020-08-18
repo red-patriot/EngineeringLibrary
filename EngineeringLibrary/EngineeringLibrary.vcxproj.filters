@@ -78,12 +78,6 @@
     <ClInclude Include="Units\MomentOfArea.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Physics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Units\PhysicsBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Units\PhysicsMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>

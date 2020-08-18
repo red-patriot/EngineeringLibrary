@@ -1,11 +1,19 @@
 #ifndef Area_h_INCLUDED
 #define Area_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Area.h
+ * \brief An object representing any 2D Area.
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   class SecondMomentOfArea;
   class Volume;
@@ -21,7 +29,7 @@ namespace physics {
      * 
      * \param _meters2 The meaasure of the area in meters^2
      */
-    explicit Area(const double _meters2 = 0) : UnitBase(_meters2) { }
+    explicit Area(const double meters2 = 0) : UnitBase(meters2) { }
     Area(const Area&) = default;
     ~Area() = default;
 
@@ -38,7 +46,6 @@ namespace physics {
     Area& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  // Literal operators
   Area ENGINEERINGLIBRARY_API operator"" _mm2(long double val);
   Area ENGINEERINGLIBRARY_API operator"" _mm2(unsigned long long val);
 
@@ -80,15 +87,15 @@ namespace physics {
   inline Area ENGINEERINGLIBRARY_API real(const Area& x) { return x; }
   inline Area ENGINEERINGLIBRARY_API imag(const Area&) { return 0_m2; }
 
-}; // namespace physics
+}; // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Area> : NumTraits<double> {
-    typedef physics::Area Real;
-    typedef physics::Area NonInteger;
-    typedef physics::Area Nested;
+  template<> struct NumTraits<eng::Area> : NumTraits<double> {
+    typedef eng::Area Real;
+    typedef eng::Area NonInteger;
+    typedef eng::Area Nested;
 
     enum {
       IsComplex = 0,
@@ -103,9 +110,9 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _mm2;       using physics::operator"" _cm2;
-using physics::operator"" _m2;
-using physics::operator"" _in2;       using physics::operator"" _ft2;
+using eng::operator"" _mm2;       using eng::operator"" _cm2;
+using eng::operator"" _m2;
+using eng::operator"" _in2;       using eng::operator"" _ft2;
 
 #endif
 

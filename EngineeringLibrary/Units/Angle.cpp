@@ -3,11 +3,7 @@
 #include "Angle.h"
 #include "PhysicsMath.h"
 
-namespace physics {
-
-  double Angle::rad() const {
-    return value();
-  }
+namespace eng {
 
   double Angle::deg() const {
     return value() * 180 / pi;
@@ -61,4 +57,4 @@ namespace physics {
     return Angle(val);
   }
 
-};  // namespace physics
+};  // namespace eng

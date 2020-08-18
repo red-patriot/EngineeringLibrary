@@ -7,9 +7,9 @@
 #include "TIme.h"
 #include "PhysicsMath.h"
 
-namespace physics {
+namespace eng {
 
-  Mass physics::operator-(const Mass& lh) {
+  Mass operator-(const Mass& lh) {
     return Mass(-lh.value());
   }
 
@@ -41,7 +41,6 @@ namespace physics {
   	return Mass(lh.value() / rh.value());
   }
 
-  // Comparison operators
   bool operator== (const Mass& lh, const Mass& rh) {
     return fuzzy_equals(lh.value(), rh.value());
   }
@@ -88,4 +87,4 @@ namespace physics {
     return Mass(val * 14.593903);
   }
 
-};  // namespace physics
+};  // namespace eng

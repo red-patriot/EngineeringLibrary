@@ -1,11 +1,19 @@
 #ifndef Velocity_h_INCLUDED
 #define Velocity_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Velocity.h
+ * \brief An object representing a linear velocity
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   /**
    * \class Velocity The speed of an object moving through space.
@@ -34,7 +42,6 @@ namespace physics {
     Velocity& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  // Literal operators
   Velocity ENGINEERINGLIBRARY_API operator"" _mpsec (long double val);
   Velocity ENGINEERINGLIBRARY_API operator"" _mpsec (unsigned long long val);
 
@@ -77,15 +84,15 @@ namespace physics {
   inline Velocity ENGINEERINGLIBRARY_API real(const Velocity& x) { return x; }
   inline Velocity ENGINEERINGLIBRARY_API imag(const Velocity& x) { return 0_mpsec; }
 
-};  // namespace physics
+};  // namespace eng
 
 /* Integration with Eigen. */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Velocity> : NumTraits<double> {
-    typedef physics::Velocity Real;
-    typedef physics::Velocity NonInteger;
-    typedef physics::Velocity Nested;
+  template<> struct NumTraits<eng::Velocity> : NumTraits<double> {
+    typedef eng::Velocity Real;
+    typedef eng::Velocity NonInteger;
+    typedef eng::Velocity Nested;
 
     enum {
       IsComplex = 0,
@@ -100,8 +107,8 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _mpsec;      using physics::operator"" _kph;
-using physics::operator"" _inpsec;     using physics::operator"" _ftpsec;
-using physics::operator"" _mph;
+using eng::operator"" _mpsec;      using eng::operator"" _kph;
+using eng::operator"" _inpsec;     using eng::operator"" _ftpsec;
+using eng::operator"" _mph;
 
 #endif

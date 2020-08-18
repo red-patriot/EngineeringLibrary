@@ -1,11 +1,19 @@
 #ifndef Volume_h_INCLUDED
 #define Volume_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Volume.h
+ * \brief An object representing a 3D spacial volume
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   class SecondMomentOfArea;
   class Area;
@@ -38,7 +46,6 @@ namespace physics {
     Volume& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  // Literal operators
   Volume ENGINEERINGLIBRARY_API operator"" _mm3(long double val);
   Volume ENGINEERINGLIBRARY_API operator"" _mm3(unsigned long long val);
 
@@ -80,15 +87,15 @@ namespace physics {
   inline Volume ENGINEERINGLIBRARY_API real(const Volume& x) { return x; }
   inline Volume ENGINEERINGLIBRARY_API imag(const Volume&) { return 0_m3; }
 
-}; // namespace physics
+}; // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Volume> : NumTraits<double> {
-    typedef physics::Volume Real;
-    typedef physics::Volume NonInteger;
-    typedef physics::Volume Nested;
+  template<> struct NumTraits<eng::Volume> : NumTraits<double> {
+    typedef eng::Volume Real;
+    typedef eng::Volume NonInteger;
+    typedef eng::Volume Nested;
 
     enum {
       IsComplex = 0,
@@ -103,9 +110,9 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _mm3;         using physics::operator"" _cm3;
-using physics::operator"" _m3;
-using physics::operator"" _in3;         using physics::operator"" _ft3;
+using eng::operator"" _mm3;         using eng::operator"" _cm3;
+using eng::operator"" _m3;
+using eng::operator"" _in3;         using eng::operator"" _ft3;
 
 #endif
 

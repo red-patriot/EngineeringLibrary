@@ -1,11 +1,19 @@
 #ifndef Length_h_INCLUDED
 #define Length_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Length.h
+ * \brief An object representing a 1D length. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   class SecondMomentOfArea;
   class Volume;
@@ -14,6 +22,7 @@ namespace physics {
   /**
    * \class Length A 1D geometry
    */
+
   class ENGINEERINGLIBRARY_API Length : public UnitBase {
   public:
     /**
@@ -21,7 +30,7 @@ namespace physics {
      * 
      * \param _meters the measure of the length in meters
      */
-    explicit Length(double _meters = 0) : UnitBase(_meters) { }
+    explicit Length(double meters = 0) : UnitBase(meters) { }
     Length(const Length&) = default;
     ~Length() = default;
 
@@ -90,15 +99,15 @@ namespace physics {
   inline Length ENGINEERINGLIBRARY_API imag(const Length&) { return 0_m; }
 
 
-}; // namespace physics
+}; // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Length> : NumTraits<double> {
-    typedef physics::Length Real;
-    typedef physics::Length NonInteger;
-    typedef physics::Length Nested;
+  template<> struct NumTraits<eng::Length> : NumTraits<double> {
+    typedef eng::Length Real;
+    typedef eng::Length NonInteger;
+    typedef eng::Length Nested;
 
     enum {
       IsComplex = 0,
@@ -114,10 +123,10 @@ namespace Eigen {
 };  // namespace Eigen
 
 //? This feels hacky, is there some other way to do this?
-using physics::operator"" _mm;      using physics::operator"" _cm;
-using physics::operator"" _m;       using physics::operator"" _km;
-using physics::operator"" _in;      using physics::operator"" _ft;
-using physics::operator"" _mi;
+using eng::operator"" _mm;      using eng::operator"" _cm;
+using eng::operator"" _m;       using eng::operator"" _km;
+using eng::operator"" _in;      using eng::operator"" _ft;
+using eng::operator"" _mi;
 
 #endif
 

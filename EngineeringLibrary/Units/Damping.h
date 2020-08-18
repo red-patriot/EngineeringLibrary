@@ -1,11 +1,19 @@
 #ifndef Damping_h_INCLUDED
 #define Damping_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Damping.h
+ * \brief An object representing a Damping component. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen\Core>
 
-namespace physics {
+namespace eng {
 
   /**
    * \class Damping A resistance to motion proportional to velocity
@@ -17,7 +25,8 @@ namespace physics {
      * 
      * \param _Newton_seconds_per_meter the measure of Damping in Newton seconds per meter.
      */
-    explicit Damping(const double _Newton_seconds_per_meter = 0) : UnitBase(_Newton_seconds_per_meter) { }
+    explicit Damping(const double newton_seconds_per_meter = 0) :
+      UnitBase(newton_seconds_per_meter) { }
     Damping(const Damping&) = default;
     ~Damping() = default;
 
@@ -69,9 +78,9 @@ namespace physics {
   bool ENGINEERINGLIBRARY_API operator>= (const Damping& lh, const Damping& rh);
   bool ENGINEERINGLIBRARY_API operator<= (const Damping& lh, const Damping& rh);
 
-};  // namespace physics
+};  // namespace eng
 
-using physics::operator"" _Nspm;        using physics::operator"" _kNspm;
-using physics::operator"" _lbspin;      using physics::operator"" _lbspft;
+using eng::operator"" _Nspm;        using eng::operator"" _kNspm;
+using eng::operator"" _lbspin;      using eng::operator"" _lbspft;
 
 #endif

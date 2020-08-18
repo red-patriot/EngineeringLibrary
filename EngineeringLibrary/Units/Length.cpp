@@ -8,12 +8,12 @@
 #include "TIme.h"
 #include "PhysicsMath.h"
 
-namespace physics {
-  // Negation operator
+namespace eng {
+
   Length operator-(const Length& lh) {
     return Length(-lh.value());
   }
-  // Mathematical Operators
+
   Length operator+ (const Length& lh, const Length& rh) {
     return Length(lh.value() + rh.value());
   }
@@ -51,7 +51,6 @@ namespace physics {
     return lh.value() / rh.value();
   }
 
-  // Comparison operators
   bool operator== (const Length& lh, const Length& rh) {
     return fuzzy_equals(lh.value(), rh.value());
   }
@@ -126,4 +125,4 @@ namespace physics {
     return Length(val * (160'934.4/100));
   }
 
-}; // namespace physics 
+}; // namespace eng 

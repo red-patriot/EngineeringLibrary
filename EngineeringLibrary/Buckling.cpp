@@ -12,7 +12,7 @@
 namespace eng {
 
   Column::Column(const Material& material, const Geometry& geometry,
-    const physics::Length& length, const EndConditions& supports) :
+    const Length& length, const EndConditions& supports) :
     _material(material),
     _geometry(geometry),
     _length(length),
@@ -20,8 +20,8 @@ namespace eng {
 
   Stress critical_load(const Column& _column) {
     AreaMomentofInertia temp = _column.moment_of_inertia();
-    physics::SecondMomentOfArea I = temp.Ix < temp.Iy ? temp.Ix : temp.Iy;
-    physics::Length k = radius_of_gyration(I, _column.area());
+    SecondMomentOfArea I = temp.Ix < temp.Iy ? temp.Ix : temp.Iy;
+    Length k = radius_of_gyration(I, _column.area());
 
     if ((_column.length()*_column.length())/(k*k) < l_k_1(_column)) {
       // Johnson buckling
@@ -35,8 +35,8 @@ namespace eng {
   Stress critical_load_euler(const Column& _column) {
     // Determine the weak direction radius of gyration
     AreaMomentofInertia temp = _column.moment_of_inertia();
-    physics::SecondMomentOfArea I = temp.Ix < temp.Iy ? temp.Ix : temp.Iy;
-    physics::Length k = radius_of_gyration(I, _column.area());
+    SecondMomentOfArea I = temp.Ix < temp.Iy ? temp.Ix : temp.Iy;
+    Length k = radius_of_gyration(I, _column.area());
     
     // calculate the critical load
     return (end_condition_constant(_column.supports()) * pi*pi * _column.material().E()) 
@@ -46,17 +46,19 @@ namespace eng {
   Stress critical_load_johnson(const Column& _column) {
     // Determine the weak direction radius of gyration
     AreaMomentofInertia temp = _column.moment_of_inertia();
-    physics::SecondMomentOfArea I = temp.Ix < temp.Iy ? temp.Ix : temp.Iy;
-    physics::Length k = radius_of_gyration(I, _column.area());
+    SecondMomentOfArea I = temp.Ix < temp.Iy ? temp.Ix : temp.Iy;
+    Length k = radius_of_gyration(I, _column.area());
 
     // calculate the critical load
     return _column.material().yield_strength()
-      - _column.material().yield_strength()*(_column.material().yield_strength()/(4*end_condition_constant(_column.supports())*_column.material().E()*pi*pi))
+      - _column.material().yield_strength()*(_column.material().yield_strength()/
+                                             (4*end_condition_constant(_column.supports())
+                                              *_column.material().E()*pi*pi))
       * (_column.length()*_column.length())/(k*k);
   }
 
   double l_k_1(const Column& _column) {
-    return sqrt((2*end_condition_constant(_column.supports())*pi*pi*_column.material().E())
+    return std::sqrt((2*end_condition_constant(_column.supports())*pi*pi*_column.material().E())
       /_column.material().yield_strength());
   }
 

@@ -220,8 +220,6 @@
     <ClInclude Include="Units\Length.h" />
     <ClInclude Include="Units\Mass.h" />
     <ClInclude Include="Units\MomentOfArea.h" />
-    <ClInclude Include="Units\Physics.h" />
-    <ClInclude Include="Units\PhysicsBase.h" />
     <ClInclude Include="Units\PhysicsMath.h" />
     <ClInclude Include="Units\Pressure.h" />
     <ClInclude Include="Units\Stiffness.h" />

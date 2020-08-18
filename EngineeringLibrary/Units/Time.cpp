@@ -3,7 +3,7 @@
 #include "Time.h"
 #include "PhysicsMath.h"
 
-namespace physics {
+namespace eng {
 
   Time operator- (const Time& lh) {
     return Time(-lh.value());
@@ -74,4 +74,4 @@ namespace physics {
     return Time(val * 3600);
   }
 
-};  // namespace physics
+};  // namespace eng

@@ -1,11 +1,19 @@
 #ifndef Time_h_INCLUDED
 #define Time_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Time.h
+ * \brief An object representing time. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   /**
    * \class Time a time
@@ -63,15 +71,15 @@ namespace physics {
   inline Time ENGINEERINGLIBRARY_API real(const Time& x) { return x; }
   inline Time ENGINEERINGLIBRARY_API imag(const Time& x) { return 0_sec; }
 
-};  // namepsace physics
+};  // namepsace eng
 
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Time> : NumTraits<double> {
-    typedef physics::Time Real;
-    typedef physics::Time NonInteger;
-    typedef physics::Time Nested;
+  template<> struct NumTraits<eng::Time> : NumTraits<double> {
+    typedef eng::Time Real;
+    typedef eng::Time NonInteger;
+    typedef eng::Time Nested;
 
     enum {
       IsComplex = 0,
@@ -86,7 +94,7 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _sec;        using physics::operator"" _minute;
-using physics::operator"" _hour;
+using eng::operator"" _sec;        using eng::operator"" _minute;
+using eng::operator"" _hour;
 
 #endif

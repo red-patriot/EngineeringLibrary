@@ -5,9 +5,8 @@
 #include <cmath>
 
 
-namespace physics {
+namespace eng {
 
-  // Fussy comparison operators
   bool fuzzy_equals(const double& lh, const double& rh) {
     /* Tests that the numbers differ by less than 100,000 times smaller than either of them. */
     return fabs(lh - rh) <= fabs((lh < rh ? lh : rh) * 0.000001);

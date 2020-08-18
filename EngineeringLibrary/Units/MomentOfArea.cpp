@@ -5,13 +5,13 @@
 #include "Length.h"
 #include "PhysicsMath.h"
 
-namespace physics {
-  // Negation operator
+namespace eng {
+
   SecondMomentOfArea operator-(const SecondMomentOfArea& lh) {
     return SecondMomentOfArea(-lh.value());
   }
-  // Mathematical Operators
-    SecondMomentOfArea operator+ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
+
+  SecondMomentOfArea operator+ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
     return SecondMomentOfArea(lh.value() + rh.value());
   }
 
@@ -42,7 +42,6 @@ namespace physics {
     return SecondMomentOfArea(lh.value() / n);
   }
 
-  // Comparison Operators
   bool operator== (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
     return fuzzy_equals(lh.value(), rh.value());
   }
@@ -67,6 +66,7 @@ namespace physics {
    * mm^4, m^4
    * in^4, ft^4
    */
+
   SecondMomentOfArea operator"" _mm4(long double val) {
     return SecondMomentOfArea(val * 0.000'000'000'001);
   }
@@ -95,4 +95,4 @@ namespace physics {
     return SecondMomentOfArea(val * 863'097.481'241'6 / 100'000'000);
   }
 
-}; // namespace physics
+}; // namespace eng

@@ -8,9 +8,7 @@
 #include "Length.h"
 #include "Time.h"
 
-namespace physics {
-  Stiffness ENGINEERINGLIBRARY_API operator- (const Stiffness& lh);
-
+namespace eng {
   Stiffness operator-(const Stiffness& lh) {
     return Stiffness(-lh.value());
   }
@@ -76,6 +74,12 @@ namespace physics {
     return rh > lh || rh == lh;
   }
 
+  /* Literal operators
+ * The following units are supported:
+ * N/m, N/mm,
+ * lb/in, lb/ft
+ */
+
   Stiffness operator""_Npm(long double val) {
     return Stiffness(val);
   }
@@ -108,4 +112,4 @@ namespace physics {
     return Stiffness(val * 14.593902937206364829);
   }
 
-};  // namespace physics
+};  // namespace eng

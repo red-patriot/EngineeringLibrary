@@ -1,9 +1,9 @@
 #ifndef Physics_h_INCLUDED
 #define Physics_h_INCLUDED
 
-/* Include the entire physics library */
+/* Include all unit types */
 
-// Basic header
+// Basic headers
 #include "UnitBase.h"
 #include "PhysicsMath.h"
 
@@ -14,7 +14,7 @@
 // Mass header
 #include "Mass.h"
 
-// Displacement headers
+// Geometry headers
 #include "Angle.h"
 #include "Length.h"
 #include "Area.h"

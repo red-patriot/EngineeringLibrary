@@ -1,11 +1,19 @@
 #ifndef Mass_h_INCLUDED
 #define Mass_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Mass.h
+ * \brief An object representing an inertial or gravitational mass. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "PhysicsMath.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   /**
    * \class Mass a mass
@@ -17,7 +25,7 @@ namespace physics {
      * 
      * \param _kilograms the measure of the mass in kilograms
      */
-    explicit Mass(const double _kilograms=0) : UnitBase(_kilograms) { }
+    explicit Mass(const double kilograms=0) : UnitBase(kilograms) { }
     Mass(const Mass&) = default;
     ~Mass() = default;
 
@@ -66,15 +74,15 @@ namespace physics {
   inline Mass ENGINEERINGLIBRARY_API real(const Mass& x) { return x; }
   inline Mass ENGINEERINGLIBRARY_API imag(const Mass& x) { return 0_kg; }
 
-};  // namespace physics
+};  // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Mass> : NumTraits<double> {
-    typedef physics::Mass Real;
-    typedef physics::Mass NonInteger;
-    typedef physics::Mass Nested;
+  template<> struct NumTraits<eng::Mass> : NumTraits<double> {
+    typedef eng::Mass Real;
+    typedef eng::Mass NonInteger;
+    typedef eng::Mass Nested;
 
     enum {
       IsComplex = 0,
@@ -89,7 +97,7 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _g;       using physics::operator"" _kg;
-using physics::operator"" _slug;
+using eng::operator"" _g;       using eng::operator"" _kg;
+using eng::operator"" _slug;
 
 #endif

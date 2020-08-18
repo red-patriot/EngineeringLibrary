@@ -1,12 +1,19 @@
 #ifndef Frequency_h_INCLUDED
 #define Frequency_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Frequency.h
+ * \brief An object representing an oscillatory frequency
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen\Core>
 
-namespace physics {
-
+namespace eng {
 
   /**
    * \class Frequency a measure of cycles/repetitions per unit time
@@ -18,7 +25,7 @@ namespace physics {
      * 
      * \param _hertz the measure of cycles per second
      */
-    explicit Frequency(const double _hertz=0) : UnitBase(_hertz) { }
+    explicit Frequency(const double hertz=0) : UnitBase(hertz) { }
     Frequency(const Frequency&) = default;
     ~Frequency() = default;
 
@@ -32,7 +39,6 @@ namespace physics {
     Frequency& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  // Literal operators
   Frequency ENGINEERINGLIBRARY_API operator"" _Hz (long double val);
   Frequency ENGINEERINGLIBRARY_API operator"" _Hz (unsigned long long val);
 
@@ -106,10 +112,10 @@ namespace physics {
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Frequency> : NumTraits<double> {
-    typedef physics::Frequency Real;
-    typedef physics::Frequency NonInteger;
-    typedef physics::Frequency Nested;
+  template<> struct NumTraits<eng::Frequency> : NumTraits<double> {
+    typedef eng::Frequency Real;
+    typedef eng::Frequency NonInteger;
+    typedef eng::Frequency Nested;
 
     enum {
       IsComplex = 0,
@@ -124,7 +130,7 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _Hz;        using physics::operator"" _kHz;
-using physics::operator"" _MHz;
+using eng::operator"" _Hz;        using eng::operator"" _kHz;
+using eng::operator"" _MHz;
 
 #endif

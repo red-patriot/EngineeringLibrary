@@ -9,7 +9,7 @@
 #include "Acceleration.h"
 #include "PhysicsMath.h"
 
-namespace physics {
+namespace eng {
 
   Frequency operator- (const Frequency& lh) {
     return Frequency(-lh.value());
@@ -48,7 +48,6 @@ namespace physics {
   Frequency operator/ (const Frequency2& lh, const Frequency& rh) {
   	return Frequency(lh.value() / rh.value());
   }
-
 
   bool operator== (const Frequency& lh, const Frequency& rh) {
     return fuzzy_equals(lh.value(), rh.value());

@@ -1,11 +1,19 @@
 #ifndef Force_h_INCLUDED
 #define Force_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Force.h
+ * \brief An object representing a force. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   /**
    * \class Force The magnitude of a force in space
@@ -17,7 +25,7 @@ namespace physics {
      * 
      * \param _newtons The magnitude of the force in Newtons
      */
-    explicit Force(double _newtons=0) : UnitBase(_newtons) { }
+    explicit Force(double newtons=0) : UnitBase(newtons) { }
     Force(const Force&) = default;
     ~Force() = default;
 
@@ -33,7 +41,6 @@ namespace physics {
     Force& operator/= (const double& rh) {_value /= rh; return *this; }
   };
 
-  // Literal operators
   Force ENGINEERINGLIBRARY_API operator"" _N(long double val);
   Force ENGINEERINGLIBRARY_API operator"" _N(unsigned long long val);
 
@@ -78,15 +85,15 @@ namespace physics {
   inline Force ENGINEERINGLIBRARY_API imag(const Force&) { return 0_N; }
   
 
-}; // namespace physics
+}; // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Force> : NumTraits<double> {
-    typedef physics::Force Real;
-    typedef physics::Force NonInteger;
-    typedef physics::Force Nested;
+  template<> struct NumTraits<eng::Force> : NumTraits<double> {
+    typedef eng::Force Real;
+    typedef eng::Force NonInteger;
+    typedef eng::Force Nested;
 
     enum {
       IsComplex = 0,
@@ -101,8 +108,8 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator""_N;        using physics::operator""_kN;
-using physics::operator""_lbf;      using physics::operator""_kips;
+using eng::operator""_N;        using eng::operator""_kN;
+using eng::operator""_lbf;      using eng::operator""_kips;
 
 #endif
 

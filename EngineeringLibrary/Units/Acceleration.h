@@ -1,11 +1,19 @@
 #ifndef Acceleration_h_INCLUDED
 #define Acceleration_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Acceleration.h
+ * \brief An object representing a linear Acceleration. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   /**
    * \class Acceleration The change in speed of an object moginv through space
@@ -17,7 +25,7 @@ namespace physics {
      * 
      * \param _meters_per_second2 The measure of acceleration in meters per second per second.
      */
-    Acceleration(const double _meters_per_second2=0) : UnitBase(_meters_per_second2) { }
+    Acceleration(const double meters_per_second2=0) : UnitBase(meters_per_second2) { }
     Acceleration(const Acceleration&) = default;
     ~Acceleration() = default;
 
@@ -32,7 +40,6 @@ namespace physics {
     Acceleration& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  // Literal operators
   Acceleration ENGINEERINGLIBRARY_API operator"" _mpsec2 (long double val);
   Acceleration ENGINEERINGLIBRARY_API operator"" _mpsec2 (unsigned long long val);
 
@@ -67,15 +74,15 @@ namespace physics {
   inline Acceleration ENGINEERINGLIBRARY_API real(const Acceleration& x) { return x; }
   inline Acceleration ENGINEERINGLIBRARY_API imag(const Acceleration&) { return 0_mpsec2; }
 
-};  // namespace physics
+};  // namespace eng
 
 /* Integration with Eigen. */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Acceleration> : NumTraits<double> {
-    typedef physics::Acceleration Real;
-    typedef physics::Acceleration NonInteger;
-    typedef physics::Acceleration Nested;
+  template<> struct NumTraits<eng::Acceleration> : NumTraits<double> {
+    typedef eng::Acceleration Real;
+    typedef eng::Acceleration NonInteger;
+    typedef eng::Acceleration Nested;
 
     enum {
       IsComplex = 0,
@@ -90,7 +97,7 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _mpsec2;
-using physics::operator"" _inpsec2;      using physics::operator"" _ftpsec2;
+using eng::operator"" _mpsec2;
+using eng::operator"" _inpsec2;      using eng::operator"" _ftpsec2;
 
 #endif

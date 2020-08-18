@@ -9,7 +9,7 @@
 #include "PhysicsMath.h"
 
 
-namespace physics {
+namespace eng {
 
   Velocity operator- (const Velocity& lh) {
     return Velocity(-lh.value());
@@ -110,4 +110,4 @@ namespace physics {
     return Velocity(val);
   }
 
-};  // namespace physics
+};  // namespace eng

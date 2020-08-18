@@ -5,17 +5,17 @@
 
 namespace eng {
 
-  Centroid::Centroid(const physics::Length& xx, const physics::Length& yy) :
+  Centroid::Centroid(const Length& xx, const Length& yy) :
     x(xx),
     y(yy) { }
 
-  AreaMomentofInertia::AreaMomentofInertia(const physics::SecondMomentOfArea& xx,
-    const physics::SecondMomentOfArea& yy, const physics::SecondMomentOfArea& xy) :
+  AreaMomentofInertia::AreaMomentofInertia(const SecondMomentOfArea& xx,
+    const SecondMomentOfArea& yy, const SecondMomentOfArea& xy) :
     Ix(xx),
     Iy(yy),
     Ixy(xy) { }
 
-  /* ***********************************************************************************************
+  /* ***************************************************************************
    * Geometry
    */
   Geometry::Geometry(const Centroid& c) :
@@ -25,7 +25,7 @@ namespace eng {
     _area_valid(false),
     _moi_valid(false) { }
 
-  Geometry::Geometry(const physics::Area& aa, const AreaMomentofInertia& mmoi,
+  Geometry::Geometry(const Area& aa, const AreaMomentofInertia& mmoi,
     const Centroid& c) :
     _centroid(c),
     _area(aa),
@@ -37,7 +37,7 @@ namespace eng {
     return _centroid;
   }
 
-  physics::Area Geometry::area() const {
+  Area Geometry::area() const {
     if (!_area_valid) {
       _area_valid = true;
       _area = calculate_area();
@@ -54,8 +54,8 @@ namespace eng {
   }
 
   AreaMomentofInertia Geometry::moment_of_inertia(const Centroid& pt) const {
-    physics::Length x = pt.x - _centroid.x;
-    physics::Length y = pt.y - _centroid.y;
+    Length x = pt.x - _centroid.x;
+    Length y = pt.y - _centroid.y;
     AreaMomentofInertia ret = moment_of_inertia();
     ret.Ix += area()*(y*y);
     ret.Iy += area()*(x*x);
@@ -63,11 +63,7 @@ namespace eng {
     return ret;
   }
 
-  Geometry::operator Geometry() const { 
-    return create_geometry(*this);
-  }
-
-  physics::Area Geometry::calculate_area() const {
+  Area Geometry::calculate_area() const {
     return 0_m2;
   }
 
@@ -75,19 +71,15 @@ namespace eng {
     return 0_m4;
   }
 
-  Geometry create_geometry(const Geometry& geo) {
-    return Geometry(geo.area(), geo.moment_of_inertia(), geo.centroid());
-  }
-
-  /* ***********************************************************************************************
+  /* ***************************************************************************
    * Circle
    */
 
-  Circle::Circle(const physics::Length& dd, const Centroid& c) :
+  Circle::Circle(const Length& dd, const Centroid& c) :
     diam(dd),
     Geometry(c) { }
 
-  physics::Area Circle::calculate_area() const {
+  Area Circle::calculate_area() const {
     return pi * (diam*diam)/4;
   }
 
@@ -99,15 +91,15 @@ namespace eng {
     return ret;
   }
 
-  /* ***********************************************************************************************
+  /* ***************************************************************************
    * Semi Circle
    */
 
-  SemiCircle::SemiCircle(const physics::Length& dd, const Centroid& c) :
+  SemiCircle::SemiCircle(const Length& dd, const Centroid& c) :
     diam(dd),
     Geometry(c) { }
 
-  physics::Area SemiCircle::calculate_area() const {
+  Area SemiCircle::calculate_area() const {
     return pi * diam*diam/8;
     return pi * diam*diam/8;
   }
@@ -120,16 +112,16 @@ namespace eng {
     return ret;
   }
 
-  /* ***********************************************************************************************
+  /* ***************************************************************************
    * HollowCircle
    */
 
-  HollowCircle::HollowCircle(const physics::Length& ddo, const physics::Length& ddi, const Centroid& c) :
+  HollowCircle::HollowCircle(const Length& ddo, const Length& ddi, const Centroid& c) :
     diam_out(ddo),
     diam_in(ddi),
     Geometry(c) { }
 
-  physics::Area HollowCircle::calculate_area() const {
+  Area HollowCircle::calculate_area() const {
     return pi * ((diam_out*diam_in) - (diam_in*diam_in))/4;
   }
 
@@ -143,16 +135,16 @@ namespace eng {
     return ret;
   }
 
-  /* ***********************************************************************************************
+  /* ***************************************************************************
    * Rectangle
    */
 
-  Rectangle::Rectangle(const physics::Length& bb, const physics::Length& hh, const Centroid& c) :
+  Rectangle::Rectangle(const Length& bb, const Length& hh, const Centroid& c) :
     b(bb),
     h(hh),
     Geometry(c) { }
 
-  physics::Area Rectangle::calculate_area() const {
+  Area Rectangle::calculate_area() const {
     return b*h;
   }
 
@@ -165,17 +157,18 @@ namespace eng {
     return ret;
   }
 
-  /* ***********************************************************************************************
+  /* ***************************************************************************
    * HollowRectangle
    */
 
-  HollowRectangle::HollowRectangle(const physics::Length& bbo, const physics::Length& hho, const physics::Length& bbi, const physics::Length& hhi, const Centroid& c) :
+  HollowRectangle::HollowRectangle(const Length& bbo, const Length& hho, const Length& bbi, 
+                                   const Length& hhi, const Centroid& c) :
     bo(bbo),
     ho(hho),
     bi(bbi),
     hi(hhi) { }
 
-  physics::Area HollowRectangle::calculate_area() const {
+  Area HollowRectangle::calculate_area() const {
     return (bo*ho) - (bi*hi);
   }
 

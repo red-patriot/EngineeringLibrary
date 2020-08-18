@@ -1,6 +1,14 @@
 #ifndef Buckling_h_INCLUDED
 #define Buckling_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  Buckling.h
+ * \brief Contains functionality to perform buckling analysis for a column. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "EngineeringExport.h"
 #include "Material.h"
 #include "Geometry.h"
@@ -8,14 +16,18 @@
 #include "Units/Area.h"
 #include "Units/Length.h"
 
-// These defined constants will determine which value of the end condition constant wil be used.
+// These defined constants will determine which value of the end condition 
+//    constant wil be used.
+//TODO: Maybe change these to an enum?
 #define COL_THEORETICAL_VALUE 0   /* Use the theoretical value of C. */
 #define COL_CONSERVATIVE_VALUE 1  /* Use the conservative value of C. */
 #define COL_RECOMMENDED_VALUE 2   /* Use the recommended value of C. Use only with liberal factors of safety and when column load is known accurately. */
 
 namespace eng {
 
-  /* The support conditions for a column in buckling */
+  /**
+   * \brief The support conditions for a column in buckling
+   */
   enum class EndConditions { 
     FIXED_FREE,
     PIN_PIN,
@@ -23,26 +35,38 @@ namespace eng {
     FIXED_FIXED
   };
 
-  /* A Column or other member which is being analysed in buckling */
+  /**
+   * \class Column A Column or other member of constant cross section
+   *    being analysed in buckling.
+   */
   class ENGINEERINGLIBRARY_API Column {
   public:
-    Column(const Material& material, const Geometry& geometry, const physics::Length& length, 
+    /**
+     * \brief Construct a Column
+     * 
+     * \param material The column material
+     * \param geometry The cross-sectional geometry of the column
+     * \param length The length of the column
+     * \param supports the support conditions for the column
+     */
+    Column(const Material& material, const Geometry& geometry, const Length& length, 
       const EndConditions& supports);
 
     Material material() const { return _material; }
     AreaMomentofInertia moment_of_inertia() const { return _geometry.moment_of_inertia(); }
-    physics::Area area() const { return _geometry.area(); }
-    physics::Length length() const { return _length; }
+    Area area() const { return _geometry.area(); }
+    Length length() const { return _length; }
     EndConditions supports() const { return _supports; }
 
   private:
     Material _material;
     Geometry _geometry;
-    physics::Length _length;
+    Length _length;
     EndConditions _supports;
   };
 
-  /* Buckling analysis functions.
+  /* 
+   * Buckling analysis functions.
    */
 
   /* Calculate the critical load to cause buckling of a column where it is unknown whether the

@@ -6,12 +6,12 @@
 #include "Length.h"
 #include "PhysicsMath.h"
 
-namespace physics {
-  // Negation operator
+namespace eng {
+
   Volume operator-(const Volume& lh) {
     return Volume(-lh.value());
   }
-  // Mathematical Operators
+
   Volume operator+ (const Volume& lh, const Volume& rh) {
     return Volume(lh.value() + rh.value());
   }
@@ -43,7 +43,6 @@ namespace physics {
     return Volume(lh.value() / n);
   }
 
-  // Comparison Operators
   bool operator== (const Volume& lh, const Volume& rh) {
     return fuzzy_equals(lh.value(), rh.value());
   }
@@ -68,6 +67,7 @@ namespace physics {
    * mm^3, cm^3, m^3
    * in^3, ft^3
    */
+
   Volume operator""_mm3(long double val) {
     return Volume(val * 0.000'000'001);
   }
@@ -108,4 +108,4 @@ namespace physics {
     return Volume(val * (28'316.846'592/1'000'000));
   }
 
-}; // namespace physics
+}; // namespace eng

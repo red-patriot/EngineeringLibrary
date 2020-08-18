@@ -6,12 +6,10 @@
 #include "Length.h"
 #include "PhysicsMath.h"
 
-namespace physics {
-  // Negation operator
+namespace eng {
   Area operator-(const Area& lh) {
     return Area(-lh.value());
   }
-  // Mathematical Operators
   Area operator+ (const Area& lh, const Area& rh) {
     return Area(lh.value() + rh.value());
   }
@@ -103,4 +101,4 @@ namespace physics {
     return Area(val * (929.0304/10'000));
   }
 
-}; // namespace physics
+}; // namespace eng

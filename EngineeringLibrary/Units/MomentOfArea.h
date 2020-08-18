@@ -1,11 +1,19 @@
 #ifndef Moment_Of_Inertia_h_INCLUDED
 #define Moment_Of_Inertia_h_INCLUDED
 
+/*****************************************************************//**
+ * \file  MomentOfArea.h
+ * \brief Objects representing a First- or Second moment of area
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   class Volume;
   class Area;
@@ -24,7 +32,7 @@ namespace physics {
      * 
      * \param _meters4 the measure of the area moment of inertia in meters^4
      */
-    explicit SecondMomentOfArea(const double& _meters4 = 0) : UnitBase(_meters4) { }
+    explicit SecondMomentOfArea(const double& meters4 = 0) : UnitBase(meters4) { }
     SecondMomentOfArea(const SecondMomentOfArea&) = default;
     ~SecondMomentOfArea() = default;
 
@@ -34,8 +42,10 @@ namespace physics {
     double in4() const { return _value * 100'000'000 / 41.623'142'56; }
     double ft4() const { return _value * 100'000'000 / 863'097.481'241'6; }
 
-    SecondMomentOfArea& operator+= (const SecondMomentOfArea& rh) { _value += rh._value; return *this; }
-    SecondMomentOfArea& operator-= (const SecondMomentOfArea& rh) { _value -= rh._value; return *this; }
+    SecondMomentOfArea& operator+= (const SecondMomentOfArea& rh) { 
+      _value += rh._value; return *this; }
+    SecondMomentOfArea& operator-= (const SecondMomentOfArea& rh) { 
+      _value -= rh._value; return *this; }
     SecondMomentOfArea& operator*= (const double& rh) { _value *= rh; return *this; }
     SecondMomentOfArea& operator/= (const double& rh) { _value /= rh; return *this; }
   };
@@ -55,41 +65,52 @@ namespace physics {
 
   SecondMomentOfArea ENGINEERINGLIBRARY_API operator- (const SecondMomentOfArea& lh);
   
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator+ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  SecondMomentOfArea ENGINEERINGLIBRARY_API operator+ (const SecondMomentOfArea& lh, 
+                                                       const SecondMomentOfArea& rh);
 
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator- (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  SecondMomentOfArea ENGINEERINGLIBRARY_API operator- (const SecondMomentOfArea& lh, 
+                                                       const SecondMomentOfArea& rh);
 
 
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const SecondMomentOfArea& lh, const double& n);
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const double& n, const SecondMomentOfArea& rh);
+  SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const SecondMomentOfArea& lh, 
+                                                       const double& n);
+  SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const double& n,
+                                                       const SecondMomentOfArea& rh);
   SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const Volume& lh, const Length& rh);
   SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const Length& lh, const Volume& rh);
   SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const Area& lh, const Area& rh);
 
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, const double& n);
-  double ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  SecondMomentOfArea ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, 
+                                                       const double& n);
+  double ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, 
+                                           const SecondMomentOfArea& rh);
 
-  bool ENGINEERINGLIBRARY_API operator== (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  bool ENGINEERINGLIBRARY_API operator== (const SecondMomentOfArea& lh, 
+                                          const SecondMomentOfArea& rh);
+  bool ENGINEERINGLIBRARY_API operator> (const SecondMomentOfArea& lh, 
+                                         const SecondMomentOfArea& rh);
+  bool ENGINEERINGLIBRARY_API operator!= (const SecondMomentOfArea& lh,
+                                          const SecondMomentOfArea& rh);
+  bool ENGINEERINGLIBRARY_API operator< (const SecondMomentOfArea& lh, 
+                                         const SecondMomentOfArea& rh);
+  bool ENGINEERINGLIBRARY_API operator>= (const SecondMomentOfArea& lh,
+                                          const SecondMomentOfArea& rh);
+  bool ENGINEERINGLIBRARY_API operator<= (const SecondMomentOfArea& lh, 
+                                          const SecondMomentOfArea& rh);
 
   inline SecondMomentOfArea ENGINEERINGLIBRARY_API conj(const SecondMomentOfArea& x) { return x; }
   inline SecondMomentOfArea ENGINEERINGLIBRARY_API real(const SecondMomentOfArea& x) { return x; }
   inline SecondMomentOfArea ENGINEERINGLIBRARY_API imag(const SecondMomentOfArea&) { return 0_m4; }
 
-
-}; // namespace physics
+}; // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::SecondMomentOfArea> : NumTraits<double> {
-    typedef physics::SecondMomentOfArea Real;
-    typedef physics::SecondMomentOfArea NonInteger;
-    typedef physics::SecondMomentOfArea Nested;
+  template<> struct NumTraits<eng::SecondMomentOfArea> : NumTraits<double> {
+    typedef eng::SecondMomentOfArea Real;
+    typedef eng::SecondMomentOfArea NonInteger;
+    typedef eng::SecondMomentOfArea Nested;
 
     enum {
       IsComplex = 0,
@@ -104,7 +125,7 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _mm4;         using physics::operator"" _m4;
-using physics::operator"" _in4;         using physics::operator"" _ft4;
+using eng::operator"" _mm4;         using eng::operator"" _m4;
+using eng::operator"" _in4;         using eng::operator"" _ft4;
 
 #endif

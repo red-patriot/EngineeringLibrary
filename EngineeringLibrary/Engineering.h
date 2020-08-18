@@ -1,9 +1,8 @@
 #ifndef Engineering_h_INCLUDED
 #define Engineering_h_INCLUDED
-// use the entire physics library and engineering library
-//? Maybe update this section to allow use of this library without configuring 
-//?   for PhysicsLibrary's location
-#include "Units/Physics.h"
+
+// Include all Units
+#include "Units/Units.h"
 
 // Materials properties
 #include "Material.h"
@@ -23,7 +22,10 @@
 #include "SystemDynamics.h"
 
 /* TODO:
- *   Add detailed documentation
+ *   More descriptive parameter names
+ *   Change comparison operators to work on UnitBase class
+ *   Update some arithmetic operators to work on UnitBase class
+ *   Update sample materials information
  */
 
 #endif

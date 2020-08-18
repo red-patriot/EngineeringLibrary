@@ -11,11 +11,12 @@
 #include "Acceleration.h"
 #include "Mass.h"
 
-namespace physics {
-  // Negation operator
+namespace eng {
+
   Force operator-(const Force& lh) {
     return Force(-lh.value());
   }
+
   Force  operator+ (const Force& lh, const Force& rh) {
     return Force(lh.value() + rh.value());
   }
@@ -115,4 +116,4 @@ namespace physics {
     return Force(val * 4448.2216152605);
   }
 
-}; // namespace physics
+}; // namespace eng

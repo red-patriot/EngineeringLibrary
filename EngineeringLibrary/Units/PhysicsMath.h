@@ -1,23 +1,28 @@
 #ifndef Physics_Math_h_INCLUDED
 #define Physics_Math_h_INCLUDED
 
-/* PhysicsMath.h
- * This file contains a number of mathematical functions to use in calculations for the
- *   physics library.
- */
+/*****************************************************************//**
+ * \file   PhysicsMath.h
+ * \brief This file contains a number of mathematical functions to use in 
+ *          calculations for the engineering library.
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
 
 #include "UnitBase.h"
 
- // Define some important mathematical constants
-static const long double pi = 3.141592653589793238462643383279;
+namespace eng {
 
-namespace physics {
+  // Define some important mathematical constants
+  static const long double pi = 3.141592653589793238462643383279;
 
   /*
    * Comparison functions
-   * Because unit conversions can cause some small error in units, especially those that
-   *   do not have exact conversions, and because of error in the binary representations
-   *   of those that are exact, this library uses slightly fuzzy comparisons for its types.
+   * Because unit conversions can cause some small error in units, especially 
+   *    those that do not have exact conversions, and because of error in the 
+   *    binary representations of those that are exact, this library uses 
+   *    slightly fuzzy comparisons for its types.
    */
 
   inline bool ENGINEERINGLIBRARY_API fuzzy_equals(const double& lh, const double& rh);
@@ -26,7 +31,7 @@ namespace physics {
 
   /*
    * Trigonometric functions
-   * The trig and inverse trig functions for a physics::Angle
+   * The trig and inverse trig functions for a eng::Angle
    */
 
   inline double ENGINEERINGLIBRARY_API sin(const class Angle& a);
@@ -69,6 +74,6 @@ namespace physics {
   inline class Pressure2 ENGINEERINGLIBRARY_API abs2(const class Pressure& x);
   inline class Frequency2 ENGINEERINGLIBRARY_API abs2(const class Frequency& x);
 
-}; // namespace physics
+}; // namespace eng
 
 #endif

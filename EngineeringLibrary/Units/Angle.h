@@ -1,15 +1,19 @@
 #ifndef Angle_h_INCLUDED
 #define Angle_h_INCLUDED
 
-/* Angle.h
- * A representation of an angular measurement
- */
+/*****************************************************************//**
+ * \file  Angle.h
+ * \brief An object representing the angle between two noncolinear lines. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
 
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   /**
    * \class Angle The geometry formed by two non-colinear, coplanar lines. 
@@ -21,14 +25,16 @@ namespace physics {
      * 
      * \param _radians The measure of the angle in radians
      */
-    explicit Angle(const double& _radians = 0) : UnitBase(_radians) { }  //? Becuase radians are "imaginary" units, maybe this should be implicit?
+    explicit Angle(const double& radians = 0) : UnitBase(radians) { }  
+    //? Becuase radians are "imaginary" units, maybe this should be implicit?
     Angle(const Angle&) = default;
     ~Angle() = default;
 
-    double rad() const;
-    double deg() const;
+    double rad() const { return _value; }
+    double deg() const;    // defined in Angle.cpp to not require PhysicsMath.h
 
-    explicit operator double();         //? Becuase radians are "imaginary" units, maybe this should be implicit?
+    explicit operator double();         
+    //? Becuase radians are "imaginary" units, maybe this should be implicit?
   };
 
   Angle ENGINEERINGLIBRARY_API operator"" _deg(long double val);
@@ -61,15 +67,15 @@ namespace physics {
   inline Angle ENGINEERINGLIBRARY_API real(const Angle& x) { return x; }
   inline Angle ENGINEERINGLIBRARY_API imag(const Angle&) { return 0_rad; }
 
-}; // namespace physics
+}; // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Angle> : NumTraits<double> {
-    typedef physics::Angle Real;
-    typedef physics::Angle NonInteger;
-    typedef physics::Angle Nested;
+  template<> struct NumTraits<eng::Angle> : NumTraits<double> {
+    typedef eng::Angle Real;
+    typedef eng::Angle NonInteger;
+    typedef eng::Angle Nested;
 
     enum {
       IsComplex = 0,
@@ -84,6 +90,6 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _rad;        using physics::operator"" _deg;
+using eng::operator"" _rad;        using eng::operator"" _deg;
 
 #endif

@@ -7,7 +7,7 @@
 #include "Force.h"
 #include "PhysicsMath.h"
 
-namespace physics {
+namespace eng {
 
   Acceleration operator- (const Acceleration& lh) {
     return Acceleration(-lh.value());

@@ -13,25 +13,25 @@
 
 namespace eng {
 
-  joint_member::joint_member(const Material& mat, const physics::Length& thi) :
+  joint_member::joint_member(const Material& mat, const Length& thi) :
     material(mat),
     thickness(thi) { }
 
-  physics::Stiffness bolt_stiffness(const physics::Area& Ad, const physics::Area& At, const Stress& E, 
-                                    const physics::Length& lt, const physics::Length& ld) {
+  Stiffness bolt_stiffness(const Area& Ad, const Area& At, const Stress& E, 
+                                    const Length& lt, const Length& ld) {
     return E*((Ad*At)/(Ad*lt + At*ld));
   }
-  physics::Stiffness members_stiffness(const std::vector<joint_member>& members, 
-                                       const physics::Length& d, const physics::Length& t) {
-    physics::Stiffness ret = 0_Npm;
-    physics::Length pos = 0_mm;
-    physics::Length thickness = joint_thickness(members);
+  Stiffness members_stiffness(const std::vector<joint_member>& members, 
+                                       const Length& d, const Length& t) {
+    Stiffness ret = 0_Npm;
+    Length pos = 0_mm;
+    Length thickness = joint_thickness(members);
 
     std::vector<joint_member> top, bottom;
     split_members(members, top, bottom, thickness);
 
     for (const auto& m : top) {
-      physics::Length D = 1.5*d + 2*pos*tan(0.523598775598);
+      Length D = 1.5*d + 2*pos*std::tan(0.523598775598);
       ret += (0.5774*pi*m.material.E()*d) /
         std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));
       pos += m.thickness;
@@ -39,7 +39,7 @@ namespace eng {
     
     pos = 0_m;
     for (const auto& m : bottom) {
-      physics::Length D = 1.5*d + 2*pos*tan(0.523598775598);
+      Length D = 1.5*d + 2*pos*std::tan(0.523598775598);
       ret += (0.5774*pi*m.material.E()*d) /
         std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));
       pos += m.thickness;
@@ -47,20 +47,21 @@ namespace eng {
 
     return ret;
   }
-  physics::Length joint_thickness(const std::vector<joint_member> members) {
-    physics::Length ret = 0_m;
+  Length joint_thickness(const std::vector<joint_member> members) {
+    Length ret = 0_m;
     for (const auto& member : members) {
       ret += member.thickness;
     }
     return ret;
   }
   void split_members(const std::vector<joint_member>& members, std::vector<joint_member>& top, 
-                     std::vector<joint_member>& bottom, const physics::Length& thickness) { 
-    physics::Length pos = 0_m;
-    physics::Length half = thickness/2;
+                     std::vector<joint_member>& bottom, const Length& thickness) { 
+    Length pos = 0_m;
+    Length half = thickness/2;
     
     for (const auto& member : members) {
-      // determine whether the current member goes in the top half of bottom half or if it should be split into both
+      // determine whether the current member goes in the top half of bottom 
+      //    half or if it should be split into both
       if (pos < half && pos + member.thickness < half) {
         // this member goes in the top half
         top.push_back(member);
@@ -80,17 +81,17 @@ namespace eng {
   }
 
     
-  double factor_of_safety_yield(const Stress& Sp, const physics::Area& At, const double& C, const physics::Force& P, 
-                                const physics::Force& Fi) {
+  double factor_of_safety_yield(const Stress& Sp, const Area& At, const double& C, const Force& P, 
+                                const Force& Fi) {
     return (Sp*At)/(C*P + Fi);
   }
 
-  double factor_of_safety_load(const Stress& Sp, const physics::Area& At, const double& C, const physics::Force& P, 
-                               const physics::Force& Fi) {
+  double factor_of_safety_load(const Stress& Sp, const Area& At, const double& C, const Force& P, 
+                               const Force& Fi) {
     return (Sp*At - Fi)/(C*P);
   }
 
-  double factor_of_safety_separation(const physics::Force& Fi, const physics::Force& P, const double& C) {
+  double factor_of_safety_separation(const Force& Fi, const Force& P, const double& C) {
     return Fi / (P*(1 - C));
   }
 

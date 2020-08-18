@@ -7,7 +7,7 @@
 #include "Stiffness.h"
 #include "PhysicsMath.h"
 
-namespace physics {
+namespace eng {
 
   Damping operator- (const Damping& lh) {
     return Damping(-lh.value());
@@ -101,4 +101,4 @@ namespace physics {
     return Damping(val);
   }
 
-};  // namespace physics
+};  // namespace eng

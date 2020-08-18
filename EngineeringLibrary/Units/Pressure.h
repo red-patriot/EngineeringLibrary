@@ -1,15 +1,19 @@
 #ifndef Pressure_h_INCLUDED
 #define Pressure_h_INCLUDED
 
-/* Pressures.h
- * A class to represent pressures or anything with units of pressure
- */
+/*****************************************************************//**
+ * \file  Pressure.h
+ * \brief Objects representing a pressure exerted over a surface. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
 
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   class Pressure;
   class Pressure2;
@@ -117,15 +121,15 @@ namespace physics {
   Pressure ENGINEERINGLIBRARY_API operator/ (const Pressure2& lh, const Pressure& rh);
   double ENGINEERINGLIBRARY_API operator/ (const Pressure2& lh, const Pressure2& rh);
 
-}; // namespace physics
+}; // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {
   
-  template<> struct NumTraits<physics::Pressure> : NumTraits<double> {
-    typedef physics::Pressure Real;
-    typedef physics::Pressure NonInteger;
-    typedef physics::Pressure Nested;
+  template<> struct NumTraits<eng::Pressure> : NumTraits<double> {
+    typedef eng::Pressure Real;
+    typedef eng::Pressure NonInteger;
+    typedef eng::Pressure Nested;
 
     enum {
       IsComplex = 0,
@@ -140,8 +144,8 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _Pa;        using physics::operator"" _kPa;
-using physics::operator"" _MPa;       using physics::operator"" _GPa;
-using physics::operator"" _psi;       using physics::operator"" _ksi;
+using eng::operator"" _Pa;        using eng::operator"" _kPa;
+using eng::operator"" _MPa;       using eng::operator"" _GPa;
+using eng::operator"" _psi;       using eng::operator"" _ksi;
 
 #endif

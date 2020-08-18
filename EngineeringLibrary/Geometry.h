@@ -1,6 +1,16 @@
 #ifndef Geometry_h_INCLUDED
 #define Geometry_h_INCLUDED
 
+// TODO: Fix this mess
+
+/*****************************************************************//**
+ * \file  Geometry.h
+ * \brief Objects representing generic 2D geometric forms
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
 #include "EngineeringExport.h"
 
 #include "Units/Length.h"
@@ -9,29 +19,60 @@
 
 namespace eng {
 
-  /* A point in 2D space representing the centroid of an area */
+  /**
+   * \class A point in 2D space representing the centroid of an area
+   */
   struct ENGINEERINGLIBRARY_API Centroid {
-    physics::Length x;
-    physics::Length y;
+    Length x;
+    Length y;
 
-    Centroid(const physics::Length& xx = 0_m, const physics::Length& yy = 0_m);
+    /**
+     * \brief Construct a Centroid
+     * 
+     * \param xx the x position of the centroid
+     * \param yy the y position of the centroid
+     */
+    Centroid(const Length& xx = 0_m, const Length& yy = 0_m);
   };
 
-  /* A set of Moments of Inertia values for a 2D area */
+  /**
+   * \class Moments of Inertia for a 2D area about various aves
+   */
   struct ENGINEERINGLIBRARY_API AreaMomentofInertia {
-    physics::SecondMomentOfArea Ix;
-    physics::SecondMomentOfArea Iy;
-    physics::SecondMomentOfArea Ixy;
-
-    AreaMomentofInertia(const class physics::SecondMomentOfArea& xx = 0_m4, const class physics::SecondMomentOfArea& yy = 0_m4,
-      const physics::SecondMomentOfArea& xy = 0_m4);
+    SecondMomentOfArea Ix;
+    SecondMomentOfArea Iy;
+    SecondMomentOfArea Ixy;
+    /**
+     * \brief Construct an AreaMomentofInertia
+     * 
+     * \param xx The Second moment of area about the x axis
+     * \param yy The Second moment of area about the x axis
+     * \param xy
+     */
+    AreaMomentofInertia(const class SecondMomentOfArea& xx = 0_m4, 
+                        const class SecondMomentOfArea& yy = 0_m4,
+      const SecondMomentOfArea& xy = 0_m4);
   };
   
-  /* A generic 2D geometry */
+  /**
+   * \class A generic 2D geometry
+   */
   class ENGINEERINGLIBRARY_API Geometry {
   public:
+    /**
+     * \brief Construct a Geometry
+     * 
+     * \param c The centroid of the geometry
+     */
     Geometry(const Centroid& c=(0_m, 0_m));
-    Geometry(const class physics::Area& aa, const AreaMomentofInertia& mmoi,
+    /**
+     * \brief Construct a geometry
+     * 
+     * \param aa The area of the geometry
+     * \param mmoi the area moment of inertia of the geometry
+     * \param c The centroid of the geometry
+     */
+    Geometry(const class Area& aa, const AreaMomentofInertia& mmoi,
       const Centroid& c=(0_m, 0_m));
     virtual ~Geometry() = default;
 
@@ -39,120 +80,157 @@ namespace eng {
     Centroid centroid() const;
 
     /* Return the area of the shape. */
-    physics::Area area() const;
+    Area area() const;
     // TODO: Modify this function (or add a different one) to handle rotation of axes
     /* Return the moment of inertia of a shape about its own centroid. */
     AreaMomentofInertia moment_of_inertia() const; 
     /* Calculate the moment of inertia of a shape using a Parallel Axis shift. */
     AreaMomentofInertia moment_of_inertia(const Centroid& pt) const;
 
-    // TODO: This operator should allow implicit conversions from Geometry children to Geometry
-    // TODO: Fix this functionality
-    operator Geometry() const;
-
   protected:
     Centroid _centroid;
-
-    virtual physics::Area calculate_area() const;
-    virtual AreaMomentofInertia calculate_moment_of_inertia() const;
-
-  private:
-    mutable physics::Area _area;
+    mutable Area _area;
     mutable AreaMomentofInertia _MOI;
+
+    virtual Area calculate_area() const;
+    virtual AreaMomentofInertia calculate_moment_of_inertia() const;
 
     mutable bool _area_valid;
     mutable bool _moi_valid;
   };
-
-  //? MAYBE DELETE THIS?
-  /* Create a generic Geometry object from one of its children */
-  Geometry ENGINEERINGLIBRARY_API create_geometry(const Geometry& geo);
 
 
   /* ***********************************************************************************************
    * Geometry children - specifications of some common geometric shapes
    */
   
-  /* A circle */
+  /**
+   * \class Circle a Circle
+   */
   class ENGINEERINGLIBRARY_API Circle : public Geometry {
   public:
-    Circle(const physics::Length& dd = 0_m, const Centroid& c = (0_m, 0_m));
+    /**
+     * \brief Construct a Circle
+     * 
+     * \param dd diameter of the circle
+     * \param c the centroid of the circle
+     */
+    Circle(const Length& dd = 0_m, const Centroid& c = (0_m, 0_m));
+    ~Circle() override = default;
 
-    physics::Length diameter() const { return diam; }
+    Length diameter() const { return diam; }
 
   private:
-    physics::Length diam;
+    Length diam;
 
-    physics::Area calculate_area() const override;
+    Area calculate_area() const override;
     AreaMomentofInertia calculate_moment_of_inertia() const override;
   };
 
-  /* A semi circle */
+  /**
+   * \class SemiCircle a semi circle
+   */
   class ENGINEERINGLIBRARY_API SemiCircle : public Geometry {
   public:
-    SemiCircle(const physics::Length& dd = 0_m, const Centroid& c = (0_m, 0_m));
-    ~SemiCircle() = default;
+    /**
+     * \brief Construct a SemiCircle
+     * 
+     * \param dd The diameter of the SemiCircle
+     * \param c The centroid of the SemiCircle
+     */
+    SemiCircle(const Length& dd = 0_m, const Centroid& c = (0_m, 0_m));
+    ~SemiCircle() override = default;
     
   private:
-    physics::Length diam;
+    Length diam;
 
-    physics::Area calculate_area() const override;
+    Area calculate_area() const override;
     AreaMomentofInertia calculate_moment_of_inertia() const override;
   };
 
-  /* A hollow circle */
+  /**
+   * \class HollowCircle A hollow circle
+   */
   class ENGINEERINGLIBRARY_API HollowCircle : public Geometry {
   public:
-    HollowCircle(const physics::Length& ddo = 0_m, const physics::Length& ddi = 0_m,
+    /**
+     * \brief Construct a HollowCircle
+     * 
+     * \param ddo The diameter of the outer circle
+     * \param ddi The diameter of the inner circle
+     * \param c The centroid of the HollowCircle
+     */
+    HollowCircle(const Length& ddo = 0_m, const Length& ddi = 0_m,
       const Centroid& c = (0_m, 0_m));
 
-    physics::Length outer_diameter() const { return diam_out; }
-    physics::Length inner_diameter() const { return diam_in; }
+    Length outer_diameter() const { return diam_out; }
+    Length inner_diameter() const { return diam_in; }
 
   private:
-    physics::Length diam_out;
-    physics::Length diam_in;
+    Length diam_out;
+    Length diam_in;
 
-    physics::Area calculate_area() const override;
+    Area calculate_area() const override;
     AreaMomentofInertia calculate_moment_of_inertia() const override;
   };
 
-  /* A rectangle */
+  /**
+   * \class Rectangle A rectangle
+   */
   class ENGINEERINGLIBRARY_API Rectangle : public Geometry {
   public:
-    Rectangle(const physics::Length& bb = 0_m, const physics::Length& hh = 0_m,
+    /**
+     * \brief Construct a Rectangle
+     * 
+     * \param bb The length of the base of the Rectangle
+     * \param hh The length of the height of the Rectangle
+     * \param c The centroid of the Rectangle
+     */
+    Rectangle(const Length& bb = 0_m, const Length& hh = 0_m,
       const Centroid& c = (0_m, 0_m));
+    ~Rectangle() override = default;
 
-    physics::Length base() const { return b; }
-    physics::Length height() const { return h; }
+    Length base() const { return b; }
+    Length height() const { return h; }
 
   private:
-    physics::Length b;
-    physics::Length h;
+    Length b;
+    Length h;
 
-    physics::Area calculate_area() const override;
+    Area calculate_area() const override;
     AreaMomentofInertia calculate_moment_of_inertia() const override;
   };
 
-  /* A hollow rectangle */
+  /**
+   * \class HollowRectangle A hollow rectangle
+   */
   class ENGINEERINGLIBRARY_API HollowRectangle : public Geometry {
   public:
-    HollowRectangle(const physics::Length& bbo = 0_m, const physics::Length& hho = 0_m,
-      const physics::Length& bbi = 0_m, const physics::Length& hhi = 0_m,
+    /**
+     * \brief Construct a HollowRectangle
+     * 
+     * \param bbo The base of the outer rectangle
+     * \param hho The height of the outer rectangle
+     * \param bbi The base of the inner rectangle
+     * \param hhi The height of the inner rectangle
+     * \param c The centroid of the HollowRectangle
+     */
+    HollowRectangle(const Length& bbo = 0_m, const Length& hho = 0_m,
+      const Length& bbi = 0_m, const Length& hhi = 0_m,
       const Centroid& c = (0_m, 0_m));
 
-    physics::Length outer_base() const { return bo; }
-    physics::Length outer_height() const { return ho; }
-    physics::Length inner_base() const { return bi; }
-    physics::Length inner_height() const { return hi; }
+    Length outer_base() const { return bo; }
+    Length outer_height() const { return ho; }
+    Length inner_base() const { return bi; }
+    Length inner_height() const { return hi; }
 
   private:
-    physics::Length bo;
-    physics::Length ho;
-    physics::Length bi;
-    physics::Length hi;
+    Length bo;
+    Length ho;
+    Length bi;
+    Length hi;
 
-    physics::Area calculate_area() const override;
+    Area calculate_area() const override;
     AreaMomentofInertia calculate_moment_of_inertia() const override;
   };
 

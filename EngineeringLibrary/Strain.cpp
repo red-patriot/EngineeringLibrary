@@ -9,7 +9,7 @@ namespace eng {
     epsilon_y(yy),
     epsilon_z(zz) { }
 
-  ShearStrain::ShearStrain(const physics::Angle& xy, const physics::Angle& xz, const physics::Angle& yz) :
+  ShearStrain::ShearStrain(const Angle& xy, const Angle& xz, const Angle& yz) :
     gamma_xy(xy),
     gamma_xz(xz),
     gamma_yz(yz) { }
@@ -38,9 +38,9 @@ namespace eng {
 
   ShearStrain hookes_law_shear(const Material& material, const StressElement3& stress) {
     ShearStrain ret;
-    ret.gamma_xy = physics::Angle(stress.tau_xy / material.G());
-    ret.gamma_xz = physics::Angle(stress.tau_xz / material.G());
-    ret.gamma_yz = physics::Angle(stress.tau_yz / material.G());
+    ret.gamma_xy = Angle(stress.tau_xy / material.G());
+    ret.gamma_xz = Angle(stress.tau_xz / material.G());
+    ret.gamma_yz = Angle(stress.tau_yz / material.G());
     return ret;
   }
 

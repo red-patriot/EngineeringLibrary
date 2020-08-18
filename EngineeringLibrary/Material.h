@@ -1,9 +1,14 @@
 #ifndef Material_h_INCLUDED
 #define Material_h_INCLUDED
 
-/* Material.h
- * A model of different materials with different properties.
- */
+/*****************************************************************//**
+ * \file  Material.h
+ * \brief A model of different materials and their properties. Also contains 
+ *          various sample materials. 
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
 
 #include <unordered_map>
 
@@ -13,47 +18,76 @@
 namespace eng {
 
   // Stress and Pressure have the same units, so define them as "equal" here
-  using Stress = physics::Pressure;
+  using Stress = Pressure;
 
+  /**
+   * \class MaterialBase Base material properties which are constant 
+   *    regardless of material processes.
+   */
   class ENGINEERINGLIBRARY_API MaterialBase {
-    /* Base material properties which are constant regardless of material processes. */
-    friend class Material;
   public:
-    MaterialBase(const Stress& _youngs_modulus, const Stress& _rigidity_modulus, const double& _poissons_ratio);
+    /**
+     * \brief Construct a MaterialBase
+     * 
+     * \param youngs_modulus Young's modulus for the given material
+     * \param rigidity_modulus Modulus of rigidity for the given material
+     * \param poissons_ratio Poisson's ratio of the given material
+     */
+    MaterialBase(const Stress& youngs_modulus, const Stress& rigidity_modulus, 
+                 const double& poissons_ratio);
     ~MaterialBase() = default;
 
-    Stress modulus_elasticity() const { return youngs_modulus; }
-    Stress modulus_rigidity() const { return rigidity_modulus; }
-    double poissons_ratio() const { return ratio_poisson; }
+    Stress modulus_elasticity() const { return _youngs_modulus; }
+    Stress modulus_rigidity() const { return _rigidity_modulus; }
+    double poissons_ratio() const { return _poissons_ratio; }
 
-    Stress E() const { return youngs_modulus; }
-    Stress G() const { return rigidity_modulus; }
-    double nu() const { return ratio_poisson; }
+    Stress E() const { return _youngs_modulus; }
+    Stress G() const { return _rigidity_modulus; }
+    double nu() const { return _poissons_ratio; }
 
-  private:
-    Stress youngs_modulus;
-    Stress rigidity_modulus;
-    double ratio_poisson;
+  protected:
+    Stress _youngs_modulus;
+    Stress _rigidity_modulus;
+    double _poissons_ratio;
   };
 
+  /**
+   * \class Material A representation of certain processed materials
+   */
   class ENGINEERINGLIBRARY_API Material : public MaterialBase {
-    /* A representation of certain processed materials. */
   public:
-    Material(const Stress& _yield_strength, const Stress& _tensile_strength, 
-      const Stress& _youngs_modulus, const Stress& _rigidity_modulus, double _poissons_ratio);
-    Material(const Stress& _yield_strength, const Stress& _tensile_strength, const MaterialBase& base_material);
+    /**
+     * \brief Construct a Material
+     * 
+     * \param yield_strength The yield strength of the given material
+     * \param tensile_strength The ultimate tensile strength of the material.
+     * \param youngs_modulus Young's modulus of the given material.
+     * \param rigidity_modulus Modulus of Rigidity of the given mateiral. 
+     * \param poissons_ratio Poisson's ratio of the given material. 
+     */
+    Material(const Stress& yield_strength, const Stress& tensile_strength, 
+      const Stress& youngs_modulus, const Stress& rigidity_modulus, double poissons_ratio);
+    /**
+     * \brief Construct a Material
+     * 
+     * \param yield_strength The yield strength of the given material
+     * \param tensile_strength The ultimate tensile strength of the material.
+     * \param base_material The base material and its properties. 
+     */
+    Material(const Stress& yield_strength, const Stress& tensile_strength, 
+             const MaterialBase& base_material);
     Material(const Material& material) = default;
     ~Material() = default;
 
-    Stress yield_strength() const { return yield_str; }
-    Stress tensile_strength() const { return tensile_str; }
+    Stress yield_strength() const { return _yield_str; }
+    Stress tensile_strength() const { return _tensile_str; }
 
-    Stress Sy() const { return yield_str; }
-    Stress St() const { return tensile_str; }
+    Stress Sy() const { return _yield_str; }
+    Stress St() const { return _tensile_str; }
 
   private:
-    Stress yield_str;
-    Stress tensile_str;
+    Stress _yield_str;
+    Stress _tensile_str;
   };
 
 }; // namespace eng

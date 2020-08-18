@@ -1,15 +1,19 @@
 #ifndef Stiffness_h_INCLUDED
 #define Stiffness_h_INCLUDED
 
-/* Stiffness.h
- * Simulation of a linear stiffness in force per unit length
- */
+/*****************************************************************//**
+ * \file  Stiffness.h
+ * \brief An object representing a linear stiffness
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
 
 #include "UnitBase.h"
 
 #include <Eigen/Core>
 
-namespace physics {
+namespace eng {
 
   /**
    * \class Stiffness a linear resistance to deformation measured in force/length
@@ -37,7 +41,6 @@ namespace physics {
     Stiffness& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  // Literal operators
   Stiffness ENGINEERINGLIBRARY_API operator"" _Npm(long double val);
   Stiffness ENGINEERINGLIBRARY_API operator"" _Npm(unsigned long long val);
 
@@ -66,7 +69,6 @@ namespace physics {
   Stiffness ENGINEERINGLIBRARY_API operator/ (const class Damping& lh, const class Time& rh);
   double ENGINEERINGLIBRARY_API operator/ (const Stiffness& lh, const Stiffness& rh);
 
-  // Comparison operators
   bool ENGINEERINGLIBRARY_API  operator== (const Stiffness& lh, const Stiffness& rh);
   bool ENGINEERINGLIBRARY_API  operator> (const Stiffness& lh, const Stiffness& rh);
   bool ENGINEERINGLIBRARY_API  operator!= (const Stiffness& lh, const Stiffness& rh);
@@ -79,15 +81,15 @@ namespace physics {
   inline Stiffness ENGINEERINGLIBRARY_API imag(const Stiffness&) { return 0_Npm; }
   
 
-}; // namespace physics
+}; // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {
 
-  template<> struct NumTraits<physics::Stiffness> : NumTraits<double> {
-    typedef physics::Stiffness Real;
-    typedef physics::Stiffness NonInteger;
-    typedef physics::Stiffness Nested;
+  template<> struct NumTraits<eng::Stiffness> : NumTraits<double> {
+    typedef eng::Stiffness Real;
+    typedef eng::Stiffness NonInteger;
+    typedef eng::Stiffness Nested;
 
     enum {
       IsComplex = 0,
@@ -102,8 +104,8 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _Npm;       using physics::operator"" _Npmm;
-using physics::operator"" _lbpin;     using physics::operator"" _lbpft;
+using eng::operator"" _Npm;       using eng::operator"" _Npmm;
+using eng::operator"" _lbpin;     using eng::operator"" _lbpft;
 
 #endif
 

@@ -40,9 +40,9 @@ namespace eng {
   PrincipalStress2 principal_stress(const StressElement2& s) {
     PrincipalStress2 ret;
     ret.sigma_1 = (s.sigma_x + s.sigma_y)/2 
-      + physics::sqrt(((s.sigma_x - s.sigma_y)*(s.sigma_x - s.sigma_y))/4 + (s.tau_xy * s.tau_xy));
+      + sqrt(((s.sigma_x - s.sigma_y)*(s.sigma_x - s.sigma_y))/4 + (s.tau_xy * s.tau_xy));
     ret.sigma_2 = (s.sigma_x + s.sigma_y)/2
-      - physics::sqrt(((s.sigma_x - s.sigma_y)*(s.sigma_x - s.sigma_y))/4 + (s.tau_xy * s.tau_xy));
+      - sqrt(((s.sigma_x - s.sigma_y)*(s.sigma_x - s.sigma_y))/4 + (s.tau_xy * s.tau_xy));
 
     return ret;
   }
@@ -56,21 +56,22 @@ namespace eng {
 
     // calculate the eigenvalues of the stress tensor
     auto eig = tensor.eigenvalues();
-    physics::Pressure s_a = Stress(eig(0).real());
-    physics::Pressure s_b = Stress(eig(1).real());
-    physics::Pressure s_c = Stress(eig(2).real());
+    Pressure s_a = Stress(eig(0).real());
+    Pressure s_b = Stress(eig(1).real());
+    Pressure s_c = Stress(eig(2).real());
 
     // Sort the principal stresses by size
     PrincipalStress3 ret;
     ret.sigma_1 = s_a > s_b ? (s_a > s_c ? s_a : s_c) : (s_b > s_c ? s_b : s_c);
-    ret.sigma_2 = s_a > s_b ? (s_c > s_a ? s_a : (s_b > s_c ? s_b : s_c)) : (s_c > s_b ? s_b : (s_a > s_c ? s_a : s_c));
+    ret.sigma_2 = s_a > s_b ? (s_c > s_a ? s_a : (s_b > s_c ? s_b : s_c)) : 
+      (s_c > s_b ? s_b : (s_a > s_c ? s_a : s_c));
     ret.sigma_3 = s_a > s_b ? (s_b > s_c ? s_c : s_b) : (s_a > s_c ? s_c : s_a);
     
     return ret;
   }
 
-  PrincipalStress3  principal_stress(const physics::Length& a, const physics::Length& b, const physics::Length& r,
-    const physics::Force& F, const physics::Pressure& Pi, const physics::Pressure& Po) {
+  PrincipalStress3  principal_stress(const Length& a, const Length& b, const Length& r,
+    const Force& F, const Pressure& Pi, const Pressure& Po) {
     Stress transverse = (Pi*(a*a) - Po*(b*b))/(b*b - a*a)
       - ((a*a)/(r*r)) * ((b*b)/(b*b - a*a))*(Po - Pi);
     Stress radial = (Pi*(a*a) - Po*(b*b))/(b*b - a*a)
@@ -89,15 +90,15 @@ namespace eng {
   StressElement2 maximum_shear(const StressElement2& s) {
     StressElement2 ret;
     PrincipalStress2 principal = principal_stress(s);
-    ret.tau_xy = physics::sqrt(((s.sigma_x - s.sigma_y)*(s.sigma_x - s.sigma_y))/4
+    ret.tau_xy = sqrt(((s.sigma_x - s.sigma_y)*(s.sigma_x - s.sigma_y))/4
       + s.tau_xy*s.tau_xy);
     ret.sigma_x = ret.sigma_y = (principal.sigma_1 + principal.sigma_2) / 2;
 
     return ret;
   }
 
-  physics::Length  press_fit_interference(const physics::Length& ri,
-    const physics::Length& R, const physics::Length& ro, const physics::Pressure& p,
+  Length  press_fit_interference(const Length& ri,
+    const Length& R, const Length& ro, const Pressure& p,
     const MaterialBase& out_material, const MaterialBase& in_material) {  
     return (p/out_material.E())*R*((ro*ro + R*R)/(ro*ro - R*R) + out_material.nu())
       + (p/in_material.E())*R*((ri*ri + R*R)/(R*R - ri*ri) - in_material.nu());

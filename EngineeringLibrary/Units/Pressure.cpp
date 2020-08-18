@@ -7,11 +7,7 @@
 #include "Area.h"
 #include "PhysicsMath.h"
 
-/*
- * Pressure function definitions
- */
-
-namespace physics {
+namespace eng {
 
   // Negation operator
   Pressure operator- (const Pressure& lh) {
@@ -33,7 +29,7 @@ namespace physics {
   Pressure operator* (const double& n, const Pressure& rh) {
     return rh * n;
   }
-  Pressure physics::operator/(const Stiffness& lh, const Length& rh) {
+  Pressure eng::operator/(const Stiffness& lh, const Length& rh) {
     return Pressure(lh.value() / rh.value());
   }
 
@@ -149,4 +145,4 @@ namespace physics {
     return lh.value() / rh.value();
   }
 
-}; // namespace physics
+}; // namespace eng

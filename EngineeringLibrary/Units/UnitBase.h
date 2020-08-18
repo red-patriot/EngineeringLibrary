@@ -1,10 +1,22 @@
 #ifndef Physics_Base_h_INCLUDED
 #define Physics_Base_h_INCLUDED
 
-namespace physics {
+/*****************************************************************//**
+ * \file  UnitBase.h
+ * \brief A base class for all units to give them a uniform interface and
+ *          to simplify the implementation where possible. This class is not 
+ *          available outside this library
+ *
+ * \author bltan
+ * \date   August 2020
+ *********************************************************************/
+
+#include "../EngineeringExport.h"
+
+namespace eng {
 
   /**
-   * \class UnitBase An internal base class for any physics object
+   * \class UnitBase An internal base class for any unit type
    */
   class UnitBase {
   public:
@@ -17,6 +29,6 @@ namespace physics {
     double _value;
   };
 
-};  // namespace physics
+};  // namespace eng
 
 #endif
