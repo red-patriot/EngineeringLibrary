@@ -15,13 +15,14 @@
 
 namespace eng {
 
-  /**
-   * \class Time a time
+  /** A time
+   * \class Time 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Time : public UnitBase {
   public:
     /**
-     * \brief Construct a Time
+     * \brief Time constructor
      * 
      * \param _seconds the measure of time in seconds
      */

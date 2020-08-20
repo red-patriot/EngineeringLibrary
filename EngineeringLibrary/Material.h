@@ -27,7 +27,7 @@ namespace eng {
   class ENGINEERINGLIBRARY_API MaterialBase {
   public:
     /**
-     * \brief Construct a MaterialBase
+     * \brief MaterialBase constructor
      * 
      * \param youngs_modulus Young's modulus for the given material
      * \param rigidity_modulus Modulus of rigidity for the given material
@@ -57,7 +57,7 @@ namespace eng {
   class ENGINEERINGLIBRARY_API Material : public MaterialBase {
   public:
     /**
-     * \brief Construct a Material
+     * \brief Material constructor
      * 
      * \param yield_strength The yield strength of the given material
      * \param tensile_strength The ultimate tensile strength of the material.
@@ -68,7 +68,7 @@ namespace eng {
     Material(const Stress& yield_strength, const Stress& tensile_strength, 
       const Stress& youngs_modulus, const Stress& rigidity_modulus, double poissons_ratio);
     /**
-     * \brief Construct a Material
+     * \brief Material constructor
      * 
      * \param yield_strength The yield strength of the given material
      * \param tensile_strength The ultimate tensile strength of the material.

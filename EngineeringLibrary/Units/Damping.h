@@ -15,13 +15,14 @@
 
 namespace eng {
 
-  /**
-   * \class Damping A resistance to motion proportional to velocity
+  /** A resistance to motion proportional to velocity
+   * \class Damping
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Damping : public UnitBase {
   public:
     /**
-     * \brief Construct a Damping
+     * \brief Damping constructor
      * 
      * \param _Newton_seconds_per_meter the measure of Damping in Newton seconds per meter.
      */

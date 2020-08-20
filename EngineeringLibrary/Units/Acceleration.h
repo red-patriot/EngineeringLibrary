@@ -15,8 +15,9 @@
 
 namespace eng {
 
-  /**
-   * \class Acceleration The change in speed of an object moginv through space
+  /** The change in speed of an object moginv through space
+   * \class Acceleration 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Acceleration : public UnitBase {
   public:

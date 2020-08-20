@@ -15,13 +15,14 @@
 
 namespace eng {
 
-  /**
-   * \class Frequency a measure of cycles/repetitions per unit time
+  /** A measure of cycles/repetitions per unit time
+   * \class Frequency 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Frequency : public UnitBase { 
   public:
     /**
-     * \brief Construct a frequency
+     * \brief Frequency constructor
      * 
      * \param _hertz the measure of cycles per second
      */
@@ -75,16 +76,17 @@ namespace eng {
   inline Frequency ENGINEERINGLIBRARY_API real(const Frequency& x) { return x; }
   inline Frequency ENGINEERINGLIBRARY_API imag(const Frequency&) { return 0_Hz; }
 
-  /**
-   * \class Frequency2 A class modeling a frequency squared for intermediate steps in equations
+  /** A class modeling a frequency squared for intermediate steps in equations
+   * \class Frequency2
+   * \addtogroup Units
    * 
-   * this class is only for use in intermetiate operations of.
+   * \note This class is only for use in intermetiate operations of.
    * equations; it has limited functionality. 
    */
   class ENGINEERINGLIBRARY_API Frequency2 : public UnitBase { 
   public:
     /**
-     * \brief Construct a Frequency2
+     * \brief Frequency2 constructor
      * 
      * \param _hertz2 the measure of Hertz^2
      */

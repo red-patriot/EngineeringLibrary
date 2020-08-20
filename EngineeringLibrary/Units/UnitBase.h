@@ -15,18 +15,29 @@
 
 namespace eng {
 
-  /**
-   * \class UnitBase An internal base class for any unit type
+  /** An internal base class for any unit type
+   * \class UnitBase
    */
   class UnitBase {
   public:
+    /**
+     * \brief UnitBase constructor
+     * 
+     * \param n The stored value 
+     */
     explicit UnitBase(const double n) : _value(n) { }
+    /**
+     * \brief UnitBase virtual destructor
+     */
     virtual ~UnitBase() = default;
 
+    /** An internal function which allows for uniformity across all Unit classes
+     * \return the stored value
+     */
     double value() const { return _value; }
 
   protected:
-    double _value;
+    double _value; /**<The internal value which represents a value with units */
   };
 
 };  // namespace eng

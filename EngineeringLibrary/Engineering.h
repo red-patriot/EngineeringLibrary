@@ -2,7 +2,7 @@
 #define Engineering_h_INCLUDED
 
 // Include all Units
-#include "Units/Units.h"
+#include "Units.h"
 
 // Materials properties
 #include "Material.h"
@@ -22,10 +22,11 @@
 #include "SystemDynamics.h"
 
 /* TODO:
- *   More descriptive parameter names
- *   Change comparison operators to work on UnitBase class
- *   Update some arithmetic operators to work on UnitBase class
- *   Update sample materials information
+ *    Write Unit Tests
+ *    More descriptive parameter names
+ *    Change comparison operators to work on UnitBase class
+ *    Update some arithmetic operators to work on UnitBase class
+ *    Update sample materials information
  */
 
 #endif

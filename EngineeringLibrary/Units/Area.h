@@ -19,8 +19,9 @@ namespace eng {
   class Volume;
   class Length;
 
-  /**
-   * \class Area A 2D geometry
+  /** A 2D geometry
+   * \class Area
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Area : public UnitBase {
   public:

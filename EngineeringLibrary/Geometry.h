@@ -19,15 +19,15 @@
 
 namespace eng {
 
-  /**
-   * \class A point in 2D space representing the centroid of an area
+  /** A point in 2D space representing the centroid of an area
+   * \struct Centroid 
    */
   struct ENGINEERINGLIBRARY_API Centroid {
     Length x;
     Length y;
 
     /**
-     * \brief Construct a Centroid
+     * \brief Centroid constructor
      * 
      * \param xx the x position of the centroid
      * \param yy the y position of the centroid
@@ -35,15 +35,15 @@ namespace eng {
     Centroid(const Length& xx = 0_m, const Length& yy = 0_m);
   };
 
-  /**
-   * \class Moments of Inertia for a 2D area about various aves
+  /** Area moments of inertia for a 2D area about various axes
+   * \struct AreaMomentsofInertia
    */
   struct ENGINEERINGLIBRARY_API AreaMomentofInertia {
     SecondMomentOfArea Ix;
     SecondMomentOfArea Iy;
     SecondMomentOfArea Ixy;
     /**
-     * \brief Construct an AreaMomentofInertia
+     * \brief AreaMomentofInertia constructor
      * 
      * \param xx The Second moment of area about the x axis
      * \param yy The Second moment of area about the x axis
@@ -54,19 +54,17 @@ namespace eng {
       const SecondMomentOfArea& xy = 0_m4);
   };
   
-  /**
-   * \class A generic 2D geometry
+  /** A generic 2D geometry
+   * \class Geometry 
+   * 
+   * \note The user can define any children of Geometry not defined here,
+   *  but all Geometry children should call calculate_area and 
+   *  calculate_moment_of_inertia in their constructors to work properly.
    */
   class ENGINEERINGLIBRARY_API Geometry {
   public:
     /**
-     * \brief Construct a Geometry
-     * 
-     * \param c The centroid of the geometry
-     */
-    Geometry(const Centroid& c=(0_m, 0_m));
-    /**
-     * \brief Construct a geometry
+     * \brief Geometry constructor
      * 
      * \param aa The area of the geometry
      * \param mmoi the area moment of inertia of the geometry
@@ -74,29 +72,52 @@ namespace eng {
      */
     Geometry(const class Area& aa, const AreaMomentofInertia& mmoi,
       const Centroid& c=(0_m, 0_m));
+    /**
+     * \brief Geometry default destructor
+     */
     virtual ~Geometry() = default;
 
-    /* Return the centroid of this geometry. */
+    /** Returns the centroid of the Geometry.
+     */
     Centroid centroid() const;
 
-    /* Return the area of the shape. */
-    Area area() const;
-    // TODO: Modify this function (or add a different one) to handle rotation of axes
-    /* Return the moment of inertia of a shape about its own centroid. */
-    AreaMomentofInertia moment_of_inertia() const; 
-    /* Calculate the moment of inertia of a shape using a Parallel Axis shift. */
+    /** Returns the area of the Geometry.
+     */
+    Area area() const { return _area; }
+    
+    /** Return the moment of inertia of a shape about its own centroid.
+     */
+    AreaMomentofInertia moment_of_inertia() const { return _MOI; }
+    /**
+     * Calculate the moment of inertia of a shape using a Parallel Axis shift.
+     * 
+     * \param pt The point about which to calculate the mement of inertia
+     * \return the area moment of inertia of this Geometry about pt
+     */
     AreaMomentofInertia moment_of_inertia(const Centroid& pt) const;
+    // TODO: Add a function to handle rotation of axes
 
   protected:
-    Centroid _centroid;
-    mutable Area _area;
-    mutable AreaMomentofInertia _MOI;
+    Centroid _centroid; /**<The centroid of this Geometry in space */
+    Area _area; /**<The area of this Geometry */
+    AreaMomentofInertia _MOI; /**<The moment of inertia of this 
+                                    Geometry about the X, Y and XY axes */
 
-    virtual Area calculate_area() const;
-    virtual AreaMomentofInertia calculate_moment_of_inertia() const;
+    /** An overrideable function used for calculating the area of a 
+     *  Geometry using whichever formula is appropriate.
+     */
+    virtual void calculate_area();
+    /** An overrideable function used for calculating the area moment of 
+     *  inertia of a Geometry using whichever formula is appropriate.
+     */
+    virtual void calculate_moment_of_inertia();
 
-    mutable bool _area_valid;
-    mutable bool _moi_valid;
+    /**
+     * \brief Geometry child constructor
+     * 
+     * This constructor is intended for use only by Geometry children. 
+     */
+    Geometry(const Centroid& c);
   };
 
 
@@ -104,13 +125,13 @@ namespace eng {
    * Geometry children - specifications of some common geometric shapes
    */
   
-  /**
-   * \class Circle a Circle
+  /** A circle
+   * \class Circle 
    */
   class ENGINEERINGLIBRARY_API Circle : public Geometry {
   public:
     /**
-     * \brief Construct a Circle
+     * \brief Circle constructor
      * 
      * \param dd diameter of the circle
      * \param c the centroid of the circle
@@ -123,20 +144,20 @@ namespace eng {
   private:
     Length diam;
 
-    Area calculate_area() const override;
-    AreaMomentofInertia calculate_moment_of_inertia() const override;
+    void calculate_area() override;
+    void calculate_moment_of_inertia() override;
   };
 
-  /**
-   * \class SemiCircle a semi circle
+  /** A semi circle
+   * \class SemiCircle 
    */
   class ENGINEERINGLIBRARY_API SemiCircle : public Geometry {
   public:
     /**
-     * \brief Construct a SemiCircle
+     * \brief SemiCircle constructor
      * 
      * \param dd The diameter of the SemiCircle
-     * \param c The centroid of the SemiCircle
+     * \param c The centroif the SemiCircle
      */
     SemiCircle(const Length& dd = 0_m, const Centroid& c = (0_m, 0_m));
     ~SemiCircle() override = default;
@@ -144,17 +165,17 @@ namespace eng {
   private:
     Length diam;
 
-    Area calculate_area() const override;
-    AreaMomentofInertia calculate_moment_of_inertia() const override;
+    void calculate_area() override;
+    void calculate_moment_of_inertia() override;
   };
 
-  /**
-   * \class HollowCircle A hollow circle
+  /** A hollow circle
+   * \class HollowCircle
    */
   class ENGINEERINGLIBRARY_API HollowCircle : public Geometry {
   public:
     /**
-     * \brief Construct a HollowCircle
+     * \brief HollowCircle constructor
      * 
      * \param ddo The diameter of the outer circle
      * \param ddi The diameter of the inner circle
@@ -170,17 +191,17 @@ namespace eng {
     Length diam_out;
     Length diam_in;
 
-    Area calculate_area() const override;
-    AreaMomentofInertia calculate_moment_of_inertia() const override;
+    void calculate_area() override;
+    void calculate_moment_of_inertia() override;
   };
 
-  /**
-   * \class Rectangle A rectangle
+  /** A rectangle
+   * \class Rectangle
    */
   class ENGINEERINGLIBRARY_API Rectangle : public Geometry {
   public:
     /**
-     * \brief Construct a Rectangle
+     * \brief Rectangle constructor
      * 
      * \param bb The length of the base of the Rectangle
      * \param hh The length of the height of the Rectangle
@@ -197,17 +218,17 @@ namespace eng {
     Length b;
     Length h;
 
-    Area calculate_area() const override;
-    AreaMomentofInertia calculate_moment_of_inertia() const override;
+    void calculate_area() override;
+    void calculate_moment_of_inertia() override;
   };
 
-  /**
-   * \class HollowRectangle A hollow rectangle
+  /** A hollow rectangle
+   * \class HollowRectangle
    */
   class ENGINEERINGLIBRARY_API HollowRectangle : public Geometry {
   public:
     /**
-     * \brief Construct a HollowRectangle
+     * \brief HollowRectangle constructor
      * 
      * \param bbo The base of the outer rectangle
      * \param hho The height of the outer rectangle
@@ -230,8 +251,8 @@ namespace eng {
     Length bi;
     Length hi;
 
-    Area calculate_area() const override;
-    AreaMomentofInertia calculate_moment_of_inertia() const override;
+    void calculate_area() override;
+    void calculate_moment_of_inertia() override;
   };
 
 };  // namespace eng

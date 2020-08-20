@@ -15,13 +15,14 @@
 
 namespace eng {
 
-  /**
-   * \class Velocity The speed of an object moving through space.
+  /** The speed of an object moving through space.
+   * \class Velocity
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Velocity : public UnitBase {
   public:
     /**
-     * \brief Construct a Velocity
+     * \brief Velocity constructor
      * 
      * \param _meters_per_second The measure of speed in meters per second
      */

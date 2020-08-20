@@ -20,11 +20,12 @@ namespace eng {
 
   /**
    * \class Pressure A force distributed over an area
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Pressure : public UnitBase {
   public:
     /**
-     * \brief Construct a pressure
+     * \brief Pressure constructor
      * 
      * \param _pascals the measure of pressure in Pascals
      */
@@ -91,16 +92,17 @@ namespace eng {
   inline Pressure ENGINEERINGLIBRARY_API real(const Pressure& x) { return x; }
   inline Pressure ENGINEERINGLIBRARY_API imag(const Pressure&) { return 0_Pa; }
 
-  /**
-   * \class Pressure2 A class modeling a pressure squared for intermediate steps in equations
+  /** A class modeling a pressure squared for intermediate steps in equations
+   * \class Pressure2 
+   * \addtogroup Units
    * 
-   * this class is only for use in intermetiate operations of.
+   * \note This class is only for use in intermetiate operations of.
    * equations; it has limited functionality. 
    */
   class ENGINEERINGLIBRARY_API Pressure2 : public UnitBase {
   public:
     /**
-     * \brief Construct a Pressure2
+     * \brief Pressure2 constructor
      * 
      * \param _pascals2 the measure of Pascals^2
      */

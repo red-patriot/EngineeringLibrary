@@ -19,14 +19,14 @@ namespace eng {
   class Volume;
   class Area;
 
-  /**
-   * \class Length A 1D geometry
+  /** A 1D geometry
+   * \class Length 
+   * \addtogroup Units
    */
-
   class ENGINEERINGLIBRARY_API Length : public UnitBase {
   public:
     /**
-     * \brief Construct a Length
+     * \brief Length constructor
      * 
      * \param _meters the measure of the length in meters
      */

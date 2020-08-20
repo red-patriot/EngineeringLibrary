@@ -15,13 +15,14 @@
 
 namespace eng {
 
-  /**
-   * \class Force The magnitude of a force in space
+  /** The magnitude of a force in space
+   * \class Force 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Force : public UnitBase {
   public:
     /**
-     * \brief Construct a Force
+     * \brief Force constructor
      * 
      * \param _newtons The magnitude of the force in Newtons
      */

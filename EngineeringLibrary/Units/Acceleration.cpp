@@ -75,17 +75,17 @@ namespace eng {
   }
 
   Acceleration operator"" _inpsec2 (long double val) {
-    return Acceleration(val);
+    return Acceleration(val * (2.54/100));
   }
   Acceleration operator"" _inpsec2 (unsigned long long val) {
-    return Acceleration(val);
+    return Acceleration(val * (2.54/100));
   }
 
   Acceleration operator"" _ftpsec2 (long double val) {
-    return Acceleration(val);
+    return Acceleration(val * (30.48/100));
   }
   Acceleration operator"" _ftpsec2 (unsigned long long val) {
-    return Acceleration(val);
+    return Acceleration(val * (30.48/100));
   }
 
 };

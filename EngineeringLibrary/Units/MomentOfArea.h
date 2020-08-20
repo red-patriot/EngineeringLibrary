@@ -19,16 +19,21 @@ namespace eng {
   class Area;
   class Length;
 
-  // First moment of Area and Volume have the same units, so define them as "equal" here
+  /** First moment of Area and Volume have the same units and functionality
+   * \typedef FirstMomentOfArea Volume
+   * \see Volume
+   * \addtogroup Units
+   */
   using FirstMomentOfArea = Volume;
 
-  /**
-   * \class SecondMomentOfArea A 4D measure of the Area Moment of Inertia of a geometry
+  /** A 4D measure of the Area Moment of Inertia of a geometry
+   * \class SecondMomentOfArea 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API SecondMomentOfArea : public UnitBase {
   public:
     /**
-     * \brief Construct a SecondMomentOfArea
+     * \brief SecondMomentOfArea constructor
      * 
      * \param _meters4 the measure of the area moment of inertia in meters^4
      */

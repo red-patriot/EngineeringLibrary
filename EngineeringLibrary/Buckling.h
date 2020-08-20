@@ -42,7 +42,7 @@ namespace eng {
   class ENGINEERINGLIBRARY_API Column {
   public:
     /**
-     * \brief Construct a Column
+     * \brief Column constructor
      * 
      * \param material The column material
      * \param geometry The cross-sectional geometry of the column

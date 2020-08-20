@@ -15,8 +15,9 @@
 
 namespace eng {
 
-  /**
-   * \class Angle The geometry formed by two non-colinear, coplanar lines. 
+  /** The geometry formed by two non-colinear, coplanar lines. 
+   * \class Angle 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Angle : public UnitBase{
   public:
@@ -31,7 +32,7 @@ namespace eng {
     ~Angle() = default;
 
     double rad() const { return _value; }
-    double deg() const;    // defined in Angle.cpp to not require PhysicsMath.h
+    double deg() const;    // defined in Angle.cpp to not require PhysicsMath.h here
 
     explicit operator double();         
     //? Becuase radians are "imaginary" units, maybe this should be implicit?

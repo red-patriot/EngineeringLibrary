@@ -15,13 +15,14 @@
 
 namespace eng {
 
-  /**
-   * \class Mass a mass
+  /** A mass
+   * \class Mass
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Mass : public UnitBase {
   public:
     /**
-     * \brief Construct a Mass
+     * \brief Mass constructor
      * 
      * \param _kilograms the measure of the mass in kilograms
      */

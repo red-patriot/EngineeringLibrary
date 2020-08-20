@@ -211,6 +211,7 @@
     <ClInclude Include="Stress.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SystemDynamics.h" />
+    <ClInclude Include="Units.h" />
     <ClInclude Include="Units\Acceleration.h" />
     <ClInclude Include="Units\Angle.h" />
     <ClInclude Include="Units\Area.h" />

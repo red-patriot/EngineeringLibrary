@@ -12,4 +12,8 @@
 
 #include "EngineeringExport.h"
 
+// Add all Unit classes that have been tested
+#include "Units/Acceleration.h"
+#include "Units/Angle.h"
+
 #endif //PCH_H

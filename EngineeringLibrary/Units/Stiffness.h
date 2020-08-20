@@ -15,13 +15,14 @@
 
 namespace eng {
 
-  /**
-   * \class Stiffness a linear resistance to deformation measured in force/length
+  /** A linear resistance to deformation measured in force/length
+   * \class Stiffness 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Stiffness : public UnitBase {
   public:
     /**
-     * \brief Construct a stiffness
+     * \brief Stiffness constructor
      * 
      * \param _newtons_per_meter the measure of stiffness in Newtons/meter
      */

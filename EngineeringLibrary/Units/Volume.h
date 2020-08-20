@@ -19,15 +19,15 @@ namespace eng {
   class Area;
   class Length;
 
-  /**
+  /** A measure of the 3D space taken up an object
    * \class Volume A 3D geometry
    */
   class ENGINEERINGLIBRARY_API Volume : public UnitBase {
   public:
     /**
-     * \brief Construct a Volume
+     * \brief Volume constructor
      * 
-     * \param _meters3 the measure of the volume in meters^3
+     * \param _meters3 
      */
     explicit Volume(const double& _meters3 = 0) : UnitBase(_meters3) { }
     Volume(const Volume&) = default;

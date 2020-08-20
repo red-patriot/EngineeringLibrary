@@ -27,7 +27,7 @@ namespace eng {
     double epsilon_z;
 
     /**
-     * \brief Construct a NormalStrain
+     * \brief NormalStrain constructor
      * 
      * \param xx The strain in the X direction
      * \param yy The strain in the Y direction
@@ -44,7 +44,7 @@ namespace eng {
     Angle gamma_yz;
 
     /**
-     * \brief Construct a ShearStrain
+     * \brief ShearStrain constructor
      * 
      * \param xy The strain on the X face in the Y direction
      * \param xz The strain on the X face in the Z direction

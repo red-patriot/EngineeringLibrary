@@ -36,7 +36,7 @@ namespace eng {
     Stress tau_xy;
 
     /**
-     * \brief Construct a StressElement2
+     * \brief StressElement2 constructor
      * 
      * \param xx The normal stress in the X direction
      * \param yy The normal stress in the Y direction
@@ -58,7 +58,7 @@ namespace eng {
     Stress tau_yz;
 
     /**
-     * \brief Construct a StressElement3
+     * \brief StressElement3 constructor
      * 
      * \param xx The normal stress in the X direction
      * \param yy The normal stress in the Y direction
@@ -81,7 +81,7 @@ namespace eng {
     Stress sigma_2;
 
     /**
-     * \brief Construct a PrincipalStress2
+     * \brief PrincipalStress2 constructor
      * 
      * \param s1 Sugma 1, the maximum normal stress value
      * \param s2 Sigma 2. the minimum normal stress value
@@ -98,7 +98,7 @@ namespace eng {
     Stress sigma_3;
 
     /**
-     * \brief Construct a PrincipalStress3
+     * \brief PrincipalStress3 constructor
      * 
      * \param s1 Sigma 1, the maximum normal stress value
      * \param s2 Sigma 2, the medium normal stress value
