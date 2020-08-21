@@ -55,6 +55,13 @@ namespace eng {
 
   Angle ENGINEERINGLIBRARY_API operator/ (const Angle& lh, const double& n);
 
+  bool ENGINEERINGLIBRARY_API operator== (const Angle& lh, const Angle& rh);
+  bool ENGINEERINGLIBRARY_API operator> (const Angle& lh, const Angle& rh);
+  bool ENGINEERINGLIBRARY_API operator!= (const Angle& lh, const Angle& rh);
+  bool ENGINEERINGLIBRARY_API operator< (const Angle& lh, const Angle& rh);
+  bool ENGINEERINGLIBRARY_API operator>= (const Angle& lh, const Angle& rh);
+  bool ENGINEERINGLIBRARY_API operator<= (const Angle& lh, const Angle& rh);
+
   double ENGINEERINGLIBRARY_API sin(const Angle& a);
   double ENGINEERINGLIBRARY_API cos(const Angle& a);
   double ENGINEERINGLIBRARY_API tan(const Angle& a);

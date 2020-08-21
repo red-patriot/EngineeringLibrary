@@ -81,24 +81,24 @@ namespace eng {
   }
 
   Damping operator"" _kNspm (long double val) {
-    return Damping(val);
+    return Damping(val * 1000);
   }
   Damping operator"" _kNspm (unsigned long long val) {
-    return Damping(val);
+    return Damping(val * 1000);
   }
 
   Damping operator"" _lbspin (long double val) {
-    return Damping(val);
+    return Damping(val * (4.4482216152605/.0254));
   }
   Damping operator"" _lbspin (unsigned long long val) {
-    return Damping(val);
+    return Damping(val * (4.4482216152605/.0254));
   }
 
   Damping operator"" _lbspft (long double val) {
-    return Damping(val);
+    return Damping(val * (4.4482216152605/.3048));
   }
   Damping operator"" _lbspft (unsigned long long val) {
-    return Damping(val);
+    return Damping(val * (4.4482216152605/.3048));
   }
 
 };  // namespace eng

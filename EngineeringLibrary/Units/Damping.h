@@ -34,8 +34,8 @@ namespace eng {
     double Nspm() const { return _value; }
     double kNspm() const { return _value / 1000; }
 
-    double lbspin() const { return _value * 0.224808943099711 * .0254; }
-    double lbspft() const { return _value * 0.224808943099711 * .3048; }
+    double lbspin() const { return _value * .0254/4.4482216152605; }
+    double lbspft() const { return _value * .3048/4.4482216152605; }
 
     Damping& operator+= (const Damping& rh) { _value += rh._value; return *this; }
     Damping& operator-= (const Damping& rh) { _value -= rh._value; return *this; }

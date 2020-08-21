@@ -41,7 +41,6 @@ namespace eng {
     return lh.value() / rh.value();
   }
 
-  // Comparison Operators
   bool operator== (const Area& lh, const Area& rh) {
     return fuzzy_equals(lh.value(), rh.value());
   }

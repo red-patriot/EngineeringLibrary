@@ -37,6 +37,25 @@ namespace eng {
     return Angle(lh.value() / n);
   }
 
+  bool operator== (const Angle& lh, const Angle& rh) {
+    return fuzzy_equals(lh.value(), rh.value());
+  }
+  bool operator> (const Angle& lh, const Angle& rh) {
+    return fuzzy_greater(lh.value(), rh.value());
+  }
+  bool operator!= (const Angle& lh, const Angle& rh) {
+    return !(lh == rh);
+  }
+  bool operator< (const Angle& lh, const Angle& rh) {
+    return rh > lh;
+  }
+  bool operator>= (const Angle& lh, const Angle& rh) {
+    return lh > rh || lh == rh;
+  }
+  bool operator<= (const Angle& lh, const Angle& rh) {
+    return rh > lh || lh == rh;
+  }
+
   /* Literals operators
    * The following units are supported: 
    * radians, degrees
