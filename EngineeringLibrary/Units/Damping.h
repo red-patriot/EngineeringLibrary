@@ -81,6 +81,27 @@ namespace eng {
 
 };  // namespace eng
 
+/* Integration with Eigen */
+namespace Eigen {
+
+  template<> struct NumTraits<eng::Damping> : NumTraits<double> {
+    typedef eng::Damping Real;
+    typedef eng::Damping NonInteger;
+    typedef eng::Damping Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
+
 using eng::operator"" _Nspm;        using eng::operator"" _kNspm;
 using eng::operator"" _lbspin;      using eng::operator"" _lbspft;
 
