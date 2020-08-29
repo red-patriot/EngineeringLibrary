@@ -15,7 +15,7 @@
 namespace eng {
 
   // Define some important mathematical constants
-  static const long double pi = 3.141592653589793238462643383279;
+  static constexpr long double pi = 3.141592653589793238462643383279;
 
   /*
    * Comparison functions
