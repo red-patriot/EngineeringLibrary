@@ -82,17 +82,17 @@ namespace eng {
   }
 
   Frequency operator"" _kHz (long double val) {
-    return Frequency(val);
+    return Frequency(val * 1'000.0);
   }
   Frequency operator"" _kHz (unsigned long long val) {
-    return Frequency(val);
+    return Frequency(val * 1'000.0);
   }
 
   Frequency operator"" _MHz (long double val) {
-    return Frequency(val);
+    return Frequency(val * 1'000'000.0);
   }
   Frequency operator"" _MHz (unsigned long long val) {
-    return Frequency(val);
+    return Frequency(val * 1'000'000.0);
   }
 
   Frequency2 operator- (const Frequency2& lh) {

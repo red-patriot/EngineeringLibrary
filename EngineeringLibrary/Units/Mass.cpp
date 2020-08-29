@@ -67,10 +67,10 @@ namespace eng {
    */
 
   Mass operator"" _g (long double val) {
-    return Mass(val / 1000);
+    return Mass(val * 0.001);
   }
   Mass operator"" _g (unsigned long long val) {
-    return Mass(val / 1000);
+    return Mass(val * 0.001);
   }
 
   Mass operator"" _kg (long double val) {

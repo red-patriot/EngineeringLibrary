@@ -96,10 +96,10 @@ namespace eng {
   }
 
   Force  operator"" _kN(long double val) {
-    return Force(val * 1000);
+    return Force(val * 1000.0);
   }
   Force  operator"" _kN(unsigned long long val) {
-    return Force(val * 1000);
+    return Force(val * 1000.0);
   }
 
   Force  operator"" _lbf(long double val) {

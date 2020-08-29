@@ -98,10 +98,10 @@ namespace eng {
   }
 
   Length operator"" _km (long double val) {
-    return Length(val * 1000);
+    return Length(val * 1000.0);
   }
   Length operator"" _km (unsigned long long val) {
-    return Length(val * 1000);
+    return Length(val * 1000.0);
   }
 
   Length operator"" _in (long double val) {

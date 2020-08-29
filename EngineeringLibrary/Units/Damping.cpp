@@ -81,10 +81,10 @@ namespace eng {
   }
 
   Damping operator"" _kNspm (long double val) {
-    return Damping(val * 1000);
+    return Damping(val * 1000.0);
   }
   Damping operator"" _kNspm (unsigned long long val) {
-    return Damping(val * 1000);
+    return Damping(val * 1000.0);
   }
 
   Damping operator"" _lbspin (long double val) {

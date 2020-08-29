@@ -89,11 +89,11 @@ namespace eng {
   }
 
   Stiffness operator""_Npmm(long double val) {
-    return Stiffness(val * 1000);
+    return Stiffness(val * 1000.0);
   }
 
   Stiffness operator""_Npmm(unsigned long long val) {
-    return Stiffness(val * 1000);
+    return Stiffness(val * 1000.0);
   }
 
   Stiffness operator""_lbpin(long double val) {

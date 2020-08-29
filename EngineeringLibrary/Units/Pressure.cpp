@@ -79,24 +79,24 @@ namespace eng {
   }
 
   Pressure operator"" _kPa (long double val) {
-    return Pressure(val * 1000);
+    return Pressure(val * 1000.0);
   }
   Pressure operator"" _kPa (unsigned long long val) {
-    return Pressure(val * 1000);
+    return Pressure(val * 1000.0);
   }
 
   Pressure operator"" _MPa (long double val) {
-    return Pressure(val * 1'000'000);
+    return Pressure(val * 1'000'000.0);
   }
   Pressure operator"" _MPa (unsigned long long val) {
-    return Pressure(val * 1'000'000);
+    return Pressure(val * 1'000'000.0);
   }
 
   Pressure operator"" _GPa (long double val) {
-    return Pressure(val * 1'000'000'000);
+    return Pressure(val * 1'000'000'000.0);
   }
   Pressure operator"" _GPa (unsigned long long val) {
-    return Pressure(val * 1'000'000'000);
+    return Pressure(val * 1'000'000'000.0);
   }
 
   Pressure operator"" _psi (long double val) {
