@@ -71,6 +71,7 @@ namespace eng {
   Force ENGINEERINGLIBRARY_API operator* (const class Damping& lh, const class Velocity& rh);
   Force ENGINEERINGLIBRARY_API operator* (const class Velocity& lh, const class Damping& rh);
 
+  Force ENGINEERINGLIBRARY_API operator/ (const class Energy& lh, const class Length& rh);
   Force ENGINEERINGLIBRARY_API operator/ (const Force& lh, const double& n);
   double ENGINEERINGLIBRARY_API operator/ (const Force& lh, const Force& rh);
 

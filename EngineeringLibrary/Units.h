@@ -37,4 +37,7 @@
 #include "Units/Velocity.h"
 #include "Units/Acceleration.h"
 
+// Energy headers
+#include "Units/Energy.h"
+
 #endif

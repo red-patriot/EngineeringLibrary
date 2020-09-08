@@ -2,6 +2,7 @@
 
 #include "PhysicsMath.h"
 #include "Force.h"
+#include "Energy.h"
 #include "Stiffness.h"
 #include "Pressure.h"
 #include "Length.h"
@@ -56,6 +57,9 @@ namespace eng {
   	return Force(lh.value() * rh.value());
   }
     
+  Force operator/ (const Energy& lh, const Length& rh) {
+  	return Force(lh.value() / rh.value());
+  }
   double  operator/ (const Force& lh, const Force& rh) {
     return lh.value() / rh.value();
   } 

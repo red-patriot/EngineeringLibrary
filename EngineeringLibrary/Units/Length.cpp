@@ -4,8 +4,9 @@
 #include "Volume.h"
 #include "Area.h"
 #include "Length.h"
+#include "Energy.h"
 #include "Velocity.h"
-#include "TIme.h"
+#include "Time.h"
 #include "PhysicsMath.h"
 
 namespace eng {
@@ -35,6 +36,9 @@ namespace eng {
     return rh * lh;
   }
 
+  Length operator/ (const Energy& lh, const Force& rh) {
+  	return Length(lh.value() / rh.value());
+  }
   Length operator/ (const Length& lh, const double& n) {
     return Length(lh.value() / n);
   }

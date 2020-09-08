@@ -81,6 +81,7 @@ namespace eng {
   Length ENGINEERINGLIBRARY_API operator* (const class Velocity& lh, const class Time& rh);
   Length ENGINEERINGLIBRARY_API operator* (const class Time& lh, const class Velocity& rh);
 
+  Length ENGINEERINGLIBRARY_API operator/ (const class Energy& lh, const class Force& rh);
   Length ENGINEERINGLIBRARY_API operator/ (const Area& lh, const Length& rh);
   Length ENGINEERINGLIBRARY_API operator/ (const Volume& lh, const Area& rh);
   Length ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Volume& rh);

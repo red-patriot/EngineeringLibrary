@@ -33,8 +33,8 @@ namespace eng {
     double Npm() const { return _value; }
     double Npmm() const { return _value * 0.001; }
     
-    double lbpin() const { return _value * 0.00571014715473264626; }
-    double lbpft() const { return _value * 0.06852176585679175519; }
+    double lbpin() const { return _value * 0.005'710'147'154'732'646'26; }
+    double lbpft() const { return _value * 0.068'521'765'856'791'755'19; }
 
     Stiffness& operator+= (const Stiffness& rh) { _value += rh._value; return *this; }
     Stiffness& operator-= (const Stiffness& rh) { _value -= rh._value; return *this; }

@@ -99,10 +99,10 @@
     <ClInclude Include="Units\UnitBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\Units.h">
+    <ClInclude Include="Units.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units.h">
+    <ClInclude Include="Units\Energy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -180,6 +180,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Volume.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Energy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

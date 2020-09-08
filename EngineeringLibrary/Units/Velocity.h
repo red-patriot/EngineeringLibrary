@@ -69,6 +69,7 @@ namespace eng {
   Velocity operator* (const class Acceleration& lh, const class Time& rh);
   Velocity operator* (const class Time& lh, const class Acceleration& rh);
 
+  Velocity ENGINEERINGLIBRARY_API operator/ (const class Velocity2& lh, const Velocity& rh);
   Velocity ENGINEERINGLIBRARY_API operator/ (const Velocity& lh, const double& rh);
   Velocity ENGINEERINGLIBRARY_API operator/ (const class Length& lh, const class Time& rh);
   double ENGINEERINGLIBRARY_API operator/ (const Velocity& lh, const Velocity& rh);
@@ -84,6 +85,33 @@ namespace eng {
   inline Velocity ENGINEERINGLIBRARY_API conj(const Velocity& x) { return x; }
   inline Velocity ENGINEERINGLIBRARY_API real(const Velocity& x) { return x; }
   inline Velocity ENGINEERINGLIBRARY_API imag(const Velocity& x) { return 0_mpsec; }
+
+  /** A class modeling a Velocity squared for intermediate steps in equations
+   * \class Velocity2
+   * \addtogroup Units
+   * 
+   * \note This class is only for use in intermediate operations of
+   * equations; it has limited functionality.
+   */
+  class ENGINEERINGLIBRARY_API Velocity2 : public UnitBase {
+  public:
+    explicit Velocity2(const double _meters2_per_second2=0) : UnitBase(_meters2_per_second2) { }
+    Velocity2(const Velocity2&) = default;
+    ~Velocity2() = default;
+  };
+
+  Velocity2 operator- (const Velocity2& lh);
+
+  Velocity2 ENGINEERINGLIBRARY_API operator+ (const Velocity2& lh, const Velocity2& rh);
+
+  Velocity2 ENGINEERINGLIBRARY_API operator- (const Velocity2& lh, const Velocity2& rh);
+
+  Velocity2 ENGINEERINGLIBRARY_API operator* (const Velocity& lh, const Velocity& rh);
+  Velocity2 ENGINEERINGLIBRARY_API operator* (const Velocity2& lh, const double& rh);
+  Velocity2 ENGINEERINGLIBRARY_API operator* (const double& lh, const Velocity2& rh);
+
+  Velocity2 ENGINEERINGLIBRARY_API operator/ (const Velocity2& lh, const double& rh);
+  double ENGINEERINGLIBRARY_API operator/ (const Velocity2& lh, const Velocity2& rh);
 
 };  // namespace eng
 

@@ -48,10 +48,11 @@ namespace eng {
    * Miscellaneous math functions such as sqrt
    */
 
+  inline class Frequency ENGINEERINGLIBRARY_API sqrt(const class Frequency2& r);
   inline class Length ENGINEERINGLIBRARY_API sqrt(const class Area& r);
   inline class Area ENGINEERINGLIBRARY_API sqrt(const class SecondMomentOfArea& r);
   inline class Pressure ENGINEERINGLIBRARY_API sqrt(const class Pressure2& r);
-  inline class Frequency ENGINEERINGLIBRARY_API sqrt(const class Frequency2& r);
+  inline class Velocity ENGINEERINGLIBRARY_API sqrt(const class Velocity2& r);
 
   // TODO: This could probably be a single template
   inline class Time ENGINEERINGLIBRARY_API abs(const class Time& x);
@@ -69,10 +70,11 @@ namespace eng {
   inline class Velocity ENGINEERINGLIBRARY_API abs(const class Velocity& x);
   inline class Acceleration ENGINEERINGLIBRARY_API abs(const class Acceleration& x);
 
+  inline class Frequency2 ENGINEERINGLIBRARY_API abs2(const class Frequency& x);
   inline class Area ENGINEERINGLIBRARY_API abs2(const class Length& x);
   inline class SecondMomentOfArea ENGINEERINGLIBRARY_API abs2(const class Area& x);
   inline class Pressure2 ENGINEERINGLIBRARY_API abs2(const class Pressure& x);
-  inline class Frequency2 ENGINEERINGLIBRARY_API abs2(const class Frequency& x);
+  inline class Velocity2 ENGINEERINGLIBRARY_API abs2(const class Velocity& x);
 
 }; // namespace eng
 

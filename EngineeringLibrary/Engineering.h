@@ -21,11 +21,15 @@
 // Dynamic System analysis
 #include "SystemDynamics.h"
 
+/* TODO Units:
+ * Viscosity
+ * Moments/Torque
+ */
+
 /* TODO:
  *    Write Unit Tests
- *    More descriptive parameter names
+ *    Add Static Systems analysis
  *    Change comparison operators to work on UnitBase class
- *    Update some arithmetic operators to work on UnitBase class
  *    Update sample materials information
  */
 

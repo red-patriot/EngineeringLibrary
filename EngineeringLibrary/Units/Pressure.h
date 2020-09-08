@@ -75,7 +75,7 @@ namespace eng {
   Pressure ENGINEERINGLIBRARY_API operator* (const Pressure& lh, const double& n);
   Pressure ENGINEERINGLIBRARY_API operator* (const double& n, const Pressure& rh);
 
-  Pressure ENGINEERINGLIBRARY_API operator/ (const Pressure2& lh, const Pressure& rh);
+  Pressure ENGINEERINGLIBRARY_API operator/ (const class Pressure2& lh, const Pressure& rh);
   Pressure ENGINEERINGLIBRARY_API operator/ (const Pressure& lh, const double& n);
   Pressure ENGINEERINGLIBRARY_API operator/ (const class Force& lh, const class Area& rh);
   Pressure ENGINEERINGLIBRARY_API operator/ (const class Stiffness& lh, const class Length& rh);
@@ -96,7 +96,7 @@ namespace eng {
    * \class Pressure2 
    * \addtogroup Units
    * 
-   * \note This class is only for use in intermetiate operations of.
+   * \note This class is only for use in intermetiate operations of
    * equations; it has limited functionality. 
    */
   class ENGINEERINGLIBRARY_API Pressure2 : public UnitBase {
@@ -120,7 +120,6 @@ namespace eng {
   Pressure2 ENGINEERINGLIBRARY_API operator* (const double& n, const Pressure2& rh);
 
   Pressure2 ENGINEERINGLIBRARY_API operator/ (const Pressure2& lh, const double& n);
-  Pressure ENGINEERINGLIBRARY_API operator/ (const Pressure2& lh, const Pressure& rh);
   double ENGINEERINGLIBRARY_API operator/ (const Pressure2& lh, const Pressure2& rh);
 
 }; // namespace eng

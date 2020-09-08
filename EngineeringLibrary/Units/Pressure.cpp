@@ -29,14 +29,16 @@ namespace eng {
   Pressure operator* (const double& n, const Pressure& rh) {
     return rh * n;
   }
-  Pressure eng::operator/(const Stiffness& lh, const Length& rh) {
+
+  Pressure operator/(const Pressure2& lh, const Pressure& rh) {
     return Pressure(lh.value() / rh.value());
   }
-
+  Pressure operator/(const Stiffness& lh, const Length& rh) {
+    return Pressure(lh.value() / rh.value());
+  }
   Pressure operator/ (const Force& lh, const Area& rh) {
     return Pressure(lh.value() / rh.value());
   }
-
   double operator/ (const Pressure& lh, const Pressure& rh) {
     return lh.value() / rh.value();
   }
@@ -136,11 +138,6 @@ namespace eng {
   Pressure2 operator/(const Pressure2& lh, const double& n) {
     return Pressure2(lh.value() / n);
   }
-
-  Pressure operator/(const Pressure2& lh, const Pressure& rh) {
-    return Pressure(lh.value() / rh.value());
-  }
-
   double operator/(const Pressure2& lh, const Pressure2& rh) {
     return lh.value() / rh.value();
   }

@@ -60,12 +60,12 @@ namespace eng {
 
   Time ENGINEERINGLIBRARY_API operator/ (const Time& lh, const double& rh);
 
-  bool operator== (const Time& lh, const Time& rh);
-  bool operator> (const Time& lh, const Time& rh);
-  bool operator!= (const Time& lh, const Time& rh);
-  bool operator< (const Time& lh, const Time& rh);
-  bool operator>= (const Time& lh, const Time& rh);
-  bool operator<= (const Time& lh, const Time& rh);
+  bool ENGINEERINGLIBRARY_API operator== (const Time& lh, const Time& rh);
+  bool ENGINEERINGLIBRARY_API operator> (const Time& lh, const Time& rh);
+  bool ENGINEERINGLIBRARY_API operator!= (const Time& lh, const Time& rh);
+  bool ENGINEERINGLIBRARY_API operator< (const Time& lh, const Time& rh);
+  bool ENGINEERINGLIBRARY_API operator>= (const Time& lh, const Time& rh);
+  bool ENGINEERINGLIBRARY_API operator<= (const Time& lh, const Time& rh);
 
 
   inline Time ENGINEERINGLIBRARY_API conj(const Time& x) { return x; }

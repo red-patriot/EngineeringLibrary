@@ -101,8 +101,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>python ../../../repos/py_preprocess/py_preprocess/py_preprocess.py EngineeringLibrary.vcxproj</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -132,8 +131,7 @@
       </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>python ../../../repos/py_preprocess/py_preprocess/py_preprocess.py EngineeringLibrary.vcxproj</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -159,8 +157,7 @@
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>python ../../../repos/py_preprocess/py_preprocess/py_preprocess.py EngineeringLibrary.vcxproj</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>
@@ -194,8 +191,7 @@
       </Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>python ../../../repos/py_preprocess/py_preprocess/py_preprocess.py EngineeringLibrary.vcxproj</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -216,6 +212,7 @@
     <ClInclude Include="Units\Angle.h" />
     <ClInclude Include="Units\Area.h" />
     <ClInclude Include="Units\Damping.h" />
+    <ClInclude Include="Units\Energy.h" />
     <ClInclude Include="Units\Force.h" />
     <ClInclude Include="Units\Frequency.h" />
     <ClInclude Include="Units\Length.h" />
@@ -226,7 +223,6 @@
     <ClInclude Include="Units\Stiffness.h" />
     <ClInclude Include="Units\Time.h" />
     <ClInclude Include="Units\UnitBase.h" />
-    <ClInclude Include="Units\Units.h" />
     <ClInclude Include="Units\Velocity.h" />
     <ClInclude Include="Units\Volume.h" />
   </ItemGroup>
@@ -250,6 +246,7 @@
     <ClCompile Include="Units\Angle.cpp" />
     <ClCompile Include="Units\Area.cpp" />
     <ClCompile Include="Units\Damping.cpp" />
+    <ClCompile Include="Units\Energy.cpp" />
     <ClCompile Include="Units\Force.cpp" />
     <ClCompile Include="Units\Frequency.cpp" />
     <ClCompile Include="Units\Length.cpp" />

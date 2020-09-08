@@ -36,6 +36,9 @@ namespace eng {
   	return Velocity(lh.value() * rh.value());
   }
 
+  Velocity operator/ (const class Velocity2& lh, const Velocity& rh) {
+  	return Velocity(lh.value() / rh.value());
+  }
   Velocity operator/ (const Velocity& lh, const double& rh) {
 	  return Velocity(lh.value() / rh);
   }
@@ -108,6 +111,35 @@ namespace eng {
   }
   Velocity operator"" _mph (unsigned long long val) {
     return Velocity(val);
+  }
+
+  Velocity2 operator- (const Velocity2& lh) {
+    return Velocity2(-lh.value());
+  }
+
+  Velocity2 operator+ (const Velocity2& lh, const Velocity2& rh) {
+  	return Velocity2(lh.value() + rh.value());
+  }
+
+  Velocity2 operator- (const Velocity2& lh, const Velocity2& rh) {
+  	return Velocity2(lh.value() - rh.value());
+  }
+
+  Velocity2 operator* (const Velocity& lh, const Velocity& rh) {
+  	return Velocity2(lh.value() * rh.value());
+  }
+  Velocity2 operator* (const Velocity2& lh, const double& rh) {
+  	return Velocity2(lh.value() * rh);
+  }
+  Velocity2 operator* (const double& lh, const Velocity2& rh) {
+  	return Velocity2(lh * rh.value());
+  }
+
+  Velocity2 operator/ (const Velocity2& lh, const double& rh) {
+  	return Velocity2(lh.value() / rh);
+  }
+  double operator/ (const Velocity2& lh, const Velocity2& rh) {
+  	return double(lh.value() / rh.value());
   }
 
 };  // namespace eng

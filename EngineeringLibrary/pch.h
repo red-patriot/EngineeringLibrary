@@ -15,6 +15,8 @@
 // Add all Unit classes that have been tested
 
 // Time headers
+#include "Units/Time.h"
+#include "Units/Frequency.h"
 
 // Mass header
 #include "Units/Mass.h"
@@ -28,9 +30,14 @@
 
 // Force headers
 #include "Units/Force.h"
+#include "Units/Stiffness.h"
 #include "Units/Damping.h"
+#include "Units/Pressure.h"
 
 // Movement headers
+
 #include "Units/Acceleration.h"
+
+// Energy headers
 
 #endif //PCH_H
