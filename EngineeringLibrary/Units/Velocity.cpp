@@ -86,31 +86,31 @@ namespace eng {
   }
 
   Velocity operator"" _kph (long double val) {
-    return Velocity(val);
+    return Velocity(val * 0.277'777'777'777'778);
   }
   Velocity operator"" _kph (unsigned long long val) {
-    return Velocity(val);
+    return Velocity(val * 0.277'777'777'777'778);
   }
 
   Velocity operator"" _inpsec (long double val) {
-    return Velocity(val);
+    return Velocity(val * 0.0254);
   }
   Velocity operator"" _inpsec (unsigned long long val) {
-    return Velocity(val);
+    return Velocity(val * 0.0254);
   }
 
   Velocity operator"" _ftpsec (long double val) {
-    return Velocity(val);
+    return Velocity(val * 0.3048);
   }
   Velocity operator"" _ftpsec (unsigned long long val) {
-    return Velocity(val);
+    return Velocity(val * 0.3048);
   }
 
   Velocity operator"" _mph (long double val) {
-    return Velocity(val);
+    return Velocity(val * 0.44704);
   }
   Velocity operator"" _mph (unsigned long long val) {
-    return Velocity(val);
+    return Velocity(val * 0.44704);
   }
 
   Velocity2 operator- (const Velocity2& lh) {

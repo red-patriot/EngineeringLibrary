@@ -4,6 +4,8 @@
 #include "Volume.h"
 #include "Area.h"
 #include "Length.h"
+#include "Force.h"
+#include "Torque.h"
 #include "Energy.h"
 #include "Velocity.h"
 #include "Time.h"

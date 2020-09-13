@@ -31,11 +31,11 @@ namespace eng {
     ~Velocity() = default;
 
     double mpsec() const { return _value; }
-    double kph() const { return _value * 3600 / 1000; }
+    double kph() const { return _value * 3.600; }
 
-    double inpsec() const { return _value * 100 / 2.54; }
-    double ftpsec() const { return _value * 100 / 30.48; }
-    double mph() const { return _value * 360'000 / 160'934.4; }
+    double inpsec() const { return _value * 39.370'007'874'015'748; }  // 100/2.54
+    double ftpsec() const { return _value * 3.280'839'895'013'123; }  // 100/30.48
+    double mph() const { return _value * 2.236'936'292'054'402; }  // 360'000 / 160'934.4
 
     Velocity& operator+= (const Velocity& rh) { _value += rh._value; return *this; }
     Velocity& operator-= (const Velocity& rh) { _value -= rh._value; return *this; }

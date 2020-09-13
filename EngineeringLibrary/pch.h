@@ -28,16 +28,20 @@
 
 #include "Units/MomentOfArea.h"
 
+// Energy headers
+
+
 // Force headers
 #include "Units/Force.h"
+#include "Units/Torque.h"
 #include "Units/Stiffness.h"
 #include "Units/Damping.h"
 #include "Units/Pressure.h"
 
 // Movement headers
-
+#include "Units/Velocity.h"
 #include "Units/Acceleration.h"
 
-// Energy headers
+
 
 #endif //PCH_H

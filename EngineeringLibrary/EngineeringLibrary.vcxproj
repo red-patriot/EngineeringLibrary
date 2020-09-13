@@ -222,6 +222,7 @@
     <ClInclude Include="Units\Pressure.h" />
     <ClInclude Include="Units\Stiffness.h" />
     <ClInclude Include="Units\Time.h" />
+    <ClInclude Include="Units\Torque.h" />
     <ClInclude Include="Units\UnitBase.h" />
     <ClInclude Include="Units\Velocity.h" />
     <ClInclude Include="Units\Volume.h" />
@@ -256,6 +257,7 @@
     <ClCompile Include="Units\Pressure.cpp" />
     <ClCompile Include="Units\Stiffness.cpp" />
     <ClCompile Include="Units\Time.cpp" />
+    <ClCompile Include="Units\Torque.cpp" />
     <ClCompile Include="Units\Velocity.cpp" />
     <ClCompile Include="Units\Volume.cpp" />
   </ItemGroup>

@@ -2,6 +2,7 @@
 
 #include "PhysicsMath.h"
 #include "Force.h"
+#include "Torque.h"
 #include "Energy.h"
 #include "Stiffness.h"
 #include "Pressure.h"

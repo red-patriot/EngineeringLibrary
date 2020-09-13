@@ -105,6 +105,9 @@
     <ClInclude Include="Units\Energy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Units\Torque.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -183,6 +186,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Energy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Torque.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

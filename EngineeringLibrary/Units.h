@@ -27,8 +27,12 @@
 #include "Units/Volume.h"
 #include "Units/MomentOfArea.h"
 
+// Energy headers
+#include "Units/Energy.h"
+
 // Force headers
 #include "Units/Force.h"
+#include "Units/Torque.h"
 #include "Units/Stiffness.h"
 #include "Units/Damping.h"
 #include "Units/Pressure.h"
@@ -36,8 +40,5 @@
 // Movement headers
 #include "Units/Velocity.h"
 #include "Units/Acceleration.h"
-
-// Energy headers
-#include "Units/Energy.h"
 
 #endif

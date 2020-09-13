@@ -77,6 +77,13 @@ namespace eng {
   Energy ENGINEERINGLIBRARY_API operator/ (const Energy& lh, const double& rh);
   double ENGINEERINGLIBRARY_API operator/ (const Energy& lh, const Energy& rh);
 
+  bool ENGINEERINGLIBRARY_API operator== (const Energy& lh, const Energy& rh);
+  bool ENGINEERINGLIBRARY_API operator> (const Energy& lh, const Energy& rh);
+  bool ENGINEERINGLIBRARY_API operator!= (const Energy& lh, const Energy& rh);
+  bool ENGINEERINGLIBRARY_API operator< (const Energy& lh, const Energy& rh);
+  bool ENGINEERINGLIBRARY_API operator>= (const Energy& lh, const Energy& rh);
+  bool ENGINEERINGLIBRARY_API operator<= (const Energy& lh, const Energy& rh);
+
 }; // namespace eng
 
 /* Integration with Eigen */

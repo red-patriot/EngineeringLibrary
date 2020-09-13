@@ -38,6 +38,25 @@ namespace eng {
   	return double(lh.value() / rh.value());
   }
 
+  bool  operator== (const Energy& lh, const Energy& rh) {
+    return fuzzy_equals(lh.value(), rh.value());
+  }
+  bool  operator> (const Energy& lh, const Energy& rh) {
+    return fuzzy_greater(lh.value(), rh.value());
+  }
+  bool  operator!= (const Energy& lh, const Energy& rh) {
+    return !(lh == rh);
+  }
+  bool  operator< (const Energy& lh, const Energy& rh) {
+    return rh > lh;
+  }
+  bool  operator>= (const Energy& lh, const Energy& rh) {
+    return lh > rh || lh == rh;
+  }
+  bool  operator<= (const Energy& lh, const Energy& rh) {
+    return rh > lh || lh == rh;
+  }
+
   /* Literal operators
    * The following units are suported:
    * J, kJ, MJ,
