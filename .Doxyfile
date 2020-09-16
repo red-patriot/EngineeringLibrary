@@ -117,7 +117,7 @@ WARN_LOGFILE           =
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 INPUT                  = "C:\Users\bltan\source\custom libs\EngineeringLibrary\EngineeringLibrary" "C:\Users\bltan\source\custom libs\EngineeringLibrary\EngineeringLibrary\Units"
-INPUT_ENCODING         = UTF-8
+INPUT_ENCODING         =  ISO-8859-1
 FILE_PATTERNS          = *.c \
                          *.cc \
                          *.cxx \
