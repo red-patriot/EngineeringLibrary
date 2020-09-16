@@ -20,23 +20,23 @@
 namespace eng {
 
   /** A point in 2D space representing the centroid of an area
-   * \struct Centroid 
+   * \struct Point 
    */
-  struct ENGINEERINGLIBRARY_API Centroid {
+  struct ENGINEERINGLIBRARY_API Point {
     Length x;
     Length y;
 
     /**
-     * \brief Centroid constructor
+     * \brief Point constructor
      * 
-     * \param xx the x position of the centroid
-     * \param yy the y position of the centroid
+     * \param xx the x position of the point
+     * \param yy the y position of the point
      */
-    Centroid(const Length& xx = 0_m, const Length& yy = 0_m);
+    Point(const Length& xx = 0_m, const Length& yy = 0_m);
   };
 
   /** Area moments of inertia for a 2D area about various axes
-   * \struct AreaMomentsofInertia
+   * \struct AreaMomentofInertia
    */
   struct ENGINEERINGLIBRARY_API AreaMomentofInertia {
     SecondMomentOfArea Ix;
@@ -71,7 +71,7 @@ namespace eng {
      * \param c The centroid of the geometry
      */
     Geometry(const class Area& aa, const AreaMomentofInertia& mmoi,
-      const Centroid& c=(0_m, 0_m));
+      const Point& c=(0_m, 0_m));
     /**
      * \brief Geometry default destructor
      */
@@ -79,7 +79,7 @@ namespace eng {
 
     /** Returns the centroid of the Geometry.
      */
-    Centroid centroid() const;
+    Point centroid() const;
 
     /** Returns the area of the Geometry.
      */
@@ -94,11 +94,11 @@ namespace eng {
      * \param pt The point about which to calculate the mement of inertia
      * \return the area moment of inertia of this Geometry about pt
      */
-    AreaMomentofInertia moment_of_inertia(const Centroid& pt) const;
+    AreaMomentofInertia moment_of_inertia(const Point& pt) const;
     // TODO: Add a function to handle rotation of axes
 
   protected:
-    Centroid _centroid; /**<The centroid of this Geometry in space */
+    Point _centroid; /**<The centroid of this Geometry in space */
     Area _area; /**<The area of this Geometry */
     AreaMomentofInertia _MOI; /**<The moment of inertia of this 
                                     Geometry about the X, Y and XY axes */
@@ -117,7 +117,7 @@ namespace eng {
      * 
      * This constructor is intended for use only by Geometry children. 
      */
-    Geometry(const Centroid& c);
+    Geometry(const Point& c);
   };
 
 
@@ -136,7 +136,7 @@ namespace eng {
      * \param dd diameter of the circle
      * \param c the centroid of the circle
      */
-    Circle(const Length& dd = 0_m, const Centroid& c = (0_m, 0_m));
+    Circle(const Length& dd = 0_m, const Point& c = (0_m, 0_m));
     ~Circle() override = default;
 
     Length diameter() const { return diam; }
@@ -159,7 +159,7 @@ namespace eng {
      * \param dd The diameter of the SemiCircle
      * \param c The centroif the SemiCircle
      */
-    SemiCircle(const Length& dd = 0_m, const Centroid& c = (0_m, 0_m));
+    SemiCircle(const Length& dd = 0_m, const Point& c = (0_m, 0_m));
     ~SemiCircle() override = default;
     
   private:
@@ -182,7 +182,7 @@ namespace eng {
      * \param c The centroid of the HollowCircle
      */
     HollowCircle(const Length& ddo = 0_m, const Length& ddi = 0_m,
-      const Centroid& c = (0_m, 0_m));
+      const Point& c = (0_m, 0_m));
 
     Length outer_diameter() const { return diam_out; }
     Length inner_diameter() const { return diam_in; }
@@ -208,7 +208,7 @@ namespace eng {
      * \param c The centroid of the Rectangle
      */
     Rectangle(const Length& bb = 0_m, const Length& hh = 0_m,
-      const Centroid& c = (0_m, 0_m));
+      const Point& c = (0_m, 0_m));
     ~Rectangle() override = default;
 
     Length base() const { return b; }
@@ -238,7 +238,7 @@ namespace eng {
      */
     HollowRectangle(const Length& bbo = 0_m, const Length& hho = 0_m,
       const Length& bbi = 0_m, const Length& hhi = 0_m,
-      const Centroid& c = (0_m, 0_m));
+      const Point& c = (0_m, 0_m));
 
     Length outer_base() const { return bo; }
     Length outer_height() const { return ho; }
