@@ -84,6 +84,10 @@ namespace eng {
   bool ENGINEERINGLIBRARY_API operator>= (const Energy& lh, const Energy& rh);
   bool ENGINEERINGLIBRARY_API operator<= (const Energy& lh, const Energy& rh);
 
+  inline Energy ENGINEERINGLIBRARY_API conj(const Energy& x) { return x; }
+  inline Energy ENGINEERINGLIBRARY_API real(const Energy& x) { return x; }
+  inline Energy ENGINEERINGLIBRARY_API imag(const Energy&) { return 0_J; }
+
 }; // namespace eng
 
 /* Integration with Eigen */

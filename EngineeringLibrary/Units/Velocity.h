@@ -88,10 +88,11 @@ namespace eng {
 
   /** A class modeling a Velocity squared for intermediate steps in equations
    * \class Velocity2
-   * \addtogroup Units
    * 
    * \note This class is only for use in intermediate operations of
    * equations; it has limited functionality.
+   * 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Velocity2 : public UnitBase {
   public:

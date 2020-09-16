@@ -94,10 +94,11 @@ namespace eng {
 
   /** A class modeling a pressure squared for intermediate steps in equations
    * \class Pressure2 
-   * \addtogroup Units
    * 
    * \note This class is only for use in intermetiate operations of
    * equations; it has limited functionality. 
+   * 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Pressure2 : public UnitBase {
   public:

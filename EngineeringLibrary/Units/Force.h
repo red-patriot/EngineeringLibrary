@@ -85,6 +85,10 @@ namespace eng {
   inline Force ENGINEERINGLIBRARY_API conj(const Force& x) { return x; }
   inline Force ENGINEERINGLIBRARY_API real(const Force& x) { return x; }
   inline Force ENGINEERINGLIBRARY_API imag(const Force&) { return 0_N; }
+
+  // Forces are commonly used as vectors, so provide some vectors for convenience
+  using Force2d = Eigen::Matrix<Force, 1, 2>;
+  using Force3d = Eigen::Matrix<Force, 1, 3>;
   
 
 }; // namespace eng

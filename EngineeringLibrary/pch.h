@@ -29,7 +29,7 @@
 #include "Units/MomentOfArea.h"
 
 // Energy headers
-
+#include "Units/Energy.h"
 
 // Force headers
 #include "Units/Force.h"

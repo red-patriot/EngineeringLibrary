@@ -78,10 +78,11 @@ namespace eng {
 
   /** A class modeling a frequency squared for intermediate steps in equations
    * \class Frequency2
-   * \addtogroup Units
    * 
-   * \note This class is only for use in intermetiate operations of.
+   * \note This class is only for use in intermetiate operations of
    * equations; it has limited functionality. 
+   * 
+   * \addtogroup Units
    */
   class ENGINEERINGLIBRARY_API Frequency2 : public UnitBase { 
   public:

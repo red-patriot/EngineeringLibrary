@@ -76,8 +76,19 @@ namespace eng {
   bool ENGINEERINGLIBRARY_API operator>= (const Torque& lh, const Torque& rh);
   bool ENGINEERINGLIBRARY_API operator<= (const Torque& lh, const Torque& rh);
 
+  inline Torque ENGINEERINGLIBRARY_API conj(const Torque& x) { return x; }
+  inline Torque ENGINEERINGLIBRARY_API real(const Torque& x) { return x; }
+  inline Torque ENGINEERINGLIBRARY_API imag(const Torque&) { return 0_Nm; }
+
   // Some conventions use "Moment" istead of "Torque"
   using Moment = Torque;
+
+  // Torques are commonly used as vectors, so provide some vectors for convenience
+  using Torque2d = Eigen::Matrix<Torque, 1, 2>;
+  using Torque3d = Eigen::Matrix<Torque, 1, 3>;
+
+  using Moment2d = Eigen::Matrix<Moment, 1, 2>;
+  using Moment3d = Eigen::Matrix<Moment, 1, 3>;
 
 };  // namespace eng
 

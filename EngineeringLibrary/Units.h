@@ -5,7 +5,7 @@
 
 /**
  * \defgroup Units Units
- * This groups contains classes which are unit types for the Engineering 
+ * This group contains classes which are unit types for the Engineering 
  * Library. These classes allow for accurate unit conversions and maintain their
  * accuracy during calculations. 
  */
