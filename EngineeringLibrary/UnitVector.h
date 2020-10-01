@@ -9,7 +9,7 @@
 #ifndef Unit_Vector_h_INCLUDED
 #define Unit_Vector_h_INCLUDED
 
-#include <Eigen/Core>
+#include <eigen3/Eigen/Core>
 
 namespace eng {
   using UnitVector2d = Eigen::Vector2d;

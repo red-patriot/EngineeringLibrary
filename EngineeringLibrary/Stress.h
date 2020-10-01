@@ -10,7 +10,7 @@
  * \date   August 2020
  *********************************************************************/
 
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 
 #include "EngineeringExport.h"
 #include "Material.h"

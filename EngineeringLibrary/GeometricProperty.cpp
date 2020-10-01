@@ -20,7 +20,7 @@ namespace eng {
     return moment_of_inertia(geo, centroid(geo));
   }
 
-  AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, const Centroid& pt) {
+  AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, const Point& pt) {
     AreaMomentofInertia ret{0_m4, 0_m4, 0_m4};
 
     for (auto& g : geo) {
@@ -34,7 +34,7 @@ namespace eng {
   }
 
   AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, 
-                                        const std::vector<Geometry*>& neg, const Centroid& pt) {
+                                        const std::vector<Geometry*>& neg, const Point& pt) {
     AreaMomentofInertia ret{0_m4, 0_m4, 0_m4},
       ret_pos = moment_of_inertia(geo, pt),
       ret_neg = moment_of_inertia(neg, pt);
@@ -48,7 +48,7 @@ namespace eng {
 
   AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, 
                                         const std::vector<Geometry*>& neg) {
-    Centroid pt = centroid(geo, neg);
+    Point pt = centroid(geo, neg);
     
     return moment_of_inertia(geo, neg, pt);
   }
@@ -74,13 +74,13 @@ namespace eng {
   }
 
   /*
-   *  Centroid
+   *  Point
    */
-  Centroid centroid(const std::vector<Geometry*>& geo) {
+  Point centroid(const std::vector<Geometry*>& geo) {
     FirstMomentOfArea Qx{0_m3};
     FirstMomentOfArea Qy{0_m3};
     Area a{0_m2};
-    Centroid ret;
+    Point ret;
 
     for (auto& g : geo) {
       auto area = g->area();
@@ -96,11 +96,11 @@ namespace eng {
     return ret;
   }
 
-  Centroid centroid(const std::vector<Geometry*>& geo, const std::vector<Geometry*>& neg) {
+  Point centroid(const std::vector<Geometry*>& geo, const std::vector<Geometry*>& neg) {
     FirstMomentOfArea Qx{0_m3};
     FirstMomentOfArea Qy{0_m3};
     Area a{0_m2};
-    Centroid ret;
+    Point ret;
 
     // sum up the positive sections of the geometry
     for (auto& g : geo) {

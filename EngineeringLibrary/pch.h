@@ -7,7 +7,6 @@
 #ifndef EngineeringLibrary_PCH_H
 #define EngineeringLibrary_PCH_H
 
-// add headers that you want to pre-compile here
 #include "framework.h"
 
 #include "EngineeringExport.h"
@@ -41,7 +40,5 @@
 // Movement headers
 #include "Units/Velocity.h"
 #include "Units/Acceleration.h"
-
-
 
 #endif //PCH_H

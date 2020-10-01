@@ -24,13 +24,13 @@ namespace eng {
   
   /* Calculate the Moment of Inertia of a composite shape about the given centroid. */
   AreaMomentofInertia ENGINEERINGLIBRARY_API moment_of_inertia(const std::vector<Geometry*>& geo, 
-                                                               const Centroid& pt);
+                                                               const Point& pt);
   /* Calculate the Moment of Inertia of a composite shape about its own centroid. */
   AreaMomentofInertia ENGINEERINGLIBRARY_API moment_of_inertia(const std::vector<Geometry*>& geo);
   /* Calculate the Moment of Inertia of a composite shape about the given centroid.
      neg represents holes in the geometry. */
   AreaMomentofInertia ENGINEERINGLIBRARY_API moment_of_inertia(const std::vector<Geometry*>& geo,
-    const std::vector<Geometry*>& neg, const Centroid& pt);
+    const std::vector<Geometry*>& neg, const Point& pt);
   /* Calculate the Moment of Inertia of a composite shape about its own centroid.
      neg represents holes in the geometry. */
   AreaMomentofInertia ENGINEERINGLIBRARY_API moment_of_inertia(const std::vector<Geometry*>& geo, 
@@ -44,11 +44,11 @@ namespace eng {
   /* Calculate Radius of Gyration of a geometry about the given axis */
   class Length ENGINEERINGLIBRARY_API radius_of_gyration(const Geometry& geo, const Axis& axis);
   
-  /* Calculate the Centroid of a composite shape. */
-  Centroid ENGINEERINGLIBRARY_API centroid(const std::vector<Geometry*>& geo);
-  /* Calculate the Centroid of a composite shape.
+  /* Calculate the Point of a composite shape. */
+  Point ENGINEERINGLIBRARY_API centroid(const std::vector<Geometry*>& geo);
+  /* Calculate the Point of a composite shape.
      neg represents holes in the geometry. */
-  Centroid ENGINEERINGLIBRARY_API centroid(const std::vector<Geometry*>& geo, 
+  Point ENGINEERINGLIBRARY_API centroid(const std::vector<Geometry*>& geo, 
                                            const std::vector<Geometry*>& neg);
 
 };  // namespace eng

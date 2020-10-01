@@ -1,7 +1,7 @@
 #include "pch.h"
 
 #include <algorithm>
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
 
 #include "Stress.h"
 #include "Material.h"

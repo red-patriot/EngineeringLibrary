@@ -12,7 +12,7 @@
 
 #include "Energy.h"
 
-#include <Eigen/Core>
+#include <eigen3/Eigen/Core>
 
 namespace eng {
 
