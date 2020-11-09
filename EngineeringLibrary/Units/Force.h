@@ -19,7 +19,7 @@ namespace eng {
    * \class Force 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Force : public UnitBase {
+  class ENGINEERINGLIBRARY_API Force : public UnitBase<1, 1, -2, 0, 0, 0, 0> {
   public:
     /**
      * \brief Force constructor
@@ -27,7 +27,7 @@ namespace eng {
      * \param _newtons The magnitude of the force in Newtons
      */
     explicit Force(double newtons=0) : UnitBase(newtons) { }
-    Force(const Force&) = default;
+    Force(const UnitBase<1, 1, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Force() = default;
 
     double N() const { return _value; }
@@ -53,34 +53,6 @@ namespace eng {
 
   Force ENGINEERINGLIBRARY_API operator"" _kips(long double val);
   Force ENGINEERINGLIBRARY_API operator"" _kips(unsigned long long val);
-
-  Force ENGINEERINGLIBRARY_API operator- (const Force& lh);
-
-  Force ENGINEERINGLIBRARY_API operator+ (const Force& lh, const Force& rh);
-
-  Force ENGINEERINGLIBRARY_API operator- (const Force& lh, const Force& rh);
-
-  Force ENGINEERINGLIBRARY_API operator*(const class Pressure& lh, const class Area& rh);
-  Force ENGINEERINGLIBRARY_API operator*(const class Area& lh, const class Pressure& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const Force& lh, const double& n);
-  Force ENGINEERINGLIBRARY_API operator* (const double& n, const Force& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Stiffness& lh, const class Length& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Length& lh, const class Stiffness& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Mass& lh, const class Acceleration& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Acceleration& lh, const class Mass& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Damping& lh, const class Velocity& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Velocity& lh, const class Damping& rh);
-
-  Force ENGINEERINGLIBRARY_API operator/ (const class Energy& lh, const class Length& rh);
-  Force ENGINEERINGLIBRARY_API operator/ (const Force& lh, const double& n);
-  double ENGINEERINGLIBRARY_API operator/ (const Force& lh, const Force& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Force& lh, const Force& rh);
 
   inline Force ENGINEERINGLIBRARY_API conj(const Force& x) { return x; }
   inline Force ENGINEERINGLIBRARY_API real(const Force& x) { return x; }

@@ -19,7 +19,7 @@ namespace eng {
    * \class Angle 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Angle : public UnitBase{
+  class ENGINEERINGLIBRARY_API Angle : public UnitBase<0, 0, 0, 0, 0, 0, 0> {
   public:
     /**
      * \brief Construct an Angle
@@ -28,8 +28,10 @@ namespace eng {
      */
     explicit Angle(const double& radians = 0) : UnitBase(radians) { }  
     //? Becuase radians are "imaginary" units, maybe this should be implicit?
-    Angle(const Angle&) = default;
+    Angle(const UnitBase<0, 0, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Angle() = default;
+
+    operator UnitBase<0, 0, 0, 0, 0, 0, 0> () { return UnitBase(value()); }
 
     double rad() const { return _value; }
     double deg() const;    // defined in Angle.cpp to not require PhysicsMath.h here
@@ -43,24 +45,6 @@ namespace eng {
 
   Angle ENGINEERINGLIBRARY_API operator"" _rad(long double val);
   Angle ENGINEERINGLIBRARY_API operator"" _rad(unsigned long long val);
-  
-  Angle ENGINEERINGLIBRARY_API operator- (const Angle& rh);
-
-  Angle ENGINEERINGLIBRARY_API operator+ (const Angle& lh, const Angle& rh);
-
-  Angle ENGINEERINGLIBRARY_API operator- (const Angle& lh, const Angle& rh);
-
-  Angle ENGINEERINGLIBRARY_API operator* (const Angle& lh, const double& n);
-  Angle ENGINEERINGLIBRARY_API operator* (const double& n, const Angle& rh);
-
-  Angle ENGINEERINGLIBRARY_API operator/ (const Angle& lh, const double& n);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Angle& lh, const Angle& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Angle& lh, const Angle& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Angle& lh, const Angle& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Angle& lh, const Angle& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Angle& lh, const Angle& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Angle& lh, const Angle& rh);
 
   double ENGINEERINGLIBRARY_API sin(const Angle& a);
   double ENGINEERINGLIBRARY_API cos(const Angle& a);

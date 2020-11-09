@@ -22,7 +22,7 @@ namespace eng {
    * \class Pressure A force distributed over an area
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Pressure : public UnitBase {
+  class ENGINEERINGLIBRARY_API Pressure : public UnitBase<1, -1, -2, 0, 0, 0, 0> {
   public:
     /**
      * \brief Pressure constructor
@@ -30,7 +30,7 @@ namespace eng {
      * \param _pascals the measure of pressure in Pascals
      */
     explicit Pressure(double _pascals = 0) : UnitBase(_pascals) { }
-    Pressure(const Pressure&) = default;
+    Pressure(const UnitBase<1, -1, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Pressure() = default;
 
     double Pa() const { return _value; }
@@ -66,63 +66,9 @@ namespace eng {
   Pressure ENGINEERINGLIBRARY_API operator"" _ksi (long double val);
   Pressure ENGINEERINGLIBRARY_API operator"" _ksi (unsigned long long val);
 
-  Pressure ENGINEERINGLIBRARY_API operator- (const Pressure& lh);
-
-  Pressure ENGINEERINGLIBRARY_API operator+ (const Pressure& lh, const Pressure& rh);
-
-  Pressure ENGINEERINGLIBRARY_API operator- (const Pressure& lh, const Pressure& rh);
-
-  Pressure ENGINEERINGLIBRARY_API operator* (const Pressure& lh, const double& n);
-  Pressure ENGINEERINGLIBRARY_API operator* (const double& n, const Pressure& rh);
-
-  Pressure ENGINEERINGLIBRARY_API operator/ (const class Pressure2& lh, const Pressure& rh);
-  Pressure ENGINEERINGLIBRARY_API operator/ (const Pressure& lh, const double& n);
-  Pressure ENGINEERINGLIBRARY_API operator/ (const class Force& lh, const class Area& rh);
-  Pressure ENGINEERINGLIBRARY_API operator/ (const class Stiffness& lh, const class Length& rh);
-  double ENGINEERINGLIBRARY_API operator/ (const Pressure& lh, const Pressure& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Pressure& lh, const Pressure& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Pressure& lh, const Pressure& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Pressure& lh, const Pressure& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Pressure& lh, const Pressure& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Pressure& lh, const Pressure& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Pressure& lh, const Pressure& rh);
-
   inline Pressure ENGINEERINGLIBRARY_API conj(const Pressure& x) { return x; }
   inline Pressure ENGINEERINGLIBRARY_API real(const Pressure& x) { return x; }
   inline Pressure ENGINEERINGLIBRARY_API imag(const Pressure&) { return 0_Pa; }
-
-  /** A class modeling a pressure squared for intermediate steps in equations
-   * \class Pressure2 
-   * 
-   * \note This class is only for use in intermetiate operations of
-   * equations; it has limited functionality. 
-   * 
-   * \addtogroup Units
-   */
-  class ENGINEERINGLIBRARY_API Pressure2 : public UnitBase {
-  public:
-    /**
-     * \brief Pressure2 constructor
-     * 
-     * \param _pascals2 the measure of Pascals^2
-     */
-    explicit Pressure2(const double _pascals2 = 0) : UnitBase(_pascals2) { }
-    Pressure2(const Pressure2&) = default;
-    ~Pressure2() = default;
-  };
-
-  Pressure2 ENGINEERINGLIBRARY_API operator+ (const Pressure2& lh, const Pressure2& rh);
-
-  Pressure2 ENGINEERINGLIBRARY_API operator- (const Pressure2& lh, const Pressure2& rh);
-
-  Pressure2 ENGINEERINGLIBRARY_API operator* (const Pressure& lh, const Pressure& rh);
-  Pressure2 ENGINEERINGLIBRARY_API operator* (const Pressure2& lh, const double& n);
-  Pressure2 ENGINEERINGLIBRARY_API operator* (const double& n, const Pressure2& rh);
-
-  Pressure2 ENGINEERINGLIBRARY_API operator/ (const Pressure2& lh, const double& n);
-  double ENGINEERINGLIBRARY_API operator/ (const Pressure2& lh, const Pressure2& rh);
-
 }; // namespace eng
 
 /* Integration with Eigen */

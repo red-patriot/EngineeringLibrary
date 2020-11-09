@@ -23,7 +23,7 @@ namespace eng {
    * \class Length 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Length : public UnitBase {
+  class ENGINEERINGLIBRARY_API Length : public UnitBase<0, 1, 0, 0, 0, 0, 0> {
   public:
     /**
      * \brief Length constructor
@@ -31,7 +31,7 @@ namespace eng {
      * \param _meters the measure of the length in meters
      */
     explicit Length(double meters = 0) : UnitBase(meters) { }
-    Length(const Length&) = default;
+    Length(const UnitBase<0, 1, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Length() = default;
 
     double mm() const { return _value * 1000; }
@@ -69,31 +69,6 @@ namespace eng {
 
   Length ENGINEERINGLIBRARY_API operator"" _mi (long double val);
   Length ENGINEERINGLIBRARY_API operator"" _mi (unsigned long long val);
-
-  Length ENGINEERINGLIBRARY_API operator- (const Length& lh);
-
-  Length ENGINEERINGLIBRARY_API operator+ (const Length& lh, const Length& rh);
-
-  Length ENGINEERINGLIBRARY_API operator- (const Length& lh, const Length& rh);
-
-  Length ENGINEERINGLIBRARY_API operator* (const Length& lh, const double& n);
-  Length ENGINEERINGLIBRARY_API operator* (const double& n, const Length& rh);
-  Length ENGINEERINGLIBRARY_API operator* (const class Velocity& lh, const class Time& rh);
-  Length ENGINEERINGLIBRARY_API operator* (const class Time& lh, const class Velocity& rh);
-
-  Length ENGINEERINGLIBRARY_API operator/ (const class Energy& lh, const class Force& rh);
-  Length ENGINEERINGLIBRARY_API operator/ (const Area& lh, const Length& rh);
-  Length ENGINEERINGLIBRARY_API operator/ (const Volume& lh, const Area& rh);
-  Length ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Volume& rh);
-  Length ENGINEERINGLIBRARY_API operator/ (const Length& lh, const double& n);
-  double ENGINEERINGLIBRARY_API operator/ (const Length& lh, const Length& rh);
-   
-  bool ENGINEERINGLIBRARY_API operator== (const Length& lh, const Length& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Length& lh, const Length& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Length& lh, const Length& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Length& lh, const Length& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Length& lh, const Length& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Length& lh, const Length& rh);
 
   inline Length ENGINEERINGLIBRARY_API conj(const Length& x) { return x; }
   inline Length ENGINEERINGLIBRARY_API real(const Length& x) { return x; }

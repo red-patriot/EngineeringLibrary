@@ -7,58 +7,6 @@
 #include "PhysicsMath.h"
 
 namespace eng {
-  Area operator-(const Area& lh) {
-    return Area(-lh.value());
-  }
-  Area operator+ (const Area& lh, const Area& rh) {
-    return Area(lh.value() + rh.value());
-  }
-
-  Area operator- (const Area& lh, const Area& rh) {
-    return Area(lh.value() - rh.value());
-  }
-
-  Area operator* (const Length& lh, const Length& rh) {
-    return Area(lh.value() * rh.value());
-  }
-  Area operator* (const Area& lh, const double& n) {
-    return Area(lh.value() * n);
-  }
-  Area operator* (const double& n, const Area& rh) {
-    return rh *n;
-  }
-
-  Area operator/ (const Volume& lh, const Length& rh) {
-    return Area(lh.value() / rh.value());
-  }
-  Area operator/ (const SecondMomentOfArea& lh, const Area& rh) {
-    return Area(lh.value() / rh.value());
-  }
-  Area operator/ (const Area& lh, const double& n) {
-    return Area(lh.value() / n);
-  }
-  double operator/ (const Area& lh, const Area& rh) {
-    return lh.value() / rh.value();
-  }
-
-  bool operator== (const Area& lh, const Area& rh) {
-    return fuzzy_equals(lh.value(), rh.value());
-  }
-  bool operator> (const Area& lh, const Area& rh) {
-    return fuzzy_greater(lh.value(), rh.value());
-  }
-  bool operator!= (const Area& lh, const Area& rh) {
-    return !(lh == rh);
-  }
-  bool operator< (const Area& lh, const Area& rh) {
-    return rh > lh;
-  }
-  bool operator>= (const Area& lh, const Area& rh) {
-    return lh > rh || lh == rh;
-  }
-  bool operator<= (const Area& lh, const Area& rh) {
-    return rh > lh || lh == rh;
-  }
 
   /* Literal operators
    * The following units are supported:

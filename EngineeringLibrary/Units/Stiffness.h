@@ -19,7 +19,7 @@ namespace eng {
    * \class Stiffness 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Stiffness : public UnitBase {
+  class ENGINEERINGLIBRARY_API Stiffness : public UnitBase<1, 0, -2, 0, 0, 0, 0> {
   public:
     /**
      * \brief Stiffness constructor
@@ -27,7 +27,7 @@ namespace eng {
      * \param _newtons_per_meter the measure of stiffness in Newtons/meter
      */
     explicit Stiffness(double _newtons_per_meter = 0) : UnitBase(_newtons_per_meter) { }
-    Stiffness(const Stiffness&) = default;
+    Stiffness(const UnitBase<1, 0, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Stiffness() = default;
 
     double Npm() const { return _value; }
@@ -53,29 +53,6 @@ namespace eng {
 
   Stiffness ENGINEERINGLIBRARY_API operator"" _lbpft(long double val);
   Stiffness ENGINEERINGLIBRARY_API operator"" _lbpft(unsigned long long val);
-
-  Stiffness ENGINEERINGLIBRARY_API operator- (const Stiffness& lh);
-
-  Stiffness ENGINEERINGLIBRARY_API operator+ (const Stiffness& lh, const Stiffness& rh);
-
-  Stiffness ENGINEERINGLIBRARY_API operator- (const Stiffness& lh, const Stiffness& rh);
-
-  Stiffness ENGINEERINGLIBRARY_API operator* (const Stiffness& lh, const double& n);
-  Stiffness ENGINEERINGLIBRARY_API operator* (const double& n, const Stiffness& rh);
-  Stiffness ENGINEERINGLIBRARY_API operator* (const class Pressure& lh, const class Length& rh);
-  Stiffness ENGINEERINGLIBRARY_API operator* (const class Length& lh, const class Pressure& rh);
-
-  Stiffness ENGINEERINGLIBRARY_API operator/ (const Stiffness& lh, const double& n);
-  Stiffness ENGINEERINGLIBRARY_API operator/ (const class Force& lh, const class Length& rh);
-  Stiffness ENGINEERINGLIBRARY_API operator/ (const class Damping& lh, const class Time& rh);
-  double ENGINEERINGLIBRARY_API operator/ (const Stiffness& lh, const Stiffness& rh);
-
-  bool ENGINEERINGLIBRARY_API  operator== (const Stiffness& lh, const Stiffness& rh);
-  bool ENGINEERINGLIBRARY_API  operator> (const Stiffness& lh, const Stiffness& rh);
-  bool ENGINEERINGLIBRARY_API  operator!= (const Stiffness& lh, const Stiffness& rh);
-  bool ENGINEERINGLIBRARY_API  operator< (const Stiffness& lh, const Stiffness& rh);
-  bool ENGINEERINGLIBRARY_API  operator>= (const Stiffness& lh, const Stiffness& rh);
-  bool ENGINEERINGLIBRARY_API  operator<= (const Stiffness& lh, const Stiffness& rh);
 
   inline Stiffness ENGINEERINGLIBRARY_API conj(const Stiffness& x) { return x; }
   inline Stiffness ENGINEERINGLIBRARY_API real(const Stiffness& x) { return x; }

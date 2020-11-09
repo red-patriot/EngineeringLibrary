@@ -19,7 +19,7 @@ namespace eng {
    * \class Mass
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Mass : public UnitBase {
+  class ENGINEERINGLIBRARY_API Mass : public UnitBase<1, 0, 0, 0, 0, 0, 0> {
   public:
     /**
      * \brief Mass constructor
@@ -27,7 +27,7 @@ namespace eng {
      * \param _kilograms the measure of the mass in kilograms
      */
     explicit Mass(const double kilograms=0) : UnitBase(kilograms) { }
-    Mass(const Mass&) = default;
+    Mass(const UnitBase<1, 0, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Mass() = default;
 
     double g() const { return _value * 1000; }
@@ -49,27 +49,6 @@ namespace eng {
 
   Mass ENGINEERINGLIBRARY_API operator"" _slug (long double val);
   Mass ENGINEERINGLIBRARY_API operator"" _slug (unsigned long long val);
-
-  Mass ENGINEERINGLIBRARY_API operator- (const Mass& lh);
-
-  Mass ENGINEERINGLIBRARY_API operator+ (const Mass& lh, const Mass& rh);
-
-  Mass ENGINEERINGLIBRARY_API operator- (const Mass& lh, const Mass& rh);
-
-  Mass ENGINEERINGLIBRARY_API operator* (const Mass& lh, const double& rh);
-  Mass ENGINEERINGLIBRARY_API operator* (const double& lh, const Mass& rh);
-  Mass ENGINEERINGLIBRARY_API operator* (const class Damping& lh, const class Time& rh);
-  Mass ENGINEERINGLIBRARY_API operator* (const class Time& lh, const class Damping& rh);
-
-  Mass ENGINEERINGLIBRARY_API operator/ (const Mass& lh, const double& rh);
-  Mass ENGINEERINGLIBRARY_API operator/ (const class Force& lh, const class Acceleration& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Mass& lh, const Mass& rh);
 
   inline Mass ENGINEERINGLIBRARY_API conj(const Mass& x) { return x; }
   inline Mass ENGINEERINGLIBRARY_API real(const Mass& x) { return x; }

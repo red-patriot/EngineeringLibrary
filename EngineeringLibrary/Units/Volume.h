@@ -22,7 +22,7 @@ namespace eng {
   /** A measure of the 3D space taken up an object
    * \class Volume A 3D geometry
    */
-  class ENGINEERINGLIBRARY_API Volume : public UnitBase {
+  class ENGINEERINGLIBRARY_API Volume : public UnitBase<0, 3, 0, 0, 0, 0, 0> {
   public:
     /**
      * \brief Volume constructor
@@ -30,7 +30,7 @@ namespace eng {
      * \param _meters3 
      */
     explicit Volume(const double& _meters3 = 0) : UnitBase(_meters3) { }
-    Volume(const Volume&) = default;
+    Volume(const UnitBase<0, 3, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Volume() = default;
 
     double mm3() const { return _value * 1'000'000'000; }
@@ -60,28 +60,6 @@ namespace eng {
 
   Volume ENGINEERINGLIBRARY_API operator"" _ft3(long double val);
   Volume ENGINEERINGLIBRARY_API operator"" _ft3(unsigned long long val);
-
-  Volume ENGINEERINGLIBRARY_API operator- (const Volume& lh);
-
-  Volume ENGINEERINGLIBRARY_API operator+ (const Volume& lh, const Volume& rh);
-
-  Volume ENGINEERINGLIBRARY_API operator- (const Volume& lh, const Volume& rh);
-
-  Volume ENGINEERINGLIBRARY_API operator* (const Area& lh, const Length& rh);
-  Volume ENGINEERINGLIBRARY_API operator* (const Length& lh, const Area& rh);
-  Volume ENGINEERINGLIBRARY_API operator* (const Volume& lh, const double& n);
-  Volume ENGINEERINGLIBRARY_API operator* (const double& n, const Volume& rh);
-
-  Volume ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Length& rh);
-  Volume ENGINEERINGLIBRARY_API operator/ (const Volume& lh, const double& n);
-  double ENGINEERINGLIBRARY_API operator/ (const Volume& lh, const Volume& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Volume& lh, const Volume& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Volume& lh, const Volume& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Volume& lh, const Volume& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Volume& lh, const Volume& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Volume& lh, const Volume& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Volume& lh, const Volume& rh);
 
   inline Volume ENGINEERINGLIBRARY_API conj(const Volume& x) { return x; }
   inline Volume ENGINEERINGLIBRARY_API real(const Volume& x) { return x; }

@@ -23,11 +23,9 @@
 
 /* TODO Units:
  * Viscosity
- * Moments/Torque
  */
 
 /* TODO:
- *    Write Unit Tests
  *    Add Static Systems analysis
  *    Change comparison operators to work on UnitBase class
  *    Update sample materials information

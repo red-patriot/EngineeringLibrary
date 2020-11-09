@@ -19,7 +19,7 @@ namespace eng {
    * \class Damping
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Damping : public UnitBase {
+  class ENGINEERINGLIBRARY_API Damping : public UnitBase<1, 0, -1, 0, 0, 0, 0> {
   public:
     /**
      * \brief Damping constructor
@@ -28,7 +28,7 @@ namespace eng {
      */
     explicit Damping(const double newton_seconds_per_meter = 0) :
       UnitBase(newton_seconds_per_meter) { }
-    Damping(const Damping&) = default;
+    Damping(const UnitBase<1, 0, -1, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Damping() = default;
 
     double Nspm() const { return _value; }
@@ -55,29 +55,6 @@ namespace eng {
 
   Damping ENGINEERINGLIBRARY_API operator"" _lbspft (long double val);
   Damping ENGINEERINGLIBRARY_API operator"" _lbspft (unsigned long long val);
-
-  Damping ENGINEERINGLIBRARY_API operator- (const Damping& lh);
-
-  Damping ENGINEERINGLIBRARY_API operator+ (const Damping& lh, const Damping& rh);
-
-  Damping ENGINEERINGLIBRARY_API operator- (const Damping& lh, const Damping& rh);
-
-  Damping ENGINEERINGLIBRARY_API operator* (const Damping& lh, const double& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const double& lh, const Damping& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const class Stiffness& lh, const class Time& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const class Time& lh, const class Stiffness& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const class Mass& lh, const class Frequency& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const class Frequency& lh, const class Mass& rh);
-
-  Damping ENGINEERINGLIBRARY_API operator/ (const Damping& lh, const double& rh);
-  double ENGINEERINGLIBRARY_API operator/ (const Damping& lh, const Damping& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Damping& lh, const Damping& rh);
 
 };  // namespace eng
 

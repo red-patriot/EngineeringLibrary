@@ -5,53 +5,10 @@
 
 namespace eng {
 
-  Time operator- (const Time& lh) {
-    return Time(-lh.value());
-  }
-
-  Time operator+ (const Time& lh, const Time& rh) {
-	  return Time(lh.value() + rh.value());
-  }
-
-  Time operator- (const Time& lh, const Time& rh) {
-	  return Time(lh.value() - rh.value());
-  }
-
-  Time operator* (const Time& lh, const double& rh) {
-	  return Time(lh.value() * rh);
-  }
-  Time operator* (const double& lh, const Time& rh) {
-	  return Time(lh * rh.value());
-  }
-
-  Time operator/ (const Time& lh, const double& rh) {
-	  return Time(lh.value() / rh);
-  }
-
-  // Comparison operators
-  bool operator== (const Time& lh, const Time& rh) {
-    return fuzzy_equals(lh.value(), rh.value());
-  }
-  bool operator> (const Time& lh, const Time& rh) {
-    return fuzzy_greater(lh.value(), rh.value());
-  }
-  bool operator!= (const Time& lh, const Time& rh) {
-    return !(lh == rh);
-  }
-  bool operator< (const Time& lh, const Time& rh) {
-    return rh > lh;
-  }
-  bool operator>= (const Time& lh, const Time& rh) {
-    return lh > rh || lh == rh;
-  }
-  bool operator<= (const Time& lh, const Time& rh) {
-    return rh > lh || lh == rh;
-  }
-
   /* Literal operators
-  * The following units are supported:
-  * sec, minute, hour
-  */
+   * The following units are supported:
+   * sec, minute, hour
+   */
 
   Time operator"" _sec (long double val) {
     return Time(val);

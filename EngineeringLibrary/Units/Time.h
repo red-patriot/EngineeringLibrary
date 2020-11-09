@@ -20,7 +20,7 @@ namespace eng {
    * \class Time 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Time : public UnitBase {
+  class ENGINEERINGLIBRARY_API Time : public UnitBase<0, 0, 1, 0, 0, 0, 0> {
   public:
     /**
      * \brief Time constructor
@@ -28,7 +28,7 @@ namespace eng {
      * \param _seconds the measure of time in seconds
      */
     explicit Time(const double _seconds = 0) : UnitBase(_seconds) { }
-    Time(const Time&) = default;
+    Time(const UnitBase<0, 0, 1, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Time() = default;
 
     double sec() const { return _value; }
@@ -49,25 +49,6 @@ namespace eng {
 
   Time ENGINEERINGLIBRARY_API operator"" _hour (long double val);
   Time ENGINEERINGLIBRARY_API operator"" _hour (unsigned long long val);
-
-  Time ENGINEERINGLIBRARY_API operator- (const Time& lh);
-
-  Time ENGINEERINGLIBRARY_API operator+ (const Time& lh, const Time& rh);
-
-  Time ENGINEERINGLIBRARY_API operator- (const Time& lh, const Time& rh);
-  
-  Time ENGINEERINGLIBRARY_API operator* (const Time& lh, const double& rh);
-  Time ENGINEERINGLIBRARY_API operator* (const double& lh, const Time& rh);
-
-  Time ENGINEERINGLIBRARY_API operator/ (const Time& lh, const double& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Time& lh, const Time& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Time& lh, const Time& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Time& lh, const Time& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Time& lh, const Time& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Time& lh, const Time& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Time& lh, const Time& rh);
-
 
   inline Time ENGINEERINGLIBRARY_API conj(const Time& x) { return x; }
   inline Time ENGINEERINGLIBRARY_API real(const Time& x) { return x; }

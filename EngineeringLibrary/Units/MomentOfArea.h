@@ -30,7 +30,7 @@ namespace eng {
    * \class SecondMomentOfArea 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API SecondMomentOfArea : public UnitBase {
+  class ENGINEERINGLIBRARY_API SecondMomentOfArea : public UnitBase<0, 4, 0, 0, 0, 0, 0> {
   public:
     /**
      * \brief SecondMomentOfArea constructor
@@ -38,7 +38,7 @@ namespace eng {
      * \param _meters4 the measure of the area moment of inertia in meters^4
      */
     explicit SecondMomentOfArea(const double& meters4 = 0) : UnitBase(meters4) { }
-    SecondMomentOfArea(const SecondMomentOfArea&) = default;
+    SecondMomentOfArea(const UnitBase<0, 4, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~SecondMomentOfArea() = default;
 
     double mm4() const { return _value * 1'000'000'000'000; }
@@ -67,41 +67,6 @@ namespace eng {
 
   SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _ft4(long double val);
   SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _ft4(unsigned long long val);
-
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator- (const SecondMomentOfArea& lh);
-  
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator+ (const SecondMomentOfArea& lh, 
-                                                       const SecondMomentOfArea& rh);
-
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator- (const SecondMomentOfArea& lh, 
-                                                       const SecondMomentOfArea& rh);
-
-
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const SecondMomentOfArea& lh, 
-                                                       const double& n);
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const double& n,
-                                                       const SecondMomentOfArea& rh);
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const Volume& lh, const Length& rh);
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const Length& lh, const Volume& rh);
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator* (const Area& lh, const Area& rh);
-
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, 
-                                                       const double& n);
-  double ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, 
-                                           const SecondMomentOfArea& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const SecondMomentOfArea& lh, 
-                                          const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const SecondMomentOfArea& lh, 
-                                         const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const SecondMomentOfArea& lh,
-                                          const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const SecondMomentOfArea& lh, 
-                                         const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const SecondMomentOfArea& lh,
-                                          const SecondMomentOfArea& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const SecondMomentOfArea& lh, 
-                                          const SecondMomentOfArea& rh);
 
   inline SecondMomentOfArea ENGINEERINGLIBRARY_API conj(const SecondMomentOfArea& x) { return x; }
   inline SecondMomentOfArea ENGINEERINGLIBRARY_API real(const SecondMomentOfArea& x) { return x; }

@@ -20,7 +20,7 @@ namespace eng {
    * \class Energy
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Energy : public UnitBase {
+  class ENGINEERINGLIBRARY_API Energy : public UnitBase<1, 2, -2, 0, 0, 0, 0> {
   public:
     /**
      * \brief Energy constructor
@@ -28,7 +28,7 @@ namespace eng {
      * \param _Joules the measure of energy in Joules
      */
     explicit Energy(const double _Joules = 0) : UnitBase(_Joules) { }
-    Energy(const Energy&) = default;
+    Energy(const UnitBase<1, 2, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Energy() = default;
 
     double J() const { return _value; }
@@ -62,27 +62,6 @@ namespace eng {
 
   Energy ENGINEERINGLIBRARY_API operator"" _BTU (long double val);
   Energy ENGINEERINGLIBRARY_API operator"" _BTU (unsigned long long val);
-
-  Energy ENGINEERINGLIBRARY_API operator- (const Energy& lh);
-
-  Energy ENGINEERINGLIBRARY_API operator+ (const Energy& lh, const Energy& rh);
-
-  Energy ENGINEERINGLIBRARY_API operator- (const Energy& lh, const Energy& rh);
-
-  Energy ENGINEERINGLIBRARY_API operator* (const class Force& lh, const class Length& rh);
-  Energy ENGINEERINGLIBRARY_API operator* (const class Length& lh, const class Force& rh);
-  Energy ENGINEERINGLIBRARY_API operator* (const Energy& lh, const double& rh);
-  Energy ENGINEERINGLIBRARY_API operator* (const double& lh, const Energy& rh);
-
-  Energy ENGINEERINGLIBRARY_API operator/ (const Energy& lh, const double& rh);
-  double ENGINEERINGLIBRARY_API operator/ (const Energy& lh, const Energy& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Energy& lh, const Energy& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Energy& lh, const Energy& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Energy& lh, const Energy& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Energy& lh, const Energy& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Energy& lh, const Energy& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Energy& lh, const Energy& rh);
 
   inline Energy ENGINEERINGLIBRARY_API conj(const Energy& x) { return x; }
   inline Energy ENGINEERINGLIBRARY_API real(const Energy& x) { return x; }

@@ -10,7 +10,7 @@
  * \date   September 2020
  *********************************************************************/
 
-#include "Energy.h"
+#include "UnitBase.h"
 
 #include <eigen3/Eigen/Core>
 
@@ -20,16 +20,15 @@ namespace eng {
    * \class Torque
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Torque : public Energy { 
+  class ENGINEERINGLIBRARY_API Torque : public UnitBase<1, 2, -2, 0, 0, 0, 0> {
   public:
     /**
      * \brief Torque constructor
      * 
      * \param _Newtonmeters the measure of Torque in Newton*meters
      */
-    explicit Torque(const double _Newtonmeters=0) : Energy(_Newtonmeters) { }
-    Torque(const Energy& e) : Energy(e.value()) { }
-    Torque(const Torque&) = default;
+    explicit Torque(const double _Newtonmeters=0) : UnitBase(_Newtonmeters) { }
+    Torque(const UnitBase<1, 2, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Torque() = default;
 
     double Nm() const { return _value; }
@@ -68,13 +67,6 @@ namespace eng {
 
   Torque ENGINEERINGLIBRARY_API operator"" _lbin (long double val);
   Torque ENGINEERINGLIBRARY_API operator"" _lbin (unsigned long long val);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Torque& lh, const Torque& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Torque& lh, const Torque& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Torque& lh, const Torque& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Torque& lh, const Torque& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Torque& lh, const Torque& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Torque& lh, const Torque& rh);
 
   inline Torque ENGINEERINGLIBRARY_API conj(const Torque& x) { return x; }
   inline Torque ENGINEERINGLIBRARY_API real(const Torque& x) { return x; }

@@ -7,30 +7,11 @@
 
 namespace eng {
 
-  bool  operator== (const Torque& lh, const Torque& rh) {
-    return fuzzy_equals(lh.value(), rh.value());
-  }
-  bool  operator> (const Torque& lh, const Torque& rh) {
-    return fuzzy_greater(lh.value(), rh.value());
-  }
-  bool  operator!= (const Torque& lh, const Torque& rh) {
-    return !(lh == rh);
-  }
-  bool  operator< (const Torque& lh, const Torque& rh) {
-    return rh > lh;
-  }
-  bool  operator>= (const Torque& lh, const Torque& rh) {
-    return lh > rh || lh == rh;
-  }
-  bool  operator<= (const Torque& lh, const Torque& rh) {
-    return rh > lh || lh == rh;
-  }
-
   /* Literal operators
- * The following units are suported:
- * Nm, kNm, Nmm,
- * lb*ft, lb*in
- */
+   * The following units are suported:
+   * Nm, kNm, Nmm,
+   * lb*ft, lb*in
+   */
 
   Torque operator"" _Nm (long double val) {
     return Torque(val);

@@ -19,7 +19,7 @@ namespace eng {
    * \class Acceleration 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Acceleration : public UnitBase {
+  class ENGINEERINGLIBRARY_API Acceleration : public UnitBase<0, 1, -2, 0, 0, 0, 0> {
   public:
     /**
      * \brief Construct an Acceleration
@@ -27,8 +27,10 @@ namespace eng {
      * \param _meters_per_second2 The measure of acceleration in meters per second per second.
      */
     Acceleration(const double meters_per_second2=0) : UnitBase(meters_per_second2) { }
-    Acceleration(const Acceleration&) = default;
+    Acceleration(const UnitBase<0, 1, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
     ~Acceleration() = default;
+
+    operator UnitBase<0, 1, -2, 0, 0, 0, 0> () { return UnitBase(value()); }
 
     double mpsec2() const { return _value; }
     
@@ -49,27 +51,6 @@ namespace eng {
 
   Acceleration ENGINEERINGLIBRARY_API operator"" _ftpsec2 (long double val);
   Acceleration ENGINEERINGLIBRARY_API operator"" _ftpsec2 (unsigned long long val);
-
-  Acceleration ENGINEERINGLIBRARY_API operator- (const Acceleration& lh);
-
-  Acceleration ENGINEERINGLIBRARY_API operator+ (const Acceleration& lh, const Acceleration& rh);
-
-  Acceleration ENGINEERINGLIBRARY_API operator- (const Acceleration& lh, const Acceleration& rh);
-
-  Acceleration ENGINEERINGLIBRARY_API operator* (const Acceleration& lh, const double& rh);
-  Acceleration ENGINEERINGLIBRARY_API operator* (const double& lh, const Acceleration& rh);
-
-  Acceleration ENGINEERINGLIBRARY_API operator/ (const Acceleration& lh, const double& rh);
-  double ENGINEERINGLIBRARY_API operator/ (const Acceleration& lh, const Acceleration& rh);
-  Acceleration ENGINEERINGLIBRARY_API operator/ (const class Velocity& lh, const class Time& rh);
-  Acceleration ENGINEERINGLIBRARY_API operator/ (const class Force& lh, const class Mass& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Acceleration& lh, const Acceleration& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Acceleration& lh, const Acceleration& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Acceleration& lh, const Acceleration& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Acceleration& lh, const Acceleration& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Acceleration& lh, const Acceleration& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Acceleration& lh, const Acceleration& rh);
 
   inline Acceleration ENGINEERINGLIBRARY_API conj(const Acceleration& x) { return x; }
   inline Acceleration ENGINEERINGLIBRARY_API real(const Acceleration& x) { return x; }

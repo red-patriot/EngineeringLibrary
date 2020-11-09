@@ -42,20 +42,11 @@ namespace eng {
     return Angle(std::atan2(x, y));
   }
   
-  Frequency sqrt(const Frequency2& r) {
-    return Frequency(std::sqrt(r.value()));
-  }
   Length sqrt(const Area& r) {
     return Length(std::sqrt(r.m2()));
   }
   Area sqrt(const SecondMomentOfArea& r) {
     return Area(std::sqrt(r.m4()));
-  }
-  Pressure sqrt(const Pressure2& r) {
-    return Pressure(std::sqrt(r.value()));
-  }
-  Velocity sqrt(const Velocity2 & r) {
-    return Velocity(std::sqrt(r.value()));
   }
 
 
@@ -100,22 +91,6 @@ namespace eng {
   }
   Acceleration abs(const Acceleration& x) {
       return Acceleration(fabs(x.value()));
-  }
-
-  Frequency2 abs2(const Frequency& x) {
-    return x*x;
-  }
-  Area abs2(const Length& x) {
-    return x*x; 
-  }
-  SecondMomentOfArea abs2(const Area& x) {
-    return x*x;
-  }
-  Pressure2 abs2(const Pressure& x) {
-    return x*x; 
-  }
-  Velocity2 abs2(const Velocity & x) {
-    return x*x;
   }
 
 };
