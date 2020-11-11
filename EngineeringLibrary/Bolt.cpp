@@ -6,6 +6,7 @@
 #include "Bolt.h"
 #include "Units/Angle.h"
 #include "Units/Length.h"
+#include "Units/Area.h"
 #include "Units/Volume.h"
 #include "Units/MomentOfArea.h"
 #include "Units/Stiffness.h"
@@ -19,7 +20,7 @@ namespace eng {
 
   Stiffness bolt_stiffness(const Area& Ad, const Area& At, const Stress& E, 
                                     const Length& lt, const Length& ld) {
-    return E*((Ad*At)/(Ad*lt + At*ld));
+    return E*((Ad * At)/(Ad*lt + At*ld));
   }
   Stiffness members_stiffness(const std::vector<joint_member>& members, 
                                        const Length& d, const Length& t) {

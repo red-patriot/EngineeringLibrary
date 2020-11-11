@@ -14,11 +14,6 @@
 #include <eigen3/Eigen/Core>
 
 namespace eng {
-
-  class SecondMomentOfArea;
-  class Area;
-  class Length;
-
   /** A measure of the 3D space taken up an object
    * \class Volume A 3D geometry
    */

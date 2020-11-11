@@ -10,14 +10,11 @@
  *********************************************************************/
 
 #include "UnitBase.h"
+#include "Volume.h"
 
 #include <eigen3/Eigen/Core>
 
 namespace eng {
-
-  class Volume;
-  class Area;
-  class Length;
 
   /** First moment of Area and Volume have the same units and functionality
    * \typedef FirstMomentOfArea Volume

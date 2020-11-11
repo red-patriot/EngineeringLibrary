@@ -11,6 +11,7 @@
  *********************************************************************/
 
 #include "UnitBase.h"
+#include "../Units.h"
 
 namespace eng {
 
@@ -34,9 +35,9 @@ namespace eng {
    * The trig and inverse trig functions for a eng::Angle
    */
 
-  inline double ENGINEERINGLIBRARY_API sin(const class Angle& a);
-  inline double ENGINEERINGLIBRARY_API cos(const class Angle& a);
-  inline double ENGINEERINGLIBRARY_API tan(const class Angle& a);
+  inline double ENGINEERINGLIBRARY_API sin(const Angle& a);
+  inline double ENGINEERINGLIBRARY_API cos(const Angle& a);
+  inline double ENGINEERINGLIBRARY_API tan(const Angle& a);
 
   inline Angle ENGINEERINGLIBRARY_API asin(const double& x);
   inline Angle ENGINEERINGLIBRARY_API acos(const double& x);
@@ -48,28 +49,28 @@ namespace eng {
    * Miscellaneous math functions such as sqrt
    */
 
-  inline class Length ENGINEERINGLIBRARY_API sqrt(const class Area& r);
-  inline class Area ENGINEERINGLIBRARY_API sqrt(const class SecondMomentOfArea& r);
+  inline Length ENGINEERINGLIBRARY_API sqrt(const Area& r);
+  inline Area ENGINEERINGLIBRARY_API sqrt(const SecondMomentOfArea& r);
 
 
   // TODO: This could probably be a single template
-  inline class Time ENGINEERINGLIBRARY_API abs(const class Time& x);
-  inline class Frequency ENGINEERINGLIBRARY_API abs(const class Frequency& x);
-  inline class Mass ENGINEERINGLIBRARY_API abs(const class Mass& x);
-  inline class Angle abs(const class Angle& x);
-  inline class Length abs(const class Length& x);
-  inline class Area abs(const class Area& x);
-  inline class Volume ENGINEERINGLIBRARY_API abs(const class Volume& x);
-  inline class SecondMomentOfArea ENGINEERINGLIBRARY_API abs(const class SecondMomentOfArea& x);
-  inline class Force abs(const class Force& x);
-  inline class Stiffness ENGINEERINGLIBRARY_API abs(const class Stiffness& x);
-  inline class Damping ENGINEERINGLIBRARY_API abs(const class Damping& x);
-  inline class Pressure ENGINEERINGLIBRARY_API abs(const class Pressure& x);
-  inline class Velocity ENGINEERINGLIBRARY_API abs(const class Velocity& x);
-  inline class Acceleration ENGINEERINGLIBRARY_API abs(const class Acceleration& x);
-
-  inline class Area ENGINEERINGLIBRARY_API abs2(const class Length& x);
-  inline class SecondMomentOfArea ENGINEERINGLIBRARY_API abs2(const class Area& x);
+  inline Time ENGINEERINGLIBRARY_API abs(const Time& x);
+  inline Frequency ENGINEERINGLIBRARY_API abs(const Frequency& x);
+  inline Mass ENGINEERINGLIBRARY_API abs(const Mass& x);
+  inline Angle abs(const  Angle& x);
+  inline Length abs(const  Length& x);
+  inline Area abs(const  Area& x);
+  inline Volume ENGINEERINGLIBRARY_API abs(const  Volume& x);
+  inline SecondMomentOfArea ENGINEERINGLIBRARY_API abs(const  SecondMomentOfArea& x);
+  inline Force abs(const  Force& x);
+  inline Stiffness ENGINEERINGLIBRARY_API abs(const  Stiffness& x);
+  inline Damping ENGINEERINGLIBRARY_API abs(const  Damping& x);
+  inline Pressure ENGINEERINGLIBRARY_API abs(const  Pressure& x);
+  inline Velocity ENGINEERINGLIBRARY_API abs(const  Velocity& x);
+  inline Acceleration ENGINEERINGLIBRARY_API abs(const  Acceleration& x);
+  
+  inline Area ENGINEERINGLIBRARY_API abs2(const Length& x);
+  inline SecondMomentOfArea ENGINEERINGLIBRARY_API abs2(const Area& x);
 
 }; // namespace eng
 

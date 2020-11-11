@@ -18,6 +18,11 @@
 #include <vector>
 
 #include "EngineeringExport.h"
+#include "Units\Length.h"
+#include "Units\Area.h"
+#include "Units\Volume.h"
+#include "Units\MomentOfArea.h"
+
 #include "Geometry.h"
 
 namespace eng {
@@ -39,17 +44,18 @@ namespace eng {
   /* The axis about which a Radius of Gyration is calculated */
   enum class Axis { X,Y };
   /* Calculate Radius of Gyration of a Moment of Inertia and an Area */
-  class Length ENGINEERINGLIBRARY_API radius_of_gyration(const class SecondMomentOfArea& I,
-    const class Area& a);
+  
+  Length ENGINEERINGLIBRARY_API radius_of_gyration(const SecondMomentOfArea& I,
+    const typename Area& a);
   /* Calculate Radius of Gyration of a geometry about the given axis */
-  class Length ENGINEERINGLIBRARY_API radius_of_gyration(const Geometry& geo, const Axis& axis);
+  Length ENGINEERINGLIBRARY_API radius_of_gyration(const Geometry& geo, const Axis& axis);
   
   /* Calculate the Point of a composite shape. */
   Point ENGINEERINGLIBRARY_API centroid(const std::vector<Geometry*>& geo);
   /* Calculate the Point of a composite shape.
      neg represents holes in the geometry. */
   Point ENGINEERINGLIBRARY_API centroid(const std::vector<Geometry*>& geo, 
-                                           const std::vector<Geometry*>& neg);
+                                        const std::vector<Geometry*>& neg);
 
 };  // namespace eng
 

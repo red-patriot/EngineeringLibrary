@@ -96,9 +96,6 @@
     <ClInclude Include="Units\Volume.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\UnitBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Units.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -106,6 +103,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Torque.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\UnitBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

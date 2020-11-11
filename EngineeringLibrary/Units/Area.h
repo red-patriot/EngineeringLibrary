@@ -15,39 +15,24 @@
 
 namespace eng {
 
-  class SecondMomentOfArea;
-  class Volume;
-  class Length;
-
   /** A 2D geometry
    * \class Area
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Area : public UnitBase<0, 2, 0, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<0, 2, 0, 0, 0, 0, 0> {
+    typedef UnitBase<0, 2, 0, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Construct an Area
-     * 
-     * \param _meters2 The meaasure of the area in meters^2
-     */
-    explicit Area(const double meters2 = 0) : UnitBase(meters2) { }
-    Area(const UnitBase<0, 2, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Area() = default;
-
-    operator UnitBase<0, 2, 0, 0, 0, 0, 0> () { return UnitBase(value()); }
-
     double mm2() const { return _value * 1'000'000; }
     double cm2() const { return _value * 10'000; }
     double m2() const { return _value; }
 
     double in2() const { return _value * 10'000/(6.4516); }
     double ft2() const { return _value * 10'000/(929.0304); }
-
-    Area& operator+= (const Area& rh) { _value += rh._value; return *this; }
-    Area& operator-= (const Area& rh) { _value -= rh._value; return *this; }
-    Area& operator*= (const double& rh) { _value *= rh; return *this; }
-    Area& operator/= (const double& rh) { _value /= rh; return *this; }
   };
+
+  using Area = UnitBase<0, 2, 0, 0, 0, 0, 0>;
 
   Area ENGINEERINGLIBRARY_API operator"" _mm2(long double val);
   Area ENGINEERINGLIBRARY_API operator"" _mm2(unsigned long long val);
@@ -63,10 +48,6 @@ namespace eng {
 
   Area ENGINEERINGLIBRARY_API operator"" _ft2(long double val);
   Area ENGINEERINGLIBRARY_API operator"" _ft2(unsigned long long val);
-
-  inline Area ENGINEERINGLIBRARY_API conj(const Area& x) { return x; }
-  inline Area ENGINEERINGLIBRARY_API real(const Area& x) { return x; }
-  inline Area ENGINEERINGLIBRARY_API imag(const Area&) { return 0_m2; }
 
 }; // namespace eng
 

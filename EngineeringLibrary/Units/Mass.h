@@ -9,7 +9,7 @@
  * \date   August 2020
  *********************************************************************/
 
-#include "PhysicsMath.h"
+#include "UnitBase.h"
 
 #include <eigen3/Eigen/Core>
 
@@ -39,6 +39,7 @@ namespace eng {
     Mass& operator-= (const Mass& rh) { _value -= rh._value; return *this; }
     Mass& operator*= (const double& rh) { _value *= rh; return *this; }
     Mass& operator/= (const double& rh) { _value /= rh; return *this; }
+
   };
 
   Mass ENGINEERINGLIBRARY_API operator"" _g (long double val);

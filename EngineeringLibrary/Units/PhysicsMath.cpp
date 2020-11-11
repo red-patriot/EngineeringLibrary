@@ -43,10 +43,10 @@ namespace eng {
   }
   
   Length sqrt(const Area& r) {
-    return Length(std::sqrt(r.m2()));
+    return Length(std::sqrt(r.value()));
   }
   Area sqrt(const SecondMomentOfArea& r) {
-    return Area(std::sqrt(r.m4()));
+    return Area(std::sqrt(r.value()));
   }
 
 
@@ -60,31 +60,31 @@ namespace eng {
     return Mass(fabs(x.value()));
   }
   Angle abs(const Angle& x) {
-    return Angle(fabs(x.rad()));
+    return Angle(fabs(x.value()));
   }
   Length abs(const Length& x) {
-    return Length(fabs(x.m())); 
+    return Length(fabs(x.value())); 
   }
   Area abs(const Area& x) {
-    return Area(std::fabs(x.m2()));
+    return Area(std::fabs(x.value()));
   }
   Volume abs(const Volume& x) {
-    return Volume(fabs(x.m3()));
+    return Volume(fabs(x.value()));
   }
   SecondMomentOfArea abs(const SecondMomentOfArea& x) { 
-    return SecondMomentOfArea(fabs(x.m4())); 
+    return SecondMomentOfArea(fabs(x.value())); 
   }
   Force abs(const Force& x) {
-    return Force(fabs(x.N())); 
+    return Force(fabs(x.value())); 
   }
   Stiffness abs(const Stiffness& x) {
-    return Stiffness(fabs(x.Npm()));
+    return Stiffness(fabs(x.value()));
   }
   Damping abs(const Damping& x) {
       return Damping(fabs(x.value()));
   }
   Pressure abs(const Pressure& x) {
-    return Pressure(fabs(x.Pa())); 
+    return Pressure(fabs(x.value())); 
   }
   Velocity abs(const Velocity& x) {
     return Velocity(fabs(x.value()));

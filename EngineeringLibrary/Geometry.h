@@ -70,7 +70,7 @@ namespace eng {
      * \param mmoi the area moment of inertia of the geometry
      * \param c The centroid of the geometry
      */
-    Geometry(const class Area& aa, const AreaMomentofInertia& mmoi,
+    Geometry(const Area& aa, const AreaMomentofInertia& mmoi,
       const Point& c=(0_m, 0_m));
     /**
      * \brief Geometry default destructor

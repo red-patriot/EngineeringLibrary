@@ -3,3 +3,4 @@
 // For more information see https://go.microsoft.com/fwlink/?linkid=865984
 #define ENGINEERINGLIBRARY_API __declspec(dllexport)
 #define ENGINEERINGLIBRARY_API __declspec(dllimport)
+#define UnitBaseCOMMON public: explicit UnitBase(const double& n) : _value(n) { } ~UnitBase() = default; double value() const { return _value; } this_t& operator+= (const this_t& rh) {_value += rh.value(); return *this;} this_t& operator-= (const this_t& rh) {_value -= rh.value(); return *this;} this_t& operator*= (const double& rh) {_value *= rh; return *this;} this_t& operator/= (const double& rh) {_value /= rh; return *this;} protected: double _value;
