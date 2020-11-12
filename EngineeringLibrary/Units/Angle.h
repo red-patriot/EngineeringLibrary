@@ -19,45 +19,35 @@ namespace eng {
    * \class Angle 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Angle : public UnitBase<0, 0, 0, 0, 0, 0, 0> {
+  template<>
+  class UnitBase<0, 0, 0, 0, 0, 0, 0> {
+    typedef UnitBase<0, 0, 0, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Construct an Angle
-     * 
-     * \param _radians The measure of the angle in radians
-     */
-    explicit Angle(const double& radians = 0) : UnitBase(radians) { }  
-    //? Becuase radians are "imaginary" units, maybe this should be implicit?
-    Angle(const UnitBase<0, 0, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Angle() = default;
-
-    operator UnitBase<0, 0, 0, 0, 0, 0, 0> () { return UnitBase(value()); }
+    static constexpr long double pi = 3.141592653589793238462643383279;
 
     double rad() const { return _value; }
-    double deg() const;    // defined in Angle.cpp to not require PhysicsMath.h here
+    double deg() const { return _value * (pi/180); }
 
-    explicit operator double();         
-    //? Becuase radians are "imaginary" units, maybe this should be implicit?
+    explicit operator double() { return _value; }
   };
 
-  Angle ENGINEERINGLIBRARY_API operator"" _deg(long double val);
-  Angle ENGINEERINGLIBRARY_API operator"" _deg(unsigned long long val);
+  using Angle = UnitBase<0, 0, 0, 0, 0, 0, 0>;
 
-  Angle ENGINEERINGLIBRARY_API operator"" _rad(long double val);
-  Angle ENGINEERINGLIBRARY_API operator"" _rad(unsigned long long val);
+  Angle operator"" _deg(long double val);
+  Angle operator"" _deg(unsigned long long val);
 
-  double ENGINEERINGLIBRARY_API sin(const Angle& a);
-  double ENGINEERINGLIBRARY_API cos(const Angle& a);
-  double ENGINEERINGLIBRARY_API tan(const Angle& a);
+  Angle operator"" _rad(long double val);
+  Angle operator"" _rad(unsigned long long val);
 
-  Angle ENGINEERINGLIBRARY_API asin(const double& x);
-  Angle ENGINEERINGLIBRARY_API acos(const double& x);
-  Angle ENGINEERINGLIBRARY_API atan(const double& x);
-  Angle ENGINEERINGLIBRARY_API atan2(const double& x, const double& y);
+  double sin(const Angle& a);
+  double cos(const Angle& a);
+  double tan(const Angle& a);
 
-  inline Angle ENGINEERINGLIBRARY_API conj(const Angle& x) { return x; }
-  inline Angle ENGINEERINGLIBRARY_API real(const Angle& x) { return x; }
-  inline Angle ENGINEERINGLIBRARY_API imag(const Angle&) { return 0_rad; }
+  Angle asin(const double& x);
+  Angle acos(const double& x);
+  Angle atan(const double& x);
+  Angle atan2(const double& x, const double& y);
 
 }; // namespace eng
 

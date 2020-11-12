@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "Geometry.h"
 
-#include "Units/PhysicsMath.h"
-
 namespace eng {
 
   Point::Point(const Length& xx, const Length& yy) :
@@ -64,13 +62,13 @@ namespace eng {
   }
 
   void Circle::calculate_area() {
-    _area = pi * (diam*diam)/4;
+    _area = Angle::pi * (diam*diam)/4;
     return;
   }
 
   void Circle::calculate_moment_of_inertia() {
-    _MOI.Ix = (pi * (diam*diam)*(diam*diam)) / 64;
-    _MOI.Iy = (pi * (diam*diam)*(diam*diam)) / 64;
+    _MOI.Ix = (Angle::pi * (diam*diam)*(diam*diam)) / 64;
+    _MOI.Iy = (Angle::pi * (diam*diam)*(diam*diam)) / 64;
     _MOI.Ixy = 0_m4;
     return;
   }
@@ -87,13 +85,13 @@ namespace eng {
   }
 
   void SemiCircle::calculate_area() {
-    _area = pi * diam*diam/8;
+    _area = Angle::pi * diam*diam/8;
     return;
   }
 
   void SemiCircle::calculate_moment_of_inertia() {
-    _MOI.Ix = (pi / 8 - 8 / (9*pi)) * (diam*diam)/4 * (diam*diam)/4;
-    _MOI.Iy = (pi / 8) * (diam*diam)/4 * (diam*diam)/4;
+    _MOI.Ix = (Angle::pi / 8 - 8 / (9*Angle::pi)) * (diam*diam)/4 * (diam*diam)/4;
+    _MOI.Iy = (Angle::pi / 8) * (diam*diam)/4 * (diam*diam)/4;
     _MOI.Ixy = 0_m4;
     return;
   }
@@ -111,14 +109,14 @@ namespace eng {
   }
 
   void HollowCircle::calculate_area() {
-    _area = pi * ((diam_out*diam_in) - (diam_in*diam_in))/4;
+    _area = Angle::pi * ((diam_out*diam_in) - (diam_in*diam_in))/4;
     return;
   }
 
   void HollowCircle::calculate_moment_of_inertia() {
-    _MOI.Ix = (pi * (((diam_out*diam_out)*(diam_out*diam_out))
+    _MOI.Ix = (Angle::pi * (((diam_out*diam_out)*(diam_out*diam_out))
       - ((diam_in*diam_in)*(diam_in*diam_in)))) / 64;
-    _MOI.Iy = (pi * (((diam_out*diam_out)*(diam_out*diam_out))
+    _MOI.Iy = (Angle::pi * (((diam_out*diam_out)*(diam_out*diam_out))
       - ((diam_in*diam_in)*(diam_in*diam_in)))) / 64;
     _MOI.Ixy = 0_m4;
     return;

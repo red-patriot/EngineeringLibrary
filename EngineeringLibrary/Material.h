@@ -12,7 +12,6 @@
 
 #include <unordered_map>
 
-#include "EngineeringExport.h"
 #include "Units/Pressure.h"
 
 namespace eng {
@@ -24,7 +23,7 @@ namespace eng {
    * \class MaterialBase Base material properties which are constant 
    *    regardless of material processes.
    */
-  class ENGINEERINGLIBRARY_API MaterialBase {
+  class MaterialBase {
   public:
     /**
      * \brief MaterialBase constructor
@@ -54,7 +53,7 @@ namespace eng {
   /**
    * \class Material A representation of certain processed materials
    */
-  class ENGINEERINGLIBRARY_API Material : public MaterialBase {
+  class Material : public MaterialBase {
   public:
     /**
      * \brief Material constructor

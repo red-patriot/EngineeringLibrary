@@ -10,9 +10,6 @@
  * accuracy during calculations. 
  */
 
-// Basic headers
-#include "Units/PhysicsMath.h"
-
 // Time headers
 #include "Units/Time.h"
 #include "Units/Frequency.h"
@@ -21,7 +18,7 @@
 #include "Units/Mass.h"
 
 // Geometry headers
-//#include "Units/Angle.h"
+#include "Units/Angle.h"
 #include "Units/Length.h"
 #include "Units/Area.h"
 #include "Units/Volume.h"

@@ -15,7 +15,6 @@
 #include <vector>
 #include <utility>
 
-#include "EngineeringExport.h"
 #include "Material.h"
 
 #include "Units/Length.h"
@@ -32,12 +31,11 @@ namespace eng {
   };
 
   /* Calculate the stiffness of a bolt */
-  Stiffness ENGINEERINGLIBRARY_API bolt_stiffness(const Area& Ad, const Area& At,
-                                                           const Stress& E, const Length& lt, 
-                                                           const Length& ld);
+  Stiffness bolt_stiffness(const Area& Ad, const Area& At, const Stress& E, const Length& lt,
+                           const Length& ld);
   /* Calculate the stiffess of members bolted by a bolt */
-  Stiffness ENGINEERINGLIBRARY_API members_stiffness(const std::vector<joint_member>& members,
-                                                              const Length& d, const Length& t);
+  Stiffness members_stiffness(const std::vector<joint_member>& members, const Length& d, 
+                              const Length& t);
   /* Calculate the thickness of a bolted joint. */
   Length joint_thickness(const std::vector<joint_member> members);
   /* Split the joint members into the top and bottom half 
@@ -47,15 +45,13 @@ namespace eng {
                       std::vector<joint_member>& bottom, const Length& thickness);
 
   /* Calculate the factor of safety against yielding of a bolted joint */
-  double ENGINEERINGLIBRARY_API factor_of_safety_yield(const Stress& Sp, const Area& At,
+  double factor_of_safety_yield(const Stress& Sp, const Area& At,
     const double& C, const Force& P, const Force& Fi);
   /* Calculate the load factor of safety of a bolted joint */
-  double ENGINEERINGLIBRARY_API factor_of_safety_load(const Stress& Sp, const Area& At,
-                                                      const double& C, const Force& P, 
-                                                      const Force& Fi);
+  double factor_of_safety_load(const Stress& Sp, const Area& At, const double& C, const Force& P,
+                               const Force& Fi);
   /* Calculate the factor of safety against joint separation of a bolted joint */
-  double ENGINEERINGLIBRARY_API factor_of_safety_separation(const Force& Fi, const Force& P, 
-                                                            const double& C);
+  double factor_of_safety_separation(const Force& Fi, const Force& P, const double& C);
 
 };  // namespace eng
 

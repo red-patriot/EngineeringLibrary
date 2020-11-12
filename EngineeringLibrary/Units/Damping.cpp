@@ -5,7 +5,6 @@
 #include "Mass.h"
 #include "Damping.h"
 #include "Stiffness.h"
-#include "PhysicsMath.h"
 
 namespace eng {
 

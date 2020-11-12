@@ -9,9 +9,7 @@
  * \date   August 2020
  *********************************************************************/
 
-#include "EngineeringExport.h"
 #include "Material.h"
-
 #include "Stress.h"
 
 #include "Units/Angle.h"
@@ -21,7 +19,7 @@ namespace eng {
   /**
    * \class NormalStrain Store 3D strain for a member
    */
-  struct ENGINEERINGLIBRARY_API NormalStrain {
+  struct  NormalStrain {
     double epsilon_x;
     double epsilon_y;
     double epsilon_z;
@@ -54,20 +52,18 @@ namespace eng {
   };
 
   /* Hooke's Law to determine strain from stress for a material alone a single axis */
-  double ENGINEERINGLIBRARY_API hookes_law(const Material& material, const Stress& stress);
+  double hookes_law(const Material& material, const Stress& stress);
   /* Hooke's Law to determine strain from stress for a material loaded in planar stress */
-  NormalStrain ENGINEERINGLIBRARY_API hookes_law(const Material& material, 
+  NormalStrain hookes_law(const Material& material, 
                                                  const StressElement2& stress);
   // TODO: Hooke's Law for material loaded in general 3D stress
   /* Hooke's Law to determine strain from stress for a material loaded in Cylindrical stress */
-  NormalStrain ENGINEERINGLIBRARY_API hookes_law(const Material& material, 
+  NormalStrain hookes_law(const Material& material, 
                                                  const StressElement3& stress);
 
   // TODO: Hooke's Law in shear
-  ShearStrain ENGINEERINGLIBRARY_API hookes_law_shear(const Material& material, 
-                                                      const StressElement2& stress);
-  ShearStrain ENGINEERINGLIBRARY_API hookes_law_shear(const Material& material,
-                                                      const StressElement3& stress);
+  ShearStrain hookes_law_shear(const Material& material, const StressElement2& stress);
+  ShearStrain hookes_law_shear(const Material& material, const StressElement3& stress);
 
 
 };  // namespace eng

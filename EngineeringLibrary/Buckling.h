@@ -9,7 +9,6 @@
  * \date   August 2020
  *********************************************************************/
 
-#include "EngineeringExport.h"
 #include "Material.h"
 #include "Geometry.h"
 
@@ -39,7 +38,7 @@ namespace eng {
    * \class Column A Column or other member of constant cross section
    *    being analysed in buckling.
    */
-  class ENGINEERINGLIBRARY_API Column {
+  class  Column {
   public:
     /**
      * \brief Column constructor
@@ -71,17 +70,17 @@ namespace eng {
 
   /* Calculate the critical load to cause buckling of a column where it is unknown whether the
      column will fail in Euler or Johnson buckling. */
-  Stress ENGINEERINGLIBRARY_API critical_load(const Column& _column);
+  Stress critical_load(const Column& _column);
   /* Calculate the ciritcal load to cause buckling of a column that will fail in Euler buckling. */
-  Stress ENGINEERINGLIBRARY_API critical_load_euler(const Column& _column);
+  Stress critical_load_euler(const Column& _column);
   /* Calculate the ciritcal load to cause buckling of a column that will fail in Johnson buckling. */
-  Stress ENGINEERINGLIBRARY_API critical_load_johnson(const Column& _column);
+  Stress critical_load_johnson(const Column& _column);
 
   /* Calculate (l/k)_1, the critical point between Euler and Johnson buckling. */
-  double ENGINEERINGLIBRARY_API l_k_1(const Column& _column);
+  double l_k_1(const Column& _column);
   
   /* Determine the end condition constant to be used for a buckling problem. */
-  double ENGINEERINGLIBRARY_API end_condition_constant(const EndConditions& _supports, const int& v=COL_THEORETICAL_VALUE);
+  double end_condition_constant(const EndConditions& _supports, const int& v=COL_THEORETICAL_VALUE);
 }
 ;  // namespace eng
 

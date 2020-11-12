@@ -5,7 +5,6 @@
 #include "Stiffness.h"
 #include "Length.h"
 #include "Area.h"
-#include "PhysicsMath.h"
 
 namespace eng {
 

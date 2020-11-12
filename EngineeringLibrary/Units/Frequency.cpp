@@ -7,7 +7,6 @@
 #include "Stiffness.h"
 #include "Velocity.h"
 #include "Acceleration.h"
-#include "PhysicsMath.h"
 
 namespace eng {
 

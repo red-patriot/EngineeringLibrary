@@ -4,8 +4,7 @@
 #include "Force.h"
 #include "Damping.h"
 #include "Acceleration.h"
-#include "TIme.h"
-#include "PhysicsMath.h"
+#include "Time.h"
 
 namespace eng {
 

@@ -48,9 +48,6 @@
     <ClInclude Include="Units\MomentOfArea.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\PhysicsMath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Units\Pressure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -76,6 +73,33 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\UnitBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bolt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Buckling.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricProperty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Strain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stress.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemDynamics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Angle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -110,9 +134,6 @@
     <ClCompile Include="Units\MomentOfArea.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Units\PhysicsMath.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Units\Pressure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -132,6 +153,33 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Torque.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bolt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Buckling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricProperty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Strain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stress.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemDynamics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Angle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
