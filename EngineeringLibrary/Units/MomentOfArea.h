@@ -28,7 +28,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<0, 4, 0, 0, 0, 0, 0> {
+  class UnitBase<0, 4, 0, 0, 0, 0, 0> {
     typedef UnitBase<0, 4, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -42,21 +42,21 @@ namespace eng {
   using SecondMomentOfArea = UnitBase<0, 4, 0, 0, 0, 0, 0>;
 
   // Literal operators
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _mm4(long double val);
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _mm4(unsigned long long val);
+  SecondMomentOfArea operator"" _mm4(long double val);
+  SecondMomentOfArea operator"" _mm4(unsigned long long val);
 
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _m4(long double val);
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _m4(unsigned long long val);
+  SecondMomentOfArea operator"" _m4(long double val);
+  SecondMomentOfArea operator"" _m4(unsigned long long val);
 
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _in4(long double val);
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _in4(unsigned long long val);
+  SecondMomentOfArea operator"" _in4(long double val);
+  SecondMomentOfArea operator"" _in4(unsigned long long val);
 
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _ft4(long double val);
-  SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _ft4(unsigned long long val);
+  SecondMomentOfArea operator"" _ft4(long double val);
+  SecondMomentOfArea operator"" _ft4(unsigned long long val);
 
-  inline SecondMomentOfArea ENGINEERINGLIBRARY_API conj(const SecondMomentOfArea& x) { return x; }
-  inline SecondMomentOfArea ENGINEERINGLIBRARY_API real(const SecondMomentOfArea& x) { return x; }
-  inline SecondMomentOfArea ENGINEERINGLIBRARY_API imag(const SecondMomentOfArea&) { return 0_m4; }
+  inline SecondMomentOfArea conj(const SecondMomentOfArea& x) { return x; }
+  inline SecondMomentOfArea real(const SecondMomentOfArea& x) { return x; }
+  inline SecondMomentOfArea imag(const SecondMomentOfArea&) { return 0_m4; }
 
 }; // namespace eng
 

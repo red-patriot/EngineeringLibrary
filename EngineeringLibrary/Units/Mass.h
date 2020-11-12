@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<1, 0, 0, 0, 0, 0, 0> {
+  class UnitBase<1, 0, 0, 0, 0, 0, 0> {
     typedef UnitBase<1, 0, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -32,18 +32,18 @@ namespace eng {
 
   using Mass = UnitBase<1, 0, 0, 0, 0, 0, 0>;
 
-  Mass ENGINEERINGLIBRARY_API operator"" _g (long double val);
-  Mass ENGINEERINGLIBRARY_API operator"" _g (unsigned long long val);
+  Mass operator"" _g (long double val);
+  Mass operator"" _g (unsigned long long val);
 
-  Mass ENGINEERINGLIBRARY_API operator"" _kg (long double val);
-  Mass ENGINEERINGLIBRARY_API operator"" _kg (unsigned long long val);
+  Mass operator"" _kg (long double val);
+  Mass operator"" _kg (unsigned long long val);
 
-  Mass ENGINEERINGLIBRARY_API operator"" _slug (long double val);
-  Mass ENGINEERINGLIBRARY_API operator"" _slug (unsigned long long val);
+  Mass operator"" _slug (long double val);
+  Mass operator"" _slug (unsigned long long val);
 
-  inline Mass ENGINEERINGLIBRARY_API conj(const Mass& x) { return x; }
-  inline Mass ENGINEERINGLIBRARY_API real(const Mass& x) { return x; }
-  inline Mass ENGINEERINGLIBRARY_API imag(const Mass& x) { return 0_kg; }
+  inline Mass conj(const Mass& x) { return x; }
+  inline Mass real(const Mass& x) { return x; }
+  inline Mass imag(const Mass& x) { return 0_kg; }
 
 };  // namespace eng
 

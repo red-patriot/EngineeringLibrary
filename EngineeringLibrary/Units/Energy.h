@@ -21,7 +21,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<1, 2, -2, 0, 0, 0, 0> {
+  class UnitBase<1, 2, -2, 0, 0, 0, 0> {
     typedef UnitBase<1, 2, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -36,27 +36,27 @@ namespace eng {
 
   using Energy = UnitBase<1, 2, -2, 0, 0, 0, 0>;
 
-  Energy ENGINEERINGLIBRARY_API operator"" _J (long double val);
-  Energy ENGINEERINGLIBRARY_API operator"" _J (unsigned long long val);
+  Energy operator"" _J (long double val);
+  Energy operator"" _J (unsigned long long val);
 
-  Energy ENGINEERINGLIBRARY_API operator"" _kJ (long double val);
-  Energy ENGINEERINGLIBRARY_API operator"" _kJ (unsigned long long val);
+  Energy operator"" _kJ (long double val);
+  Energy operator"" _kJ (unsigned long long val);
 
-  Energy ENGINEERINGLIBRARY_API operator"" _MJ (long double val);
-  Energy ENGINEERINGLIBRARY_API operator"" _MJ (unsigned long long val);
+  Energy operator"" _MJ (long double val);
+  Energy operator"" _MJ (unsigned long long val);
 
-  Energy ENGINEERINGLIBRARY_API operator"" _ftlb (long double val);
-  Energy ENGINEERINGLIBRARY_API operator"" _ftlb (unsigned long long val);
+  Energy operator"" _ftlb (long double val);
+  Energy operator"" _ftlb (unsigned long long val);
 
-  Energy ENGINEERINGLIBRARY_API operator"" _inlb (long double val);
-  Energy ENGINEERINGLIBRARY_API operator"" _inlb (unsigned long long val);
+  Energy operator"" _inlb (long double val);
+  Energy operator"" _inlb (unsigned long long val);
 
-  Energy ENGINEERINGLIBRARY_API operator"" _BTU (long double val);
-  Energy ENGINEERINGLIBRARY_API operator"" _BTU (unsigned long long val);
+  Energy operator"" _BTU (long double val);
+  Energy operator"" _BTU (unsigned long long val);
 
-  inline Energy ENGINEERINGLIBRARY_API conj(const Energy& x) { return x; }
-  inline Energy ENGINEERINGLIBRARY_API real(const Energy& x) { return x; }
-  inline Energy ENGINEERINGLIBRARY_API imag(const Energy&) { return 0_J; }
+  inline Energy conj(const Energy& x) { return x; }
+  inline Energy real(const Energy& x) { return x; }
+  inline Energy imag(const Energy&) { return 0_J; }
 
 }; // namespace eng
 

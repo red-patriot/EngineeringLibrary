@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<1, 0, -2, 0, 0, 0, 0> {
+  class UnitBase<1, 0, -2, 0, 0, 0, 0> {
     typedef UnitBase<1, 0, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -33,21 +33,21 @@ namespace eng {
 
   using Stiffness = UnitBase<1, 0, -2, 0, 0, 0, 0>;
 
-  Stiffness ENGINEERINGLIBRARY_API operator"" _Npm(long double val);
-  Stiffness ENGINEERINGLIBRARY_API operator"" _Npm(unsigned long long val);
+  Stiffness operator"" _Npm(long double val);
+  Stiffness operator"" _Npm(unsigned long long val);
 
-  Stiffness ENGINEERINGLIBRARY_API operator"" _Npmm(long double val);
-  Stiffness ENGINEERINGLIBRARY_API operator"" _Npmm(unsigned long long val);
+  Stiffness operator"" _Npmm(long double val);
+  Stiffness operator"" _Npmm(unsigned long long val);
 
-  Stiffness ENGINEERINGLIBRARY_API operator"" _lbpin(long double val);
-  Stiffness ENGINEERINGLIBRARY_API operator"" _lbpin(unsigned long long val);
+  Stiffness operator"" _lbpin(long double val);
+  Stiffness operator"" _lbpin(unsigned long long val);
 
-  Stiffness ENGINEERINGLIBRARY_API operator"" _lbpft(long double val);
-  Stiffness ENGINEERINGLIBRARY_API operator"" _lbpft(unsigned long long val);
+  Stiffness operator"" _lbpft(long double val);
+  Stiffness operator"" _lbpft(unsigned long long val);
 
-  inline Stiffness ENGINEERINGLIBRARY_API conj(const Stiffness& x) { return x; }
-  inline Stiffness ENGINEERINGLIBRARY_API real(const Stiffness& x) { return x; }
-  inline Stiffness ENGINEERINGLIBRARY_API imag(const Stiffness&) { return 0_Npm; }
+  inline Stiffness conj(const Stiffness& x) { return x; }
+  inline Stiffness real(const Stiffness& x) { return x; }
+  inline Stiffness imag(const Stiffness&) { return 0_Npm; }
   
 
 }; // namespace eng

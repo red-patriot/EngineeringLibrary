@@ -27,26 +27,26 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -215,21 +215,11 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Bolt.h" />
-    <ClInclude Include="Buckling.h" />
     <ClInclude Include="Engineering.h" />
-    <ClInclude Include="EngineeringExport.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="GeometricProperty.h" />
-    <ClInclude Include="Geometry.h" />
-    <ClInclude Include="Material.h" />
-    <ClInclude Include="Strain.h" />
-    <ClInclude Include="Stress.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="SystemDynamics.h" />
     <ClInclude Include="Units.h" />
     <ClInclude Include="Units\Acceleration.h" />
-    <ClInclude Include="Units\Angle.h" />
     <ClInclude Include="Units\Area.h" />
     <ClInclude Include="Units\Damping.h" />
     <ClInclude Include="Units\Energy.h" />
@@ -248,23 +238,14 @@
     <ClInclude Include="Units\Volume.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bolt.cpp" />
-    <ClCompile Include="Buckling.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="GeometricProperty.cpp" />
-    <ClCompile Include="Geometry.cpp" />
-    <ClCompile Include="Material.cpp" />
-    <ClCompile Include="Strain.cpp" />
-    <ClCompile Include="Stress.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SystemDynamics.cpp" />
     <ClCompile Include="Units\Acceleration.cpp" />
-    <ClCompile Include="Units\Angle.cpp" />
     <ClCompile Include="Units\Area.cpp" />
     <ClCompile Include="Units\Damping.cpp" />
     <ClCompile Include="Units\Energy.cpp" />

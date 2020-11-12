@@ -14,8 +14,6 @@
 #include <cmath>
 #include <numeric>
 
-#include "../EngineeringExport.h"
-
 /* This macro allows for all explicit specializations of UnitBase to share the 
  *   necessary base functionality.
  *   Each specialization must define type_t as a typedef for the class type
@@ -40,7 +38,7 @@ namespace eng {
    */
   template<int MassNum, int LengthNum, int TimeNum, int CurrentNum, int TemperatureNum, int AmountNum, int LuminousityNum,
     int MassDen=1, int LengthDen=1, int TimeDen=1, int CurrentDen=1, int TemperatureDen=1, int AmountDen=1, int LuminousityDen=1>
-  class ENGINEERINGLIBRARY_API UnitBase {
+  class UnitBase {
     typedef UnitBase this_t;
     UnitBaseCOMMON
   };
@@ -76,8 +74,8 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API operator- (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh) {
-    return UnitBase(-lh.value());
+    operator- (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh) {
+    return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(-lh.value());
   }
 
   /**
@@ -86,7 +84,7 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API operator+ (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+    operator+ (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
                                       const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.value() + rh.value());
   }
@@ -97,7 +95,7 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API operator- (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+    operator- (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
                                       const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.value() - rh.value());
   }
@@ -111,7 +109,7 @@ namespace eng {
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2,
     typename...>
     auto
-    ENGINEERINGLIBRARY_API operator* (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+    operator* (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                       const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return UnitBase<_numa(MN1, MD1, MN2, MD2),
       _numa(LN1, LD1, LN2, LD2),
@@ -131,21 +129,21 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API operator* (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+    operator* (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
                                       const double& rh) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.value() * rh);
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API operator* (const double& lh,
+    operator* (const double& lh,
                                       const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return rh * lh;
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     double
-    ENGINEERINGLIBRARY_API operator* (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+    operator* (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
                                       const UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return lh.value() * rh.value();
   }
@@ -159,7 +157,7 @@ namespace eng {
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2, 
     typename...>
     auto
-    ENGINEERINGLIBRARY_API operator/ (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+    operator/ (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                       const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return UnitBase<_nums(MN1, MD1, MN2, MD2),
       _nums(LN1, LD1, LN2, LD2),
@@ -179,21 +177,21 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API operator/ (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+    operator/ (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
                                       const double& rh) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.value() / rh);
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API operator/ (const double& lh,
+    operator/ (const double& lh,
                                       const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh / rh.value());
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     double
-    ENGINEERINGLIBRARY_API operator/ (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+    operator/ (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
                                       const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return lh.value() / rh.value();
   }
@@ -201,11 +199,23 @@ namespace eng {
   /**
    * UnitBase comparison operators.
    */
+  namespace internal { 
+    /* Tests that the numbers differ by less than 100,000 times smaller than 
+     * either of them. */
+    inline bool fuzzy_equals(const double& lh, const double& rh) {
+      return fabs(lh - rh) <= fabs((lh < rh ? lh : rh) * 0.000001);
+    }
+    /* Tests that lh is greater than rh by an accaptable margin of error. */
+    inline bool fuzzy_greater(const double& lh, const double& rh) {
+      return lh - rh > ((lh < rh ? lh : rh) * 0.000001);
+    }
+  };
+
   template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
-    bool ENGINEERINGLIBRARY_API operator== (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+    bool operator== (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                             const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return MN1 == MN2 &&
       LN1 == LN2 &&
@@ -221,14 +231,14 @@ namespace eng {
       TeD1 == TeD2 &&
       AD1 == AD2 &&
       LuD1 == LuD2 &&
-      lh.value() == rh.value();
+      internal::fuzzy_equals(lh.value(), rh.value());
   }
 
   template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
-    bool ENGINEERINGLIBRARY_API operator> (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+    bool operator> (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                            const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return MN1 == MN2 &&
       LN1 == LN2 &&
@@ -244,14 +254,14 @@ namespace eng {
       TeD1 == TeD2 &&
       AD1 == AD2 &&
       LuD1 == LuD2 &&
-      lh.value() > rh.value();
+      internal::fuzzy_greater(lh.value(), rh.value());
   }
 
   template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
-    bool ENGINEERINGLIBRARY_API operator!= (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+    bool operator!= (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                             const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return !(lh == rh);
   }
@@ -260,7 +270,7 @@ namespace eng {
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
-    bool ENGINEERINGLIBRARY_API operator< (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+    bool operator< (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                            const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return rh > lh;
   }
@@ -269,7 +279,7 @@ namespace eng {
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
-    bool ENGINEERINGLIBRARY_API operator>= (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+    bool operator>= (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                             const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return lh > rh || lh == rh;
   }
@@ -278,7 +288,7 @@ namespace eng {
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
-    bool ENGINEERINGLIBRARY_API operator<= (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+    bool operator<= (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                             const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return rh > lh || lh == rh;
   }
@@ -286,19 +296,19 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     inline UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API conj(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) { 
+    conj(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) { 
     return x; 
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     inline UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API real(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    real(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
     return x;
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     inline UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API imag(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, 
+    imag(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, 
                                 MD, LD, TD, CD, TeD, AD, LuD>& x) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(0);
   }
@@ -310,7 +320,7 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     inline UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API abs(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    abs(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, 
       MD, LD, TD, CD, TeD, AD, LuD>(std::fabs(x.value()));
   }
@@ -318,7 +328,7 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     inline auto
-    ENGINEERINGLIBRARY_API sqrt(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    sqrt(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
     return UnitBase<_numa(MN, MD*2, 0, 1),
       _numa(LN, LD*2, 0, 1),
       _numa(TN, TD*2, 0, 1),
@@ -338,7 +348,7 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     inline auto
-    ENGINEERINGLIBRARY_API abs2(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    abs2(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
     return UnitBase<_numa(MN*2, MD, 0, 1),
       _numa(LN*2, LD, 0, 1),
       _numa(TN*2, TD, 0, 1),

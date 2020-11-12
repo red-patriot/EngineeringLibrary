@@ -20,6 +20,9 @@ namespace eng {
 
   Stiffness bolt_stiffness(const Area& Ad, const Area& At, const Stress& E, 
                                     const Length& lt, const Length& ld) {
+    eng::Acceleration a = 1_mpsec2;
+    eng::Mass m = 1_kg;
+    eng::Force f = m * a;
     return E*((Ad * At)/(Ad*lt + At*ld));
   }
   Stiffness members_stiffness(const std::vector<joint_member>& members, 

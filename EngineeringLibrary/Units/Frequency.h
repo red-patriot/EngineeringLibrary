@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<0, 0, -1, 0, 0, 0, 0> {
+  class UnitBase<0, 0, -1, 0, 0, 0, 0> {
     typedef UnitBase<0, 0, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -31,18 +31,18 @@ namespace eng {
 
   using Frequency = UnitBase<0, 0, -1, 0, 0, 0, 0>;
 
-  Frequency ENGINEERINGLIBRARY_API operator"" _Hz (long double val);
-  Frequency ENGINEERINGLIBRARY_API operator"" _Hz (unsigned long long val);
+  Frequency operator"" _Hz (long double val);
+  Frequency operator"" _Hz (unsigned long long val);
 
-  Frequency ENGINEERINGLIBRARY_API operator"" _kHz (long double val);
-  Frequency ENGINEERINGLIBRARY_API operator"" _kHz (unsigned long long val);
+  Frequency operator"" _kHz (long double val);
+  Frequency operator"" _kHz (unsigned long long val);
 
-  Frequency ENGINEERINGLIBRARY_API operator"" _MHz (long double val);
-  Frequency ENGINEERINGLIBRARY_API operator"" _MHz (unsigned long long val);
+  Frequency operator"" _MHz (long double val);
+  Frequency operator"" _MHz (unsigned long long val);
 
-  inline Frequency ENGINEERINGLIBRARY_API conj(const Frequency& x) { return x; }
-  inline Frequency ENGINEERINGLIBRARY_API real(const Frequency& x) { return x; }
-  inline Frequency ENGINEERINGLIBRARY_API imag(const Frequency&) { return 0_Hz; }
+  inline Frequency conj(const Frequency& x) { return x; }
+  inline Frequency real(const Frequency& x) { return x; }
+  inline Frequency imag(const Frequency&) { return 0_Hz; }
 
 };  // namespace eng
 

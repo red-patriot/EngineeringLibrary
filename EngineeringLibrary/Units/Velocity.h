@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<0, 1, -1, 0, 0, 0, 0> {
+  class UnitBase<0, 1, -1, 0, 0, 0, 0> {
     typedef UnitBase<0, 1, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -34,24 +34,24 @@ namespace eng {
 
   using Velocity = UnitBase<0, 1, -1, 0, 0, 0, 0>;
 
-  Velocity ENGINEERINGLIBRARY_API operator"" _mpsec (long double val);
-  Velocity ENGINEERINGLIBRARY_API operator"" _mpsec (unsigned long long val);
+  Velocity operator"" _mpsec (long double val);
+  Velocity operator"" _mpsec (unsigned long long val);
 
-  Velocity ENGINEERINGLIBRARY_API operator"" _kph (long double val);
-  Velocity ENGINEERINGLIBRARY_API operator"" _kph (unsigned long long val);
+  Velocity operator"" _kph (long double val);
+  Velocity operator"" _kph (unsigned long long val);
 
-  Velocity ENGINEERINGLIBRARY_API operator"" _inpsec (long double val);
-  Velocity ENGINEERINGLIBRARY_API operator"" _inpsec (unsigned long long val);
+  Velocity operator"" _inpsec (long double val);
+  Velocity operator"" _inpsec (unsigned long long val);
 
-  Velocity ENGINEERINGLIBRARY_API operator"" _ftpsec (long double val);
-  Velocity ENGINEERINGLIBRARY_API operator"" _ftpsec (unsigned long long val);
+  Velocity operator"" _ftpsec (long double val);
+  Velocity operator"" _ftpsec (unsigned long long val);
 
-  Velocity ENGINEERINGLIBRARY_API operator"" _mph (long double val);
-  Velocity ENGINEERINGLIBRARY_API operator"" _mph (unsigned long long val);
+  Velocity operator"" _mph (long double val);
+  Velocity operator"" _mph (unsigned long long val);
 
-  inline Velocity ENGINEERINGLIBRARY_API conj(const Velocity& x) { return x; }
-  inline Velocity ENGINEERINGLIBRARY_API real(const Velocity& x) { return x; }
-  inline Velocity ENGINEERINGLIBRARY_API imag(const Velocity& x) { return 0_mpsec; }
+  inline Velocity conj(const Velocity& x) { return x; }
+  inline Velocity real(const Velocity& x) { return x; }
+  inline Velocity imag(const Velocity& x) { return 0_mpsec; }
 
 };  // namespace eng
 

@@ -9,8 +9,6 @@
 
 #include "framework.h"
 
-#include "EngineeringExport.h"
-
 // Add all Unit classes that have been tested
 
 // Time headers
@@ -21,7 +19,7 @@
 #include "Units/Mass.h"
 
 // Geometry headers
-#include "Units/Angle.h"
+//#include "Units/Angle.h"
 #include "Units/Length.h"
 #include "Units/Area.h"
 

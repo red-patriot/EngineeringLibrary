@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<0, 1, -2, 0, 0, 0, 0> {
+  class UnitBase<0, 1, -2, 0, 0, 0, 0> {
     typedef UnitBase<0, 1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -32,18 +32,18 @@ namespace eng {
 
   using Acceleration = UnitBase<0, 1, -2, 0, 0, 0, 0>;
 
-  Acceleration ENGINEERINGLIBRARY_API operator"" _mpsec2 (long double val);
-  Acceleration ENGINEERINGLIBRARY_API operator"" _mpsec2 (unsigned long long val);
+  Acceleration operator"" _mpsec2 (long double val);
+  Acceleration operator"" _mpsec2 (unsigned long long val);
 
-  Acceleration ENGINEERINGLIBRARY_API operator"" _inpsec2 (long double val);
-  Acceleration ENGINEERINGLIBRARY_API operator"" _inpsec2 (unsigned long long val);
+  Acceleration operator"" _inpsec2 (long double val);
+  Acceleration operator"" _inpsec2 (unsigned long long val);
 
-  Acceleration ENGINEERINGLIBRARY_API operator"" _ftpsec2 (long double val);
-  Acceleration ENGINEERINGLIBRARY_API operator"" _ftpsec2 (unsigned long long val);
+  Acceleration operator"" _ftpsec2 (long double val);
+  Acceleration operator"" _ftpsec2 (unsigned long long val);
 
-  inline Acceleration ENGINEERINGLIBRARY_API conj(const Acceleration& x) { return x; }
-  inline Acceleration ENGINEERINGLIBRARY_API real(const Acceleration& x) { return x; }
-  inline Acceleration ENGINEERINGLIBRARY_API imag(const Acceleration&) { return 0_mpsec2; }
+  inline Acceleration conj(const Acceleration& x) { return x; }
+  inline Acceleration real(const Acceleration& x) { return x; }
+  inline Acceleration imag(const Acceleration&) { return 0_mpsec2; }
 
 };  // namespace eng
 

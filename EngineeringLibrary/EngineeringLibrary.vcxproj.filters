@@ -21,40 +21,10 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EngineeringExport.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engineering.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeometricProperty.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Geometry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Bolt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Buckling.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Stress.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Strain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SystemDynamics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Units\Acceleration.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Units\Angle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Area.h">
@@ -116,34 +86,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeometricProperty.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometry.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Bolt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Buckling.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Stress.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Strain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SystemDynamics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Units\Acceleration.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Units\Angle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Area.cpp">

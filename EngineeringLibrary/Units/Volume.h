@@ -18,7 +18,7 @@ namespace eng {
    * \class Volume A 3D geometry
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<0, 3, 0, 0, 0, 0, 0> {
+  class UnitBase<0, 3, 0, 0, 0, 0, 0> {
     typedef UnitBase<0, 3, 0, 0, 0, 0, 0> this_t;
       UnitBaseCOMMON
   public:
@@ -32,24 +32,24 @@ namespace eng {
 
   using Volume = UnitBase<0, 3, 0, 0, 0, 0, 0>;
 
-  Volume ENGINEERINGLIBRARY_API operator"" _mm3(long double val);
-  Volume ENGINEERINGLIBRARY_API operator"" _mm3(unsigned long long val);
+  Volume operator"" _mm3(long double val);
+  Volume operator"" _mm3(unsigned long long val);
 
-  Volume ENGINEERINGLIBRARY_API operator"" _cm3(long double val);
-  Volume ENGINEERINGLIBRARY_API operator"" _cm3(unsigned long long val);
+  Volume operator"" _cm3(long double val);
+  Volume operator"" _cm3(unsigned long long val);
 
-  Volume ENGINEERINGLIBRARY_API operator"" _m3(long double val);
-  Volume ENGINEERINGLIBRARY_API operator"" _m3(unsigned long long val);
+  Volume operator"" _m3(long double val);
+  Volume operator"" _m3(unsigned long long val);
 
-  Volume ENGINEERINGLIBRARY_API operator"" _in3(long double val);
-  Volume ENGINEERINGLIBRARY_API operator"" _in3(unsigned long long val);
+  Volume operator"" _in3(long double val);
+  Volume operator"" _in3(unsigned long long val);
 
-  Volume ENGINEERINGLIBRARY_API operator"" _ft3(long double val);
-  Volume ENGINEERINGLIBRARY_API operator"" _ft3(unsigned long long val);
+  Volume operator"" _ft3(long double val);
+  Volume operator"" _ft3(unsigned long long val);
 
-  inline Volume ENGINEERINGLIBRARY_API conj(const Volume& x) { return x; }
-  inline Volume ENGINEERINGLIBRARY_API real(const Volume& x) { return x; }
-  inline Volume ENGINEERINGLIBRARY_API imag(const Volume&) { return 0_m3; }
+  inline Volume conj(const Volume& x) { return x; }
+  inline Volume real(const Volume& x) { return x; }
+  inline Volume imag(const Volume&) { return 0_m3; }
 
 }; // namespace eng
 

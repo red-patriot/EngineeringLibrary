@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<1, 0, -1, 0, 0, 0, 0> {
+  class UnitBase<1, 0, -1, 0, 0, 0, 0> {
     typedef UnitBase<1, 0, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -34,17 +34,17 @@ namespace eng {
   using Damping = UnitBase<1, 0, -1, 0, 0, 0, 0>;
 
   // Literal operators
-  Damping ENGINEERINGLIBRARY_API operator"" _Nspm (long double val);
-  Damping ENGINEERINGLIBRARY_API operator"" _Nspm (unsigned long long val);
+  Damping operator"" _Nspm (long double val);
+  Damping operator"" _Nspm (unsigned long long val);
 
-  Damping ENGINEERINGLIBRARY_API operator"" _kNspm (long double val);
-  Damping ENGINEERINGLIBRARY_API operator"" _kNspm (unsigned long long val);
+  Damping operator"" _kNspm (long double val);
+  Damping operator"" _kNspm (unsigned long long val);
 
-  Damping ENGINEERINGLIBRARY_API operator"" _lbspin (long double val);
-  Damping ENGINEERINGLIBRARY_API operator"" _lbspin (unsigned long long val);
+  Damping operator"" _lbspin (long double val);
+  Damping operator"" _lbspin (unsigned long long val);
 
-  Damping ENGINEERINGLIBRARY_API operator"" _lbspft (long double val);
-  Damping ENGINEERINGLIBRARY_API operator"" _lbspft (unsigned long long val);
+  Damping operator"" _lbspft (long double val);
+  Damping operator"" _lbspft (unsigned long long val);
 
 };  // namespace eng
 

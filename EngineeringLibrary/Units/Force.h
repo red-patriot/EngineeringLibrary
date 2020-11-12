@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<1, 1, -2, 0, 0, 0, 0> {
+  class UnitBase<1, 1, -2, 0, 0, 0, 0> {
     typedef UnitBase<1, 1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -33,21 +33,17 @@ namespace eng {
 
   using Force = UnitBase<1, 1, -2, 0, 0, 0, 0>;
 
-  Force ENGINEERINGLIBRARY_API operator"" _N(long double val);
-  Force ENGINEERINGLIBRARY_API operator"" _N(unsigned long long val);
+  Force operator"" _N(long double val);
+  Force operator"" _N(unsigned long long val);
 
-  Force ENGINEERINGLIBRARY_API operator"" _kN(long double val);
-  Force ENGINEERINGLIBRARY_API operator"" _kN(unsigned long long val);
+  Force operator"" _kN(long double val);
+  Force operator"" _kN(unsigned long long val);
 
-  Force ENGINEERINGLIBRARY_API operator"" _lbf(long double val);
-  Force ENGINEERINGLIBRARY_API operator"" _lbf(unsigned long long val);
+  Force operator"" _lbf(long double val);
+  Force operator"" _lbf(unsigned long long val);
 
-  Force ENGINEERINGLIBRARY_API operator"" _kips(long double val);
-  Force ENGINEERINGLIBRARY_API operator"" _kips(unsigned long long val);
-
-  inline Force ENGINEERINGLIBRARY_API conj(const Force& x) { return x; }
-  inline Force ENGINEERINGLIBRARY_API real(const Force& x) { return x; }
-  inline Force ENGINEERINGLIBRARY_API imag(const Force&) { return 0_N; }
+  Force operator"" _kips(long double val);
+  Force operator"" _kips(unsigned long long val);
 
   // Forces are commonly used as vectors, so provide some vectors for convenience
   using Force2d = Eigen::Matrix<Force, 1, 2>;

@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<0, 1, 0, 0, 0, 0, 0> {
+  class UnitBase<0, 1, 0, 0, 0, 0, 0> {
     typedef UnitBase<0, 1, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -36,26 +36,26 @@ namespace eng {
 
   using Length = UnitBase<0, 1, 0, 0, 0, 0, 0>;
 
-  Length ENGINEERINGLIBRARY_API operator"" _mm (long double val);
-  Length ENGINEERINGLIBRARY_API operator"" _mm (unsigned long long val);
+  Length operator"" _mm (long double val);
+  Length operator"" _mm (unsigned long long val);
 
-  Length ENGINEERINGLIBRARY_API operator"" _cm (long double val);
-  Length ENGINEERINGLIBRARY_API operator"" _cm (unsigned long long val);
+  Length operator"" _cm (long double val);
+  Length operator"" _cm (unsigned long long val);
 
-  Length ENGINEERINGLIBRARY_API operator"" _m (long double val);
-  Length ENGINEERINGLIBRARY_API operator"" _m (unsigned long long val);
+  Length operator"" _m (long double val);
+  Length operator"" _m (unsigned long long val);
 
-  Length ENGINEERINGLIBRARY_API operator"" _km (long double val);
-  Length ENGINEERINGLIBRARY_API operator"" _km (unsigned long long val);
+  Length operator"" _km (long double val);
+  Length operator"" _km (unsigned long long val);
 
-  Length ENGINEERINGLIBRARY_API operator"" _in (long double val);
-  Length ENGINEERINGLIBRARY_API operator"" _in (unsigned long long val);
+  Length operator"" _in (long double val);
+  Length operator"" _in (unsigned long long val);
 
-  Length ENGINEERINGLIBRARY_API operator"" _ft (long double val);
-  Length ENGINEERINGLIBRARY_API operator"" _ft (unsigned long long val);
+  Length operator"" _ft (long double val);
+  Length operator"" _ft (unsigned long long val);
 
-  Length ENGINEERINGLIBRARY_API operator"" _mi (long double val);
-  Length ENGINEERINGLIBRARY_API operator"" _mi (unsigned long long val);
+  Length operator"" _mi (long double val);
+  Length operator"" _mi (unsigned long long val);
 
 }; // namespace eng
 

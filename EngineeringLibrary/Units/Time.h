@@ -21,7 +21,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<0, 0, 1, 0, 0, 0, 0> {
+  class UnitBase<0, 0, 1, 0, 0, 0, 0> {
     typedef UnitBase<0, 0, 1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -32,18 +32,18 @@ namespace eng {
 
   using Time = UnitBase<0, 0, 1, 0, 0, 0, 0>;
 
-  Time ENGINEERINGLIBRARY_API operator"" _sec (long double val);
-  Time ENGINEERINGLIBRARY_API operator"" _sec (unsigned long long val);
+  Time operator"" _sec (long double val);
+  Time operator"" _sec (unsigned long long val);
 
-  Time ENGINEERINGLIBRARY_API operator"" _minute (long double val);
-  Time ENGINEERINGLIBRARY_API operator"" _minute (unsigned long long val);
+  Time operator"" _minute (long double val);
+  Time operator"" _minute (unsigned long long val);
 
-  Time ENGINEERINGLIBRARY_API operator"" _hour (long double val);
-  Time ENGINEERINGLIBRARY_API operator"" _hour (unsigned long long val);
+  Time operator"" _hour (long double val);
+  Time operator"" _hour (unsigned long long val);
 
-  inline Time ENGINEERINGLIBRARY_API conj(const Time& x) { return x; }
-  inline Time ENGINEERINGLIBRARY_API real(const Time& x) { return x; }
-  inline Time ENGINEERINGLIBRARY_API imag(const Time& x) { return 0_sec; }
+  inline Time conj(const Time& x) { return x; }
+  inline Time real(const Time& x) { return x; }
+  inline Time imag(const Time& x) { return 0_sec; }
 
 };  // namepsace eng
 

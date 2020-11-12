@@ -20,7 +20,7 @@ namespace eng {
    * \class Torque
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Torque : public UnitBase<1, 2, -2, 0, 0, 0, 0> {
+  class Torque : public UnitBase<1, 2, -2, 0, 0, 0, 0> {
   public:
     /**
      * \brief Torque constructor
@@ -53,24 +53,24 @@ namespace eng {
     Torque& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  Torque ENGINEERINGLIBRARY_API operator"" _Nm (long double val);
-  Torque ENGINEERINGLIBRARY_API operator"" _Nm (unsigned long long val);
+  Torque operator"" _Nm (long double val);
+  Torque operator"" _Nm (unsigned long long val);
 
-  Torque ENGINEERINGLIBRARY_API operator"" _kNm (long double val);
-  Torque ENGINEERINGLIBRARY_API operator"" _kNm (unsigned long long val);
+  Torque operator"" _kNm (long double val);
+  Torque operator"" _kNm (unsigned long long val);
 
-  Torque ENGINEERINGLIBRARY_API operator"" _Nmm (long double val);
-  Torque ENGINEERINGLIBRARY_API operator"" _Nmm (unsigned long long val);
+  Torque operator"" _Nmm (long double val);
+  Torque operator"" _Nmm (unsigned long long val);
 
-  Torque ENGINEERINGLIBRARY_API operator"" _lbft (long double val);
-  Torque ENGINEERINGLIBRARY_API operator"" _lbft (unsigned long long val);
+  Torque operator"" _lbft (long double val);
+  Torque operator"" _lbft (unsigned long long val);
 
-  Torque ENGINEERINGLIBRARY_API operator"" _lbin (long double val);
-  Torque ENGINEERINGLIBRARY_API operator"" _lbin (unsigned long long val);
+  Torque operator"" _lbin (long double val);
+  Torque operator"" _lbin (unsigned long long val);
 
-  inline Torque ENGINEERINGLIBRARY_API conj(const Torque& x) { return x; }
-  inline Torque ENGINEERINGLIBRARY_API real(const Torque& x) { return x; }
-  inline Torque ENGINEERINGLIBRARY_API imag(const Torque&) { return 0_Nm; }
+  inline Torque conj(const Torque& x) { return x; }
+  inline Torque real(const Torque& x) { return x; }
+  inline Torque imag(const Torque&) { return 0_Nm; }
 
   // Some conventions use "Moment" istead of "Torque"
   using Moment = Torque;

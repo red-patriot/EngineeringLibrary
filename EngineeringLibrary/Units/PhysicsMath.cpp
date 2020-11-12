@@ -7,90 +7,25 @@
 
 namespace eng {
 
-  bool fuzzy_equals(const double& lh, const double& rh) {
-    /* Tests that the numbers differ by less than 100,000 times smaller than either of them. */
-    return fabs(lh - rh) <= fabs((lh < rh ? lh : rh) * 0.000001);
-  }
-  bool fuzzy_greater(const double& lh, const double& rh) {
-    /* Tests that lh is greater than rh by an accaptable margin of error. */
-    return lh - rh > ((lh < rh ? lh : rh) * 0.000001);
-  }
-  bool approx(const double& lh, const double& rh) {
-    /* This is a less-stringent version of fuzzy_equals, when the equality must be tested on an order of 1000. */
-    return fabs(lh - rh) <= fabs((lh < rh ? lh : rh) * 0.0001);
-  }
-
-  double sin(const Angle& a) {
-    return std::sin(a.rad());
-  }
-  double cos(const Angle& a) {
-    return std::cos(a.rad());
-  }
-  double tan(const Angle& a) {
-    return std::tan(a.rad());
-  }
-  Angle asin(const double& x) {
-    return Angle(std::asin(x));
-  }
-  Angle acos(const double& x) {
-    return Angle(std::acos(x));
-  }
-  Angle atan(const double& x) {
-    return Angle(std::atan(x));
-  }
-  Angle atan2(const double& x, const double& y) {
-    return Angle(std::atan2(x, y));
-  }
-  
-  Length sqrt(const Area& r) {
-    return Length(std::sqrt(r.value()));
-  }
-  Area sqrt(const SecondMomentOfArea& r) {
-    return Area(std::sqrt(r.value()));
-  }
-
-
-  Time abs(const Time& x) {
-    return Time(fabs(x.value()));
-  }
-  Frequency abs(const Frequency& x) {
-    return Frequency(fabs(x.value()));
-  }
-  Mass abs(const Mass& x) {
-    return Mass(fabs(x.value()));
-  }
-  Angle abs(const Angle& x) {
-    return Angle(fabs(x.value()));
-  }
-  Length abs(const Length& x) {
-    return Length(fabs(x.value())); 
-  }
-  Area abs(const Area& x) {
-    return Area(std::fabs(x.value()));
-  }
-  Volume abs(const Volume& x) {
-    return Volume(fabs(x.value()));
-  }
-  SecondMomentOfArea abs(const SecondMomentOfArea& x) { 
-    return SecondMomentOfArea(fabs(x.value())); 
-  }
-  Force abs(const Force& x) {
-    return Force(fabs(x.value())); 
-  }
-  Stiffness abs(const Stiffness& x) {
-    return Stiffness(fabs(x.value()));
-  }
-  Damping abs(const Damping& x) {
-      return Damping(fabs(x.value()));
-  }
-  Pressure abs(const Pressure& x) {
-    return Pressure(fabs(x.value())); 
-  }
-  Velocity abs(const Velocity& x) {
-    return Velocity(fabs(x.value()));
-  }
-  Acceleration abs(const Acceleration& x) {
-      return Acceleration(fabs(x.value()));
-  }
-
+  //double sin(const Angle& a) {
+  //  return std::sin(a.rad());
+  //}
+  //double cos(const Angle& a) {
+  //  return std::cos(a.rad());
+  //}
+  //double tan(const Angle& a) {
+  //  return std::tan(a.rad());
+  //}
+  //Angle asin(const double& x) {
+  //  return Angle(std::asin(x));
+  //}
+  //Angle acos(const double& x) {
+  //  return Angle(std::acos(x));
+  //}
+  //Angle atan(const double& x) {
+  //  return Angle(std::atan(x));
+  //}
+  //Angle atan2(const double& x, const double& y) {
+  //  return Angle(std::atan2(x, y));
+  //}
 };

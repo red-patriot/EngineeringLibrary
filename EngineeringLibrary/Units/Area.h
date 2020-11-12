@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<0, 2, 0, 0, 0, 0, 0> {
+  class UnitBase<0, 2, 0, 0, 0, 0, 0> {
     typedef UnitBase<0, 2, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -34,20 +34,20 @@ namespace eng {
 
   using Area = UnitBase<0, 2, 0, 0, 0, 0, 0>;
 
-  Area ENGINEERINGLIBRARY_API operator"" _mm2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _mm2(unsigned long long val);
+  Area operator"" _mm2(long double val);
+  Area operator"" _mm2(unsigned long long val);
 
-  Area ENGINEERINGLIBRARY_API operator"" _cm2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _cm2(unsigned long long val);
+  Area operator"" _cm2(long double val);
+  Area operator"" _cm2(unsigned long long val);
 
-  Area ENGINEERINGLIBRARY_API operator"" _m2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _m2(unsigned long long val);
+  Area operator"" _m2(long double val);
+  Area operator"" _m2(unsigned long long val);
 
-  Area ENGINEERINGLIBRARY_API operator"" _in2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _in2(unsigned long long val);
+  Area operator"" _in2(long double val);
+  Area operator"" _in2(unsigned long long val);
 
-  Area ENGINEERINGLIBRARY_API operator"" _ft2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _ft2(unsigned long long val);
+  Area operator"" _ft2(long double val);
+  Area operator"" _ft2(unsigned long long val);
 
 }; // namespace eng
 

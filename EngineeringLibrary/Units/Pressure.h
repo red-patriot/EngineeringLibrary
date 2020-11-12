@@ -20,7 +20,7 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class ENGINEERINGLIBRARY_API UnitBase<1, -1, -2, 0, 0, 0, 0> {
+  class UnitBase<1, -1, -2, 0, 0, 0, 0> {
     typedef UnitBase<1, -1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
@@ -36,27 +36,27 @@ namespace eng {
   using Pressure = UnitBase<1, -1, -2, 0, 0, 0, 0>;
 
   // Literal operators
-  Pressure ENGINEERINGLIBRARY_API operator"" _Pa (long double val);
-  Pressure ENGINEERINGLIBRARY_API operator"" _Pa (unsigned long long val);
+  Pressure operator"" _Pa (long double val);
+  Pressure operator"" _Pa (unsigned long long val);
 
-  Pressure ENGINEERINGLIBRARY_API operator"" _kPa (long double val);
-  Pressure ENGINEERINGLIBRARY_API operator"" _kPa (unsigned long long val);
+  Pressure operator"" _kPa (long double val);
+  Pressure operator"" _kPa (unsigned long long val);
 
-  Pressure ENGINEERINGLIBRARY_API operator"" _MPa (long double val);
-  Pressure ENGINEERINGLIBRARY_API operator"" _MPa (unsigned long long val);
+  Pressure operator"" _MPa (long double val);
+  Pressure operator"" _MPa (unsigned long long val);
 
-  Pressure ENGINEERINGLIBRARY_API operator"" _GPa (long double val);
-  Pressure ENGINEERINGLIBRARY_API operator"" _GPa (unsigned long long val);
+  Pressure operator"" _GPa (long double val);
+  Pressure operator"" _GPa (unsigned long long val);
 
-  Pressure ENGINEERINGLIBRARY_API operator"" _psi (long double val);
-  Pressure ENGINEERINGLIBRARY_API operator"" _psi (unsigned long long val);
+  Pressure operator"" _psi (long double val);
+  Pressure operator"" _psi (unsigned long long val);
 
-  Pressure ENGINEERINGLIBRARY_API operator"" _ksi (long double val);
-  Pressure ENGINEERINGLIBRARY_API operator"" _ksi (unsigned long long val);
+  Pressure operator"" _ksi (long double val);
+  Pressure operator"" _ksi (unsigned long long val);
 
-  inline Pressure ENGINEERINGLIBRARY_API conj(const Pressure& x) { return x; }
-  inline Pressure ENGINEERINGLIBRARY_API real(const Pressure& x) { return x; }
-  inline Pressure ENGINEERINGLIBRARY_API imag(const Pressure&) { return 0_Pa; }
+  inline Pressure conj(const Pressure& x) { return x; }
+  inline Pressure real(const Pressure& x) { return x; }
+  inline Pressure imag(const Pressure&) { return 0_Pa; }
 }; // namespace eng
 
 /* Integration with Eigen */
