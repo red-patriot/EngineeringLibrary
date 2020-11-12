@@ -54,14 +54,16 @@ namespace eng {
   auto _d = [](const int&, const int& b, const int&, const int& d) constexpr { return b*d; };
   auto _numa = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
     int num = _na(n1, d1, n2, d2), den = _d(n1, d1, n2, d2);
-    return _sign(num) * _sign(den) * _abs(num)/std::gcd(num, den); };
+    return _sign(num) * _sign(den) * _abs(num)/std::gcd(num, den); 
+  };
   auto _denoma = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
     int num = _na(n1, d1, n2, d2), den = _d(n1, d1, n2, d2);
     return _abs(den)/std::gcd(num, den);
   };
   auto _nums = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
     int num = _ns(n1, d1, n2, d2), den = _d(n1, d1, n2, d2);
-    return _sign(num) * _sign(den) * _abs(num)/std::gcd(num, den); };
+    return _sign(num) * _sign(den) * _abs(num)/std::gcd(num, den); 
+  };
   auto _denoms = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
     int num = _ns(n1, d1, n2, d2), den = _d(n1, d1, n2, d2);
     return _abs(den)/std::gcd(num, den);
@@ -110,17 +112,17 @@ namespace eng {
     typename...>
     auto
     operator* (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
-                                      const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+               const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return UnitBase<_numa(MN1, MD1, MN2, MD2),
       _numa(LN1, LD1, LN2, LD2),
-      _numa(TN1, TD1, TN1, TD2),
+      _numa(TN1, TD1, TN2, TD2),
       _numa(CN1, CD1, CN2, CD2),
       _numa(TeN1, TeD1, TeN2, TeD2),
       _numa(AN1, AD1, AN2, AD2),
       _numa(LuN1, LuD1, LuN2, LuD2),
       _denoma(MN1, MD1, MN2, MD2),
       _denoma(LN1, LD1, LN2, LD2),
-      _denoma(TN1, TD1, TN1, TD2),
+      _denoma(TN1, TD1, TN2, TD2),
       _denoma(CN1, CD1, CN2, CD2),
       _denoma(TeN1, TeD1, TeN2, TeD2),
       _denoma(AN1, AD1, AN2, AD2),
@@ -130,21 +132,21 @@ namespace eng {
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
     operator* (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
-                                      const double& rh) {
+               const double& rh) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.value() * rh);
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
     operator* (const double& lh,
-                                      const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+               const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return rh * lh;
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     double
     operator* (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
-                                      const UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+               const UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return lh.value() * rh.value();
   }
 
@@ -158,17 +160,17 @@ namespace eng {
     typename...>
     auto
     operator/ (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
-                                      const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+               const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return UnitBase<_nums(MN1, MD1, MN2, MD2),
       _nums(LN1, LD1, LN2, LD2),
-      _nums(TN1, TD1, TN1, TD2),
+      _nums(TN1, TD1, TN2, TD2),
       _nums(CN1, CD1, CN2, CD2),
       _nums(TeN1, TeD1, TeN2, TeD2),
       _nums(AN1, AD1, AN2, AD2),
       _nums(LuN1, LuD1, LuN2, LuD2),
       _denoms(MN1, MD1, MN2, MD2),
       _denoms(LN1, LD1, LN2, LD2),
-      _denoms(TN1, TD1, TN1, TD2),
+      _denoms(TN1, TD1, TN2, TD2),
       _denoms(CN1, CD1, CN2, CD2),
       _denoms(TeN1, TeD1, TeN2, TeD2),
       _denoms(AN1, AD1, AN2, AD2),
@@ -185,14 +187,14 @@ namespace eng {
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>
     operator/ (const double& lh,
-                                      const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+               const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh / rh.value());
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     double
     operator/ (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
-                                      const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+               const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return lh.value() / rh.value();
   }
 
