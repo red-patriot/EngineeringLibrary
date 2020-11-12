@@ -23,7 +23,7 @@
  *   UnitBaseCOMMON must be used before every other class member except this_t.
  */
 #define UnitBaseCOMMON public:                                                 \
-    explicit UnitBase(const double& n) : _value(n) { }                         \
+    explicit UnitBase(const double& n=0) : _value(n) { }                       \
     ~UnitBase() = default;                                                     \
     double value() const { return _value; }                                    \
     this_t& operator+= (const this_t& rh) {_value += rh.value(); return *this;}\
@@ -69,6 +69,7 @@ namespace eng {
     return _abs(den)/std::gcd(num, den);
   };
 
+
   /**
    * UnitBase inversion operator.
    */
@@ -107,7 +108,8 @@ namespace eng {
   template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
-    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
+    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2,
+    typename...>
     auto
     ENGINEERINGLIBRARY_API operator* (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                       const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
@@ -140,6 +142,13 @@ namespace eng {
                                       const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return rh * lh;
   }
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    double
+    ENGINEERINGLIBRARY_API operator* (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+                                      const UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+    return lh.value() * rh.value();
+  }
 
   /**
    * UnitBase division operators.
@@ -147,7 +156,8 @@ namespace eng {
   template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
-    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
+    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2, 
+    typename...>
     auto
     ENGINEERINGLIBRARY_API operator/ (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                                       const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
@@ -172,6 +182,13 @@ namespace eng {
     ENGINEERINGLIBRARY_API operator/ (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
                                       const double& rh) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.value() / rh);
+  }
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>
+    ENGINEERINGLIBRARY_API operator/ (const double& lh,
+                                      const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+    return UnitBase<-MN, -LN, -TN, -CN, -TeN, -AN, -LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh / rh.value());
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
@@ -281,9 +298,64 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     inline UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-    ENGINEERINGLIBRARY_API imag(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    ENGINEERINGLIBRARY_API imag(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, 
+                                MD, LD, TD, CD, TeD, AD, LuD>& x) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(0);
   }
+
+  // Mathematical functions
+  /* TODO:
+   * pow (maybe?)
+   */
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    inline UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
+    ENGINEERINGLIBRARY_API abs(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, 
+      MD, LD, TD, CD, TeD, AD, LuD>(std::fabs(x.value()));
+  }
+
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    inline auto
+    ENGINEERINGLIBRARY_API sqrt(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    return UnitBase<_numa(MN, MD*2, 0, 1),
+      _numa(LN, LD*2, 0, 1),
+      _numa(TN, TD*2, 0, 1),
+      _numa(CN, CD*2, 0, 1),
+      _numa(TeN, TeD*2, 0, 1),
+      _numa(AN, AD*2, 0, 1),
+      _numa(LuN, LuD*2, 0, 1),
+      _denoma(MN, MD*2, 0, 1),
+      _denoma(LN, LD*2, 0, 1),
+      _denoma(TN, TD*2, 0, 1),
+      _denoma(CN, CD*2, 0, 1),
+      _denoma(TeN, TeD*2, 0, 1),
+      _denoma(AN, AD*2, 0, 1),
+      _denoma(LuN, LuD*2, 0, 1)>(std::sqrt(x.value()));
+  }
+
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    inline auto
+    ENGINEERINGLIBRARY_API abs2(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    return UnitBase<_numa(MN*2, MD, 0, 1),
+      _numa(LN*2, LD, 0, 1),
+      _numa(TN*2, TD, 0, 1),
+      _numa(CN*2, CD, 0, 1),
+      _numa(TeN*2, TeD, 0, 1),
+      _numa(AN*2, AD, 0, 1),
+      _numa(LuN*2, LuD, 0, 1),
+      _denoma(MN*2, MD, 0, 1),
+      _denoma(LN*2, LD, 0, 1),
+      _denoma(TN*2, TD, 0, 1),
+      _denoma(CN*2, CD, 0, 1),
+      _denoma(TeN*2, TeD, 0, 1),
+      _denoma(AN*2, AD, 0, 1),
+      _denoma(LuN*2, LuD, 0, 1)>(x.value() * x.value());
+  }
+
+  
 };  // namespace eng
 
 #endif

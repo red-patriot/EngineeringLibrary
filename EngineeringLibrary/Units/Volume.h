@@ -17,29 +17,20 @@ namespace eng {
   /** A measure of the 3D space taken up an object
    * \class Volume A 3D geometry
    */
-  class ENGINEERINGLIBRARY_API Volume : public UnitBase<0, 3, 0, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<0, 3, 0, 0, 0, 0, 0> {
+    typedef UnitBase<0, 3, 0, 0, 0, 0, 0> this_t;
+      UnitBaseCOMMON
   public:
-    /**
-     * \brief Volume constructor
-     * 
-     * \param _meters3 
-     */
-    explicit Volume(const double& _meters3 = 0) : UnitBase(_meters3) { }
-    Volume(const UnitBase<0, 3, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Volume() = default;
-
     double mm3() const { return _value * 1'000'000'000; }
     double cm3() const { return _value * 1'000'000; }
     double m3() const { return _value; }
 
     double in3() const { return _value * (1'000'000/16.387'064); }
     double ft3() const { return _value * (1'000'000/28'316.846'592); }
-
-    Volume& operator+= (const Volume& rh) { _value += rh._value; return *this; }
-    Volume& operator-= (const Volume& rh) { _value -= rh._value; return *this; }
-    Volume& operator*= (const double& rh) { _value *= rh; return *this; }
-    Volume& operator/= (const double& rh) { _value /= rh; return *this; }
   };
+
+  using Volume = UnitBase<0, 3, 0, 0, 0, 0, 0>;
 
   Volume ENGINEERINGLIBRARY_API operator"" _mm3(long double val);
   Volume ENGINEERINGLIBRARY_API operator"" _mm3(unsigned long long val);

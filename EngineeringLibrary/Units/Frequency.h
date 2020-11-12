@@ -19,26 +19,17 @@ namespace eng {
    * \class Frequency
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Frequency : public UnitBase<0, 0, -1, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<0, 0, -1, 0, 0, 0, 0> {
+    typedef UnitBase<0, 0, -1, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Frequency constructor
-     *
-     * \param _hertz the measure of cycles per second
-     */
-    explicit Frequency(const double hertz = 0) : UnitBase(hertz) { }
-    Frequency(const UnitBase<0, 0, -1, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Frequency() = default;
-
     double Hz() const { return _value; }
     double kHz() const { return _value * 0.001; }
     double MHz() const { return _value * 0.000'001; }
-
-    Frequency& operator+= (const Frequency& rh) { _value += rh._value; return *this; }
-    Frequency& operator-= (const Frequency& rh) { _value -= rh._value; return *this; }
-    Frequency& operator*= (const double& rh) { _value *= rh; return *this; }
-    Frequency& operator/= (const double& rh) { _value /= rh; return *this; }
   };
+
+  using Frequency = UnitBase<0, 0, -1, 0, 0, 0, 0>;
 
   Frequency ENGINEERINGLIBRARY_API operator"" _Hz (long double val);
   Frequency ENGINEERINGLIBRARY_API operator"" _Hz (unsigned long long val);

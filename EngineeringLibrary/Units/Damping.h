@@ -19,29 +19,19 @@ namespace eng {
    * \class Damping
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Damping : public UnitBase<1, 0, -1, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<1, 0, -1, 0, 0, 0, 0> {
+    typedef UnitBase<1, 0, -1, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Damping constructor
-     * 
-     * \param _Newton_seconds_per_meter the measure of Damping in Newton seconds per meter.
-     */
-    explicit Damping(const double newton_seconds_per_meter = 0) :
-      UnitBase(newton_seconds_per_meter) { }
-    Damping(const UnitBase<1, 0, -1, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Damping() = default;
-
     double Nspm() const { return _value; }
     double kNspm() const { return _value / 1000; }
 
     double lbspin() const { return _value * .0254/4.4482216152605; }
     double lbspft() const { return _value * .3048/4.4482216152605; }
-
-    Damping& operator+= (const Damping& rh) { _value += rh._value; return *this; }
-    Damping& operator-= (const Damping& rh) { _value -= rh._value; return *this; }
-    Damping& operator*= (const double& rh) { _value *= rh; return *this; }
-    Damping& operator/= (const double& rh) { _value /= rh; return *this; }
   };
+
+  using Damping = UnitBase<1, 0, -1, 0, 0, 0, 0>;
 
   // Literal operators
   Damping ENGINEERINGLIBRARY_API operator"" _Nspm (long double val);

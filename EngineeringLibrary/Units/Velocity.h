@@ -19,29 +19,20 @@ namespace eng {
    * \class Velocity
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Velocity : public UnitBase<0, 1, -1, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<0, 1, -1, 0, 0, 0, 0> {
+    typedef UnitBase<0, 1, -1, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Velocity constructor
-     * 
-     * \param _meters_per_second The measure of speed in meters per second
-     */
-    explicit Velocity(const double _meters_per_second = 0) : UnitBase(_meters_per_second) { }
-    Velocity(const UnitBase<0, 1, -1, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Velocity() = default;
-
     double mpsec() const { return _value; }
     double kph() const { return _value * 3.600; }
 
     double inpsec() const { return _value * 39.370'007'874'015'748; }  // 100/2.54
     double ftpsec() const { return _value * 3.280'839'895'013'123; }  // 100/30.48
     double mph() const { return _value * 2.236'936'292'054'402; }  // 360'000 / 160'934.4
-
-    Velocity& operator+= (const Velocity& rh) { _value += rh._value; return *this; }
-    Velocity& operator-= (const Velocity& rh) { _value -= rh._value; return *this; }
-    Velocity& operator*= (const double& rh) { _value *= rh; return *this; }
-    Velocity& operator/= (const double& rh) { _value /= rh; return *this; }
   };
+
+  using Velocity = UnitBase<0, 1, -1, 0, 0, 0, 0>;
 
   Velocity ENGINEERINGLIBRARY_API operator"" _mpsec (long double val);
   Velocity ENGINEERINGLIBRARY_API operator"" _mpsec (unsigned long long val);

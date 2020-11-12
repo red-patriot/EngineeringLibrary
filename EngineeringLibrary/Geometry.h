@@ -49,8 +49,8 @@ namespace eng {
      * \param yy The Second moment of area about the x axis
      * \param xy
      */
-    AreaMomentofInertia(const class SecondMomentOfArea& xx = 0_m4, 
-                        const class SecondMomentOfArea& yy = 0_m4,
+    AreaMomentofInertia(const SecondMomentOfArea& xx = 0_m4, 
+                        const SecondMomentOfArea& yy = 0_m4,
       const SecondMomentOfArea& xy = 0_m4);
   };
   

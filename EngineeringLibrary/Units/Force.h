@@ -19,28 +19,19 @@ namespace eng {
    * \class Force 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Force : public UnitBase<1, 1, -2, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<1, 1, -2, 0, 0, 0, 0> {
+    typedef UnitBase<1, 1, -2, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Force constructor
-     * 
-     * \param _newtons The magnitude of the force in Newtons
-     */
-    explicit Force(double newtons=0) : UnitBase(newtons) { }
-    Force(const UnitBase<1, 1, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Force() = default;
-
     double N() const { return _value; }
     double kN() const { return _value * 0.001; }
 
     double lbf() const { return _value * 0.224808943099711; }
     double kips() const { return _value * 0.000224808943099711;  }
-
-    Force& operator+= (const Force& rh) { _value += rh._value; return *this; }
-    Force& operator-= (const Force& rh) { _value -= rh._value; return *this; }
-    Force& operator*= (const double& rh) { _value *= rh; return *this; }
-    Force& operator/= (const double& rh) {_value /= rh; return *this; }
   };
+
+  using Force = UnitBase<1, 1, -2, 0, 0, 0, 0>;
 
   Force ENGINEERINGLIBRARY_API operator"" _N(long double val);
   Force ENGINEERINGLIBRARY_API operator"" _N(unsigned long long val);

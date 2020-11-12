@@ -19,28 +19,18 @@ namespace eng {
    * \class Mass
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Mass : public UnitBase<1, 0, 0, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<1, 0, 0, 0, 0, 0, 0> {
+    typedef UnitBase<1, 0, 0, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Mass constructor
-     * 
-     * \param _kilograms the measure of the mass in kilograms
-     */
-    explicit Mass(const double kilograms=0) : UnitBase(kilograms) { }
-    Mass(const UnitBase<1, 0, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Mass() = default;
-
     double g() const { return _value * 1000; }
     double kg() const { return _value; }
 
     double slug() const { return _value * 0.06852176556196105; }
-
-    Mass& operator+= (const Mass& rh) { _value += rh._value; return *this; }
-    Mass& operator-= (const Mass& rh) { _value -= rh._value; return *this; }
-    Mass& operator*= (const double& rh) { _value *= rh; return *this; }
-    Mass& operator/= (const double& rh) { _value /= rh; return *this; }
-
   };
+
+  using Mass = UnitBase<1, 0, 0, 0, 0, 0, 0>;
 
   Mass ENGINEERINGLIBRARY_API operator"" _g (long double val);
   Mass ENGINEERINGLIBRARY_API operator"" _g (unsigned long long val);

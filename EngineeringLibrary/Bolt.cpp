@@ -33,16 +33,16 @@ namespace eng {
 
     for (const auto& m : top) {
       Length D = 1.5*d + 2*pos*std::tan(0.523598775598);
-      ret += (0.5774*pi*m.material.E()*d) /
-        std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));
+      /*ret += (0.5774*pi*m.material.E()*d) /
+        std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));*/
       pos += m.thickness;
     }
     
     pos = 0_m;
     for (const auto& m : bottom) {
       Length D = 1.5*d + 2*pos*std::tan(0.523598775598);
-      ret += (0.5774*pi*m.material.E()*d) /
-        std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));
+      /*ret += (0.5774*pi*m.material.E()*d) /
+        std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));*/
       pos += m.thickness;
     }
 

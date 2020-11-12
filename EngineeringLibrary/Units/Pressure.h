@@ -15,24 +15,15 @@
 
 namespace eng {
 
-  class Pressure;
-  class Pressure2;
-
   /**
    * \class Pressure A force distributed over an area
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Pressure : public UnitBase<1, -1, -2, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<1, -1, -2, 0, 0, 0, 0> {
+    typedef UnitBase<1, -1, -2, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Pressure constructor
-     * 
-     * \param _pascals the measure of pressure in Pascals
-     */
-    explicit Pressure(double _pascals = 0) : UnitBase(_pascals) { }
-    Pressure(const UnitBase<1, -1, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Pressure() = default;
-
     double Pa() const { return _value; }
     double kPa() const { return _value * 0.001; }
     double MPa() const { return _value * 0.000'001; }
@@ -40,12 +31,9 @@ namespace eng {
 
     double psi() const { return _value * 0.000'145'037'737'796'858'691'163; }
     double ksi() const { return _value * 0.000'000'145'037'737'796'858'691; }
-
-    Pressure& operator+= (const Pressure& rh) { _value += rh._value; return *this; }
-    Pressure& operator-= (const Pressure& rh) { _value -= rh._value; return *this; }
-    Pressure& operator*= (const double& rh) { _value *= rh; return *this; }
-    Pressure& operator/= (const double& rh) { _value /= rh; return *this; }
   };
+
+  using Pressure = UnitBase<1, -1, -2, 0, 0, 0, 0>;
 
   // Literal operators
   Pressure ENGINEERINGLIBRARY_API operator"" _Pa (long double val);

@@ -20,26 +20,17 @@ namespace eng {
    * \class Time 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Time : public UnitBase<0, 0, 1, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<0, 0, 1, 0, 0, 0, 0> {
+    typedef UnitBase<0, 0, 1, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Time constructor
-     * 
-     * \param _seconds the measure of time in seconds
-     */
-    explicit Time(const double _seconds = 0) : UnitBase(_seconds) { }
-    Time(const UnitBase<0, 0, 1, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Time() = default;
-
     double sec() const { return _value; }
     double minute() const { return _value / 60; }
     double hour() const { return _value / 3600; }
-
-    Time& operator+= (const Time& rh) { _value += rh._value; return *this; }
-    Time& operator-= (const Time& rh) { _value -= rh._value; return *this; }
-    Time& operator*= (const double& rh) { _value *= rh; return *this; }
-    Time& operator/= (const double& rh) { _value /= rh; return *this; }
   };
+
+  using Time = UnitBase<0, 0, 1, 0, 0, 0, 0>;
 
   Time ENGINEERINGLIBRARY_API operator"" _sec (long double val);
   Time ENGINEERINGLIBRARY_API operator"" _sec (unsigned long long val);

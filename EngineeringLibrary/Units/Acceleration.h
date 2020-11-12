@@ -19,29 +19,18 @@ namespace eng {
    * \class Acceleration 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Acceleration : public UnitBase<0, 1, -2, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<0, 1, -2, 0, 0, 0, 0> {
+    typedef UnitBase<0, 1, -2, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Construct an Acceleration
-     * 
-     * \param _meters_per_second2 The measure of acceleration in meters per second per second.
-     */
-    Acceleration(const double meters_per_second2=0) : UnitBase(meters_per_second2) { }
-    Acceleration(const UnitBase<0, 1, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Acceleration() = default;
-
-    operator UnitBase<0, 1, -2, 0, 0, 0, 0> () { return UnitBase(value()); }
-
     double mpsec2() const { return _value; }
     
     double inpsec2() const { return _value * (100/2.54); }
     double ftpsec2() const { return _value * (100/(30.48)); }
-
-    Acceleration& operator+= (const Acceleration& rh) { _value += rh._value; return *this; }
-    Acceleration& operator-= (const Acceleration& rh) { _value -= rh._value; return *this; }
-    Acceleration& operator*= (const double& rh) { _value *= rh; return *this; }
-    Acceleration& operator/= (const double& rh) { _value /= rh; return *this; }
   };
+
+  using Acceleration = UnitBase<0, 1, -2, 0, 0, 0, 0>;
 
   Acceleration ENGINEERINGLIBRARY_API operator"" _mpsec2 (long double val);
   Acceleration ENGINEERINGLIBRARY_API operator"" _mpsec2 (unsigned long long val);

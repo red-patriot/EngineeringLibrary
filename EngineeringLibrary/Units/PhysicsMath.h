@@ -57,12 +57,12 @@ namespace eng {
   inline Time ENGINEERINGLIBRARY_API abs(const Time& x);
   inline Frequency ENGINEERINGLIBRARY_API abs(const Frequency& x);
   inline Mass ENGINEERINGLIBRARY_API abs(const Mass& x);
-  inline Angle abs(const  Angle& x);
-  inline Length abs(const  Length& x);
-  inline Area abs(const  Area& x);
+  inline Angle abs(const Angle& x);
+  inline Length abs(const Length& x);
+  inline Area abs(const Area& x);
   inline Volume ENGINEERINGLIBRARY_API abs(const  Volume& x);
   inline SecondMomentOfArea ENGINEERINGLIBRARY_API abs(const  SecondMomentOfArea& x);
-  inline Force abs(const  Force& x);
+  inline Force abs(const Force& x);
   inline Stiffness ENGINEERINGLIBRARY_API abs(const  Stiffness& x);
   inline Damping ENGINEERINGLIBRARY_API abs(const  Damping& x);
   inline Pressure ENGINEERINGLIBRARY_API abs(const  Pressure& x);

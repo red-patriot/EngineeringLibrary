@@ -27,30 +27,19 @@ namespace eng {
    * \class SecondMomentOfArea 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API SecondMomentOfArea : public UnitBase<0, 4, 0, 0, 0, 0, 0> {
+  template<>
+  class ENGINEERINGLIBRARY_API UnitBase<0, 4, 0, 0, 0, 0, 0> {
+    typedef UnitBase<0, 4, 0, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief SecondMomentOfArea constructor
-     * 
-     * \param _meters4 the measure of the area moment of inertia in meters^4
-     */
-    explicit SecondMomentOfArea(const double& meters4 = 0) : UnitBase(meters4) { }
-    SecondMomentOfArea(const UnitBase<0, 4, 0, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~SecondMomentOfArea() = default;
-
     double mm4() const { return _value * 1'000'000'000'000; }
     double m4() const { return _value; }
 
     double in4() const { return _value * 100'000'000 / 41.623'142'56; }
     double ft4() const { return _value * 100'000'000 / 863'097.481'241'6; }
-
-    SecondMomentOfArea& operator+= (const SecondMomentOfArea& rh) { 
-      _value += rh._value; return *this; }
-    SecondMomentOfArea& operator-= (const SecondMomentOfArea& rh) { 
-      _value -= rh._value; return *this; }
-    SecondMomentOfArea& operator*= (const double& rh) { _value *= rh; return *this; }
-    SecondMomentOfArea& operator/= (const double& rh) { _value /= rh; return *this; }
   };
+
+  using SecondMomentOfArea = UnitBase<0, 4, 0, 0, 0, 0, 0>;
 
   // Literal operators
   SecondMomentOfArea ENGINEERINGLIBRARY_API operator"" _mm4(long double val);
