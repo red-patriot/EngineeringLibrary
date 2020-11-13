@@ -4,61 +4,9 @@
 #include "Force.h"
 #include "Damping.h"
 #include "Acceleration.h"
-#include "TIme.h"
-#include "PhysicsMath.h"
+#include "Time.h"
 
 namespace eng {
-
-  Mass operator-(const Mass& lh) {
-    return Mass(-lh.value());
-  }
-
-  Mass operator+ (const Mass& lh, const Mass& rh){
-	  return Mass(lh.value() + rh.value());
-  }
-
-  Mass operator- (const Mass& lh, const Mass& rh){
-	  return Mass(lh.value() - rh.value());
-  }
-
-  Mass operator* (const Mass& lh, const double& rh){
-	  return Mass(lh.value() * rh);
-  }
-  Mass operator* (const double& lh, const Mass& rh){
-	  return Mass(lh * rh.value());
-  }
-  Mass operator* (const Damping& lh, const Time& rh) {
-  	return Mass(lh.value() * rh.value());
-  }
-  Mass operator* (const Time& lh, const Damping& rh) {
-  	return Mass(lh.value() * rh.value());
-  }
-
-  Mass operator/ (const Mass& lh, const double& rh){
-	  return Mass(lh.value() / rh);
-  }
-  Mass operator/ (const Force& lh, const Acceleration& rh) {
-  	return Mass(lh.value() / rh.value());
-  }
-
-  bool operator== (const Mass& lh, const Mass& rh) {
-    return fuzzy_equals(lh.value(), rh.value());
-  }
-  bool operator> (const Mass& lh, const Mass& rh) {
-    return fuzzy_greater(lh.value(), rh.value());
-  }
-  bool operator!= (const Mass& lh, const Mass& rh) {
-    return !(lh == rh);
-  }
-  bool operator< (const Mass& lh, const Mass& rh) {
-    return rh > lh;
-  }
-  bool operator>= (const Mass& lh, const Mass& rh) {
-    return lh > rh || lh == rh;
-  }
-  bool operator<= (const Mass& lh, const Mass& rh) {
-    return rh > lh || lh == rh;
-  }
 
   /* Literal operators
    * The following units are supported:

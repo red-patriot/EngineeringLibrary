@@ -1,6 +1,5 @@
 #include "pch.h"
 
-#include "PhysicsMath.h"
 #include "Force.h"
 #include "Torque.h"
 #include "Energy.h"
@@ -14,78 +13,6 @@
 #include "Mass.h"
 
 namespace eng {
-
-  Force operator-(const Force& lh) {
-    return Force(-lh.value());
-  }
-
-  Force  operator+ (const Force& lh, const Force& rh) {
-    return Force(lh.value() + rh.value());
-  }
-
-  Force  operator- (const Force& lh, const Force& rh) {
-    return Force(lh.value() - rh.value());
-  }
-
-  Force  operator* (const Force& lh, const double& n) {
-    return Force(lh.value() * n);
-  }
-  Force  operator* (const double& n, const Force& rh) {
-    return rh * n;
-  }
-  Force operator*(const Stiffness& lh, const Length& rh) {
-    return Force(lh.value() * rh.value());
-  }
-  Force operator*(const Length& lh, const Stiffness& rh) {
-    return rh * lh;
-  }
-  Force  operator*(const Pressure& lh, const Area& rh) {
-    return Force(lh.value() * rh.value());
-  }
-  Force  operator*(const Area& lh, const Pressure& rh) {
-    return rh * lh;
-  }
-  Force operator* (const Mass& lh, const Acceleration& rh) {
-  	return Force(lh.value() * rh.value());
-  }
-  Force operator* (const Acceleration& lh, const Mass& rh) {
-  	return Force(lh.value() * rh.value());
-  }
-  Force operator* (const Damping& lh, const Velocity& rh) {
-  	return Force(lh.value() * rh.value());
-  }
-  Force operator* (const Velocity& lh, const Damping& rh) {
-  	return Force(lh.value() * rh.value());
-  }
-    
-  Force operator/ (const Energy& lh, const Length& rh) {
-  	return Force(lh.value() / rh.value());
-  }
-  double  operator/ (const Force& lh, const Force& rh) {
-    return lh.value() / rh.value();
-  } 
-  Force  operator/ (const Force& lh, const double& n) {
-    return Force(lh.value() / n);
-  }
-
-  bool  operator== (const Force& lh, const Force& rh) {
-    return fuzzy_equals(lh.value(), rh.value());
-  }
-  bool  operator> (const Force& lh, const Force& rh) {
-    return fuzzy_greater(lh.value(), rh.value());
-  }
-  bool  operator!= (const Force& lh, const Force& rh) {
-    return !(lh == rh);
-  }
-  bool  operator< (const Force& lh, const Force& rh) {
-    return rh > lh;
-  }
-  bool  operator>= (const Force& lh, const Force& rh) {
-    return lh > rh || lh == rh;
-  }
-  bool  operator<= (const Force& lh, const Force& rh) {
-    return rh > lh || lh == rh;
-  }
 
   /* Literal operators
    * The following units are supported:

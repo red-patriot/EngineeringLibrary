@@ -12,10 +12,8 @@
 
 #include <eigen3/Eigen/Dense>
 
-#include "EngineeringExport.h"
 #include "Material.h"
 
-#include "Units/PhysicsMath.h"
 #include "Units/Pressure.h"
 #include "Units/Area.h"
 #include "Units/Length.h"
@@ -29,7 +27,7 @@ namespace eng {
   /**
    * \class StressElement2 The stress of one 2D stress element
    */
-  struct ENGINEERINGLIBRARY_API StressElement2 {
+  struct StressElement2 {
     Stress sigma_x;
     Stress sigma_y;
 
@@ -48,7 +46,7 @@ namespace eng {
   /**
    * \class StressElement2 The stress of a 3D stress element
    */
-  struct ENGINEERINGLIBRARY_API StressElement3 {
+  struct StressElement3 {
     Stress sigma_x;
     Stress sigma_y;
     Stress sigma_z;
@@ -76,7 +74,7 @@ namespace eng {
   /**  
    * \class PrincipalStress2 The Principal stresses of a 2D stress element
    */
-  struct ENGINEERINGLIBRARY_API PrincipalStress2 {
+  struct PrincipalStress2 {
     Stress sigma_1;
     Stress sigma_2;
 
@@ -92,7 +90,7 @@ namespace eng {
   /**
    * \brief The Principal stresses of a 3D stress element
    */
-  struct ENGINEERINGLIBRARY_API PrincipalStress3 {
+  struct PrincipalStress3 {
     Stress sigma_1;
     Stress sigma_2;
     Stress sigma_3;
@@ -109,24 +107,22 @@ namespace eng {
 
 
   /* Calculate ths principal stresses of a planar stress state */
-  PrincipalStress2 ENGINEERINGLIBRARY_API principal_stress(const StressElement2& s);
+  PrincipalStress2 principal_stress(const StressElement2& s);
   /* Calculate the principal stresses of a general 3D stress state */
-  PrincipalStress3 ENGINEERINGLIBRARY_API principal_stress(const StressElement3& s);
+  PrincipalStress3 principal_stress(const StressElement3& s);
   /* Calculate the principal stresses in a Cylindrical pressure vessel. */
-  PrincipalStress3 ENGINEERINGLIBRARY_API principal_stress(const Length& a, const Length& b,
-    const Length& r, const Force& F, const Pressure& Pi,
-    const Pressure& Po = 0_kPa);
+  PrincipalStress3 principal_stress(const Length& a, const Length& b,
+                                    const Length& r, const Force& F, const Pressure& Pi,
+                                    const Pressure& Po = 0_kPa);
 
   /* Calculate the maximum shear stress and the corresponding normal 
    * stresses of a planar stress state */
-  StressElement2 ENGINEERINGLIBRARY_API maximum_shear(const StressElement2& s);
+  StressElement2  maximum_shear(const StressElement2& s);
 
   /* Calculate the interference of two press-fit cylinders. */
-  Length ENGINEERINGLIBRARY_API press_fit_interference(const Length& ri,
-                                                       const Length& R, const Length& ro, 
-                                                       const Pressure& p,
-                                                       const MaterialBase& out_material, 
-                                                       const MaterialBase& in_material);
+  Length  press_fit_interference(const Length& ri, const Length& R, const Length& ro, 
+                                 const Pressure& p, const MaterialBase& out_material, 
+                                 const MaterialBase& in_material);
 
 }; // namespace eng
 

@@ -10,9 +10,6 @@
  * accuracy during calculations. 
  */
 
-// Basic headers
-#include "Units/PhysicsMath.h"
-
 // Time headers
 #include "Units/Time.h"
 #include "Units/Frequency.h"

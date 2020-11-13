@@ -9,7 +9,7 @@
  * \date   August 2020
  *********************************************************************/
 
-#include "PhysicsMath.h"
+#include "UnitBase.h"
 
 #include <eigen3/Eigen/Core>
 
@@ -19,61 +19,31 @@ namespace eng {
    * \class Mass
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Mass : public UnitBase {
+  template<>
+  class UnitBase<1, 0, 0, 0, 0, 0, 0> {
+    typedef UnitBase<1, 0, 0, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Mass constructor
-     * 
-     * \param _kilograms the measure of the mass in kilograms
-     */
-    explicit Mass(const double kilograms=0) : UnitBase(kilograms) { }
-    Mass(const Mass&) = default;
-    ~Mass() = default;
-
     double g() const { return _value * 1000; }
     double kg() const { return _value; }
 
     double slug() const { return _value * 0.06852176556196105; }
-
-    Mass& operator+= (const Mass& rh) { _value += rh._value; return *this; }
-    Mass& operator-= (const Mass& rh) { _value -= rh._value; return *this; }
-    Mass& operator*= (const double& rh) { _value *= rh; return *this; }
-    Mass& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  Mass ENGINEERINGLIBRARY_API operator"" _g (long double val);
-  Mass ENGINEERINGLIBRARY_API operator"" _g (unsigned long long val);
+  using Mass = UnitBase<1, 0, 0, 0, 0, 0, 0>;
 
-  Mass ENGINEERINGLIBRARY_API operator"" _kg (long double val);
-  Mass ENGINEERINGLIBRARY_API operator"" _kg (unsigned long long val);
+  Mass operator"" _g (long double val);
+  Mass operator"" _g (unsigned long long val);
 
-  Mass ENGINEERINGLIBRARY_API operator"" _slug (long double val);
-  Mass ENGINEERINGLIBRARY_API operator"" _slug (unsigned long long val);
+  Mass operator"" _kg (long double val);
+  Mass operator"" _kg (unsigned long long val);
 
-  Mass ENGINEERINGLIBRARY_API operator- (const Mass& lh);
+  Mass operator"" _slug (long double val);
+  Mass operator"" _slug (unsigned long long val);
 
-  Mass ENGINEERINGLIBRARY_API operator+ (const Mass& lh, const Mass& rh);
-
-  Mass ENGINEERINGLIBRARY_API operator- (const Mass& lh, const Mass& rh);
-
-  Mass ENGINEERINGLIBRARY_API operator* (const Mass& lh, const double& rh);
-  Mass ENGINEERINGLIBRARY_API operator* (const double& lh, const Mass& rh);
-  Mass ENGINEERINGLIBRARY_API operator* (const class Damping& lh, const class Time& rh);
-  Mass ENGINEERINGLIBRARY_API operator* (const class Time& lh, const class Damping& rh);
-
-  Mass ENGINEERINGLIBRARY_API operator/ (const Mass& lh, const double& rh);
-  Mass ENGINEERINGLIBRARY_API operator/ (const class Force& lh, const class Acceleration& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Mass& lh, const Mass& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Mass& lh, const Mass& rh);
-
-  inline Mass ENGINEERINGLIBRARY_API conj(const Mass& x) { return x; }
-  inline Mass ENGINEERINGLIBRARY_API real(const Mass& x) { return x; }
-  inline Mass ENGINEERINGLIBRARY_API imag(const Mass& x) { return 0_kg; }
+  inline Mass conj(const Mass& x) { return x; }
+  inline Mass real(const Mass& x) { return x; }
+  inline Mass imag(const Mass& x) { return 0_kg; }
 
 };  // namespace eng
 

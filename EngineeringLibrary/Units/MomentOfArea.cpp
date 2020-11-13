@@ -3,63 +3,8 @@
 #include "Volume.h"
 #include "Area.h"
 #include "Length.h"
-#include "PhysicsMath.h"
 
 namespace eng {
-
-  SecondMomentOfArea operator-(const SecondMomentOfArea& lh) {
-    return SecondMomentOfArea(-lh.value());
-  }
-
-  SecondMomentOfArea operator+ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return SecondMomentOfArea(lh.value() + rh.value());
-  }
-
-  SecondMomentOfArea operator- (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return SecondMomentOfArea(lh.value() - rh.value());
-  }
-  double operator/ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return lh.value() / rh.value();
-  }
-
-  SecondMomentOfArea operator* (const SecondMomentOfArea& lh, const double& n) {
-    return SecondMomentOfArea(lh.value() * n);
-  }
-  SecondMomentOfArea operator* (const double& n, const SecondMomentOfArea& rh) {
-    return rh * n;
-  }
-  SecondMomentOfArea operator* (const Volume& lh, const Length& rh) {
-    return SecondMomentOfArea(lh.value() * rh.value());
-  }
-  SecondMomentOfArea operator* (const Length& lh, const Volume& rh) {
-    return rh * lh;
-  }
-  SecondMomentOfArea operator* (const Area& lh, const Area& rh) {
-    return SecondMomentOfArea(lh.value() * rh.value());
-  }
-
-  SecondMomentOfArea operator/ (const SecondMomentOfArea& lh, const double& n) {
-    return SecondMomentOfArea(lh.value() / n);
-  }
-
-  bool operator== (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return fuzzy_equals(lh.value(), rh.value());
-  }
-  bool operator> (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return fuzzy_greater(lh.value(), rh.value());
-  }
-  bool operator!= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return !(lh == rh);
-  }
-  bool operator< (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return rh > lh;
-  }
-  bool operator>= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return lh > rh || lh == rh;
-  }
-  bool operator<= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return rh > lh || lh == rh;
-  }
 
   /* Literal operators
    * The following units are supported:

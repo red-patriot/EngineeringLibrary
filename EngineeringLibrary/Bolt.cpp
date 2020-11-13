@@ -6,10 +6,10 @@
 #include "Bolt.h"
 #include "Units/Angle.h"
 #include "Units/Length.h"
+#include "Units/Area.h"
 #include "Units/Volume.h"
 #include "Units/MomentOfArea.h"
 #include "Units/Stiffness.h"
-#include "Units/PhysicsMath.h"
 
 namespace eng {
 
@@ -19,7 +19,10 @@ namespace eng {
 
   Stiffness bolt_stiffness(const Area& Ad, const Area& At, const Stress& E, 
                                     const Length& lt, const Length& ld) {
-    return E*((Ad*At)/(Ad*lt + At*ld));
+    eng::Acceleration a = 1_mpsec2;
+    eng::Mass m = 1_kg;
+    eng::Force f = m * a;
+    return E*((Ad * At)/(Ad*lt + At*ld));
   }
   Stiffness members_stiffness(const std::vector<joint_member>& members, 
                                        const Length& d, const Length& t) {
@@ -32,16 +35,16 @@ namespace eng {
 
     for (const auto& m : top) {
       Length D = 1.5*d + 2*pos*std::tan(0.523598775598);
-      ret += (0.5774*pi*m.material.E()*d) /
-        std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));
+      /*ret += (0.5774*pi*m.material.E()*d) /
+        std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));*/
       pos += m.thickness;
     }
     
     pos = 0_m;
     for (const auto& m : bottom) {
       Length D = 1.5*d + 2*pos*std::tan(0.523598775598);
-      ret += (0.5774*pi*m.material.E()*d) /
-        std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));
+      /*ret += (0.5774*pi*m.material.E()*d) /
+        std::log(((1.15*m.thickness + D - d)*(D + d))/((1.15*m.thickness + D + d)*(D - d)));*/
       pos += m.thickness;
     }
 

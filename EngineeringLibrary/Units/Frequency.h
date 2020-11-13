@@ -16,101 +16,35 @@
 namespace eng {
 
   /** A measure of cycles/repetitions per unit time
-   * \class Frequency 
+   * \class Frequency
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Frequency : public UnitBase { 
+  template<>
+  class UnitBase<0, 0, -1, 0, 0, 0, 0> {
+    typedef UnitBase<0, 0, -1, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Frequency constructor
-     * 
-     * \param _hertz the measure of cycles per second
-     */
-    explicit Frequency(const double hertz=0) : UnitBase(hertz) { }
-    Frequency(const Frequency&) = default;
-    ~Frequency() = default;
-
     double Hz() const { return _value; }
     double kHz() const { return _value * 0.001; }
     double MHz() const { return _value * 0.000'001; }
-
-    Frequency& operator+= (const Frequency& rh) { _value += rh._value; return *this; }
-    Frequency& operator-= (const Frequency& rh) { _value -= rh._value; return *this; }
-    Frequency& operator*= (const double& rh) { _value *= rh; return *this; }
-    Frequency& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  Frequency ENGINEERINGLIBRARY_API operator"" _Hz (long double val);
-  Frequency ENGINEERINGLIBRARY_API operator"" _Hz (unsigned long long val);
+  using Frequency = UnitBase<0, 0, -1, 0, 0, 0, 0>;
 
-  Frequency ENGINEERINGLIBRARY_API operator"" _kHz (long double val);
-  Frequency ENGINEERINGLIBRARY_API operator"" _kHz (unsigned long long val);
+  Frequency operator"" _Hz (long double val);
+  Frequency operator"" _Hz (unsigned long long val);
 
-  Frequency ENGINEERINGLIBRARY_API operator"" _MHz (long double val);
-  Frequency ENGINEERINGLIBRARY_API operator"" _MHz (unsigned long long val);
+  Frequency operator"" _kHz (long double val);
+  Frequency operator"" _kHz (unsigned long long val);
 
-  Frequency ENGINEERINGLIBRARY_API operator- (const Frequency& lh);
+  Frequency operator"" _MHz (long double val);
+  Frequency operator"" _MHz (unsigned long long val);
 
-  Frequency ENGINEERINGLIBRARY_API operator+ (const Frequency& lh, const Frequency& rh);
+  inline Frequency conj(const Frequency& x) { return x; }
+  inline Frequency real(const Frequency& x) { return x; }
+  inline Frequency imag(const Frequency&) { return 0_Hz; }
 
-  Frequency ENGINEERINGLIBRARY_API operator- (const Frequency& lh, const Frequency& rh);
-
-  Frequency ENGINEERINGLIBRARY_API operator* (const Frequency& lh, const double& rh);
-  Frequency ENGINEERINGLIBRARY_API operator* (const double& lh, const Frequency& rh);
-
-  Frequency ENGINEERINGLIBRARY_API operator/ (const Frequency& lh, const double& rh);
-  double ENGINEERINGLIBRARY_API operator/ (const Frequency& lh, const Frequency& rh);
-  Frequency ENGINEERINGLIBRARY_API operator/ (const double& lh, const class Time& rh);
-  Frequency ENGINEERINGLIBRARY_API operator/ (const class Velocity& lh, const class Length& rh);
-  Frequency ENGINEERINGLIBRARY_API operator/ (const class Acceleration& lh, const class Velocity& rh);
-  Frequency ENGINEERINGLIBRARY_API operator/ (const class Frequency2& lh, const Frequency& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Frequency& lh, const Frequency& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Frequency& lh, const Frequency& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Frequency& lh, const Frequency& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Frequency& lh, const Frequency& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Frequency& lh, const Frequency& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Frequency& lh, const Frequency& rh);
-  
-  inline Frequency ENGINEERINGLIBRARY_API conj(const Frequency& x) { return x; }
-  inline Frequency ENGINEERINGLIBRARY_API real(const Frequency& x) { return x; }
-  inline Frequency ENGINEERINGLIBRARY_API imag(const Frequency&) { return 0_Hz; }
-
-  /** A class modeling a frequency squared for intermediate steps in equations
-   * \class Frequency2
-   * 
-   * \note This class is only for use in intermetiate operations of
-   * equations; it has limited functionality. 
-   * 
-   * \addtogroup Units
-   */
-  class ENGINEERINGLIBRARY_API Frequency2 : public UnitBase { 
-  public:
-    /**
-     * \brief Frequency2 constructor
-     * 
-     * \param _hertz2 the measure of Hertz^2
-     */
-    explicit Frequency2(const double _hertz2 = 0): UnitBase(_hertz2) { }
-    Frequency2(const Frequency2&) = default;
-    ~Frequency2() = default;
-  };
-
-  Frequency2 ENGINEERINGLIBRARY_API operator- (const Frequency2& lh);
-
-  Frequency2 ENGINEERINGLIBRARY_API operator+ (const Frequency2& lh, const Frequency2& rh);
-
-  Frequency2 ENGINEERINGLIBRARY_API operator- (const Frequency2& lh, const Frequency2& rh);
-
-  Frequency2 ENGINEERINGLIBRARY_API operator* (const Frequency2& lh, const double& rh);
-  Frequency2 ENGINEERINGLIBRARY_API operator* (const double& lh, const Frequency2& rh);
-  Frequency2 ENGINEERINGLIBRARY_API operator* (const Frequency& lh, const Frequency& rh);
-
-  Frequency2 ENGINEERINGLIBRARY_API operator/ (const Frequency2& lh, const double& rh);
-  Frequency2 ENGINEERINGLIBRARY_API operator/ (const class Acceleration& lh, const class Length& rh);
-  Frequency2 ENGINEERINGLIBRARY_API operator/ (const class Stiffness& lh, const class Mass& rh);
-
-};
+};  // namespace eng
 
 /* Integration with Eigen */
 namespace Eigen {

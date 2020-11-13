@@ -15,78 +15,39 @@
 
 namespace eng {
 
-  class SecondMomentOfArea;
-  class Volume;
-  class Length;
-
   /** A 2D geometry
    * \class Area
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Area : public UnitBase {
+  template<>
+  class UnitBase<0, 2, 0, 0, 0, 0, 0> {
+    typedef UnitBase<0, 2, 0, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Construct an Area
-     * 
-     * \param _meters2 The meaasure of the area in meters^2
-     */
-    explicit Area(const double meters2 = 0) : UnitBase(meters2) { }
-    Area(const Area&) = default;
-    ~Area() = default;
-
     double mm2() const { return _value * 1'000'000; }
     double cm2() const { return _value * 10'000; }
     double m2() const { return _value; }
 
     double in2() const { return _value * 10'000/(6.4516); }
     double ft2() const { return _value * 10'000/(929.0304); }
-
-    Area& operator+= (const Area& rh) { _value += rh._value; return *this; }
-    Area& operator-= (const Area& rh) { _value -= rh._value; return *this; }
-    Area& operator*= (const double& rh) { _value *= rh; return *this; }
-    Area& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  Area ENGINEERINGLIBRARY_API operator"" _mm2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _mm2(unsigned long long val);
+  using Area = UnitBase<0, 2, 0, 0, 0, 0, 0>;
 
-  Area ENGINEERINGLIBRARY_API operator"" _cm2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _cm2(unsigned long long val);
+  Area operator"" _mm2(long double val);
+  Area operator"" _mm2(unsigned long long val);
 
-  Area ENGINEERINGLIBRARY_API operator"" _m2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _m2(unsigned long long val);
+  Area operator"" _cm2(long double val);
+  Area operator"" _cm2(unsigned long long val);
 
-  Area ENGINEERINGLIBRARY_API operator"" _in2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _in2(unsigned long long val);
+  Area operator"" _m2(long double val);
+  Area operator"" _m2(unsigned long long val);
 
-  Area ENGINEERINGLIBRARY_API operator"" _ft2(long double val);
-  Area ENGINEERINGLIBRARY_API operator"" _ft2(unsigned long long val);
+  Area operator"" _in2(long double val);
+  Area operator"" _in2(unsigned long long val);
 
-  Area ENGINEERINGLIBRARY_API operator- (const Area& lh);
-  
-  Area ENGINEERINGLIBRARY_API operator+ (const Area& lh, const Area& rh);
-
-  Area ENGINEERINGLIBRARY_API operator- (const Area& lh, const Area& rh);
-
-  Area ENGINEERINGLIBRARY_API operator* (const Length& lh, const Length& rh);
-  Area ENGINEERINGLIBRARY_API operator* (const Area& lh, const double& n);
-  Area ENGINEERINGLIBRARY_API operator* (const double& n, const Area& rh);
-
-  Area ENGINEERINGLIBRARY_API operator/ (const Volume& lh, const Length& rh);
-  Area ENGINEERINGLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Area& rh);
-  Area ENGINEERINGLIBRARY_API operator/ (const Area& lh, const double& n);
-  double ENGINEERINGLIBRARY_API operator/ (const Area& lh, const Area& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Area& lh, const Area& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Area& lh, const Area& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Area& lh, const Area& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Area& lh, const Area& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Area& lh, const Area& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Area& lh, const Area& rh);
-
-  inline Area ENGINEERINGLIBRARY_API conj(const Area& x) { return x; }
-  inline Area ENGINEERINGLIBRARY_API real(const Area& x) { return x; }
-  inline Area ENGINEERINGLIBRARY_API imag(const Area&) { return 0_m2; }
+  Area operator"" _ft2(long double val);
+  Area operator"" _ft2(unsigned long long val);
 
 }; // namespace eng
 

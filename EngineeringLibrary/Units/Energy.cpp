@@ -1,62 +1,10 @@
 #include "pch.h"
 
-#include "PhysicsMath.h"
 #include "Energy.h"
 #include "Force.h"
 #include "Length.h"
 
 namespace eng {
-
-  Energy operator- (const Energy& lh) {
-    return Energy(-lh.value());
-  }
-
-  Energy operator+ (const Energy& lh, const Energy& rh) {
-  	return Energy(lh.value() + rh.value());
-  }
-
-  Energy operator- (const Energy& lh, const Energy& rh) {
-  	return Energy(lh.value() - rh.value());
-  }
-
-  Energy operator* (const Force& lh, const Length& rh) {
-  	return Energy(lh.value() * rh.value());
-  }
-  Energy operator* (const Length& lh, const Force& rh) {
-  	return Energy(lh.value() * rh.value());
-  }
-  Energy operator* (const Energy& lh, const double& rh) {
-  	return Energy(lh.value() * rh);
-  }
-  Energy operator* (const double& lh, const Energy& rh) {
-  	return Energy(lh * rh.value());
-  }
-
-  Energy operator/ (const Energy& lh, const double& rh) {
-  	return Energy(lh.value() / rh);
-  }
-  double operator/ (const Energy& lh, const Energy& rh) {
-  	return double(lh.value() / rh.value());
-  }
-
-  bool  operator== (const Energy& lh, const Energy& rh) {
-    return fuzzy_equals(lh.value(), rh.value());
-  }
-  bool  operator> (const Energy& lh, const Energy& rh) {
-    return fuzzy_greater(lh.value(), rh.value());
-  }
-  bool  operator!= (const Energy& lh, const Energy& rh) {
-    return !(lh == rh);
-  }
-  bool  operator< (const Energy& lh, const Energy& rh) {
-    return rh > lh;
-  }
-  bool  operator>= (const Energy& lh, const Energy& rh) {
-    return lh > rh || lh == rh;
-  }
-  bool  operator<= (const Energy& lh, const Energy& rh) {
-    return rh > lh || lh == rh;
-  }
 
   /* Literal operators
    * The following units are suported:

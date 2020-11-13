@@ -19,72 +19,31 @@ namespace eng {
    * \class Force 
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Force : public UnitBase {
+  template<>
+  class UnitBase<1, 1, -2, 0, 0, 0, 0> {
+    typedef UnitBase<1, 1, -2, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Force constructor
-     * 
-     * \param _newtons The magnitude of the force in Newtons
-     */
-    explicit Force(double newtons=0) : UnitBase(newtons) { }
-    Force(const Force&) = default;
-    ~Force() = default;
-
     double N() const { return _value; }
     double kN() const { return _value * 0.001; }
 
     double lbf() const { return _value * 0.224808943099711; }
     double kips() const { return _value * 0.000224808943099711;  }
-
-    Force& operator+= (const Force& rh) { _value += rh._value; return *this; }
-    Force& operator-= (const Force& rh) { _value -= rh._value; return *this; }
-    Force& operator*= (const double& rh) { _value *= rh; return *this; }
-    Force& operator/= (const double& rh) {_value /= rh; return *this; }
   };
 
-  Force ENGINEERINGLIBRARY_API operator"" _N(long double val);
-  Force ENGINEERINGLIBRARY_API operator"" _N(unsigned long long val);
+  using Force = UnitBase<1, 1, -2, 0, 0, 0, 0>;
 
-  Force ENGINEERINGLIBRARY_API operator"" _kN(long double val);
-  Force ENGINEERINGLIBRARY_API operator"" _kN(unsigned long long val);
+  Force operator"" _N(long double val);
+  Force operator"" _N(unsigned long long val);
 
-  Force ENGINEERINGLIBRARY_API operator"" _lbf(long double val);
-  Force ENGINEERINGLIBRARY_API operator"" _lbf(unsigned long long val);
+  Force operator"" _kN(long double val);
+  Force operator"" _kN(unsigned long long val);
 
-  Force ENGINEERINGLIBRARY_API operator"" _kips(long double val);
-  Force ENGINEERINGLIBRARY_API operator"" _kips(unsigned long long val);
+  Force operator"" _lbf(long double val);
+  Force operator"" _lbf(unsigned long long val);
 
-  Force ENGINEERINGLIBRARY_API operator- (const Force& lh);
-
-  Force ENGINEERINGLIBRARY_API operator+ (const Force& lh, const Force& rh);
-
-  Force ENGINEERINGLIBRARY_API operator- (const Force& lh, const Force& rh);
-
-  Force ENGINEERINGLIBRARY_API operator*(const class Pressure& lh, const class Area& rh);
-  Force ENGINEERINGLIBRARY_API operator*(const class Area& lh, const class Pressure& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const Force& lh, const double& n);
-  Force ENGINEERINGLIBRARY_API operator* (const double& n, const Force& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Stiffness& lh, const class Length& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Length& lh, const class Stiffness& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Mass& lh, const class Acceleration& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Acceleration& lh, const class Mass& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Damping& lh, const class Velocity& rh);
-  Force ENGINEERINGLIBRARY_API operator* (const class Velocity& lh, const class Damping& rh);
-
-  Force ENGINEERINGLIBRARY_API operator/ (const class Energy& lh, const class Length& rh);
-  Force ENGINEERINGLIBRARY_API operator/ (const Force& lh, const double& n);
-  double ENGINEERINGLIBRARY_API operator/ (const Force& lh, const Force& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Force& lh, const Force& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Force& lh, const Force& rh);
-
-  inline Force ENGINEERINGLIBRARY_API conj(const Force& x) { return x; }
-  inline Force ENGINEERINGLIBRARY_API real(const Force& x) { return x; }
-  inline Force ENGINEERINGLIBRARY_API imag(const Force&) { return 0_N; }
+  Force operator"" _kips(long double val);
+  Force operator"" _kips(unsigned long long val);
 
   // Forces are commonly used as vectors, so provide some vectors for convenience
   using Force2d = Eigen::Matrix<Force, 1, 2>;

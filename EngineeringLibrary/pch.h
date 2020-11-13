@@ -9,8 +9,6 @@
 
 #include "framework.h"
 
-#include "EngineeringExport.h"
-
 // Add all Unit classes that have been tested
 
 // Time headers

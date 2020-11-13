@@ -19,65 +19,32 @@ namespace eng {
    * \class Damping
    * \addtogroup Units
    */
-  class ENGINEERINGLIBRARY_API Damping : public UnitBase {
+  template<>
+  class UnitBase<1, 0, -1, 0, 0, 0, 0> {
+    typedef UnitBase<1, 0, -1, 0, 0, 0, 0> this_t;
+    UnitBaseCOMMON
   public:
-    /**
-     * \brief Damping constructor
-     * 
-     * \param _Newton_seconds_per_meter the measure of Damping in Newton seconds per meter.
-     */
-    explicit Damping(const double newton_seconds_per_meter = 0) :
-      UnitBase(newton_seconds_per_meter) { }
-    Damping(const Damping&) = default;
-    ~Damping() = default;
-
     double Nspm() const { return _value; }
     double kNspm() const { return _value / 1000; }
 
     double lbspin() const { return _value * .0254/4.4482216152605; }
     double lbspft() const { return _value * .3048/4.4482216152605; }
-
-    Damping& operator+= (const Damping& rh) { _value += rh._value; return *this; }
-    Damping& operator-= (const Damping& rh) { _value -= rh._value; return *this; }
-    Damping& operator*= (const double& rh) { _value *= rh; return *this; }
-    Damping& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
+  using Damping = UnitBase<1, 0, -1, 0, 0, 0, 0>;
+
   // Literal operators
-  Damping ENGINEERINGLIBRARY_API operator"" _Nspm (long double val);
-  Damping ENGINEERINGLIBRARY_API operator"" _Nspm (unsigned long long val);
+  Damping operator"" _Nspm (long double val);
+  Damping operator"" _Nspm (unsigned long long val);
 
-  Damping ENGINEERINGLIBRARY_API operator"" _kNspm (long double val);
-  Damping ENGINEERINGLIBRARY_API operator"" _kNspm (unsigned long long val);
+  Damping operator"" _kNspm (long double val);
+  Damping operator"" _kNspm (unsigned long long val);
 
-  Damping ENGINEERINGLIBRARY_API operator"" _lbspin (long double val);
-  Damping ENGINEERINGLIBRARY_API operator"" _lbspin (unsigned long long val);
+  Damping operator"" _lbspin (long double val);
+  Damping operator"" _lbspin (unsigned long long val);
 
-  Damping ENGINEERINGLIBRARY_API operator"" _lbspft (long double val);
-  Damping ENGINEERINGLIBRARY_API operator"" _lbspft (unsigned long long val);
-
-  Damping ENGINEERINGLIBRARY_API operator- (const Damping& lh);
-
-  Damping ENGINEERINGLIBRARY_API operator+ (const Damping& lh, const Damping& rh);
-
-  Damping ENGINEERINGLIBRARY_API operator- (const Damping& lh, const Damping& rh);
-
-  Damping ENGINEERINGLIBRARY_API operator* (const Damping& lh, const double& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const double& lh, const Damping& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const class Stiffness& lh, const class Time& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const class Time& lh, const class Stiffness& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const class Mass& lh, const class Frequency& rh);
-  Damping ENGINEERINGLIBRARY_API operator* (const class Frequency& lh, const class Mass& rh);
-
-  Damping ENGINEERINGLIBRARY_API operator/ (const Damping& lh, const double& rh);
-  double ENGINEERINGLIBRARY_API operator/ (const Damping& lh, const Damping& rh);
-
-  bool ENGINEERINGLIBRARY_API operator== (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator> (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator!= (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator< (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator>= (const Damping& lh, const Damping& rh);
-  bool ENGINEERINGLIBRARY_API operator<= (const Damping& lh, const Damping& rh);
+  Damping operator"" _lbspft (long double val);
+  Damping operator"" _lbspft (unsigned long long val);
 
 };  // namespace eng
 

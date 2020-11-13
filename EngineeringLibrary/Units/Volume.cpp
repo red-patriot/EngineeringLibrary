@@ -4,63 +4,8 @@
 #include "Volume.h"
 #include "Area.h"
 #include "Length.h"
-#include "PhysicsMath.h"
 
 namespace eng {
-
-  Volume operator-(const Volume& lh) {
-    return Volume(-lh.value());
-  }
-
-  Volume operator+ (const Volume& lh, const Volume& rh) {
-    return Volume(lh.value() + rh.value());
-  }
-
-  Volume operator- (const Volume& lh, const Volume& rh) {
-    return Volume(lh.value() - rh.value());
-  }
-
-  Volume operator* (const Area& lh, const Length& rh) {
-    return Volume(lh.value() * rh.value());
-  }
-  Volume operator* (const Length& lh, const Area& rh) {
-    return rh * lh;
-  }
-  Volume operator* (const Volume& lh, const double& n) {
-    return Volume(lh.value() * n);
-  }
-  Volume operator* (const double& n, const Volume& rh) {
-    return rh * n;
-  }
-
-  Volume  operator/ (const SecondMomentOfArea& lh, const Length& rh) {
-    return Volume(lh.value() / rh.value());
-  }
-  double operator/ (const Volume& lh, const Volume& rh) {
-    return lh.value() / rh.value();
-  }
-  Volume operator/ (const Volume& lh, const double& n) {
-    return Volume(lh.value() / n);
-  }
-
-  bool operator== (const Volume& lh, const Volume& rh) {
-    return fuzzy_equals(lh.value(), rh.value());
-  }
-  bool operator> (const Volume& lh, const Volume& rh) {
-    return fuzzy_greater(lh.value(), rh.value());
-  }
-  bool operator!= (const Volume& lh, const Volume& rh) {
-    return !(lh == rh);
-  }
-  bool operator< (const Volume& lh, const Volume& rh) {
-    return rh > lh;
-  }
-  bool operator>= (const Volume& lh, const Volume& rh) {
-    return lh > rh || lh == rh;
-  }
-  bool operator<= (const Volume& lh, const Volume& rh) {
-    return rh > lh || lh == rh;
-  }
 
   /* Literal operators
    * The following units are supported:

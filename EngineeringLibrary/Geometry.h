@@ -11,8 +11,6 @@
  * \date   August 2020
  *********************************************************************/
 
-#include "EngineeringExport.h"
-
 #include "Units/Length.h"
 #include "Units/Area.h"
 #include "Units/MomentOfArea.h"
@@ -22,7 +20,7 @@ namespace eng {
   /** A point in 2D space representing the centroid of an area
    * \struct Point 
    */
-  struct ENGINEERINGLIBRARY_API Point {
+  struct Point {
     Length x;
     Length y;
 
@@ -38,7 +36,7 @@ namespace eng {
   /** Area moments of inertia for a 2D area about various axes
    * \struct AreaMomentofInertia
    */
-  struct ENGINEERINGLIBRARY_API AreaMomentofInertia {
+  struct AreaMomentofInertia {
     SecondMomentOfArea Ix;
     SecondMomentOfArea Iy;
     SecondMomentOfArea Ixy;
@@ -49,8 +47,8 @@ namespace eng {
      * \param yy The Second moment of area about the x axis
      * \param xy
      */
-    AreaMomentofInertia(const class SecondMomentOfArea& xx = 0_m4, 
-                        const class SecondMomentOfArea& yy = 0_m4,
+    AreaMomentofInertia(const SecondMomentOfArea& xx = 0_m4, 
+                        const SecondMomentOfArea& yy = 0_m4,
       const SecondMomentOfArea& xy = 0_m4);
   };
   
@@ -61,7 +59,7 @@ namespace eng {
    *  but all Geometry children should call calculate_area and 
    *  calculate_moment_of_inertia in their constructors to work properly.
    */
-  class ENGINEERINGLIBRARY_API Geometry {
+  class Geometry {
   public:
     /**
      * \brief Geometry constructor
@@ -70,7 +68,7 @@ namespace eng {
      * \param mmoi the area moment of inertia of the geometry
      * \param c The centroid of the geometry
      */
-    Geometry(const class Area& aa, const AreaMomentofInertia& mmoi,
+    Geometry(const Area& aa, const AreaMomentofInertia& mmoi,
       const Point& c=(0_m, 0_m));
     /**
      * \brief Geometry default destructor
@@ -128,7 +126,7 @@ namespace eng {
   /** A circle
    * \class Circle 
    */
-  class ENGINEERINGLIBRARY_API Circle : public Geometry {
+  class Circle : public Geometry {
   public:
     /**
      * \brief Circle constructor
@@ -151,7 +149,7 @@ namespace eng {
   /** A semi circle
    * \class SemiCircle 
    */
-  class ENGINEERINGLIBRARY_API SemiCircle : public Geometry {
+  class SemiCircle : public Geometry {
   public:
     /**
      * \brief SemiCircle constructor
@@ -172,7 +170,7 @@ namespace eng {
   /** A hollow circle
    * \class HollowCircle
    */
-  class ENGINEERINGLIBRARY_API HollowCircle : public Geometry {
+  class HollowCircle : public Geometry {
   public:
     /**
      * \brief HollowCircle constructor
@@ -198,7 +196,7 @@ namespace eng {
   /** A rectangle
    * \class Rectangle
    */
-  class ENGINEERINGLIBRARY_API Rectangle : public Geometry {
+  class Rectangle : public Geometry {
   public:
     /**
      * \brief Rectangle constructor
@@ -225,7 +223,7 @@ namespace eng {
   /** A hollow rectangle
    * \class HollowRectangle
    */
-  class ENGINEERINGLIBRARY_API HollowRectangle : public Geometry {
+  class HollowRectangle : public Geometry {
   public:
     /**
      * \brief HollowRectangle constructor

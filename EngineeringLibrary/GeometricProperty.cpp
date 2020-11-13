@@ -3,7 +3,6 @@
 #include "Geometry.h"
 #include "GeometricProperty.h"
 
-#include "Units/PhysicsMath.h"
 #include "Units/MomentOfArea.h"
 #include "Units/Volume.h"
 #include "Units/Area.h"
