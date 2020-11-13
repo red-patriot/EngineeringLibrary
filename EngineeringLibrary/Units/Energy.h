@@ -29,12 +29,20 @@ namespace eng {
     double kJ() const { return _value * 0.001; }
     double MJ() const { return _value * 0.000'001; }
 
+    double Nm() const { return _value; }
+    double kNm() const { return _value * 0.001; }
+    double Nmm() const { return _value * 1000.0; }
+
     double ftlb() const { return _value * 0.737'562'149; }
     double inlb() const { return _value * 8.850'745'8; }
     double BTU() const { return _value * 0.000'947'817'12; }
+
+    double lbft() const { return _value * 0.737'562'149; }
+    double lbin() const { return _value * 8.850'745'8; }
   };
 
   using Energy = UnitBase<1, 2, -2, 0, 0, 0, 0>;
+  using Torque = UnitBase<1, 2, -2, 0, 0, 0, 0>;
 
   Energy operator"" _J (long double val);
   Energy operator"" _J (unsigned long long val);
@@ -53,10 +61,6 @@ namespace eng {
 
   Energy operator"" _BTU (long double val);
   Energy operator"" _BTU (unsigned long long val);
-
-  inline Energy conj(const Energy& x) { return x; }
-  inline Energy real(const Energy& x) { return x; }
-  inline Energy imag(const Energy&) { return 0_J; }
 
 }; // namespace eng
 

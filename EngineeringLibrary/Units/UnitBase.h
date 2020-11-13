@@ -4,8 +4,8 @@
 /*****************************************************************//**
  * \file  UnitBase.h
  * \brief A base class for all units to give them a uniform interface and
- *          to simplify the implementation where possible. This class is not 
- *          available for use outside this library
+ *          to simplify the implementation where possible. This class may be 
+ *          used outside this library raw, however it is not recommended.
  *
  * \author bltan
  * \date   August 2020
@@ -108,8 +108,7 @@ namespace eng {
   template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
-    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2,
-    typename...>
+    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
     auto
     operator* (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
@@ -156,8 +155,7 @@ namespace eng {
   template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
     int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
-    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2, 
-    typename...>
+    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
     auto
     operator/ (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
@@ -180,7 +178,7 @@ namespace eng {
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
     operator/ (const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
-                                      const double& rh) {
+               const double& rh) {
     return UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.value() / rh);
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,

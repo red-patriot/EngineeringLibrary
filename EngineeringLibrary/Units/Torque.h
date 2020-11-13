@@ -11,6 +11,7 @@
  *********************************************************************/
 
 #include "UnitBase.h"
+#include "Energy.h"
 
 #include <eigen3/Eigen/Core>
 
@@ -20,38 +21,7 @@ namespace eng {
    * \class Torque
    * \addtogroup Units
    */
-  class Torque : public UnitBase<1, 2, -2, 0, 0, 0, 0> {
-  public:
-    /**
-     * \brief Torque constructor
-     * 
-     * \param _Newtonmeters the measure of Torque in Newton*meters
-     */
-    explicit Torque(const double _Newtonmeters=0) : UnitBase(_Newtonmeters) { }
-    Torque(const UnitBase<1, 2, -2, 0, 0, 0, 0>& b) : UnitBase(b) { }
-    ~Torque() = default;
-
-    double Nm() const { return _value; }
-    double kNm() const { return _value * 0.001; }
-    double Nmm() const { return _value * 1000.0; }
-
-    double lbft() const { return _value * 0.737'562'149; }
-    double lbin() const { return _value * 8.850'745'8; }
-
-    // Explicitly delete the Energy units so they cannot accidentally be used
-    double J() const = delete;
-    double kJ() const = delete;
-    double MJ() const = delete;
-
-    double ftlb() const = delete;
-    double inlb() const = delete;
-    double BTU() const = delete;
-   
-    Torque& operator+= (const Torque& rh) { _value += rh._value; return *this; }
-    Torque& operator-= (const Torque& rh) { _value -= rh._value; return *this; }
-    Torque& operator*= (const double& rh) { _value *= rh; return *this; }
-    Torque& operator/= (const double& rh) { _value /= rh; return *this; }
-  };
+  using Torque = UnitBase<1, 2, -2, 0, 0, 0, 0>;
 
   Torque operator"" _Nm (long double val);
   Torque operator"" _Nm (unsigned long long val);
@@ -68,10 +38,6 @@ namespace eng {
   Torque operator"" _lbin (long double val);
   Torque operator"" _lbin (unsigned long long val);
 
-  inline Torque conj(const Torque& x) { return x; }
-  inline Torque real(const Torque& x) { return x; }
-  inline Torque imag(const Torque&) { return 0_Nm; }
-
   // Some conventions use "Moment" istead of "Torque"
   using Moment = Torque;
 
@@ -83,27 +49,6 @@ namespace eng {
   using Moment3d = Eigen::Matrix<Moment, 1, 3>;
 
 };  // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Torque> : NumTraits<double> {
-    typedef eng::Torque Real;
-    typedef eng::Torque NonInteger;
-    typedef eng::Torque Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _Nm;        using eng::operator"" _kNm;
 using eng::operator"" _Nmm;       
