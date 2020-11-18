@@ -38,4 +38,7 @@
 #include "Units/Velocity.h"
 #include "Units/Acceleration.h"
 
+// Temperature header
+#include "Units/Temperature.h"
+
 #endif
