@@ -28,13 +28,13 @@ namespace eng {
   
   /* Calculate the Moment of Inertia of a composite shape about the given centroid. */
   AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, 
-                                                               const Point& pt);
+                                        const LengthVec& pt);
   /* Calculate the Moment of Inertia of a composite shape about its own centroid. */
   AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo);
   /* Calculate the Moment of Inertia of a composite shape about the given centroid.
      neg represents holes in the geometry. */
   AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo,
-    const std::vector<Geometry*>& neg, const Point& pt);
+                                        const std::vector<Geometry*>& neg, const LengthVec& pt);
   /* Calculate the Moment of Inertia of a composite shape about its own centroid.
      neg represents holes in the geometry. */
   AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, 
@@ -50,10 +50,10 @@ namespace eng {
   Length radius_of_gyration(const Geometry& geo, const Axis& axis);
   
   /* Calculate the Point of a composite shape. */
-  Point centroid(const std::vector<Geometry*>& geo);
+  LengthVec centroid(const std::vector<Geometry*>& geo);
   /* Calculate the Point of a composite shape.
      neg represents holes in the geometry. */
-  Point centroid(const std::vector<Geometry*>& geo, const std::vector<Geometry*>& neg);
+  LengthVec centroid(const std::vector<Geometry*>& geo, const std::vector<Geometry*>& neg);
 
 };  // namespace eng
 

@@ -19,7 +19,7 @@ namespace eng {
     return moment_of_inertia(geo, centroid(geo));
   }
 
-  AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, const Point& pt) {
+  AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, const LengthVec& pt) {
     AreaMomentofInertia ret{0_m4, 0_m4, 0_m4};
 
     for (auto& g : geo) {
@@ -33,7 +33,7 @@ namespace eng {
   }
 
   AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, 
-                                        const std::vector<Geometry*>& neg, const Point& pt) {
+                                        const std::vector<Geometry*>& neg, const LengthVec& pt) {
     AreaMomentofInertia ret{0_m4, 0_m4, 0_m4},
       ret_pos = moment_of_inertia(geo, pt),
       ret_neg = moment_of_inertia(neg, pt);
@@ -47,7 +47,7 @@ namespace eng {
 
   AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, 
                                         const std::vector<Geometry*>& neg) {
-    Point pt = centroid(geo, neg);
+    LengthVec pt = centroid(geo, neg);
     
     return moment_of_inertia(geo, neg, pt);
   }
@@ -73,40 +73,40 @@ namespace eng {
   }
 
   /*
-   *  Point
+   *  Centroid
    */
-  Point centroid(const std::vector<Geometry*>& geo) {
+  LengthVec centroid(const std::vector<Geometry*>& geo) {
     FirstMomentOfArea Qx{0_m3};
     FirstMomentOfArea Qy{0_m3};
     Area a{0_m2};
-    Point ret;
+    LengthVec ret;
 
     for (auto& g : geo) {
       auto area = g->area();
       auto cen = g->centroid();
-      Qx += area * cen.x;
-      Qy += area * cen.y;
+      Qx += area * cen.x();
+      Qy += area * cen.y();
       a += area;
     }
 
-    ret.x = Qx/a;
-    ret.y = Qx/a;
+    ret.x() = Qx/a;
+    ret.y() = Qx/a;
 
     return ret;
   }
 
-  Point centroid(const std::vector<Geometry*>& geo, const std::vector<Geometry*>& neg) {
+  LengthVec centroid(const std::vector<Geometry*>& geo, const std::vector<Geometry*>& neg) {
     FirstMomentOfArea Qx{0_m3};
     FirstMomentOfArea Qy{0_m3};
     Area a{0_m2};
-    Point ret;
+    LengthVec ret;
 
     // sum up the positive sections of the geometry
     for (auto& g : geo) {
       auto area = g->area();
       auto cen = g->centroid();
-      Qx += area * cen.x;
-      Qy += area * cen.y;
+      Qx += area * cen.x();
+      Qy += area * cen.y();
       a += area;
     }
 
@@ -114,13 +114,13 @@ namespace eng {
     for (auto& g : neg) {
       auto area = g->area();
       auto cen = g->centroid();
-      Qx -= area * cen.x;
-      Qy -= area * cen.y;
+      Qx -= area * cen.x();
+      Qy -= area * cen.y();
       a -= area;
     }
 
-    ret.x = Qx/a;
-    ret.y = Qx/a;
+    ret.x() = Qx/a;
+    ret.y() = Qx/a;
 
     return ret;
   }

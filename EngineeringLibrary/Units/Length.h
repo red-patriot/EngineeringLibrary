@@ -57,6 +57,9 @@ namespace eng {
   Length operator"" _mi (long double val);
   Length operator"" _mi (unsigned long long val);
 
+  // Lengths are commonly used as vectors
+  using LengthVec = Eigen::Matrix<Length, 1, 3>;
+
 }; // namespace eng
 
 /* Integration with Eigen */

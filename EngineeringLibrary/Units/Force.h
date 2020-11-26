@@ -45,9 +45,8 @@ namespace eng {
   Force operator"" _kips(long double val);
   Force operator"" _kips(unsigned long long val);
 
-  // Forces are commonly used as vectors, so provide some vectors for convenience
-  using Force2d = Eigen::Matrix<Force, 1, 2>;
-  using Force3d = Eigen::Matrix<Force, 1, 3>;
+  // Forces are commonly used as vectors
+  using ForceVec = Eigen::Matrix<Force, 1, 3>;
   
 
 }; // namespace eng

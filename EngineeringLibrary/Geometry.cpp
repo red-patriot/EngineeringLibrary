@@ -3,10 +3,6 @@
 
 namespace eng {
 
-  Point::Point(const Length& xx, const Length& yy) :
-    x(xx),
-    y(yy) { }
-
   AreaMomentofInertia::AreaMomentofInertia(const SecondMomentOfArea& xx,
     const SecondMomentOfArea& yy, const SecondMomentOfArea& xy) :
     Ix(xx),
@@ -18,18 +14,18 @@ namespace eng {
    */
 
   Geometry::Geometry(const Area& aa, const AreaMomentofInertia& mmoi,
-    const Point& c) :
+    const LengthVec& c) :
     _centroid(c),
     _area(aa),
     _MOI(mmoi) { }
 
-  Point Geometry::centroid() const {
+  LengthVec Geometry::centroid() const {
     return _centroid;
   }
 
-  AreaMomentofInertia Geometry::moment_of_inertia(const Point& pt) const {
-    Length x = pt.x - _centroid.x;
-    Length y = pt.y - _centroid.y;
+  AreaMomentofInertia Geometry::moment_of_inertia(const LengthVec& pt) const {
+    Length x = pt.x() - _centroid.x();
+    Length y = pt.y() - _centroid.y();
     AreaMomentofInertia ret = moment_of_inertia();
     ret.Ix += area()*(y*y);
     ret.Iy += area()*(x*x);
@@ -45,7 +41,7 @@ namespace eng {
     return;
   }
 
-  Geometry::Geometry(const Point& c) :
+  Geometry::Geometry(const LengthVec& c) :
     _centroid(c),
     _area(0_m2),
     _MOI(0_m4, 0_m4, 0_m4) { }
@@ -54,7 +50,7 @@ namespace eng {
    * Circle
    */
 
-  Circle::Circle(const Length& dd, const Point& c) :
+  Circle::Circle(const Length& dd, const LengthVec& c) :
     diam(dd),
     Geometry(c) { 
     calculate_area();
@@ -77,7 +73,7 @@ namespace eng {
    * Semi Circle
    */
 
-  SemiCircle::SemiCircle(const Length& dd, const Point& c) :
+  SemiCircle::SemiCircle(const Length& dd, const LengthVec& c) :
     diam(dd),
     Geometry(c) { 
     calculate_area();
@@ -100,7 +96,7 @@ namespace eng {
    * HollowCircle
    */
 
-  HollowCircle::HollowCircle(const Length& ddo, const Length& ddi, const Point& c) :
+  HollowCircle::HollowCircle(const Length& ddo, const Length& ddi, const LengthVec& c) :
     diam_out(ddo),
     diam_in(ddi),
     Geometry(c) { 
@@ -126,7 +122,7 @@ namespace eng {
    * Rectangle
    */
 
-  Rectangle::Rectangle(const Length& bb, const Length& hh, const Point& c) :
+  Rectangle::Rectangle(const Length& bb, const Length& hh, const LengthVec& c) :
     b(bb),
     h(hh),
     Geometry(c) { 
@@ -151,7 +147,7 @@ namespace eng {
    */
 
   HollowRectangle::HollowRectangle(const Length& bbo, const Length& hho, const Length& bbi, 
-                                   const Length& hhi, const Point& c) :
+                                   const Length& hhi, const LengthVec& c) :
     bo(bbo),
     ho(hho),
     bi(bbi),

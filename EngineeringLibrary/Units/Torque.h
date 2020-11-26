@@ -41,12 +41,9 @@ namespace eng {
   // Some conventions use "Moment" istead of "Torque"
   using Moment = Torque;
 
-  // Torques are commonly used as vectors, so provide some vectors for convenience
-  using Torque2d = Eigen::Matrix<Torque, 1, 2>;
-  using Torque3d = Eigen::Matrix<Torque, 1, 3>;
-
-  using Moment2d = Eigen::Matrix<Moment, 1, 2>;
-  using Moment3d = Eigen::Matrix<Moment, 1, 3>;
+  // Torques are commonly used as vectors
+  using TorqueVec = Eigen::Matrix<Torque, 1, 3>;
+  using MomentVec = TorqueVec;
 
 };  // namespace eng
 
