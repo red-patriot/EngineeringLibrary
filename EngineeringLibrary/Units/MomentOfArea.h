@@ -1,5 +1,4 @@
-#ifndef Moment_Of_Inertia_h_INCLUDED
-#define Moment_Of_Inertia_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  MomentOfArea.h
@@ -84,4 +83,3 @@ namespace Eigen {
 using eng::operator"" _mm4;         using eng::operator"" _m4;
 using eng::operator"" _in4;         using eng::operator"" _ft4;
 
-#endif

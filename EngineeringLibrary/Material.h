@@ -1,5 +1,4 @@
-#ifndef Material_h_INCLUDED
-#define Material_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Material.h
@@ -132,5 +131,3 @@ namespace basic_materials {
     });
 
 }; // namespace basic_materials
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef Force_h_INCLUDED
-#define Force_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Force.h
@@ -74,6 +73,3 @@ namespace Eigen {
 
 using eng::operator""_N;        using eng::operator""_kN;
 using eng::operator""_lbf;      using eng::operator""_kips;
-
-#endif
-

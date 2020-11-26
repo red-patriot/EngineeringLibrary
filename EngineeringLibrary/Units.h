@@ -1,5 +1,4 @@
-#ifndef Units_h_INCLUDED
-#define Units_h_INCLUDED
+#pragma once
 
 /* Include all unit types */
 
@@ -40,5 +39,3 @@
 
 // Temperature header
 #include "Units/Temperature.h"
-
-#endif

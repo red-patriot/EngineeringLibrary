@@ -1,5 +1,4 @@
-#ifndef Pressure_h_INCLUDED
-#define Pressure_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Pressure.h
@@ -83,5 +82,3 @@ namespace Eigen {
 using eng::operator"" _Pa;        using eng::operator"" _kPa;
 using eng::operator"" _MPa;       using eng::operator"" _GPa;
 using eng::operator"" _psi;       using eng::operator"" _ksi;
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef Buckling_h_INCLUDED
-#define Buckling_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Buckling.h
@@ -81,8 +80,6 @@ namespace eng {
   
   /* Determine the end condition constant to be used for a buckling problem. */
   double end_condition_constant(const EndConditions& _supports, const int& v=COL_THEORETICAL_VALUE);
-}
-;  // namespace eng
 
-#endif
+};  // namespace eng
 

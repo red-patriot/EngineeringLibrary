@@ -1,5 +1,4 @@
-#ifndef Length_h_INCLUDED
-#define Length_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Length.h
@@ -88,5 +87,4 @@ using eng::operator"" _m;       using eng::operator"" _km;
 using eng::operator"" _in;      using eng::operator"" _ft;
 using eng::operator"" _mi;
 
-#endif
 

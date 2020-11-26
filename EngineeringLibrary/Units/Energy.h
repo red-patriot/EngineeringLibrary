@@ -1,5 +1,4 @@
-#ifndef Energy_h_INCLUDED
-#define Energy_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file   Energy.h
@@ -88,5 +87,3 @@ namespace Eigen {
 using eng::operator"" _J;        using eng::operator"" _kJ;
 using eng::operator"" _MJ;
 using eng::operator"" _ftlb;     using eng::operator"" _inlb;
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef Unit_Base_h_INCLUDED
-#define Unit_Base_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  UnitBase.h
@@ -367,5 +366,3 @@ namespace eng {
 
   
 };  // namespace eng
-
-#endif

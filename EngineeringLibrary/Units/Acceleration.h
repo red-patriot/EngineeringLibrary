@@ -1,5 +1,4 @@
-#ifndef Acceleration_h_INCLUDED
-#define Acceleration_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Acceleration.h
@@ -70,5 +69,3 @@ namespace Eigen {
 
 using eng::operator"" _mpsec2;
 using eng::operator"" _inpsec2;      using eng::operator"" _ftpsec2;
-
-#endif

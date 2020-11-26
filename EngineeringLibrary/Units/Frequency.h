@@ -1,5 +1,4 @@
-#ifndef Frequency_h_INCLUDED
-#define Frequency_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Frequency.h
@@ -70,4 +69,3 @@ namespace Eigen {
 using eng::operator"" _Hz;        using eng::operator"" _kHz;
 using eng::operator"" _MHz;
 
-#endif

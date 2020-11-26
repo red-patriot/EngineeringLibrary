@@ -1,5 +1,4 @@
-#ifndef Torque_h_INCLUDED
-#define Torque_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file   Torque.h
@@ -50,5 +49,3 @@ namespace eng {
 using eng::operator"" _Nm;        using eng::operator"" _kNm;
 using eng::operator"" _Nmm;       
 using eng::operator"" _lbft;      using eng::operator"" _lbin;
-
-#endif

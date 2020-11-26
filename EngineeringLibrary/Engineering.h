@@ -1,5 +1,4 @@
-#ifndef Engineering_h_INCLUDED
-#define Engineering_h_INCLUDED
+#pragma once
 
 // Include all Units
 #include "Units.h"
@@ -30,5 +29,3 @@
  *    Change comparison operators to work on UnitBase class
  *    Update sample materials information
  */
-
-#endif

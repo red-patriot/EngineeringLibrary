@@ -1,5 +1,4 @@
-#ifndef System_Dynamics_h_INCLUDED
-#define System_Dynamics_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  SystemDynamics.h
@@ -40,4 +39,3 @@ namespace eng {
 
 };  // namespace eng
 
-#endif

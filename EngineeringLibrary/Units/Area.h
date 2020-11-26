@@ -1,5 +1,4 @@
-#ifndef Area_h_INCLUDED
-#define Area_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Area.h
@@ -75,6 +74,4 @@ namespace Eigen {
 using eng::operator"" _mm2;       using eng::operator"" _cm2;
 using eng::operator"" _m2;
 using eng::operator"" _in2;       using eng::operator"" _ft2;
-
-#endif
 

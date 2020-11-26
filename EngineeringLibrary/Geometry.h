@@ -1,5 +1,4 @@
-#ifndef Geometry_h_INCLUDED
-#define Geometry_h_INCLUDED
+#pragma once
 
 // TODO: Fix this mess
 
@@ -239,4 +238,3 @@ namespace eng {
 
 };  // namespace eng
 
-#endif

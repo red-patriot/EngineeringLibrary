@@ -1,5 +1,4 @@
-#ifndef Mass_h_INCLUDED
-#define Mass_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Mass.h
@@ -70,5 +69,3 @@ namespace Eigen {
 
 using eng::operator"" _g;       using eng::operator"" _kg;
 using eng::operator"" _slug;
-
-#endif

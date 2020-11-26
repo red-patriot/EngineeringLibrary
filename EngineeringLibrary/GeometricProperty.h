@@ -1,5 +1,4 @@
-#ifndef Geometric_Property_h_INCLUDED
-#define Geometric_Property_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file   GeometricProperty.h
@@ -57,4 +56,3 @@ namespace eng {
 
 };  // namespace eng
 
-#endif

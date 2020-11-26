@@ -1,5 +1,4 @@
-#ifndef Damping_h_INCLUDED
-#define Damping_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Damping.h
@@ -71,5 +70,3 @@ namespace Eigen {
 
 using eng::operator"" _Nspm;        using eng::operator"" _kNspm;
 using eng::operator"" _lbspin;      using eng::operator"" _lbspft;
-
-#endif

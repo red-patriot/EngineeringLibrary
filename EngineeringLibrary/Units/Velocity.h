@@ -1,5 +1,4 @@
-#ifndef Velocity_h_INCLUDED
-#define Velocity_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Velocity.h
@@ -80,4 +79,3 @@ using eng::operator"" _mpsec;      using eng::operator"" _kph;
 using eng::operator"" _inpsec;     using eng::operator"" _ftpsec;
 using eng::operator"" _mph;
 
-#endif

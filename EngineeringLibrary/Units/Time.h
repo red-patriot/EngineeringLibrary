@@ -1,5 +1,4 @@
-#ifndef Time_h_INCLUDED
-#define Time_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Time.h
@@ -71,4 +70,3 @@ namespace Eigen {
 using eng::operator"" _sec;        using eng::operator"" _minute;
 using eng::operator"" _hour;
 
-#endif

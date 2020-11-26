@@ -1,5 +1,4 @@
-#ifndef Temperature_h_INCLUDED
-#define Temperature_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file   Temperature.h
@@ -71,4 +70,3 @@ namespace Eigen {
 using eng::operator"" _Kelvin;        using eng::operator"" _deg_C;
 using eng::operator"" _Rankine;       using eng::operator"" _deg_F;
 
-#endif

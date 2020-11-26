@@ -1,5 +1,4 @@
-#ifndef Volume_h_INCLUDED
-#define Volume_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Volume.h
@@ -77,6 +76,4 @@ namespace Eigen {
 using eng::operator"" _mm3;         using eng::operator"" _cm3;
 using eng::operator"" _m3;
 using eng::operator"" _in3;         using eng::operator"" _ft3;
-
-#endif
 

@@ -1,5 +1,4 @@
-#ifndef Stiffness_h_INCLUDED
-#define Stiffness_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Stiffness.h
@@ -75,6 +74,4 @@ namespace Eigen {
 
 using eng::operator"" _Npm;       using eng::operator"" _Npmm;
 using eng::operator"" _lbpin;     using eng::operator"" _lbpft;
-
-#endif
 

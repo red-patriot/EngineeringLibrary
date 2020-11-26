@@ -1,5 +1,4 @@
-#ifndef Strain_h_INCLUDED
-#define Strain_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Strain.h
@@ -68,5 +67,4 @@ namespace eng {
 
 };  // namespace eng
 
-#endif
 

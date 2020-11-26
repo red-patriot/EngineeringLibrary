@@ -1,5 +1,4 @@
-#ifndef Bolt_h_INCLUDED
-#define Bolt_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Bolt.h
@@ -54,5 +53,3 @@ namespace eng {
   double factor_of_safety_separation(const Force& Fi, const Force& P, const double& C);
 
 };  // namespace eng
-
-#endif

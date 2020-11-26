@@ -1,5 +1,4 @@
-#ifndef Stress_h_INCLUDED
-#define Stress_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Stress.h
@@ -126,5 +125,3 @@ namespace eng {
 
 }; // namespace eng
 
-
-#endif

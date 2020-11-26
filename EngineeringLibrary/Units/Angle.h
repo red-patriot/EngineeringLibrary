@@ -1,5 +1,4 @@
-#ifndef Angle_h_INCLUDED
-#define Angle_h_INCLUDED
+#pragma once
 
 /*****************************************************************//**
  * \file  Angle.h
@@ -73,5 +72,3 @@ namespace Eigen {
 };  // namespace Eigen
 
 using eng::operator"" _rad;        using eng::operator"" _deg;
-
-#endif
