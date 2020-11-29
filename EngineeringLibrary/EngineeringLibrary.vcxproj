@@ -245,6 +245,7 @@
     <ClInclude Include="Units\UnitBase.h" />
     <ClInclude Include="Units\Velocity.h" />
     <ClInclude Include="Units\Volume.h" />
+    <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bolt.cpp" />
@@ -279,6 +280,7 @@
     <ClCompile Include="Units\Torque.cpp" />
     <ClCompile Include="Units\Velocity.cpp" />
     <ClCompile Include="Units\Volume.cpp" />
+    <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

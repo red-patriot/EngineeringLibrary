@@ -114,6 +114,9 @@
     <ClInclude Include="Units\Temperature.h">
       <Filter>Units\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -196,6 +199,9 @@
     </ClCompile>
     <ClCompile Include="Units\Temperature.cpp">
       <Filter>Units\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
