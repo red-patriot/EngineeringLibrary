@@ -3,6 +3,9 @@
 // Include all Units
 #include "Units.h"
 
+// Include vectors
+#include "Vector.h"
+
 // Materials properties
 #include "Material.h"
 #include "Stress.h"

@@ -9,6 +9,7 @@
  *********************************************************************/
 
 #include "UnitBase.h"
+#include "../Vector.h"
 
 #include <eigen3/Eigen/Core>
 
@@ -45,7 +46,7 @@ namespace eng {
   Force operator"" _kips(unsigned long long val);
 
   // Forces are commonly used as vectors
-  using ForceVec = Eigen::Matrix<Force, 1, 3>;
+  using ForceVec = Vector<Force>;
   
 
 }; // namespace eng

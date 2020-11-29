@@ -41,7 +41,7 @@ namespace eng {
   using Moment = Torque;
 
   // Torques are commonly used as vectors
-  using TorqueVec = Eigen::Matrix<Torque, 1, 3>;
+  using TorqueVec = Vector<Torque>;
   using MomentVec = TorqueVec;
 
 };  // namespace eng
