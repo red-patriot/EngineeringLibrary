@@ -16,10 +16,19 @@
     <Filter Include="Units">
       <UniqueIdentifier>{261ebfe0-43cf-447f-9a51-0e45b8ee14c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Units\Headers">
+    <Filter Include="StaticSystems">
+      <UniqueIdentifier>{bc625566-56c5-4dfb-961d-f17f3851514e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StaticSystems\Header Files">
+      <UniqueIdentifier>{ddef902c-f20f-4f4b-bcf8-05207a2922b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StaticSystems\Source Files">
+      <UniqueIdentifier>{2ed735de-d696-4da1-9f69-b285715776b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Units\Header Files">
       <UniqueIdentifier>{c8998d6a-7080-4918-8297-a8c2c9d58c9f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Units\Source">
+    <Filter Include="Units\Source Files">
       <UniqueIdentifier>{12baed53-7d27-47b0-9555-f277238e95a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -61,64 +70,79 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Acceleration.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Angle.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Area.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Damping.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Energy.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Force.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Frequency.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Length.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Mass.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\MomentOfArea.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Pressure.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Stiffness.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Time.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Torque.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\UnitBase.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Velocity.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Volume.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Temperature.h">
-      <Filter>Units\Headers</Filter>
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UnitVector.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticSystems\StaticSystem.h">
+      <Filter>StaticSystems\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticSystems\AppliedLoad.h">
+      <Filter>StaticSystems\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticSystems\echelon.h">
+      <Filter>StaticSystems\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticSystems\pch.h">
+      <Filter>StaticSystems\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Unitless.h">
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -153,58 +177,64 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Acceleration.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Angle.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Area.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Damping.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Energy.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Force.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Frequency.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Length.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Mass.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\MomentOfArea.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Pressure.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Stiffness.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Time.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Torque.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Velocity.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Volume.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Temperature.cpp">
-      <Filter>Units\Source</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Vector.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticSystems\AppliedLoad.cpp">
+      <Filter>StaticSystems\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticSystems\StaticSystem.cpp">
+      <Filter>StaticSystems\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

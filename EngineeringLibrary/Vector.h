@@ -9,7 +9,6 @@
  * \date   November 2020
  *********************************************************************/
 
-#include <utility>
 #include "Units/UnitBase.h"
 
 namespace eng {
@@ -17,71 +16,72 @@ namespace eng {
   /** A 3D Cartesian vector
    * \class Vector
    */
-  template<typename T>
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD=1, int LD=1, int TD=1, int CD=1, int TeD=1, int AD=1, int LuD=1>
   class Vector {
+    typedef UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> unit_t;
+    typedef Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> vec_t;
   public:
-    Vector(const T& xx = T(0), const T& yy = T(0), const T& zz = T(0)) : _x(xx), _y(yy), _z(zz) { }
+    Vector(const unit_t& x = unit_t(0), const unit_t& y = unit_t(0), const unit_t& z = unit_t(0)) :
+      _x(x), 
+      _y(y), 
+      _z(z) { }
+    explicit Vector(const double& x, const double& y, const double& z) : 
+      _x(x),
+      _y(y),
+      _z(z) { }
+    explicit Vector(const Vector<0,0,0,0,0,0,0>& values) : 
+      _x(values.x()), 
+      _y(values.y()), 
+      _z(values.z()) { }
 
     /** Get the x component of the vector. */
-    T x() const { return _x; }
+    unit_t x() const { return _x; }
     /** Set the x component of the vector. */
-    void x(const T& new_x) { _x = new_x; }
+    void x(const unit_t& new_x) { _x = new_x; }
 
     /** Get the y component of the vector. */
-    T y() const { return _y; }
+    unit_t y() const { return _y; }
     /** Set the y component of the vector. */
-    void y(const T& new_y) { _y = new_y; }
+    void y(const unit_t& new_y) { _y = new_y; }
 
     /** Get the z component of the vector. */
-    T z() const { return _z; }
+    unit_t z() const { return _z; }
     /** Set the z component of the vector. */
-    void z(const T& new_z) { _z = new_z; }
+    void z(const unit_t& new_z) { _z = new_z; }
 
     /** Calculate the length of the vector. */
-    T length() const {
-      return sqrt(_x*_x + _y*_y + _z*_z);
+    unit_t length() const {
+      return sqrt<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(_x*_x + _y*_y + _z*_z);
     }
 
-    /** Calculate the Euclidean norm of the vector, which isequivalent to its length.  */
-    T norm() const {
-      return sqrt(_x*_x + _y*_y + _z*_z);
+    /** Calculate the Euclidean norm of the vector, which is equivalent to its length.  */
+    unit_t norm() const {
+      return sqrt<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(_x*_x + _y*_y + _z*_z);
     }
 
-    /**
-     * Normalize this vector.
-     * 
-     * After this operation, this vector will have a length of 1.
-     */
-    void normalize() {
-      const T l = length();
-      _x /= l;
-      _y /= l;
-      _z /= l;
-      return;
-    }
-
-    T& operator+= (const Vector<T>& rh) { 
+    vec_t& operator+= (const vec_t& rh) {
       _x += rh._x;
       _y += rh._y;
       _z += rh._z;
       return *this;
     }
 
-    T& operator-= (const Vector<T>& rh) { 
+    vec_t& operator-= (const vec_t& rh) {
       _x -= rh._x;
       _y -= rh._y;
       _z -= rh._z;
       return *this;
     }
 
-    T& operator*= (const double& rh) { 
+    vec_t& operator*= (const double& rh) {
       _x *= rh;
       _y *= rh;
       _z *= rh;
       return *this;
     }
 
-    T& operator/= (const double& rh) { 
+    vec_t& operator/= (const double& rh) {
       _x /= rh;
       _y /= rh;
       _z /= rh;
@@ -89,85 +89,208 @@ namespace eng {
     }
 
   private:
-    T _x;
-    T _y;
-    T _z;
+    unit_t _x;
+    unit_t _y;
+    unit_t _z;
   };
+
+  /** Normalize a vector.
+   *
+   * \param in The vector to normalize.
+   * \return The normalized vector in. 
+   */
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+  Vector<0,0,0,0,0,0,0> normalize(const Vector<MN, LN, TN, CN, TeN, AN, LuN,
+                                    MD, LD, TD, CD, TeD, AD, LuD>& in) {
+    const auto l = in.norm();
+    return Vector<0,0,0,0,0,0,0>(in.x()/l, 
+                                 in.y()/l, 
+                                 in.z()/l);
+  }
 
   /**
    * Vector<T> inversion operator. 
    */
-  template<typename T>
-  Vector<T> operator- (const Vector<T>& lh) {
-    return Vector<T>(-lh.x(), -lh.y(), -lh.z());
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
+    operator- (const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh) {
+    return Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(-lh.x(),
+                                                                              -lh.y(),
+                                                                              -lh.z());
   }
 
   /**
    * Vector<T> addition operator.
    */
-  template<typename T>
-  Vector<T> operator+ (const Vector<T>& lh, const Vector<T>& rh) {
-    return Vector<T>(lh.x() + rh.x(), lh.y() + rh.y(), lh.z() + rh.z());
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
+    operator+ (const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+               const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+    return Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.x() + rh.x(),
+                                                                              lh.y() + rh.y(),
+                                                                              lh.z() + rh.z());
   }
 
   /**
    * Vector<T> subtraction operator.
    */
-  template<typename T>
-  Vector<T> operator- (const Vector<T>& lh, const Vector<T>& rh) {
-    return Vector<T>(lh.x() - rh.x(), lh.y() - rh.y(), lh.z() - rh.z());
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
+    operator- (const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+               const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+    return Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.x() - rh.x(),
+                                                                              lh.y() - rh.y(),
+                                                                              lh.z() - rh.z());
   }
   /**
-   * Vector<T> multiplication operator
+   * Vector<T> multiplication operators
    */
-  template<typename T, typename U>
-  Vector<decltype(std::forward<T> * std::forward<U>)> operator* (const Vector<T>& lh, const U& rh) {
-    return Vector<decltype(std::forward<T> * std::forward<U>)>(lh.x()*rh, lh.y()*rh, lh.z()*rh);
-  }
 
-  /**
- * Vector<T> multiplication operator
- */
-  template<typename T, typename U>
-  Vector<decltype(std::forward<T> * std::forward<U>)> operator* (const U& lh, const Vector<U>& rh) {
+  template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
+    int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
+    int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
+    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
+    auto
+    operator* (const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+               const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+    return Vector<_numa(MN1, MD1, MN2, MD2),
+      _numa(LN1, LD1, LN2, LD2),
+      _numa(TN1, TD1, TN2, TD2),
+      _numa(CN1, CD1, CN2, CD2),
+      _numa(TeN1, TeD1, TeN2, TeD2),
+      _numa(AN1, AD1, AN2, AD2),
+      _numa(LuN1, LuD1, LuN2, LuD2),
+      _denoma(MN1, MD1, MN2, MD2),
+      _denoma(LN1, LD1, LN2, LD2),
+      _denoma(TN1, TD1, TN2, TD2),
+      _denoma(CN1, CD1, CN2, CD2),
+      _denoma(TeN1, TeD1, TeN2, TeD2),
+      _denoma(AN1, AD1, AN2, AD2),
+      _denoma(LuN1, LuD1, LuN2, LuD2)>(lh.x() * rh,
+                                       lh.y() * rh,
+                                       lh.z() * rh);
+  }
+  template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
+    int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
+    int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
+    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
+    auto
+    operator* (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+               const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return rh * lh;
   }
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
+    operator* (const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+               const double& rh) {
+    return Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.x() * rh,
+                                                                              lh.y() * rh,
+                                                                              lh.z() * rh);
+  }
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
+    operator* (const double& lh,
+               const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+    return rh * lh;
+  }
+
 
   /**
    * Vector<T> dot product.
    */
-  template<typename T, typename U>
-  decltype(std::forward<T> * std::forward<U>) dot(const Vector<T>& lh, const Vector<U>& rh) {
-    return lh.x()* rh.x() + lh.y()*rh.y() + lh.z()*rh.z();
+  template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
+    int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
+    int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
+    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
+    auto
+    dot_product(const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh, 
+                const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+    return lh.x()*rh.x() + lh.y()*rh.y() + lh.z()*rh.z();
   }
 
    /**
     * Vector<T> cross product.
     */
-  template<typename T, typename U>
-  Vector<decltype(std::forward<T> * std::forward<U>)> cross(const Vector<T>& lh, const Vector<U>& rh) {
-    return Vector<decltype(std::forward<T> * std::forward<U>)>(
-      lh.y()*rh.z() - lh.z()*rh.y(),
-      lh.z()*rh.x() - lh.x()*rh.z(),
-      lh.x()*rh.y() - lh.y()*rh.y()
-      );
+  template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
+    int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
+    int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
+    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
+    auto
+    cross_product(const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+                  const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+    return Vector<_numa(MN1, MD1, MN2, MD2),
+      _numa(LN1, LD1, LN2, LD2),
+      _numa(TN1, TD1, TN2, TD2),
+      _numa(CN1, CD1, CN2, CD2),
+      _numa(TeN1, TeD1, TeN2, TeD2),
+      _numa(AN1, AD1, AN2, AD2),
+      _numa(LuN1, LuD1, LuN2, LuD2),
+      _denoma(MN1, MD1, MN2, MD2),
+      _denoma(LN1, LD1, LN2, LD2),
+      _denoma(TN1, TD1, TN2, TD2),
+      _denoma(CN1, CD1, CN2, CD2),
+      _denoma(TeN1, TeD1, TeN2, TeD2),
+      _denoma(AN1, AD1, AN2, AD2),
+      _denoma(LuN1, LuD1, LuN2, LuD2)>(lh.y()*rh.z() - lh.z()*rh.y(),
+                                       lh.z()*rh.x() - lh.x()*rh.z(),
+                                       lh.x()*rh.y() - lh.y()*rh.y());
   }
 
   /**
-   * Vector<T> division operator
+   * Vector<T> division operators
    */
-  template<typename T, typename U>
-  Vector<decltype(std::forward<T> / std::forward<U>)> operator/ (const Vector<T>& lh, const U& rh) {
-    return Vector<decltype(std::forward<T> / std::forward<U>)>(lh.x()/rh, lh.y()/rh, lh.z()/rh);
+  template<int MN1, int LN1, int TN1, int CN1, int TeN1, int AN1, int LuN1,
+    int MD1, int LD1, int TD1, int CD1, int TeD1, int AD1, int LuD1,
+    int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
+    int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
+    auto 
+    operator/ (const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh, 
+               const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+    return Vector<_nums(MN1, MD1, MN2, MD2),
+      _nums(LN1, LD1, LN2, LD2),
+      _nums(TN1, TD1, TN2, TD2),
+      _nums(CN1, CD1, CN2, CD2),
+      _nums(TeN1, TeD1, TeN2, TeD2),
+      _nums(AN1, AD1, AN2, AD2),
+      _nums(LuN1, LuD1, LuN2, LuD2),
+      _denoms(MN1, MD1, MN2, MD2),
+      _denoms(LN1, LD1, LN2, LD2),
+      _denoms(TN1, TD1, TN2, TD2),
+      _denoms(CN1, CD1, CN2, CD2),
+      _denoms(TeN1, TeD1, TeN2, TeD2),
+      _denoms(AN1, AD1, AN2, AD2),
+      _denoms(LuN1, LuD1, LuN2, LuD2)>(lh.x()/rh,
+                                       lh.y()/rh,
+                                       lh.z()/rh);
+  }
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
+    operator/ (const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+               const double& rh) {
+    return Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(lh.x() / rh,
+                                                                              lh.y() / rh,
+                                                                              lh.z() / rh)
+      ;
   }
 
-  template<typename T>
-  bool operator== (const Vector<T>& lh, const Vector<T>& rh) {
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    bool  operator== (const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+                      const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return lh.x() == rh.x() && lh.y() == rh.y() && lh.z() == rh.z();
   }
 
-  template<typename T>
-  bool operator!= (const Vector<T>& lh, const Vector<T>& rh) {
+  template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+    int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+    bool  operator!= (const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+                      const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
     return !(lh == rh);
   }
 

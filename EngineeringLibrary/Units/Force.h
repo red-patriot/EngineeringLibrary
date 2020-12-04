@@ -46,7 +46,7 @@ namespace eng {
   Force operator"" _kips(unsigned long long val);
 
   // Forces are commonly used as vectors
-  using ForceVec = Vector<Force>;
+  using ForceVec = Vector<1, 1, -2, 0, 0, 0, 0>;
   
 
 }; // namespace eng

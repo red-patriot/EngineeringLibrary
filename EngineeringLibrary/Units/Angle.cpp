@@ -9,11 +9,11 @@ namespace eng {
    * radians, degrees
    */
   Angle operator""_deg(long double val) {
-    return Angle(val * Angle::pi / 180.0);
+    return Angle(val * pi / 180.0);
   }
 
   Angle operator""_deg(unsigned long long val) {
-    return Angle(val * Angle::pi / 180.0);
+    return Angle(val * pi / 180.0);
   }
 
   Angle operator""_rad(long double val) {

@@ -9,6 +9,7 @@
  *********************************************************************/
 
 #include "UnitBase.h"
+#include "../Vector.h"
 
 #include <eigen3/Eigen/Core>
 
@@ -57,7 +58,7 @@ namespace eng {
   Length operator"" _mi (unsigned long long val);
 
   // Lengths are commonly used as vectors
-  using LengthVec = Vector<Length>;
+  using LengthVec = Vector<0, 1, 0, 0, 0, 0, 0>;
 
 }; // namespace eng
 
