@@ -52,12 +52,12 @@ namespace eng {
 
     /** Calculate the length of the vector. */
     unit_t length() const {
-      return sqrt<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(_x*_x + _y*_y + _z*_z);
+      return sqrt<2*MN, 2*LN, 2*TN, 2*CN, 2*TeN, 2*AN, 2*LuN, MD, LD, TD, CD, TeD, AD, LuD>(_x*_x + _y*_y + _z*_z);
     }
 
     /** Calculate the Euclidean norm of the vector, which is equivalent to its length.  */
     unit_t norm() const {
-      return sqrt<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(_x*_x + _y*_y + _z*_z);
+      return sqrt<2*MN, 2*LN, 2*TN, 2*CN, 2*TeN, 2*AN, 2*LuN, MD, LD, TD, CD, TeD, AD, LuD>(_x*_x + _y*_y + _z*_z);
     }
 
     vec_t& operator+= (const vec_t& rh) {
@@ -209,8 +209,8 @@ namespace eng {
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
     auto
-    dot_product(const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh, 
-                const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+    dot(const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh, 
+        const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return lh.x()*rh.x() + lh.y()*rh.y() + lh.z()*rh.z();
   }
 
@@ -222,8 +222,8 @@ namespace eng {
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
     auto
-    cross_product(const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
-                  const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+    cross(const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+          const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return Vector<_numa(MN1, MD1, MN2, MD2),
       _numa(LN1, LD1, LN2, LD2),
       _numa(TN1, TD1, TN2, TD2),
@@ -239,7 +239,7 @@ namespace eng {
       _denoma(AN1, AD1, AN2, AD2),
       _denoma(LuN1, LuD1, LuN2, LuD2)>(lh.y()*rh.z() - lh.z()*rh.y(),
                                        lh.z()*rh.x() - lh.x()*rh.z(),
-                                       lh.x()*rh.y() - lh.y()*rh.y());
+                                       lh.x()*rh.y() - lh.y()*rh.x());
   }
 
   /**

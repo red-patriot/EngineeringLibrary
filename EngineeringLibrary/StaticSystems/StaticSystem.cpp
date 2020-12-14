@@ -45,7 +45,7 @@ namespace eng {
     for (const auto& load : _known_loads) {
       ForceVec force = *load.get_force_vector();
       LengthVec position = load.get_position();
-      MomentVec moment = cross_product(position, force);
+      MomentVec moment = cross(position, force);
 
       system_matrix(0, 6) -= force.x().N();
       system_matrix(1, 6) -= force.y().N();
@@ -64,17 +64,15 @@ namespace eng {
     
     for (const auto& load : _unknown_loads) {
       LengthVec position = load.get_position();
-      // if the firection is known, there is only 1 unknown
+      // if the direction is known, there is only 1 unknown
       if (auto direction = load.get_direction()) {
+        LengthVec moment_arm = cross(position, *direction);
         system_matrix(0, current_unknown) = direction->x();
         system_matrix(1, current_unknown) = direction->y();
         system_matrix(2, current_unknown) = direction->z();
-        system_matrix(3, current_unknown) = direction->y()*position.z().m() - 
-          direction->z().value()*position.y().m();
-        system_matrix(4, current_unknown) = direction->x()*position.z().m() -
-          direction->z().value()*position.x().m();
-        system_matrix(5, current_unknown) = direction->x()*position.y().m() -
-          direction->y().value()*position.x().m();
+        system_matrix(3, current_unknown) = moment_arm.x().m();
+        system_matrix(4, current_unknown) = moment_arm.y().m();
+        system_matrix(5, current_unknown) = moment_arm.z().m();
         ++current_unknown;
       // if the directon is unknown, there are 3 unknowns
       } else {
@@ -116,8 +114,9 @@ namespace eng {
     //   extract the solved values
     int current_unknown = 0;
     for (auto& load : _unknown_loads) {
-      // if the firection is known, there is only 1 unknown
-      if (auto direction = load.get_direction()) {
+      // if the direction is known, there is only 1 unknown
+      auto direction = load.get_direction();
+      if (direction.has_value()) {
         load._force_or_direction = system_matrix(current_unknown++, 6) * *direction;
       // if the directon is unknown, there are 3 unknowns
       } else {
@@ -125,6 +124,9 @@ namespace eng {
         load._force_or_direction.y(system_matrix(current_unknown++, 6));
         load._force_or_direction.z(system_matrix(current_unknown++, 6));
       }
+
+      // Set the load to a known load
+      load._state = AppliedLoad::State::KNOWN_FORCE;
     }
 
     return;

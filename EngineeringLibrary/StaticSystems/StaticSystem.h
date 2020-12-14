@@ -43,6 +43,24 @@ namespace eng {
      */
     void add_unknown_load(const AppliedLoad new_load);
 
+    /** Copies an AppliedMoment and adds it to the system. If the user 
+     *   accidentally passes a moment which is not known fully, it will be 
+     *   silently discarded.
+     * \brief Add a known moment to the system
+     * 
+     * \param new_moment the new AppliedMoment to be added
+     */
+    void add_known_moment(const AppliedMoment new_moment);
+
+    /** Copies an AppliedMoment and adds it to the system. If the user 
+     *   accidentally passes a moment which is not at least partially unknown, 
+     *   it will be silently discarded.
+     * \brief Add an unknown moment to the system
+     * 
+     * \param new_load the new AppliedMoment to be added
+     */
+    void add_unknown_moment(const AppliedMoment new_moment);
+
     /**
      * \brief Access all known loads 
      * 

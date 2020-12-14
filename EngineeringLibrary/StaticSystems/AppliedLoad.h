@@ -11,8 +11,6 @@
 
 #include <optional>
 
-#include <eigen3/Eigen/Core>
-
 #include "../Units/Force.h"
 #include "../Units/Length.h"
 #include "../UnitVector.h"
@@ -72,26 +70,24 @@ namespace eng {
     AppliedLoad(const double i_hat, const double j_hat, const double k_hat, const LengthVec c);
 
     /**
-     * The AppliedLoad Destructor
-     */
-    ~AppliedLoad() = default;
-
-    /**
      * Get the direction of the AppliedLoad, if possible
      * 
-     * \return A std::optional<UnitVector3d> in the direction in the Load
+     * \return A std::optional<eng::UnitlessVec> in the direction in the Load, if
+     *   the direction can be determined
      */
     std::optional<UnitlessVec> get_direction() const;
     /**
      * Get the magnitude of the AppliedLoad, if possible
      * 
-     * \return A std::optional<Force3d> 
+     * \return A std::optional<eng::Force> depending on if this load's magnitude 
+     *   is known
      */
     std::optional<Force> get_magnitude() const;
     /**
      * Get the vector representation of the AppliedLoad, if possible
      * 
-     * \return 
+     * \return A std::optional<eng::ForceVec> depending on if this load's 
+     *   forces are known.
      */
     std::optional<ForceVec> get_force_vector() const;
     /**

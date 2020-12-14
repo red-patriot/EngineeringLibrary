@@ -144,6 +144,9 @@
     <ClInclude Include="Units\Unitless.h">
       <Filter>Units\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StaticSystems\AppliedMoment.h">
+      <Filter>StaticSystems\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -234,6 +237,9 @@
       <Filter>StaticSystems\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StaticSystems\StaticSystem.cpp">
+      <Filter>StaticSystems\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticSystems\AppliedMoment.cpp">
       <Filter>StaticSystems\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
