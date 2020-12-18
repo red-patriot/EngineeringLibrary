@@ -10,9 +10,9 @@ namespace eng {
     _state(State::KNOWN_FORCE),
     _force_or_direction(Fx.N(), Fy.N(), Fz.N()),
     _position(c) {
-    if (std::isnan(_force_or_direction.x()) || 
-        std::isnan(_force_or_direction.y()) ||
-        std::isnan(_force_or_direction.z())) {
+    if (std::isnan(Fx.N()) || 
+        std::isnan(Fy.N()) ||
+        std::isnan(Fz.N())) {
       _state = State::UNKNOWN_FORCE;
     }
   }
@@ -20,9 +20,9 @@ namespace eng {
     _state(State::KNOWN_FORCE),
     _force_or_direction(F.x().N(), F.y().N(), F.z().N()),
     _position(c) {
-    if (std::isnan(_force_or_direction.x()) || 
-        std::isnan(_force_or_direction.y()) || 
-        std::isnan(_force_or_direction.z())) {
+    if (std::isnan(F.x().N()) || 
+        std::isnan(F.y().N()) || 
+        std::isnan(F.z().N())) {
       _state = State::UNKNOWN_FORCE;
     }
   }
@@ -50,7 +50,9 @@ namespace eng {
   AppliedLoad::AppliedLoad(const double i_hat, const double j_hat, const double k_hat,
                            const LengthVec c) :
     _state(State::KNOWN_DIRECTION),
-    _force_or_direction(i_hat, j_hat, k_hat),
+    _force_or_direction(i_hat, 
+                        j_hat, 
+                        k_hat),
     _position(c) {
     _force_or_direction = normalize(_force_or_direction);;
   }
@@ -72,13 +74,8 @@ namespace eng {
   std::optional<Force> AppliedLoad::get_magnitude() const {
     switch (_state) {
       case State::KNOWN_FORCE:
-      {
-        UnitlessVec ret(_force_or_direction.x(), 
-                        _force_or_direction.y(),
-                        _force_or_direction.z());
-        return Force(ret.norm());
-      }
-      break;
+        return Force(_force_or_direction.norm());
+        break;
       case State::UNKNOWN_FORCE:
         [[fallthrough]];
       case State::KNOWN_DIRECTION:
@@ -99,7 +96,6 @@ namespace eng {
     }
   }
   void AppliedLoad::set_force_vector(const ForceVec & new_force) { 
-    // delete the old stored data, if necessary
     _state = State::KNOWN_FORCE;
     _force_or_direction = UnitlessVec(new_force.x().N(), 
                                       new_force.y().N(),

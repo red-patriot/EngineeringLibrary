@@ -12,6 +12,7 @@
 #include <vector>
 
 #include "AppliedLoad.h"
+#include "AppliedMoment.h"
 
 namespace eng {
 
@@ -43,6 +44,13 @@ namespace eng {
      */
     void add_unknown_load(const AppliedLoad new_load);
 
+    /**
+     * \brief Access all known loads
+     *
+     * \return a std::vector of all known loads
+     */
+    std::vector<AppliedLoad> get_known_loads() const;
+
     /** Copies an AppliedMoment and adds it to the system. If the user 
      *   accidentally passes a moment which is not known fully, it will be 
      *   silently discarded.
@@ -62,31 +70,52 @@ namespace eng {
     void add_unknown_moment(const AppliedMoment new_moment);
 
     /**
-     * \brief Access all known loads 
-     * 
-     * \return a std::vector of all known loads
+     * \brief Access all known moments
+     *
+     * \return a std::vector of all known moments
      */
-    std::vector<AppliedLoad> get_known_loads() const;
+    std::vector<AppliedMoment> get_known_moments() const;
 
     /** Uses matrix math to solve for the magnitudes and directions of the 
      *   unknown loads in the system.
      * \brief solve the system
-     * 
-     * \return A std::vector of the previously unknown loads which were solved
      */
-    std::vector<AppliedLoad> operator() ();
+    void solve() const;
+
+    /** Access the solved loadss. If the system has not been solved, 
+     *    solve it first.
+     * 
+     * \return A std::vector of previously unknown loads
+     */
+    std::vector<AppliedLoad> get_solved_loads() const;
+
+    /** Access the solved moments. If the system has not been solved, 
+     *    solve it first.
+     * 
+     * \return A std::vector of previously unknown moments
+     */
+    std::vector<AppliedMoment> get_solved_moments() const;
 
   private:
+    mutable bool _is_solved;
+
     std::vector<AppliedLoad> _known_loads;
-    std::vector<AppliedLoad> _unknown_loads;
+    mutable std::vector<AppliedLoad> _unknown_loads;
+
+    std::vector<AppliedMoment> _known_moments;
+    mutable std::vector<AppliedMoment> _unknown_moments;
 
     typedef Eigen::Matrix<double, 6, 7> SystemModel;
 
     void populate_known_loads(SystemModel& system_matrix) const;
-    void populate_unknown_loads(SystemModel& system_matrix) const;
-    void solve_system(SystemModel& system_matrix) const;
-    void save_solved_loads(SystemModel& system_matrix);
+    void populate_known_moments(SystemModel& system_matrix) const;
 
+    void populate_unknown_values(SystemModel& system_matrix) const;
+    void populate_unknown_loads(SystemModel& system_matrix, int& index) const;
+    void populate_unknown_moments(SystemModel& system_matrix, int& index) const;
+
+    void solve_system(SystemModel& system_matrix) const;
+    void save_solved_values(SystemModel& system_matrix) const;
   };
 
 };  // namespace eng
