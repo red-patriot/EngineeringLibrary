@@ -40,7 +40,7 @@ namespace eng {
     return _known_moments;
   }
 
-  void StaticSystem::solve() const {
+  bool StaticSystem::solve() const {
     //? Maybe determine if the system is indeterminate before solving
     SystemModel system_matrix = SystemModel::Zero();
 
@@ -59,7 +59,7 @@ namespace eng {
     // Set the flag that the system is solved
     _is_solved = true;
 
-    return;
+    return true;
   }
 
   std::vector<AppliedLoad> StaticSystem::get_solved_loads() const {

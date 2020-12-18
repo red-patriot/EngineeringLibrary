@@ -16,20 +16,20 @@
     <Filter Include="Units">
       <UniqueIdentifier>{261ebfe0-43cf-447f-9a51-0e45b8ee14c0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="StaticSystems">
-      <UniqueIdentifier>{bc625566-56c5-4dfb-961d-f17f3851514e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="StaticSystems\Header Files">
-      <UniqueIdentifier>{ddef902c-f20f-4f4b-bcf8-05207a2922b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="StaticSystems\Source Files">
-      <UniqueIdentifier>{2ed735de-d696-4da1-9f69-b285715776b9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Units\Header Files">
       <UniqueIdentifier>{c8998d6a-7080-4918-8297-a8c2c9d58c9f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Units\Source Files">
       <UniqueIdentifier>{12baed53-7d27-47b0-9555-f277238e95a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Statics">
+      <UniqueIdentifier>{bc625566-56c5-4dfb-961d-f17f3851514e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Statics\Header Files">
+      <UniqueIdentifier>{ddef902c-f20f-4f4b-bcf8-05207a2922b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Statics\Source Files">
+      <UniqueIdentifier>{2ed735de-d696-4da1-9f69-b285715776b9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -130,22 +130,25 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StaticSystems\StaticSystem.h">
-      <Filter>StaticSystems\Header Files</Filter>
+      <Filter>Statics\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StaticSystems\AppliedLoad.h">
-      <Filter>StaticSystems\Header Files</Filter>
+      <Filter>Statics\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StaticSystems\echelon.h">
-      <Filter>StaticSystems\Header Files</Filter>
+      <Filter>Statics\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StaticSystems\pch.h">
-      <Filter>StaticSystems\Header Files</Filter>
+      <Filter>Statics\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Unitless.h">
       <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StaticSystems\AppliedMoment.h">
-      <Filter>StaticSystems\Header Files</Filter>
+      <Filter>Statics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Statics.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -234,13 +237,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StaticSystems\AppliedLoad.cpp">
-      <Filter>StaticSystems\Source Files</Filter>
+      <Filter>Statics\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StaticSystems\StaticSystem.cpp">
-      <Filter>StaticSystems\Source Files</Filter>
+      <Filter>Statics\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StaticSystems\AppliedMoment.cpp">
-      <Filter>StaticSystems\Source Files</Filter>
+      <Filter>Statics\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

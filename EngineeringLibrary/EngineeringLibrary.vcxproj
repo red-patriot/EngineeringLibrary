@@ -223,6 +223,7 @@
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Statics.h" />
     <ClInclude Include="StaticSystems\AppliedLoad.h" />
     <ClInclude Include="StaticSystems\AppliedMoment.h" />
     <ClInclude Include="StaticSystems\echelon.h" />

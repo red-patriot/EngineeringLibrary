@@ -25,23 +25,23 @@ namespace eng {
     }
   };
 
-    inline Eigen::MatrixXd sort_rows(Eigen::MatrixXd A) {
-      std::vector<Eigen::VectorXd> rows;
-      for (size_t i = 0; i != A.rows(); ++i) {
-        rows.push_back(A.row(i));
-      }
-
-      std::sort(rows.begin(), rows.end(),
-                [](const Eigen::VectorXd& lh, const Eigen::VectorXd& rh) {
-        return first_nonzero_index(lh) < first_nonzero_index(rh);
-      });
-
-      for (size_t i = 0; i != A.rows(); ++i) {
-        A.row(i) = rows[i];
-      }
-
-      return A;
+  inline Eigen::MatrixXd sort_rows(Eigen::MatrixXd A) {
+    std::vector<Eigen::VectorXd> rows;
+    for (size_t i = 0; i != A.rows(); ++i) {
+      rows.push_back(A.row(i));
     }
+
+    std::sort(rows.begin(), rows.end(),
+              [](const Eigen::VectorXd& lh, const Eigen::VectorXd& rh) {
+      return first_nonzero_index(lh) < first_nonzero_index(rh);
+    });
+
+    for (size_t i = 0; i != A.rows(); ++i) {
+      A.row(i) = rows[i];
+    }
+
+    return A;
+  }
 
   /**
    * Perform row reduction on the matrix to put it into row echelon form, which 

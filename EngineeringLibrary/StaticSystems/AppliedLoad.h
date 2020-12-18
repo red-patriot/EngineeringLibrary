@@ -19,6 +19,7 @@ namespace eng {
 
   /** A load which can be applied to any point in a StaticSystem
    * \class AppliedLoad
+   * \addtogroup Statics
    */
   class AppliedLoad {
     friend class StaticSystem;

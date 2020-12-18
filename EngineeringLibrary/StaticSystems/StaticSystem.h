@@ -16,17 +16,13 @@
 
 namespace eng {
 
-  /** A class which analyzes static systems 
+  /** A class which analyzes static systems:
    *    &Sigma;F = &Sigma;M = 0
    * \class StaticSystem
+   * \addtogroup Statics
    */
   class StaticSystem {
   public:
-    /**
-     * StaticSystem default constructor 
-     */
-    StaticSystem() = default;
-
     /** Copies an AppliedLoad and adds it to the system. If the user 
      *   accidentally passes a load which is not known fully, it will be 
      *   silently discarded.
@@ -77,12 +73,14 @@ namespace eng {
     std::vector<AppliedMoment> get_known_moments() const;
 
     /** Uses matrix math to solve for the magnitudes and directions of the 
-     *   unknown loads in the system.
+     *   unknown loads and moments in the system.
      * \brief solve the system
+     * 
+     * \return A boolean indicating if the system was successfully solved.
      */
-    void solve() const;
+    bool solve() const;
 
-    /** Access the solved loadss. If the system has not been solved, 
+    /** Access the solved loads. If the system has not been solved, 
      *    solve it first.
      * 
      * \return A std::vector of previously unknown loads

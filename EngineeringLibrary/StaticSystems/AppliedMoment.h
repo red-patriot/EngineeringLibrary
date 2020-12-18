@@ -20,6 +20,7 @@ namespace eng {
 
   /** A moment which can be applied to a StaticSystem
    * \class AppliedMoment
+   * \addtogroup Statics
    */
   class AppliedMoment {
     friend class StaticSystem;

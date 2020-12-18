@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "Engineering Library"
-PROJECT_NUMBER         = 0.7
+PROJECT_NUMBER         = 0.9
 PROJECT_BRIEF          =
 PROJECT_LOGO           =
 OUTPUT_DIRECTORY       = "C:\Users\bltan\source\custom libs\EngineeringLibrary\docs"
@@ -211,7 +211,7 @@ HTML_FOOTER            =
 HTML_STYLESHEET        =
 HTML_EXTRA_STYLESHEET  =
 HTML_EXTRA_FILES       =
-HTML_COLORSTYLE_HUE    = 180
+HTML_COLORSTYLE_HUE    = 210
 HTML_COLORSTYLE_SAT    = 255
 HTML_COLORSTYLE_GAMMA  = 230
 HTML_TIMESTAMP         = NO
