@@ -75,7 +75,7 @@ namespace eng {
       - ((a*a)/(r*r)) * ((b*b)/(b*b - a*a))*(Po - Pi);
     Stress radial = (Pi*(a*a) - Po*(b*b))/(b*b - a*a)
       + ((a*a)/(r*r)) * ((b*b)/(b*b - a*a))*(Po - Pi);
-    Stress longitudinal = (Pi*(a*a) - Po*(b*b))/(b*b - a*a) + F/(Angle::pi *(b*b - a*a));
+    Stress longitudinal = (Pi*(a*a) - Po*(b*b))/(b*b - a*a) + F/(pi *(b*b - a*a));
 
     if (transverse < longitudinal) {
       return PrincipalStress3(longitudinal, transverse, radial);

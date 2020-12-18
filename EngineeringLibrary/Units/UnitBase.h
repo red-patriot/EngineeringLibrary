@@ -37,6 +37,7 @@ namespace eng {
   template<int MassNum, int LengthNum, int TimeNum, int CurrentNum, int TemperatureNum, int AmountNum, int LuminousityNum,
     int MassDen=1, int LengthDen=1, int TimeDen=1, int CurrentDen=1, int TemperatureDen=1, int AmountDen=1, int LuminousityDen=1>
   class UnitBase {
+  public:
     typedef UnitBase this_t;
     UnitBaseCOMMON
   };

@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineeringLibrary", "EngineeringLibrary\EngineeringLibrary.vcxproj", "{9C8F9652-0EBB-4471-9D60-95FDF5841553}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTests_Units", "..\..\repos\UnitTests_Units\UnitTests_Units.vcxproj", "{0C52EA5E-1B68-4669-A51B-96550F6D23D9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EngineeringTests", "..\..\repos\UnitTests_Units\UnitTests_Units.vcxproj", "{0C52EA5E-1B68-4669-A51B-96550F6D23D9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StatisSystemsTester", "..\..\repos\StatisSystemsTester\StatisSystemsTester.vcxproj", "{02CB9665-03EE-4229-ACD7-22570CBC272C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{0C52EA5E-1B68-4669-A51B-96550F6D23D9}.Release|x64.Build.0 = Release|x64
 		{0C52EA5E-1B68-4669-A51B-96550F6D23D9}.Release|x86.ActiveCfg = Release|Win32
 		{0C52EA5E-1B68-4669-A51B-96550F6D23D9}.Release|x86.Build.0 = Release|Win32
+		{02CB9665-03EE-4229-ACD7-22570CBC272C}.Debug|x64.ActiveCfg = Debug|x64
+		{02CB9665-03EE-4229-ACD7-22570CBC272C}.Debug|x64.Build.0 = Debug|x64
+		{02CB9665-03EE-4229-ACD7-22570CBC272C}.Debug|x86.ActiveCfg = Debug|Win32
+		{02CB9665-03EE-4229-ACD7-22570CBC272C}.Debug|x86.Build.0 = Debug|Win32
+		{02CB9665-03EE-4229-ACD7-22570CBC272C}.Release|x64.ActiveCfg = Release|x64
+		{02CB9665-03EE-4229-ACD7-22570CBC272C}.Release|x64.Build.0 = Release|x64
+		{02CB9665-03EE-4229-ACD7-22570CBC272C}.Release|x86.ActiveCfg = Release|Win32
+		{02CB9665-03EE-4229-ACD7-22570CBC272C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

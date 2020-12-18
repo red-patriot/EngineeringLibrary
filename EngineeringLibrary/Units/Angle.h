@@ -9,6 +9,7 @@
  *********************************************************************/
 
 #include "UnitBase.h"
+#include "Unitless.h"
 
 #include <eigen3/Eigen/Core>
 
@@ -18,19 +19,6 @@ namespace eng {
    * \class Angle 
    * \addtogroup Units
    */
-  template<>
-  class UnitBase<0, 0, 0, 0, 0, 0, 0> {
-    typedef UnitBase<0, 0, 0, 0, 0, 0, 0> this_t;
-    UnitBaseCOMMON
-  public:
-    static constexpr long double pi = 3.141592653589793238462643383279;
-
-    double rad() const { return _value; }
-    double deg() const { return _value * (pi/180); }
-
-    explicit operator double() { return _value; }
-  };
-
   using Angle = UnitBase<0, 0, 0, 0, 0, 0, 0>;
 
   Angle operator"" _deg(long double val);
@@ -49,26 +37,5 @@ namespace eng {
   Angle atan2(const double& x, const double& y);
 
 }; // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Angle> : NumTraits<double> {
-    typedef eng::Angle Real;
-    typedef eng::Angle NonInteger;
-    typedef eng::Angle Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _rad;        using eng::operator"" _deg;

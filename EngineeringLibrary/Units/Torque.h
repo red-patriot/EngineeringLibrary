@@ -11,6 +11,7 @@
 
 #include "UnitBase.h"
 #include "Energy.h"
+#include "../Vector.h"
 
 #include <eigen3/Eigen/Core>
 
@@ -41,7 +42,7 @@ namespace eng {
   using Moment = Torque;
 
   // Torques are commonly used as vectors
-  using TorqueVec = Vector<Torque>;
+  using TorqueVec = Vector<1, 2, -2, 0, 0, 0, 0>;
   using MomentVec = TorqueVec;
 
 };  // namespace eng

@@ -223,6 +223,11 @@
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="StaticSystems\AppliedLoad.h" />
+    <ClInclude Include="StaticSystems\AppliedMoment.h" />
+    <ClInclude Include="StaticSystems\echelon.h" />
+    <ClInclude Include="StaticSystems\pch.h" />
+    <ClInclude Include="StaticSystems\StaticSystem.h" />
     <ClInclude Include="Strain.h" />
     <ClInclude Include="Stress.h" />
     <ClInclude Include="SystemDynamics.h" />
@@ -243,6 +248,7 @@
     <ClInclude Include="Units\Time.h" />
     <ClInclude Include="Units\Torque.h" />
     <ClInclude Include="Units\UnitBase.h" />
+    <ClInclude Include="Units\Unitless.h" />
     <ClInclude Include="Units\Velocity.h" />
     <ClInclude Include="Units\Volume.h" />
     <ClInclude Include="UnitVector.h" />
@@ -261,6 +267,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="StaticSystems\AppliedLoad.cpp" />
+    <ClCompile Include="StaticSystems\AppliedMoment.cpp" />
+    <ClCompile Include="StaticSystems\StaticSystem.cpp" />
     <ClCompile Include="Strain.cpp" />
     <ClCompile Include="Stress.cpp" />
     <ClCompile Include="SystemDynamics.cpp" />

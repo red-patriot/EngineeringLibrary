@@ -38,7 +38,7 @@ namespace eng {
     Length k = radius_of_gyration(I, _column.area());
     
     // calculate the critical load
-    return (end_condition_constant(_column.supports()) * Angle::pi*Angle::pi * _column.material().E()) 
+    return (end_condition_constant(_column.supports()) * pi*pi * _column.material().E()) 
       /((_column.length() * _column.length())/(k*k));
   }
 
@@ -52,12 +52,12 @@ namespace eng {
     return _column.material().yield_strength()
       - _column.material().yield_strength()*(_column.material().yield_strength()/
                                              (4*end_condition_constant(_column.supports())
-                                              *_column.material().E()*Angle::pi*Angle::pi))
+                                              *_column.material().E()*pi*pi))
       * (_column.length()*_column.length())/(k*k);
   }
 
   double l_k_1(const Column& _column) {
-    return std::sqrt((2*end_condition_constant(_column.supports())*Angle::pi*Angle::pi*_column.material().E())
+    return std::sqrt((2*end_condition_constant(_column.supports())*pi*pi*_column.material().E())
       /_column.material().yield_strength());
   }
 
