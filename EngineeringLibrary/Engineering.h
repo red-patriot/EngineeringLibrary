@@ -24,11 +24,9 @@
 #include "SystemDynamics.h"
 
 /* TODO Units:
- * Viscosity
+ *     Viscosity
  */
 
 /* TODO:
- *    Add Static Systems analysis
- *    Change comparison operators to work on UnitBase class
  *    Update sample materials information
  */
