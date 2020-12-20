@@ -10,6 +10,7 @@
  * \date   August 2020
  *********************************************************************/
 
+#include "Units/Angle.h"
 #include "Units/Length.h"
 #include "Units/Area.h"
 #include "Units/MomentOfArea.h"
@@ -20,8 +21,8 @@ namespace eng {
    * \struct AreaMomentofInertia
    */
   struct AreaMomentofInertia {
-    SecondMomentOfArea Ix;
-    SecondMomentOfArea Iy;
+    SecondMomentOfArea Ixx;
+    SecondMomentOfArea Iyy;
     SecondMomentOfArea Ixy;
     /**
      * \brief AreaMomentofInertia constructor
@@ -76,7 +77,14 @@ namespace eng {
      * \return the area moment of inertia of this Geometry about pt
      */
     AreaMomentofInertia moment_of_inertia(const LengthVec& pt) const;
-    // TODO: Add a function to handle rotation of axes
+    /**
+     * Calculate the moment of inertia of a shape along rotated axes. 
+     * 
+     * \param theta The angle of rotation to the new axes from the old ones, 
+     *   where positive is counterclockwise from the axes. 
+     * \return the area moment of inertia of a shape about axes rotated by theta
+     */
+    AreaMomentofInertia moment_of_inertia(const Angle& theta) const;
 
   protected:
     LengthVec _centroid; /**<The centroid of this Geometry in space */

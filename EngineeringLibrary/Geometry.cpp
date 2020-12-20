@@ -5,8 +5,8 @@ namespace eng {
 
   AreaMomentofInertia::AreaMomentofInertia(const SecondMomentOfArea& xx,
     const SecondMomentOfArea& yy, const SecondMomentOfArea& xy) :
-    Ix(xx),
-    Iy(yy),
+    Ixx(xx),
+    Iyy(yy),
     Ixy(xy) { }
 
   /* ***************************************************************************
@@ -27,10 +27,18 @@ namespace eng {
     Length x = pt.x() - _centroid.x();
     Length y = pt.y() - _centroid.y();
     AreaMomentofInertia ret = moment_of_inertia();
-    ret.Ix += area()*(y*y);
-    ret.Iy += area()*(x*x);
+    ret.Ixx += area()*(y*y);
+    ret.Iyy += area()*(x*x);
     ret.Ixy += area()*(x*y);
     return ret;
+  }
+
+  AreaMomentofInertia Geometry::moment_of_inertia(const Angle & theta) const {
+      AreaMomentofInertia ret;
+      ret.Ixx = (_MOI.Ixx + _MOI.Iyy)/2 + (_MOI.Ixx - _MOI.Iyy)/2 * cos(2*theta) - _MOI.Ixy * sin(2*theta);
+      ret.Iyy = (_MOI.Ixx + _MOI.Iyy)/2 - (_MOI.Ixx - _MOI.Iyy)/2 * cos(2*theta) + _MOI.Ixy * sin(2*theta);
+      ret.Ixy = (_MOI.Ixx - _MOI.Iyy)/2 * sin(2*theta) + _MOI.Ixy * cos(2*theta);
+      return ret;
   }
 
   void Geometry::calculate_area() {
@@ -63,8 +71,8 @@ namespace eng {
   }
 
   void Circle::calculate_moment_of_inertia() {
-    _MOI.Ix = (pi * (diam*diam)*(diam*diam)) / 64;
-    _MOI.Iy = (pi * (diam*diam)*(diam*diam)) / 64;
+    _MOI.Ixx = (pi * (diam*diam)*(diam*diam)) / 64;
+    _MOI.Iyy = (pi * (diam*diam)*(diam*diam)) / 64;
     _MOI.Ixy = 0_m4;
     return;
   }
@@ -86,8 +94,8 @@ namespace eng {
   }
 
   void SemiCircle::calculate_moment_of_inertia() {
-    _MOI.Ix = (pi / 8 - 8 / (9*pi)) * (diam*diam)/4 * (diam*diam)/4;
-    _MOI.Iy = (pi / 8) * (diam*diam)/4 * (diam*diam)/4;
+    _MOI.Ixx = (pi / 8 - 8 / (9*pi)) * (diam*diam)/4 * (diam*diam)/4;
+    _MOI.Iyy = (pi / 8) * (diam*diam)/4 * (diam*diam)/4;
     _MOI.Ixy = 0_m4;
     return;
   }
@@ -110,9 +118,9 @@ namespace eng {
   }
 
   void HollowCircle::calculate_moment_of_inertia() {
-    _MOI.Ix = (pi * (((diam_out*diam_out)*(diam_out*diam_out))
+    _MOI.Ixx = (pi * (((diam_out*diam_out)*(diam_out*diam_out))
       - ((diam_in*diam_in)*(diam_in*diam_in)))) / 64;
-    _MOI.Iy = (pi * (((diam_out*diam_out)*(diam_out*diam_out))
+    _MOI.Iyy = (pi * (((diam_out*diam_out)*(diam_out*diam_out))
       - ((diam_in*diam_in)*(diam_in*diam_in)))) / 64;
     _MOI.Ixy = 0_m4;
     return;
@@ -136,8 +144,8 @@ namespace eng {
   }
 
   void Rectangle::calculate_moment_of_inertia() {
-    _MOI.Ix = (b*h)*(h*h) / 12;
-    _MOI.Iy = (b*b)*(b*h) / 12;
+    _MOI.Ixx = (b*h)*(h*h) / 12;
+    _MOI.Iyy = (b*b)*(b*h) / 12;
     _MOI.Ixy = 0_m4;
     return;
   }
@@ -163,8 +171,8 @@ namespace eng {
   }
 
   void HollowRectangle::calculate_moment_of_inertia() {
-    _MOI.Ix = ((bo*ho)*(ho*ho) - (bi*hi)*(hi*hi))/12;
-    _MOI.Iy = ((bo*bo)*(bo*ho) - (bi*bi)*(bi*hi))/12;
+    _MOI.Ixx = ((bo*ho)*(ho*ho) - (bi*hi)*(hi*hi))/12;
+    _MOI.Iyy = ((bo*bo)*(bo*ho) - (bi*bi)*(bi*hi))/12;
     _MOI.Ixy = 0_m4;
     return;
   }
