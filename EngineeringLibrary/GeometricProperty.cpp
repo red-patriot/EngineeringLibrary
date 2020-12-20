@@ -24,8 +24,8 @@ namespace eng {
 
     for (auto& g : geo) {
       auto i = g->moment_of_inertia(pt);
-      ret.Ix += i.Ix;
-      ret.Iy += i.Iy;
+      ret.Ixx += i.Ixx;
+      ret.Iyy += i.Iyy;
       ret.Ixy += i.Ixy;
     }
 
@@ -38,8 +38,8 @@ namespace eng {
       ret_pos = moment_of_inertia(geo, pt),
       ret_neg = moment_of_inertia(neg, pt);
 
-    ret.Ix = ret_pos.Ix - ret_neg.Ix;
-    ret.Iy = ret_pos.Iy - ret_neg.Iy;
+    ret.Ixx = ret_pos.Ixx - ret_neg.Ixx;
+    ret.Iyy = ret_pos.Iyy - ret_neg.Iyy;
     ret.Ixy = ret_pos.Ixy - ret_neg.Ixy;
 
    return ret;
@@ -63,10 +63,10 @@ namespace eng {
     SecondMomentOfArea I;
     switch (axis) {
       case Axis::X:
-        I = geo.moment_of_inertia().Ix;
+        I = geo.moment_of_inertia().Ixx;
         break;
       case Axis::Y:
-        I = geo.moment_of_inertia().Iy;
+        I = geo.moment_of_inertia().Iyy;
         break;
     };
     return radius_of_gyration(I, geo.area());

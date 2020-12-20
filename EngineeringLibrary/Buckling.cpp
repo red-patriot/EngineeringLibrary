@@ -19,7 +19,7 @@ namespace eng {
 
   Stress critical_load(const Column& _column) {
     AreaMomentofInertia temp = _column.moment_of_inertia();
-    SecondMomentOfArea I = temp.Ix < temp.Iy ? temp.Ix : temp.Iy;
+    SecondMomentOfArea I = temp.Ixx < temp.Iyy ? temp.Ixx : temp.Iyy;
     Length k = radius_of_gyration(I, _column.area());
 
     if ((_column.length()*_column.length())/(k*k) < l_k_1(_column)) {
@@ -34,7 +34,7 @@ namespace eng {
   Stress critical_load_euler(const Column& _column) {
     // Determine the weak direction radius of gyration
     AreaMomentofInertia temp = _column.moment_of_inertia();
-    SecondMomentOfArea I = temp.Ix < temp.Iy ? temp.Ix : temp.Iy;
+    SecondMomentOfArea I = temp.Ixx < temp.Iyy ? temp.Ixx : temp.Iyy;
     Length k = radius_of_gyration(I, _column.area());
     
     // calculate the critical load
@@ -45,7 +45,7 @@ namespace eng {
   Stress critical_load_johnson(const Column& _column) {
     // Determine the weak direction radius of gyration
     AreaMomentofInertia temp = _column.moment_of_inertia();
-    SecondMomentOfArea I = temp.Ix < temp.Iy ? temp.Ix : temp.Iy;
+    SecondMomentOfArea I = temp.Ixx < temp.Iyy ? temp.Ixx : temp.Iyy;
     Length k = radius_of_gyration(I, _column.area());
 
     // calculate the critical load
