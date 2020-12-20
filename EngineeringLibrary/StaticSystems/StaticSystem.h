@@ -72,8 +72,8 @@ namespace eng {
      */
     std::vector<AppliedMoment> get_known_moments() const;
 
-    /** Uses matrix math to solve for the magnitudes and directions of the 
-     *   unknown loads and moments in the system.
+    /** Solve for the magnitudes and directions of the unknown loads and moments 
+     *    in the system.
      * \brief solve the system
      * 
      * \return A boolean indicating if the system was successfully solved.

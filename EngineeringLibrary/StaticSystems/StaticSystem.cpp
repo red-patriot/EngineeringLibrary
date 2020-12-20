@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include <eigen3/Eigen/Core>
+#include <algorithm>
 
 #include "StaticSystem.h"
 #include "../Units/Torque.h"
@@ -41,7 +42,12 @@ namespace eng {
   }
 
   bool StaticSystem::solve() const {
-    //? Maybe determine if the system is indeterminate before solving
+    //TODO: Determine if the system is indeterminate using a more sophisticated
+    //  metric, if possible.
+    if (_unknown_loads.size() + _unknown_moments.size() > 6) {
+      // There are too many unknowns to solve
+      return false;
+    }
     SystemModel system_matrix = SystemModel::Zero();
 
     // populate the loads and moments into the Matrix

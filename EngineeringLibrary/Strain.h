@@ -55,13 +55,13 @@ namespace eng {
   /* Hooke's Law to determine strain from stress for a material loaded in planar stress */
   NormalStrain hookes_law(const Material& material, 
                                                  const StressElement2& stress);
-  // TODO: Hooke's Law for material loaded in general 3D stress
   /* Hooke's Law to determine strain from stress for a material loaded in Cylindrical stress */
   NormalStrain hookes_law(const Material& material, 
                                                  const StressElement3& stress);
 
-  // TODO: Hooke's Law in shear
+  /* Hooke's Law for shear stress. */
   ShearStrain hookes_law_shear(const Material& material, const StressElement2& stress);
+  /* Hooke's Law for shear stress. */
   ShearStrain hookes_law_shear(const Material& material, const StressElement3& stress);
 
 
