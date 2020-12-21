@@ -51,12 +51,6 @@
     <ClInclude Include="Buckling.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeometricProperty.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Geometry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -150,6 +144,12 @@
     <ClInclude Include="Statics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GeometricProperty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -162,12 +162,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Buckling.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeometricProperty.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
@@ -244,6 +238,12 @@
     </ClCompile>
     <ClCompile Include="StaticSystems\AppliedMoment.cpp">
       <Filter>Statics\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometricProperty.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

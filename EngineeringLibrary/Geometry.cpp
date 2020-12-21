@@ -113,7 +113,7 @@ namespace eng {
   }
 
   void HollowCircle::calculate_area() {
-    _area = pi * ((diam_out*diam_in) - (diam_in*diam_in))/4;
+    _area = pi * ((diam_out*diam_out) - (diam_in*diam_in))/4;
     return;
   }
 
