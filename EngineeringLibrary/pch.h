@@ -15,7 +15,7 @@
 #include "Units/Angle.h"
 #include "Units/Length.h"
 #include "Units/Area.h"
-
+#include "Units/Volume.h"
 #include "Units/MomentOfArea.h"
 
 // Energy headers
@@ -31,6 +31,9 @@
 // Movement headers
 #include "Units/Velocity.h"
 #include "Units/Acceleration.h"
+
+// Fluids headers
+#include "Units/Viscosity.h"
 
 // Temperature header
 #include "Units/Temperature.h"

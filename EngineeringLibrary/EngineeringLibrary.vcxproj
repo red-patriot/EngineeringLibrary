@@ -251,6 +251,7 @@
     <ClInclude Include="Units\UnitBase.h" />
     <ClInclude Include="Units\Unitless.h" />
     <ClInclude Include="Units\Velocity.h" />
+    <ClInclude Include="Units\Viscosity.h" />
     <ClInclude Include="Units\Volume.h" />
     <ClInclude Include="UnitVector.h" />
     <ClInclude Include="Vector.h" />
@@ -290,6 +291,7 @@
     <ClCompile Include="Units\Time.cpp" />
     <ClCompile Include="Units\Torque.cpp" />
     <ClCompile Include="Units\Velocity.cpp" />
+    <ClCompile Include="Units\Viscosity.cpp" />
     <ClCompile Include="Units\Volume.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
