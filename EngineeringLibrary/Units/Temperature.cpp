@@ -11,14 +11,6 @@ namespace eng {
     return Temperature(val);
   }
 
-  Temperature operator""_deg_C(long double val) {
-    return Temperature(val + 273.15);
-  }
-
-  Temperature operator""_deg_C(unsigned long long val) {
-    return Temperature(val + 273.15);
-  }
-
   Temperature operator""_Rankine(long double val) {
     return Temperature(val * (5.0/9.0));
   }
@@ -27,12 +19,21 @@ namespace eng {
     return Temperature(val * (5.0/9.0));
   }
 
-  Temperature operator""_deg_F(long double val) {
-    return Temperature((5.0/9.0)*(val - 32.0) + 237.15);
+  Temperature Celcius(const double deg_C) {
+      return Temperature(deg_C + 273.15);
   }
 
-  Temperature operator""_deg_F(unsigned long long val) {
-    return Temperature((5.0/9.0)*(val - 32.0) + 237.15);
+  Temperature Farenheit(const double deg_F) {
+    return Temperature((deg_F + 459.67) * 5.0/9.0);
   }
+
+  /* Angry comment:
+   * The Celcius and Farenheit functions exist (as opposed to being literal 
+   * operators because temperature scales are the literal worst and whoever 
+   * decided that we would continue using non-absolute temperature scales 
+   * deserves to rot in Hell.
+   * Yes I understand the historical reasons that relative scales are used, but 
+   * that does not make them any less frustrating.
+   */
 
 };  // namespace eng

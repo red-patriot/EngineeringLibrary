@@ -28,6 +28,11 @@ namespace Microsoft {
       }
 
       template<> static std::wstring
+        ToString<eng::DViscosity>(const  eng::DViscosity& t) {
+        return ToString(t.value()) + L" Ns/m2";
+      }
+
+      template<> static std::wstring
         ToString<eng::Energy>(const  eng::Energy& t) {
         return ToString(t.value()) + L" J";
       }
@@ -40,6 +45,11 @@ namespace Microsoft {
       template<> static std::wstring
         ToString<eng::Frequency>(const  eng::Frequency& t) {
         return ToString(t.value()) + L" Hz";
+      }
+
+      template<> static std::wstring
+        ToString<eng::KViscosity>(const  eng::KViscosity& t) {
+        return ToString(t.value()) + L" m2/s";
       }
 
       template<> static std::wstring
@@ -65,6 +75,11 @@ namespace Microsoft {
       template<> static std::wstring
         ToString<eng::Stiffness>(const  eng::Stiffness& t) {
         return ToString(t.value()) + L" N/m";
+      }
+
+      template<> static std::wstring
+        ToString<eng::Temperature>(const  eng::Temperature& t) {
+        return ToString(t.value()) + L" K";
       }
 
       template<> static std::wstring

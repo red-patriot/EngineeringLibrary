@@ -14,11 +14,12 @@
 
 namespace eng {
   /** A measure of the 3D space taken up an object
-   * \class Volume A 3D geometry
+   * \class Volume
+   * \addtogroup Units
    */
   template<>
   class UnitBase<0, 3, 0, 0, 0, 0, 0> {
-    typedef UnitBase<0, 3, 0, 0, 0, 0, 0> this_t;
+    typedef UnitBase<0, 3, 0, 0, 0, 0, 0> this_t; 
       UnitBaseCOMMON
   public:
     double mm3() const { return _value * 1'000'000'000; }

@@ -23,11 +23,11 @@ namespace eng {
     typedef UnitBase<0, 0, 0, 0, 1, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double K() { return _value; }
+    double Kelvin() { return _value; }
     double deg_C() { return _value - 273.15; }
 
-    double R() { return _value * (9.0/5.0); }
-    double deg_F() { return (_value - 273.15)*(9.0/5.0) + 32.0 ; }
+    double Rankine() { return _value * (9.0/5.0); }
+    double deg_F() { return _value * 9.0/5.0 - 459.67; }
   };
 
   using Temperature = UnitBase<0, 0, 0, 0, 1, 0, 0>;
@@ -35,14 +35,11 @@ namespace eng {
   Temperature operator"" _Kelvin(long double val);
   Temperature operator"" _Kelvin(unsigned long long val);
 
-  Temperature operator"" _deg_C(long double val);
-  Temperature operator"" _deg_C(unsigned long long val);
-
   Temperature operator"" _Rankine(long double val);
   Temperature operator"" _Rankine(unsigned long long val);
 
-  Temperature operator"" _deg_F(long double val);
-  Temperature operator"" _deg_F(unsigned long long val);
+  Temperature Celcius(const double deg_C);
+  Temperature Farenheit(const double deg_F);
 
 };  // namespace eng
 
@@ -67,6 +64,6 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using eng::operator"" _Kelvin;        using eng::operator"" _deg_C;
-using eng::operator"" _Rankine;       using eng::operator"" _deg_F;
+using eng::operator"" _Kelvin;
+using eng::operator"" _Rankine;
 

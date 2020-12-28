@@ -205,6 +205,38 @@ namespace UnitTests {
     }
   };
 
+  TEST_CLASS(TestsDViscosity) {
+  public:
+    TEST_METHOD(TestConstruct) {
+      eng::DViscosity a(5.24);
+      Assert::AreEqual(5.24, a.kgpms());
+    }
+    TEST_METHOD(TestConversion1) {
+      eng::DViscosity a = 4.7037823_lbspft2;
+      Assert::AreEqual(7_kgpms, a);
+    }
+    TEST_METHOD(TestConversion2) {
+      eng::DViscosity a = 123.45_P;
+      Assert::AreEqual(12.345_kgpms, a);
+    }
+  };
+
+  TEST_CLASS(TestsKViscosity) {
+  public:
+    TEST_METHOD(TestConstruct) {
+      eng::KViscosity a(5.24);
+      Assert::AreEqual(5.24, a.m2ps());
+    }
+    TEST_METHOD(TestConversion1) {
+      eng::KViscosity a = 4.7037823_ft2ps;
+      Assert::AreEqual(0.436996_m2ps, a);
+    }
+    TEST_METHOD(TestConversion2) {
+      eng::KViscosity a = 123.45_St;
+      Assert::AreEqual(.012345_m2ps, a);
+    }
+  };
+
   TEST_CLASS(TestsEnergy) {
   public:
     TEST_METHOD(TestConstruct) {
@@ -429,50 +461,6 @@ namespace UnitTests {
     }
   };
 
-  TEST_CLASS(TestsSecondMomentOfArea) {
-  public:
-    TEST_METHOD(TestConstruct) {
-      eng::SecondMomentOfArea a(54.34);
-      Assert::AreEqual(54.34, a.m4());
-    }
-    TEST_METHOD(TestConversion1) {
-      eng::SecondMomentOfArea a = 1_ft4, b = 0.0086309748_m4;
-      Assert::AreEqual(a, b);
-    }
-    TEST_METHOD(TestConversion2) {
-      eng::SecondMomentOfArea a = 20'736_in4, b = 1_ft4;
-      Assert::AreEqual(a, b);
-    }
-    TEST_METHOD(TestConversion3) {
-      eng::SecondMomentOfArea a = 1_m4, b = 1'000'000'000'000_mm4;
-      Assert::AreEqual(a, b);
-    }
-    TEST_METHOD(TestInversion) {
-      eng::SecondMomentOfArea a = 5_ft4;
-      Assert::AreEqual(-5_ft4, -a);
-    }
-    TEST_METHOD(TestAdd) {
-      eng::SecondMomentOfArea a = 500_mm4, b = 20_mm4;
-      auto c = a + b;
-      Assert::AreEqual(520_mm4, c);
-    }
-    TEST_METHOD(TestSubtract) {
-      eng::SecondMomentOfArea a = 500_mm4, b = 20_mm4;
-      auto c = a - b;
-      Assert::AreEqual(480_mm4, c);
-    }
-    TEST_METHOD(TestMultiply) {
-      eng::SecondMomentOfArea a = 50_m4;
-      auto c = a * 1.5;
-      Assert::AreEqual(75_m4, c);
-    }
-    TEST_METHOD(TestDivide) {
-      eng::SecondMomentOfArea a = 50_m4;
-      auto c = a / 2.0;
-      Assert::AreEqual(25_m4, c);
-    }
-  };
-
   TEST_CLASS(TestsPressure) {
   public:
     TEST_METHOD(TestConstruct) {
@@ -521,6 +509,50 @@ namespace UnitTests {
     }
   };
 
+  TEST_CLASS(TestsSecondMomentOfArea) {
+  public:
+    TEST_METHOD(TestConstruct) {
+      eng::SecondMomentOfArea a(54.34);
+      Assert::AreEqual(54.34, a.m4());
+    }
+    TEST_METHOD(TestConversion1) {
+      eng::SecondMomentOfArea a = 1_ft4, b = 0.0086309748_m4;
+      Assert::AreEqual(a, b);
+    }
+    TEST_METHOD(TestConversion2) {
+      eng::SecondMomentOfArea a = 20'736_in4, b = 1_ft4;
+      Assert::AreEqual(a, b);
+    }
+    TEST_METHOD(TestConversion3) {
+      eng::SecondMomentOfArea a = 1_m4, b = 1'000'000'000'000_mm4;
+      Assert::AreEqual(a, b);
+    }
+    TEST_METHOD(TestInversion) {
+      eng::SecondMomentOfArea a = 5_ft4;
+      Assert::AreEqual(-5_ft4, -a);
+    }
+    TEST_METHOD(TestAdd) {
+      eng::SecondMomentOfArea a = 500_mm4, b = 20_mm4;
+      auto c = a + b;
+      Assert::AreEqual(520_mm4, c);
+    }
+    TEST_METHOD(TestSubtract) {
+      eng::SecondMomentOfArea a = 500_mm4, b = 20_mm4;
+      auto c = a - b;
+      Assert::AreEqual(480_mm4, c);
+    }
+    TEST_METHOD(TestMultiply) {
+      eng::SecondMomentOfArea a = 50_m4;
+      auto c = a * 1.5;
+      Assert::AreEqual(75_m4, c);
+    }
+    TEST_METHOD(TestDivide) {
+      eng::SecondMomentOfArea a = 50_m4;
+      auto c = a / 2.0;
+      Assert::AreEqual(25_m4, c);
+    }
+  };
+
   TEST_CLASS(TestsStiffness) {
   public:
     TEST_METHOD(TestConstruct) {
@@ -562,6 +594,30 @@ namespace UnitTests {
       eng::Stiffness a = 15_Npm;
       auto c = a / 1.75;
       Assert::AreEqual(8.571428_Npm, c);
+    }
+  };
+
+  TEST_CLASS(TestsTemperature) {
+  public:
+    TEST_METHOD(TestConstruct) {
+      eng::Temperature a(173.15);
+      Assert::AreEqual(173.15, a.Kelvin());
+    }
+    TEST_METHOD(TestConversion1) {
+      eng::Temperature a = eng::Celcius(0);
+      Assert::AreEqual(273.15_Kelvin, a);
+    }
+    TEST_METHOD(TestConversion2) {
+      eng::Temperature a = eng::Farenheit(32);
+      Assert::AreEqual(273.15_Kelvin, a);
+    }
+    TEST_METHOD(TestConversion3) {
+      eng::Temperature a = 100_Rankine;
+      Assert::AreEqual(55.555555555_Kelvin, a);
+    }
+    TEST_METHOD(TestConversion4) {
+      eng::Temperature a = eng::Farenheit(-459.67);
+      Assert::AreEqual(0_Rankine, a);
     }
   };
 
