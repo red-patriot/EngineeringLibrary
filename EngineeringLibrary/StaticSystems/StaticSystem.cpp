@@ -130,7 +130,6 @@ namespace eng {
         ++index;
         // if the directon is unknown, there are 3 unknowns
       } else {
-        // TODO: clean this up so there aren't so many repeated lines
         system_matrix(0, index) = 1.0;
         system_matrix(1, index) = 0.0;
         system_matrix(2, index) = 0.0;
@@ -152,7 +151,7 @@ namespace eng {
         system_matrix(4, index) = -position.x().m();
         system_matrix(5, index) = 0.0;
         ++index;
-      } // TODO: Maybe there are other cases here?
+      }
     }
 
     return;

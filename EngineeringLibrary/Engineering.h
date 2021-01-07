@@ -24,9 +24,10 @@
 #include "SystemDynamics.h"
 
 /* TODO Units:
- *     Viscosity
  */
 
 /* TODO:
  *    Update sample materials information
+ *    Electrical Circuits analysis
+ *    Fluids analysis
  */
