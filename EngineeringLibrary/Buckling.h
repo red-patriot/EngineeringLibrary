@@ -9,7 +9,7 @@
  *********************************************************************/
 
 #include "Material.h"
-#include "Geometry.h"
+#include "Geometric/Geometric.h"
 
 #include "Units/Area.h"
 #include "Units/Length.h"
@@ -51,7 +51,7 @@ namespace eng {
       const EndConditions& supports);
 
     Material material() const { return _material; }
-    AreaMomentofInertia moment_of_inertia() const { return _geometry.moment_of_inertia(); }
+    Geometry::AreaMomentofInertia moment_of_inertia() const { return _geometry.moment_of_inertia(); }
     Area area() const { return _geometry.area(); }
     Length length() const { return _length; }
     EndConditions supports() const { return _supports; }

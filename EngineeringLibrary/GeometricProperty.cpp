@@ -1,6 +1,6 @@
 #include "pch.h"
 
-#include "Geometry.h"
+#include "Geometric/Geometric.h"
 #include "GeometricProperty.h"
 
 #include "Units/MomentOfArea.h"
@@ -15,12 +15,12 @@ namespace eng {
   /* 
    * Moment of Inertia
    */
-  AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo) {
+  Geometry::AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo) {
     return moment_of_inertia(geo, centroid(geo));
   }
 
-  AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, const LengthVec& pt) {
-    AreaMomentofInertia ret{0_m4, 0_m4, 0_m4};
+  Geometry::AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, const LengthVec& pt) {
+    Geometry::AreaMomentofInertia ret{0_m4, 0_m4, 0_m4};
 
     for (auto& g : geo) {
       auto i = g->moment_of_inertia(pt);
@@ -32,9 +32,9 @@ namespace eng {
     return ret;
   }
 
-  AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, 
+  Geometry::AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo,
                                         const std::vector<Geometry*>& neg, const LengthVec& pt) {
-    AreaMomentofInertia ret{0_m4, 0_m4, 0_m4},
+    Geometry::AreaMomentofInertia ret{0_m4, 0_m4, 0_m4},
       ret_pos = moment_of_inertia(geo, pt),
       ret_neg = moment_of_inertia(neg, pt);
 
@@ -45,7 +45,7 @@ namespace eng {
    return ret;
   }
 
-  AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo, 
+  Geometry::AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo,
                                         const std::vector<Geometry*>& neg) {
     LengthVec pt = centroid(geo, neg);
     

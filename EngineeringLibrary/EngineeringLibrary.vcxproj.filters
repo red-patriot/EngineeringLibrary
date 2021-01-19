@@ -31,6 +31,15 @@
     <Filter Include="Statics\Source Files">
       <UniqueIdentifier>{2ed735de-d696-4da1-9f69-b285715776b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Geometric">
+      <UniqueIdentifier>{97c55e54-58c9-4588-b860-56435d0f03a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometric\Header files">
+      <UniqueIdentifier>{99139281-b896-468d-9a44-a564a6e81e12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometric\Source files">
+      <UniqueIdentifier>{7e986fb9-064d-4025-9b99-49227500e9de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -153,6 +162,30 @@
     <ClInclude Include="Units\Viscosity.h">
       <Filter>Units\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Geometric\Geometric.h">
+      <Filter>Geometric\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometric\Geometry.h">
+      <Filter>Geometric\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometric\pch.h">
+      <Filter>Geometric\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometric\Circle.h">
+      <Filter>Geometric\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometric\SemiCircle.h">
+      <Filter>Geometric\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometric\HollowCircle.h">
+      <Filter>Geometric\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometric\Rectangle.h">
+      <Filter>Geometric\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometric\HollowRectangle.h">
+      <Filter>Geometric\Header files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -250,6 +283,24 @@
     </ClCompile>
     <ClCompile Include="Units\Viscosity.cpp">
       <Filter>Units\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometric\Geometry.cpp">
+      <Filter>Geometric\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometric\Circle.cpp">
+      <Filter>Geometric\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometric\SemiCircle.cpp">
+      <Filter>Geometric\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometric\HollowCircle.cpp">
+      <Filter>Geometric\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometric\Rectangle.cpp">
+      <Filter>Geometric\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometric\HollowRectangle.cpp">
+      <Filter>Geometric\Source files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

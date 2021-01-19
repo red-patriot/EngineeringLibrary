@@ -5,6 +5,8 @@
 #include "VectorHelperFunctions.h"
 #include "EngineeringLibrary/Engineering.h"
 
+#include"EngineeringLibrary/Geometric/Geometric.h"
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace GeometryTests {
@@ -23,13 +25,13 @@ namespace GeometryTests {
       Assert::AreEqual(3.5_m4, g.moment_of_inertia().Ixy);
     }
     TEST_METHOD(TestParallelAxes) {
-      eng::AreaMomentofInertia I = g.moment_of_inertia({1_m, 2_m, 0_m});
+      eng::Geometry::AreaMomentofInertia I = g.moment_of_inertia({1_m, 2_m, 0_m});
       Assert::AreEqual(13.4_m4, I.Ixx);
       Assert::AreEqual(4.6_m4, I.Iyy);
       Assert::AreEqual(7.5_m4, I.Ixy);
     }
     TEST_METHOD(TestRotatedAxes) {
-      eng::AreaMomentofInertia I = g.moment_of_inertia(45_deg);
+      eng::Geometry::AreaMomentofInertia I = g.moment_of_inertia(45_deg);
       Assert::AreEqual(0.5_m4, I.Ixx);
       Assert::AreEqual(7.5_m4, I.Iyy);
       Assert::AreEqual(1.4_m4, I.Ixy);
