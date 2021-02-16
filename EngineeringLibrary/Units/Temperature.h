@@ -23,11 +23,11 @@ namespace eng {
     typedef UnitBase<0, 0, 0, 0, 1, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double Kelvin() { return _value; }
-    double deg_C() { return _value - 273.15; }
+    double Kelvin() { return mValue; }
+    double deg_C() { return mValue - 273.15; }
 
-    double Rankine() { return _value * (9.0/5.0); }
-    double deg_F() { return _value * 9.0/5.0 - 459.67; }
+    double Rankine() { return mValue * (9.0/5.0); }
+    double deg_F() { return mValue * 9.0/5.0 - 459.67; }
   };
 
   using Temperature = UnitBase<0, 0, 0, 0, 1, 0, 0>;

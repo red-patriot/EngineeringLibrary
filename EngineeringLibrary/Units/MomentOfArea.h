@@ -31,11 +31,11 @@ namespace eng {
     typedef UnitBase<0, 4, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double mm4() const { return _value * 1'000'000'000'000; }
-    double m4() const { return _value; }
+    double mm4() const { return mValue * 1'000'000'000'000; }
+    double m4() const { return mValue; }
 
-    double in4() const { return _value * 100'000'000 / 41.623'142'56; }
-    double ft4() const { return _value * 100'000'000 / 863'097.481'241'6; }
+    double in4() const { return mValue * 100'000'000 / 41.623'142'56; }
+    double ft4() const { return mValue * 100'000'000 / 863'097.481'241'6; }
   };
 
   using SecondMomentOfArea = UnitBase<0, 4, 0, 0, 0, 0, 0>;

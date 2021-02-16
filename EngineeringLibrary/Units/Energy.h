@@ -24,20 +24,20 @@ namespace eng {
     typedef UnitBase<1, 2, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double J() const { return _value; }
-    double kJ() const { return _value * 0.001; }
-    double MJ() const { return _value * 0.000'001; }
+    double J() const { return mValue; }
+    double kJ() const { return mValue * 0.001; }
+    double MJ() const { return mValue * 0.000'001; }
 
-    double Nm() const { return _value; }
-    double kNm() const { return _value * 0.001; }
-    double Nmm() const { return _value * 1000.0; }
+    double Nm() const { return mValue; }
+    double kNm() const { return mValue * 0.001; }
+    double Nmm() const { return mValue * 1000.0; }
 
-    double ftlb() const { return _value * 0.737'562'149; }
-    double inlb() const { return _value * 8.850'745'8; }
-    double BTU() const { return _value * 0.000'947'817'12; }
+    double ftlb() const { return mValue * 0.737'562'149; }
+    double inlb() const { return mValue * 8.850'745'8; }
+    double BTU() const { return mValue * 0.000'947'817'12; }
 
-    double lbft() const { return _value * 0.737'562'149; }
-    double lbin() const { return _value * 8.850'745'8; }
+    double lbft() const { return mValue * 0.737'562'149; }
+    double lbin() const { return mValue * 8.850'745'8; }
   };
 
   using Energy = UnitBase<1, 2, -2, 0, 0, 0, 0>;

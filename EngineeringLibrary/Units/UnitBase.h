@@ -20,14 +20,14 @@
  *   UnitBaseCOMMON must be used before every other class member except this_t.
  */
 #define UnitBaseCOMMON public:                                                 \
-    explicit UnitBase(const double& n=0) : _value(n) { }                       \
-    double value() const { return _value; }                                    \
-    this_t& operator+= (const this_t& rh) {_value += rh.value(); return *this;}\
-    this_t& operator-= (const this_t& rh) {_value -= rh.value(); return *this;}\
-    this_t& operator*= (const double& rh) {_value *= rh; return *this;}        \
-    this_t& operator/= (const double& rh) {_value /= rh; return *this;}        \
+    explicit UnitBase(const double& n=0) : mValue(n) { }                       \
+    double value() const { return mValue; }                                    \
+    this_t& operator+= (const this_t& rh) {mValue += rh.value(); return *this;}\
+    this_t& operator-= (const this_t& rh) {mValue -= rh.value(); return *this;}\
+    this_t& operator*= (const double& rh) {mValue *= rh; return *this;}        \
+    this_t& operator/= (const double& rh) {mValue /= rh; return *this;}        \
   protected:                                                                   \
-    double _value;
+    double mValue;
 
 namespace eng {
 
@@ -35,37 +35,39 @@ namespace eng {
    * \class UnitBase
    */
   template<int MassNum, int LengthNum, int TimeNum, int CurrentNum, int TemperatureNum, int AmountNum, int LuminousityNum,
-    int MassDen=1, int LengthDen=1, int TimeDen=1, int CurrentDen=1, int TemperatureDen=1, int AmountDen=1, int LuminousityDen=1>
-  class UnitBase {
-  public:
-    typedef UnitBase this_t;
-    UnitBaseCOMMON
+    int MassDen = 1, int LengthDen = 1, int TimeDen = 1, int CurrentDen = 1, int TemperatureDen = 1, int AmountDen = 1, int LuminousityDen = 1>
+    class UnitBase {
+    public:
+      typedef UnitBase this_t;
+      UnitBaseCOMMON
   };
 
-  auto _sign = [](const int& n) constexpr { 
-    return (0 < n) - (n < 0); 
-  };
-  auto _abs = [](const int& n) constexpr { 
-    return n < 0 ? -n : n; 
-  };
-  auto _na = [](const int& a, const int& b, const int& c, const int& d) constexpr { return a*d + b*c; };
-  auto _ns = [](const int& a, const int& b, const int& c, const int& d) constexpr { return a*d - b*c; };
-  auto _d = [](const int&, const int& b, const int&, const int& d) constexpr { return b*d; };
-  auto _numa = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
-    int num = _na(n1, d1, n2, d2), den = _d(n1, d1, n2, d2);
-    return _sign(num) * _sign(den) * _abs(num)/std::gcd(num, den); 
-  };
-  auto _denoma = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
-    int num = _na(n1, d1, n2, d2), den = _d(n1, d1, n2, d2);
-    return _abs(den)/std::gcd(num, den);
-  };
-  auto _nums = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
-    int num = _ns(n1, d1, n2, d2), den = _d(n1, d1, n2, d2);
-    return _sign(num) * _sign(den) * _abs(num)/std::gcd(num, den); 
-  };
-  auto _denoms = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
-    int num = _ns(n1, d1, n2, d2), den = _d(n1, d1, n2, d2);
-    return _abs(den)/std::gcd(num, den);
+  namespace unitManagement {
+    auto sign = [](const int& n) constexpr {
+      return (0 < n) - (n < 0);
+    };
+    auto abs = [](const int& n) constexpr {
+      return n < 0 ? -n : n;
+    };
+    auto na = [](const int& a, const int& b, const int& c, const int& d) constexpr { return a*d + b*c; };
+    auto ns = [](const int& a, const int& b, const int& c, const int& d) constexpr { return a*d - b*c; };
+    auto d = [](const int&, const int& b, const int&, const int& d) constexpr { return b*d; };
+    auto numa = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
+      int num = na(n1, d1, n2, d2), den = d(n1, d1, n2, d2);
+      return sign(num) * sign(den) * abs(num)/std::gcd(num, den);
+    };
+    auto denoma = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
+      int num = na(n1, d1, n2, d2), den = d(n1, d1, n2, d2);
+      return abs(den)/std::gcd(num, den);
+    };
+    auto nums = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
+      int num = ns(n1, d1, n2, d2), den = d(n1, d1, n2, d2);
+      return sign(num) * sign(den) * abs(num)/std::gcd(num, den);
+    };
+    auto denoms = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
+      int num = ns(n1, d1, n2, d2), den = d(n1, d1, n2, d2);
+      return abs(den)/std::gcd(num, den);
+    };
   };
 
 
@@ -111,20 +113,21 @@ namespace eng {
     auto
     operator* (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
-    return UnitBase<_numa(MN1, MD1, MN2, MD2),
-      _numa(LN1, LD1, LN2, LD2),
-      _numa(TN1, TD1, TN2, TD2),
-      _numa(CN1, CD1, CN2, CD2),
-      _numa(TeN1, TeD1, TeN2, TeD2),
-      _numa(AN1, AD1, AN2, AD2),
-      _numa(LuN1, LuD1, LuN2, LuD2),
-      _denoma(MN1, MD1, MN2, MD2),
-      _denoma(LN1, LD1, LN2, LD2),
-      _denoma(TN1, TD1, TN2, TD2),
-      _denoma(CN1, CD1, CN2, CD2),
-      _denoma(TeN1, TeD1, TeN2, TeD2),
-      _denoma(AN1, AD1, AN2, AD2),
-      _denoma(LuN1, LuD1, LuN2, LuD2)>(lh.value() * rh.value());
+    return UnitBase<
+      unitManagement::numa(MN1, MD1, MN2, MD2),
+      unitManagement::numa(LN1, LD1, LN2, LD2),
+      unitManagement::numa(TN1, TD1, TN2, TD2),
+      unitManagement::numa(CN1, CD1, CN2, CD2),
+      unitManagement::numa(TeN1, TeD1, TeN2, TeD2),
+      unitManagement::numa(AN1, AD1, AN2, AD2),
+      unitManagement::numa(LuN1, LuD1, LuN2, LuD2),
+      unitManagement::denoma(MN1, MD1, MN2, MD2),
+      unitManagement::denoma(LN1, LD1, LN2, LD2),
+      unitManagement::denoma(TN1, TD1, TN2, TD2),
+      unitManagement::denoma(CN1, CD1, CN2, CD2),
+      unitManagement::denoma(TeN1, TeD1, TeN2, TeD2),
+      unitManagement::denoma(AN1, AD1, AN2, AD2),
+      unitManagement::denoma(LuN1, LuD1, LuN2, LuD2)>(lh.value() * rh.value());
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
@@ -158,20 +161,21 @@ namespace eng {
     auto
     operator/ (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
-    return UnitBase<_nums(MN1, MD1, MN2, MD2),
-      _nums(LN1, LD1, LN2, LD2),
-      _nums(TN1, TD1, TN2, TD2),
-      _nums(CN1, CD1, CN2, CD2),
-      _nums(TeN1, TeD1, TeN2, TeD2),
-      _nums(AN1, AD1, AN2, AD2),
-      _nums(LuN1, LuD1, LuN2, LuD2),
-      _denoms(MN1, MD1, MN2, MD2),
-      _denoms(LN1, LD1, LN2, LD2),
-      _denoms(TN1, TD1, TN2, TD2),
-      _denoms(CN1, CD1, CN2, CD2),
-      _denoms(TeN1, TeD1, TeN2, TeD2),
-      _denoms(AN1, AD1, AN2, AD2),
-      _denoms(LuN1, LuD1, LuN2, LuD2)>(lh.value() / rh.value());
+    return UnitBase<
+      unitManagement::nums(MN1, MD1, MN2, MD2),
+      unitManagement::nums(LN1, LD1, LN2, LD2),
+      unitManagement::nums(TN1, TD1, TN2, TD2),
+      unitManagement::nums(CN1, CD1, CN2, CD2),
+      unitManagement::nums(TeN1, TeD1, TeN2, TeD2),
+      unitManagement::nums(AN1, AD1, AN2, AD2),
+      unitManagement::nums(LuN1, LuD1, LuN2, LuD2),
+      unitManagement::denoms(MN1, MD1, MN2, MD2),
+      unitManagement::denoms(LN1, LD1, LN2, LD2),
+      unitManagement::denoms(TN1, TD1, TN2, TD2),
+      unitManagement::denoms(CN1, CD1, CN2, CD2),
+      unitManagement::denoms(TeN1, TeD1, TeN2, TeD2),
+      unitManagement::denoms(AN1, AD1, AN2, AD2),
+      unitManagement::denoms(LuN1, LuD1, LuN2, LuD2)>(lh.value() / rh.value());
   }
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
@@ -268,40 +272,42 @@ namespace eng {
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     inline auto
     sqrt(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
-    return UnitBase<_numa(MN, MD*2, 0, 1),
-      _numa(LN, LD*2, 0, 1),
-      _numa(TN, TD*2, 0, 1),
-      _numa(CN, CD*2, 0, 1),
-      _numa(TeN, TeD*2, 0, 1),
-      _numa(AN, AD*2, 0, 1),
-      _numa(LuN, LuD*2, 0, 1),
-      _denoma(MN, MD*2, 0, 1),
-      _denoma(LN, LD*2, 0, 1),
-      _denoma(TN, TD*2, 0, 1),
-      _denoma(CN, CD*2, 0, 1),
-      _denoma(TeN, TeD*2, 0, 1),
-      _denoma(AN, AD*2, 0, 1),
-      _denoma(LuN, LuD*2, 0, 1)>(std::sqrt(x.value()));
+    return UnitBase<
+      unitManagement::numa(MN, MD*2, 0, 1),
+      unitManagement::numa(LN, LD*2, 0, 1),
+      unitManagement::numa(TN, TD*2, 0, 1),
+      unitManagement::numa(CN, CD*2, 0, 1),
+      unitManagement::numa(TeN, TeD*2, 0, 1),
+      unitManagement::numa(AN, AD*2, 0, 1),
+      unitManagement::numa(LuN, LuD*2, 0, 1),
+      unitManagement::denoma(MN, MD*2, 0, 1),
+      unitManagement::denoma(LN, LD*2, 0, 1),
+      unitManagement::denoma(TN, TD*2, 0, 1),
+      unitManagement::denoma(CN, CD*2, 0, 1),
+      unitManagement::denoma(TeN, TeD*2, 0, 1),
+      unitManagement::denoma(AN, AD*2, 0, 1),
+      unitManagement::denoma(LuN, LuD*2, 0, 1)>(std::sqrt(x.value()));
   }
 
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
     inline auto
     abs2(const UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
-    return UnitBase<_numa(MN*2, MD, 0, 1),
-      _numa(LN*2, LD, 0, 1),
-      _numa(TN*2, TD, 0, 1),
-      _numa(CN*2, CD, 0, 1),
-      _numa(TeN*2, TeD, 0, 1),
-      _numa(AN*2, AD, 0, 1),
-      _numa(LuN*2, LuD, 0, 1),
-      _denoma(MN*2, MD, 0, 1),
-      _denoma(LN*2, LD, 0, 1),
-      _denoma(TN*2, TD, 0, 1),
-      _denoma(CN*2, CD, 0, 1),
-      _denoma(TeN*2, TeD, 0, 1),
-      _denoma(AN*2, AD, 0, 1),
-      _denoma(LuN*2, LuD, 0, 1)>(x.value() * x.value());
+    return UnitBase<
+      unitManagement::numa(MN*2, MD, 0, 1),
+      unitManagement::numa(LN*2, LD, 0, 1),
+      unitManagement::numa(TN*2, TD, 0, 1),
+      unitManagement::numa(CN*2, CD, 0, 1),
+      unitManagement::numa(TeN*2, TeD, 0, 1),
+      unitManagement::numa(AN*2, AD, 0, 1),
+      unitManagement::numa(LuN*2, LuD, 0, 1),
+      unitManagement::denoma(MN*2, MD, 0, 1),
+      unitManagement::denoma(LN*2, LD, 0, 1),
+      unitManagement::denoma(TN*2, TD, 0, 1),
+      unitManagement::denoma(CN*2, CD, 0, 1),
+      unitManagement::denoma(TeN*2, TeD, 0, 1),
+      unitManagement::denoma(AN*2, AD, 0, 1),
+      unitManagement::denoma(LuN*2, LuD, 0, 1)>(x.value() * x.value());
   }
 
   

@@ -23,11 +23,11 @@ namespace eng {
     typedef UnitBase<1, 0, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double Npm() const { return _value; }
-    double Npmm() const { return _value * 0.001; }
+    double Npm() const { return mValue; }
+    double Npmm() const { return mValue * 0.001; }
     
-    double lbpin() const { return _value * 0.005'710'147'154'732'646'26; }
-    double lbpft() const { return _value * 0.068'521'765'856'791'755'19; }
+    double lbpin() const { return mValue * 0.005'710'147'154'732'646'26; }
+    double lbpft() const { return mValue * 0.068'521'765'856'791'755'19; }
   };
 
   using Stiffness = UnitBase<1, 0, -2, 0, 0, 0, 0>;

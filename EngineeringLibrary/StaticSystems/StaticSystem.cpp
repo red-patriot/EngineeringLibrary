@@ -54,13 +54,13 @@ namespace eng {
     populate_known_loads(system_matrix);
     populate_known_moments(system_matrix);
 
-    populate_unknown_values(system_matrix);
+    populate_unknownmValues(system_matrix);
 
     // row reduce the system matrix
     solve_system(system_matrix);
 
     // extract and store the newly solved loads
-    save_solved_values(system_matrix);
+    save_solvedmValues(system_matrix);
 
     // Set the flag that the system is solved
     _is_solved = true;
@@ -107,7 +107,7 @@ namespace eng {
     }
   }
 
-  void StaticSystem::populate_unknown_values(SystemModel& system_matrix) const { 
+  void StaticSystem::populate_unknownmValues(SystemModel& system_matrix) const { 
     // a counter for the current unknown (there can be 6 max)
     int current_unknown = 0;
 
@@ -179,7 +179,7 @@ namespace eng {
     return;
   }
 
-  void StaticSystem::save_solved_values(SystemModel& system_matrix) const {
+  void StaticSystem::save_solvedmValues(SystemModel& system_matrix) const {
     // This uses the same algorithm as StaticSystem::populate_unknown_loads to
     //   extract the solved loadss
     int current_unknown = 0;

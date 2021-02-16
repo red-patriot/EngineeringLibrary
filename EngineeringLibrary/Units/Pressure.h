@@ -23,13 +23,13 @@ namespace eng {
     typedef UnitBase<1, -1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double Pa() const { return _value; }
-    double kPa() const { return _value * 0.001; }
-    double MPa() const { return _value * 0.000'001; }
-    double GPa() const { return _value * 0.000'000'001; }
+    double Pa() const { return mValue; }
+    double kPa() const { return mValue * 0.001; }
+    double MPa() const { return mValue * 0.000'001; }
+    double GPa() const { return mValue * 0.000'000'001; }
 
-    double psi() const { return _value * 0.000'145'037'737'796'858'691'163; }
-    double ksi() const { return _value * 0.000'000'145'037'737'796'858'691; }
+    double psi() const { return mValue * 0.000'145'037'737'796'858'691'163; }
+    double ksi() const { return mValue * 0.000'000'145'037'737'796'858'691; }
   };
 
   using Pressure = UnitBase<1, -1, -2, 0, 0, 0, 0>;

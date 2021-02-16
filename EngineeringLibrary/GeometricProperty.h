@@ -27,13 +27,13 @@ namespace eng {
   
   /* Calculate the Moment of Inertia of a composite shape about the given centroid. */
   Geometry::AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo,
-                                        const LengthVec& pt);
+                                                  const LengthVec& pt);
   /* Calculate the Moment of Inertia of a composite shape about its own centroid. */
   Geometry::AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo);
   /* Calculate the Moment of Inertia of a composite shape about the given centroid.
      neg represents holes in the geometry. */
   Geometry::AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo,
-                                        const std::vector<Geometry*>& neg, const LengthVec& pt);
+                                                  const std::vector<Geometry*>& neg, const LengthVec& pt);
   /* Calculate the Moment of Inertia of a composite shape about its own centroid.
      neg represents holes in the geometry. */
   Geometry::AreaMomentofInertia moment_of_inertia(const std::vector<Geometry*>& geo,

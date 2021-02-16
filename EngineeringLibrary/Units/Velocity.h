@@ -23,12 +23,12 @@ namespace eng {
     typedef UnitBase<0, 1, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double mpsec() const { return _value; }
-    double kph() const { return _value * 3.600; }
+    double mpsec() const { return mValue; }
+    double kph() const { return mValue * 3.600; }
 
-    double inpsec() const { return _value * 39.370'007'874'015'748; }  // 100/2.54
-    double ftpsec() const { return _value * 3.280'839'895'013'123; }  // 100/30.48
-    double mph() const { return _value * 2.236'936'292'054'402; }  // 360'000 / 160'934.4
+    double inpsec() const { return mValue * 39.370'007'874'015'748; }  // 100/2.54
+    double ftpsec() const { return mValue * 3.280'839'895'013'123; }  // 100/30.48
+    double mph() const { return mValue * 2.236'936'292'054'402; }  // 360'000 / 160'934.4
   };
 
   using Velocity = UnitBase<0, 1, -1, 0, 0, 0, 0>;

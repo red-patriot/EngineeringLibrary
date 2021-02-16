@@ -22,12 +22,12 @@ namespace eng {
     typedef UnitBase<0, 3, 0, 0, 0, 0, 0> this_t; 
       UnitBaseCOMMON
   public:
-    double mm3() const { return _value * 1'000'000'000; }
-    double cm3() const { return _value * 1'000'000; }
-    double m3() const { return _value; }
+    double mm3() const { return mValue * 1'000'000'000; }
+    double cm3() const { return mValue * 1'000'000; }
+    double m3() const { return mValue; }
 
-    double in3() const { return _value * (1'000'000/16.387'064); }
-    double ft3() const { return _value * (1'000'000/28'316.846'592); }
+    double in3() const { return mValue * (1'000'000/16.387'064); }
+    double ft3() const { return mValue * (1'000'000/28'316.846'592); }
   };
 
   using Volume = UnitBase<0, 3, 0, 0, 0, 0, 0>;
