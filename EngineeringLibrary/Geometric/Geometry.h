@@ -77,31 +77,12 @@ namespace eng {
      */
     AreaMomentofInertia moment_of_inertia(const Angle& theta) const;
 
-  protected:
-    LengthVec _centroid;        /**<The centroid of this Geometry in space */
-    mutable Area _area;                 /**<The area of this Geometry */
-    mutable AreaMomentofInertia _MOI;   /**<The moment of inertia of this
-                                    Geometry about the X, Y and XY axes */
-
-    mutable bool _area_calculated;
-    mutable bool _moi_calculated;
-                    
-    /** An overrideable function used for calculating the area of a
-     *  Geometry using whichever formula is appropriate.
-     */
-    virtual Area calculate_area() const;
-
-    /** An overrideable function used for calculating the area moment of
-     *  inertia of a Geometry using whichever formula is appropriate.
-     */
-    virtual AreaMomentofInertia calculate_moment_of_inertia() const;
-
-    /**
-     * \brief Geometry child constructor
-     *
-     * This constructor is intended for use only by Geometry children.
-     */
-    Geometry(const LengthVec& c);
+  private:
+    LengthVec _centroid;        /**< The centroid of this Geometry in space */
+    mutable Area _area;                 /**< The area of this Geometry */
+    mutable AreaMomentofInertia _MOI;   /**< The moment of inertia of this
+                                             Geometry about the X and Y axes and 
+                                             the XY product of inertia */
   };
 
 };  // namespace eng

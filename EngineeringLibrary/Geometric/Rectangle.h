@@ -21,12 +21,12 @@ namespace eng {
     /**
      * \brief Rectangle constructor
      *
-     * \param base The length of the base of the Rectangle
-     * \param height The length of the height of the Rectangle
-     * \param centroid The centroid of the Rectangle
+     * \param b The length of the base of the Rectangle
+     * \param h The length of the height of the Rectangle
+     * \param c The centroid of the Rectangle
      */
-    Rectangle(const Length& base = 0_m, const Length& height = 0_m,
-              const LengthVec& centroid = {0_m, 0_m, 0_m});
+    Rectangle(const Length& b = 0_m, const Length& h = 0_m,
+              const LengthVec& c = {0_m, 0_m, 0_m});
 
     Length base() const { return _base; }
     Length height() const { return _height; }
@@ -34,9 +34,6 @@ namespace eng {
   private:
     Length _base;
     Length _height;
-
-    Area calculate_area() const override;
-    virtual AreaMomentofInertia calculate_moment_of_inertia() const override;
   };
 
 };  // namespace eng

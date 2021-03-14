@@ -21,12 +21,12 @@ namespace eng {
     /**
      * \brief HollowCircle constructor
      *
-     * \param outer_diam The diameter of the outer circle
-     * \param inner_diam The diameter of the inner circle
-     * \param center The centroid of the HollowCircle
+     * \param od The diameter of the outer circle
+     * \param id The diameter of the inner circle
+     * \param c The centroid of the HollowCircle
      */
-    HollowCircle(const Length& outer_diam = 0_m, const Length& inner_diam = 0_m,
-                 const LengthVec& center = {0_m, 0_m, 0_m});
+    HollowCircle(const Length& od = 0_m, const Length& id = 0_m,
+                 const LengthVec& c = {0_m, 0_m, 0_m});
 
     Length outer_diameter() const { return _outer_diameter; }
     Length inner_diameter() const { return _inner_diameter; }
@@ -34,9 +34,6 @@ namespace eng {
   private:
     Length _outer_diameter;
     Length _inner_diameter;
-
-    Area calculate_area() const override;
-    virtual AreaMomentofInertia calculate_moment_of_inertia() const override;
   };
 
 };  // namespace eng

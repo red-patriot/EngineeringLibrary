@@ -3,18 +3,12 @@
 
 namespace eng {
 
-  Circle::Circle(const Length& dd, const LengthVec& c) :
-    _diameter(dd),
-    Geometry(c) { }
-
-  Area Circle::calculate_area() const {
-    return pi * (_diameter*_diameter)/4;
-  }
-
-  Geometry::AreaMomentofInertia Circle::calculate_moment_of_inertia() const {
-    return {(pi * (_diameter*_diameter)*(_diameter*_diameter)) / 64, 
-            (pi * (_diameter*_diameter)*(_diameter*_diameter)) / 64,
-            0_m4};
-  }
+  Circle::Circle(const Length& d, const LengthVec& c) :
+    _diameter(d),
+    Geometry(pi*d*d/4,
+             {pi*d*d*d*d/64, 
+              pi*d*d*d*d/64, 
+              0_m4},
+             c) { }
 
 };  // namespace eng

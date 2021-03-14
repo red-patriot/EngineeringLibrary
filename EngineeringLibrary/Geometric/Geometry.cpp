@@ -16,25 +16,17 @@ namespace eng {
                      const LengthVec & centroid) :
     _centroid(centroid),
     _area(area),
-    _MOI(moi),
-    _area_calculated(true),
-    _moi_calculated(true) { }
+    _MOI(moi) { }
 
   LengthVec Geometry::centroid() const {
     return _centroid;
   }
 
   Area Geometry::area() const {
-    if (!_area_calculated) {
-      _area = calculate_area();
-    }
     return _area;
   }
 
   Geometry::AreaMomentofInertia Geometry::moment_of_inertia() const {
-    if (!_moi_calculated) {
-      _MOI = calculate_moment_of_inertia();
-    }
     return _MOI;
   }
 
@@ -55,20 +47,5 @@ namespace eng {
     ret.Ixy = (_MOI.Ixx - _MOI.Iyy)/2 * sin(2*theta) + _MOI.Ixy * cos(2*theta);
     return ret;
   }
-
-  Area Geometry::calculate_area() const {
-    return Area();
-  }
-
-  Geometry::AreaMomentofInertia Geometry::calculate_moment_of_inertia() const {
-    return AreaMomentofInertia();
-  }
-
-  Geometry::Geometry(const LengthVec& c) :
-    _centroid(c),
-    _area(0_m2),
-    _MOI(0_m4, 0_m4, 0_m4),
-    _area_calculated(false),
-    _moi_calculated(false) { }
 
 };  // namespace eng

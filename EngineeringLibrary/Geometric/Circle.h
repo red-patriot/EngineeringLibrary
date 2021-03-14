@@ -21,20 +21,17 @@ namespace eng {
     /**
      * \brief Circle constructor
      * 
-     * \param diameter the diameter of the circle
-     * \param center the location of the center of the circle
+     * \param d the diameter of the Circle
+     * \param c the location of the centroid of the Circle
      */
-    Circle(const Length& diameter = 0_m, const LengthVec& center = {0_m, 0_m, 0_m});
+    Circle(const Length& d = 0_m, const LengthVec& c = {0_m, 0_m, 0_m});
 
     /** Returns the diameter of the circle
      */
     Length diameter() const { return _diameter; }
 
-  protected:
+  private:
     Length _diameter;
-
-    Area calculate_area() const override;
-    virtual AreaMomentofInertia calculate_moment_of_inertia() const override;
   };
 
 };  // namespace eng

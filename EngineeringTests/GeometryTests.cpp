@@ -5,7 +5,10 @@
 #include "VectorHelperFunctions.h"
 #include "EngineeringLibrary/Engineering.h"
 
+#include <vector>
+
 #include"EngineeringLibrary/Geometric/Geometric.h"
+#include "EngineeringLibrary/Units/Length.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -36,7 +39,16 @@ namespace GeometryTests {
       Assert::AreEqual(7.5_m4, I.Iyy);
       Assert::AreEqual(1.4_m4, I.Ixy);
     }
+    TEST_METHOD(TestCopy) {
+      eng::Geometry copied = g;
+      Assert::AreEqual(g.area(), copied.area());
+      Assert::AreEqual(g.centroid(), copied.centroid());
+      Assert::AreEqual(g.moment_of_inertia().Ixx, copied.moment_of_inertia().Ixx);
+      Assert::AreEqual(g.moment_of_inertia().Iyy, copied.moment_of_inertia().Iyy);
+      Assert::AreEqual(g.moment_of_inertia().Ixy, copied.moment_of_inertia().Ixy);
+    }
   };
+  
   TEST_CLASS(TestCircle) {
     eng::Circle c1{1_m};
     eng::Circle c2{2.5_m};
@@ -57,7 +69,16 @@ namespace GeometryTests {
       Assert::AreEqual(1.917476_m4, c2.moment_of_inertia().Iyy);
       Assert::AreEqual(0_m4, c2.moment_of_inertia().Ixy);
     }
+    TEST_METHOD(TestCopy) {
+      eng::Geometry copied = c2;
+      Assert::AreEqual(c2.area(), copied.area());
+      Assert::AreEqual(c2.centroid(), copied.centroid());
+      Assert::AreEqual(c2.moment_of_inertia().Ixx, copied.moment_of_inertia().Ixx);
+      Assert::AreEqual(c2.moment_of_inertia().Iyy, copied.moment_of_inertia().Iyy);
+      Assert::AreEqual(c2.moment_of_inertia().Ixy, copied.moment_of_inertia().Ixy);
+    }
   };
+  
   TEST_CLASS(TestSemiCircle) {
     eng::SemiCircle sc{2.5_m};
   public:
@@ -69,8 +90,16 @@ namespace GeometryTests {
       Assert::AreEqual(0.95873799_m4, sc.moment_of_inertia().Iyy);
       Assert::AreEqual(0_m4, sc.moment_of_inertia().Ixy);
     }
+    TEST_METHOD(TestCopy) {
+      eng::Geometry copied = sc;
+      Assert::AreEqual(sc.area(), copied.area());
+      Assert::AreEqual(sc.centroid(), copied.centroid());
+      Assert::AreEqual(sc.moment_of_inertia().Ixx, copied.moment_of_inertia().Ixx);
+      Assert::AreEqual(sc.moment_of_inertia().Iyy, copied.moment_of_inertia().Iyy);
+      Assert::AreEqual(sc.moment_of_inertia().Ixy, copied.moment_of_inertia().Ixy);
+    }
   };
-
+  
   TEST_CLASS(TestHollowCircle) {
     eng::HollowCircle hc{2.5_m, 1.75_m};
   public:
@@ -81,6 +110,14 @@ namespace GeometryTests {
       Assert::AreEqual(1.45709_m4, hc.moment_of_inertia().Ixx);
       Assert::AreEqual(1.45709_m4, hc.moment_of_inertia().Iyy);
       Assert::AreEqual(0_m4, hc.moment_of_inertia().Ixy);
+    }
+    TEST_METHOD(TestCopy) {
+      eng::Geometry copied = hc;
+      Assert::AreEqual(hc.area(), copied.area());
+      Assert::AreEqual(hc.centroid(), copied.centroid());
+      Assert::AreEqual(hc.moment_of_inertia().Ixx, copied.moment_of_inertia().Ixx);
+      Assert::AreEqual(hc.moment_of_inertia().Iyy, copied.moment_of_inertia().Iyy);
+      Assert::AreEqual(hc.moment_of_inertia().Ixy, copied.moment_of_inertia().Ixy);
     }
   };
 
@@ -95,6 +132,14 @@ namespace GeometryTests {
       Assert::AreEqual(4.4666667_m4, r.moment_of_inertia().Iyy);
       Assert::AreEqual(0_m4, r.moment_of_inertia().Ixy);
     }
+    TEST_METHOD(TestCopy) {
+      eng::Geometry copied = r;
+      Assert::AreEqual(r.area(), copied.area());
+      Assert::AreEqual(r.centroid(), copied.centroid());
+      Assert::AreEqual(r.moment_of_inertia().Ixx, copied.moment_of_inertia().Ixx);
+      Assert::AreEqual(r.moment_of_inertia().Iyy, copied.moment_of_inertia().Iyy);
+      Assert::AreEqual(r.moment_of_inertia().Ixy, copied.moment_of_inertia().Ixy);
+    }
   };
 
   TEST_CLASS(TestHollowRectangle) {
@@ -108,5 +153,13 @@ namespace GeometryTests {
       Assert::AreEqual(31.125_m4, hr.moment_of_inertia().Iyy);
       Assert::AreEqual(0_m4, hr.moment_of_inertia().Ixy);
     }
+    TEST_METHOD(TestCopy) {
+      eng::Geometry copied = hr;
+      Assert::AreEqual(hr.area(), copied.area());
+      Assert::AreEqual(hr.centroid(), copied.centroid());
+      Assert::AreEqual(hr.moment_of_inertia().Ixx, copied.moment_of_inertia().Ixx);
+      Assert::AreEqual(hr.moment_of_inertia().Iyy, copied.moment_of_inertia().Iyy);
+      Assert::AreEqual(hr.moment_of_inertia().Ixy, copied.moment_of_inertia().Ixy);
+    }
   };
-};
+};  // namespace GeometryTests

@@ -10,25 +10,30 @@
  *********************************************************************/
 
 #include "Geometry.h"
-#include "Circle.h"
 
 namespace eng {
   
   /** A semi circle
    * \class SemiCircle
    */
-  class SemiCircle : public Circle {
+  class SemiCircle : public Geometry {
   public:
     /**
     * \brief SemiCircle constructor
     *
-    * \param diameter The diameter of the SemiCircle
-    * \param center The location of the center of the SemiCircle
+    * \param d The diameter of the SemiCircle
+    * \param c The location of the centroid of the SemiCircle
     */
-    SemiCircle(const Length& diameter = 0_m, const LengthVec& center = {0_m, 0_m, 0_m});
+    SemiCircle(const Length& d = 0_m, const LengthVec& c = {0_m, 0_m, 0_m});
+  
+    /** Returns the diameter of the SemiCircle
+     */
+    Length diameter() const { return _diameter; }
 
   private:
-    Area calculate_area() const override;
-    virtual AreaMomentofInertia calculate_moment_of_inertia() const override;
+    Length _diameter;
+
+  private:
+
   };
 };  // namespace eng
