@@ -26,6 +26,9 @@ namespace eng {
    *  properly.
    */
   class Geometry {
+    /** Combine geometries to create composite shapes. */
+    friend Geometry operator+ (const Geometry& lh, const Geometry& rh);
+    friend Geometry operator- (const Geometry& lh, const Geometry& rh);
   public:
     /* Area moments of inertia for a 2D area about various axes */
     struct AreaMomentofInertia {
@@ -45,7 +48,7 @@ namespace eng {
     * \param moi the area moment of inertia of the geometry
     * \param centroid The centroid of the geometry
     */
-    Geometry(const Area& area, const AreaMomentofInertia& moi,
+    Geometry(const Area& area=0_m2, const AreaMomentofInertia& moi={0_m4, 0_m4, 0_m4},
              const LengthVec& centroid = LengthVec(0_m, 0_m, 0_m));
 
     /** Returns the centroid of the Geometry.
@@ -79,8 +82,8 @@ namespace eng {
 
   private:
     LengthVec _centroid;        /**< The centroid of this Geometry in space */
-    mutable Area _area;                 /**< The area of this Geometry */
-    mutable AreaMomentofInertia _MOI;   /**< The moment of inertia of this
+    Area _area;                 /**< The area of this Geometry */
+    AreaMomentofInertia _MOI;   /**< The moment of inertia of this
                                              Geometry about the X and Y axes and 
                                              the XY product of inertia */
   };

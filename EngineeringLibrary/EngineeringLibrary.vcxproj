@@ -277,7 +277,6 @@
     <ClCompile Include="Geometric\HollowRectangle.cpp" />
     <ClCompile Include="Geometric\Rectangle.cpp" />
     <ClCompile Include="Geometric\SemiCircle.cpp" />
-    <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

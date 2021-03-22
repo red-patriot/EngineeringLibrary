@@ -162,4 +162,28 @@ namespace GeometryTests {
       Assert::AreEqual(hr.moment_of_inertia().Ixy, copied.moment_of_inertia().Ixy);
     }
   };
+
+  TEST_CLASS(TestCompositeShapes) {
+  public:
+    TEST_METHOD(ZBeam) {
+      eng::Rectangle top(80_mm, 20_mm, {-50_mm, 70_mm, 0_mm});
+      eng::Rectangle cross(20_mm, 160_mm, {0_mm, 0_mm, 0_mm});
+      eng::Rectangle bottom(80_mm, 20_mm, {50_mm, -70_mm, 0_mm});
+
+      eng::Geometry z_beam = top + cross + bottom;
+
+      Assert::AreEqual(22.61333e6_mm4, z_beam.moment_of_inertia().Ixx);
+      Assert::AreEqual(9.813333e6_mm4, z_beam.moment_of_inertia().Iyy);
+      Assert::AreEqual(0_mm4, z_beam.moment_of_inertia().Ixy, L"This test does pass, but there is a bug in eng::operator== that prevents accurate comparisons around 0");
+    }
+    TEST_METHOD(BearingBlock) {
+      eng::Rectangle base(12_in, 4_in, {0_in, 2_in, 0_in});
+      eng::SemiCircle ring(8_in, {0_in, 5.6976527_in, 0_in});
+      eng::Circle hole(4_in, {0_in, 4_in, 0_in});
+
+      eng::Geometry bearing_block = base + ring - hole;
+
+      Assert::AreEqual(886.35986_in4, bearing_block.moment_of_inertia({0_in, 0_in, 0_in}).Ixx);
+    }
+  };
 };  // namespace GeometryTests

@@ -281,9 +281,6 @@
     <ClCompile Include="GeometricProperty.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Geometry.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Units\Viscosity.cpp">
       <Filter>Units\Source Files</Filter>
     </ClCompile>
