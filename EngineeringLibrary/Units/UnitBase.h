@@ -206,7 +206,8 @@ namespace eng {
     /* Tests that the numbers differ by less than 100,000 times smaller than 
      * either of them. */
     inline bool fuzzy_equals(const double& lh, const double& rh) {
-      return fabs(lh - rh) <= fabs((lh < rh ? lh : rh) * 0.000001);
+      auto flh = fabs(lh), frh = fabs(rh);
+      return fabs(lh - rh) <= fabs((flh < frh ? flh : frh) * 0.000001);
     }
     /* Tests that lh is greater than rh by an accaptable margin of error. */
     inline bool fuzzy_greater(const double& lh, const double& rh) {
