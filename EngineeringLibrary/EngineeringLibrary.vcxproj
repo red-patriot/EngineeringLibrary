@@ -220,7 +220,6 @@
     <ClInclude Include="Engineering.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Geometric\Circle.h" />
-    <ClInclude Include="Geometric\Composite.h" />
     <ClInclude Include="Geometric\Geometry.h" />
     <ClInclude Include="Geometric\HollowCircle.h" />
     <ClInclude Include="Geometric\HollowRectangle.h" />
@@ -269,7 +268,6 @@
     <ClCompile Include="Buckling.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Geometric\Circle.cpp" />
-    <ClCompile Include="Geometric\Composite.cpp" />
     <ClCompile Include="Geometric\Geometry.cpp" />
     <ClCompile Include="Geometric\HollowCircle.cpp" />
     <ClCompile Include="Geometric\HollowRectangle.cpp" />

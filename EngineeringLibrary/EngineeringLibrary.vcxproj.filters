@@ -183,9 +183,6 @@
     <ClInclude Include="Geometric\HollowRectangle.h">
       <Filter>Geometric\Header files</Filter>
     </ClInclude>
-    <ClInclude Include="Geometric\Composite.h">
-      <Filter>Geometric\Header files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -294,9 +291,6 @@
       <Filter>Geometric\Source files</Filter>
     </ClCompile>
     <ClCompile Include="Geometric\HollowRectangle.cpp">
-      <Filter>Geometric\Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="Geometric\Composite.cpp">
       <Filter>Geometric\Source files</Filter>
     </ClCompile>
   </ItemGroup>
