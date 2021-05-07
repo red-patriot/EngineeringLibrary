@@ -28,12 +28,12 @@ namespace eng {
     HollowCircle(const Length& od = 0_m, const Length& id = 0_m,
                  const LengthVec& c = {0_m, 0_m, 0_m});
 
-    Length outer_diameter() const { return _outer_diameter; }
-    Length inner_diameter() const { return _inner_diameter; }
+    Length outer_diameter() const { return outer_diameter_; }
+    Length inner_diameter() const { return inner_diameter_; }
 
   private:
-    Length _outer_diameter;
-    Length _inner_diameter;
+    Length outer_diameter_;
+    Length inner_diameter_;
   };
 
 };  // namespace eng

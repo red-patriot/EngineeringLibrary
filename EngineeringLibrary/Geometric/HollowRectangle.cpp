@@ -6,10 +6,10 @@ namespace eng {
   HollowRectangle::HollowRectangle(const Length& ob, const Length& oh, 
                                    const Length& ib, const Length& ih, 
                                    const LengthVec& c) :
-    _outer_base(ob),
-    _outer_height(oh),
-    _inner_base(ib),
-    _inner_height(ih),
+    outer_base_(ob),
+    outer_height_(oh),
+    inner_base_(ib),
+    inner_height_(ih),
     Geometry((ob*oh) - (ib*ih),
              {((ob*oh*oh*oh) 
                - (ib*ih*ih*ih))/12,

@@ -31,16 +31,16 @@ namespace eng {
                     const Length& ib = 0_m, const Length& ih = 0_m,
                     const LengthVec& c = LengthVec(0_m, 0_m, 0_m));
 
-    Length outer_base() const { return _outer_base; }
-    Length outer_height() const { return _outer_height; }
-    Length inner_base() const { return _inner_base; }
-    Length inner_height() const { return _inner_height; }
+    Length outer_base() const { return outer_base_; }
+    Length outer_height() const { return outer_height_; }
+    Length inner_base() const { return inner_base_; }
+    Length inner_height() const { return inner_height_; }
 
   private:
-    Length _outer_base;
-    Length _outer_height;
-    Length _inner_base;
-    Length _inner_height;
+    Length outer_base_;
+    Length outer_height_;
+    Length inner_base_;
+    Length inner_height_;
   };
 
 };  // namespace eng

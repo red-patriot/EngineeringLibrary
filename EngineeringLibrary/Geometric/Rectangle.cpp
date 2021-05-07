@@ -6,8 +6,8 @@ namespace eng {
   Rectangle::Rectangle(const Length& b, 
                        const Length& h, 
                        const LengthVec& c) :
-    _base(b),
-    _height(h),
+    base_(b),
+    height_(h),
     Geometry(b*h,
              {b*h*h*h/12,
               b*b*b*h/12,

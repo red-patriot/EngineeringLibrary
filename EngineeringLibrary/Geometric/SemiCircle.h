@@ -28,10 +28,10 @@ namespace eng {
   
     /** Returns the diameter of the SemiCircle
      */
-    Length diameter() const { return _diameter; }
+    Length diameter() const { return diameter_; }
 
   private:
-    Length _diameter;
+    Length diameter_;
 
   private:
 

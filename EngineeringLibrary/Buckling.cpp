@@ -3,8 +3,6 @@
 
 #include <cmath>
 
-#include "GeometricProperty.h"
-
 #include "Units/MomentOfArea.h"
 #include "Units/Force.h"
 

@@ -9,7 +9,7 @@
  *********************************************************************/
 
 #include "Material.h"
-#include "Geometric/Geometric.h"
+#include "Geometry.h"
 
 #include "Units/Area.h"
 #include "Units/Length.h"
