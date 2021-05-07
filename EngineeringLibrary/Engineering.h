@@ -10,9 +10,8 @@
 #include "Material.h"
 #include "Stress.h"
 
-// Geometric Properties
+// Geometry
 #include "Geometry.h"
-#include "GeometricProperty.h"
 
 // Bolt calculations
 #include "Bolt.h"

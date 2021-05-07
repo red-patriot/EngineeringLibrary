@@ -14,25 +14,25 @@ namespace eng {
   Geometry::Geometry(const Area & area, 
                      const AreaMomentofInertia& moi, 
                      const LengthVec & centroid) :
-    _centroid(centroid),
-    _area(area),
-    _MOI(moi) { }
+    centroid_(centroid),
+    area_(area),
+    MOI_(moi) { }
 
   LengthVec Geometry::centroid() const {
-    return _centroid;
+    return centroid_;
   }
 
   Area Geometry::area() const {
-    return _area;
+    return area_;
   }
 
   Geometry::AreaMomentofInertia Geometry::moment_of_inertia() const {
-    return _MOI;
+    return MOI_;
   }
 
   Geometry::AreaMomentofInertia Geometry::moment_of_inertia(const LengthVec& pt) const {
-    Length x = pt.x() - _centroid.x();
-    Length y = pt.y() - _centroid.y();
+    Length x = pt.x() - centroid_.x();
+    Length y = pt.y() - centroid_.y();
     AreaMomentofInertia ret = moment_of_inertia();
     ret.Ixx += area()*(y*y);
     ret.Iyy += area()*(x*x);
@@ -42,18 +42,54 @@ namespace eng {
 
   Geometry::AreaMomentofInertia Geometry::moment_of_inertia(const Angle & theta) const {
     AreaMomentofInertia ret;
-    ret.Ixx = (_MOI.Ixx + _MOI.Iyy)/2 + (_MOI.Ixx - _MOI.Iyy)/2 * cos(2*theta) - _MOI.Ixy * sin(2*theta);
-    ret.Iyy = (_MOI.Ixx + _MOI.Iyy)/2 - (_MOI.Ixx - _MOI.Iyy)/2 * cos(2*theta) + _MOI.Ixy * sin(2*theta);
-    ret.Ixy = (_MOI.Ixx - _MOI.Iyy)/2 * sin(2*theta) + _MOI.Ixy * cos(2*theta);
+    ret.Ixx = (MOI_.Ixx + MOI_.Iyy)/2 + (MOI_.Ixx - MOI_.Iyy)/2 * cos(2*theta) - MOI_.Ixy * sin(2*theta);
+    ret.Iyy = (MOI_.Ixx + MOI_.Iyy)/2 - (MOI_.Ixx - MOI_.Iyy)/2 * cos(2*theta) + MOI_.Ixy * sin(2*theta);
+    ret.Ixy = (MOI_.Ixx - MOI_.Iyy)/2 * sin(2*theta) + MOI_.Ixy * cos(2*theta);
     return ret;
   }
 
-  Geometry eng::operator+(const Geometry & lh, const Geometry & rh) {
-    Area composite_area = lh._area + rh._area;
+  SecondMomentOfArea Geometry::Ixx() const {
+      return MOI_.Ixx;
+  }
 
-    LengthVec composite_centroid = {(lh._centroid.x()*lh._area + rh._centroid.x()*rh._area)/composite_area,
-      (lh._centroid.y()*lh._area + rh._centroid.y()*rh._area)/composite_area,
-      (lh._centroid.z()*lh._area + rh._centroid.z()*rh._area)/composite_area};
+  SecondMomentOfArea Geometry::Ixx(const Length & y) const {
+    return Ixx() + area()*(y*y);
+  }
+
+  SecondMomentOfArea Geometry::Ixx(const Angle & theta) const {
+      return (MOI_.Ixx + MOI_.Iyy)/2 + (MOI_.Ixx - MOI_.Iyy)/2 * cos(2*theta) - MOI_.Ixy * sin(2*theta);
+  }
+
+  SecondMomentOfArea Geometry::Iyy() const {
+      return MOI_.Iyy;
+  }
+
+  SecondMomentOfArea Geometry::Iyy(const Length & x) const {
+    return Iyy() + area()*(x*x);
+  }
+
+  SecondMomentOfArea Geometry::Iyy(const Angle & theta) const {
+    return (MOI_.Ixx + MOI_.Iyy)/2 - (MOI_.Ixx - MOI_.Iyy)/2 * cos(2*theta) + MOI_.Ixy * sin(2*theta);
+  }
+
+  SecondMomentOfArea Geometry::Ixy() const {
+      return MOI_.Ixy;
+  }
+
+  SecondMomentOfArea Geometry::Ixy(const Length & x, const Length & y) const {
+    return MOI_.Ixy + area_*x*y;
+  }
+
+  SecondMomentOfArea Geometry::Ixy(const Angle & theta) const {
+    return (MOI_.Ixx - MOI_.Iyy)/2 * sin(2*theta) + MOI_.Ixy * cos(2*theta);
+  }
+
+  Geometry eng::operator+(const Geometry & lh, const Geometry & rh) {
+    Area composite_area = lh.area_ + rh.area_;
+
+    LengthVec composite_centroid = {(lh.centroid_.x()*lh.area_ + rh.centroid_.x()*rh.area_)/composite_area,
+      (lh.centroid_.y()*lh.area_ + rh.centroid_.y()*rh.area_)/composite_area,
+      (lh.centroid_.z()*lh.area_ + rh.centroid_.z()*rh.area_)/composite_area};
     
 
     Geometry::AreaMomentofInertia lh_moi = lh.moment_of_inertia(composite_centroid);
@@ -66,11 +102,11 @@ namespace eng {
   }
 
   Geometry eng::operator-(const Geometry & lh, const Geometry & rh) {
-    Area composite_area = lh._area - rh._area;
+    Area composite_area = lh.area_ - rh.area_;
 
-    LengthVec composite_centroid = {(lh._centroid.x()*lh._area - rh._centroid.x()*rh._area)/composite_area,
-      (lh._centroid.y()*lh._area - rh._centroid.y()*rh._area)/composite_area,
-      (lh._centroid.z()*lh._area - rh._centroid.z()*rh._area)/composite_area};
+    LengthVec composite_centroid = {(lh.centroid_.x()*lh.area_ - rh.centroid_.x()*rh.area_)/composite_area,
+      (lh.centroid_.y()*lh.area_ - rh.centroid_.y()*rh.area_)/composite_area,
+      (lh.centroid_.z()*lh.area_ - rh.centroid_.z()*rh.area_)/composite_area};
 
     Geometry::AreaMomentofInertia lh_moi = lh.moment_of_inertia(composite_centroid);
     Geometry::AreaMomentofInertia rh_moi = rh.moment_of_inertia(composite_centroid);
@@ -79,6 +115,10 @@ namespace eng {
       lh_moi.Ixy - rh_moi.Ixy};
 
     return Geometry(composite_area, composite_moi, composite_centroid);
+  }
+
+  Length radius_of_gyration(const SecondMomentOfArea & I, const typename Area & a) {
+      return sqrt(I/a);
   }
 
 };  // namespace eng

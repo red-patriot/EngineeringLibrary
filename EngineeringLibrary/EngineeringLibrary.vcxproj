@@ -219,7 +219,6 @@
     <ClInclude Include="Buckling.h" />
     <ClInclude Include="Engineering.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="GeometricProperty.h" />
     <ClInclude Include="Geometric\Circle.h" />
     <ClInclude Include="Geometric\Composite.h" />
     <ClInclude Include="Geometric\Geometry.h" />
@@ -269,7 +268,6 @@
     <ClCompile Include="Bolt.cpp" />
     <ClCompile Include="Buckling.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="GeometricProperty.cpp" />
     <ClCompile Include="Geometric\Circle.cpp" />
     <ClCompile Include="Geometric\Composite.cpp" />
     <ClCompile Include="Geometric\Geometry.cpp" />

@@ -153,9 +153,6 @@
     <ClInclude Include="Statics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeometricProperty.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Geometry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -277,9 +274,6 @@
     </ClCompile>
     <ClCompile Include="StaticSystems\AppliedMoment.cpp">
       <Filter>Statics\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeometricProperty.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\Viscosity.cpp">
       <Filter>Units\Source Files</Filter>
