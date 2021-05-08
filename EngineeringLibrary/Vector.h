@@ -23,75 +23,75 @@ namespace eng {
     typedef Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> vec_t;
   public:
     Vector(const unit_t& x = unit_t(0), const unit_t& y = unit_t(0), const unit_t& z = unit_t(0)) :
-      _x(x), 
-      _y(y), 
-      _z(z) { }
+      mX(x), 
+      mY(y), 
+      mZ(z) { }
     explicit Vector(const double& x, const double& y, const double& z) : 
-      _x(x),
-      _y(y),
-      _z(z) { }
+      mX(x),
+      mY(y),
+      mZ(z) { }
     explicit Vector(const Vector<0,0,0,0,0,0,0>& values) : 
-      _x(values.x()), 
-      _y(values.y()), 
-      _z(values.z()) { }
+      mX(values.x()), 
+      mY(values.y()), 
+      mZ(values.z()) { }
 
     /** Get the x component of the vector. */
-    unit_t x() const { return _x; }
+    unit_t x() const { return mX; }
     /** Set the x component of the vector. */
-    void x(const unit_t& new_x) { _x = new_x; }
+    void x(const unit_t& x) { mX = x; }
 
     /** Get the y component of the vector. */
-    unit_t y() const { return _y; }
+    unit_t y() const { return mY; }
     /** Set the y component of the vector. */
-    void y(const unit_t& new_y) { _y = new_y; }
+    void y(const unit_t& y) { mY = y; }
 
     /** Get the z component of the vector. */
-    unit_t z() const { return _z; }
+    unit_t z() const { return mZ; }
     /** Set the z component of the vector. */
-    void z(const unit_t& new_z) { _z = new_z; }
+    void z(const unit_t& z) { mZ = z; }
 
     /** Calculate the length of the vector. */
     unit_t length() const {
-      return sqrt<2*MN, 2*LN, 2*TN, 2*CN, 2*TeN, 2*AN, 2*LuN, MD, LD, TD, CD, TeD, AD, LuD>(_x*_x + _y*_y + _z*_z);
+      return sqrt<2*MN, 2*LN, 2*TN, 2*CN, 2*TeN, 2*AN, 2*LuN, MD, LD, TD, CD, TeD, AD, LuD>(mX*mX + mY*mY + mZ*mZ);
     }
 
     /** Calculate the Euclidean norm of the vector, which is equivalent to its length.  */
     unit_t norm() const {
-      return sqrt<2*MN, 2*LN, 2*TN, 2*CN, 2*TeN, 2*AN, 2*LuN, MD, LD, TD, CD, TeD, AD, LuD>(_x*_x + _y*_y + _z*_z);
+      return sqrt<2*MN, 2*LN, 2*TN, 2*CN, 2*TeN, 2*AN, 2*LuN, MD, LD, TD, CD, TeD, AD, LuD>(mX*mX + mY*mY + mZ*mZ);
     }
 
     vec_t& operator+= (const vec_t& rh) {
-      _x += rh._x;
-      _y += rh._y;
-      _z += rh._z;
+      mX += rh.mX;
+      mY += rh.mY;
+      mZ += rh.mZ;
       return *this;
     }
 
     vec_t& operator-= (const vec_t& rh) {
-      _x -= rh._x;
-      _y -= rh._y;
-      _z -= rh._z;
+      mX -= rh.mX;
+      mY -= rh.mY;
+      mZ -= rh.mZ;
       return *this;
     }
 
     vec_t& operator*= (const double& rh) {
-      _x *= rh;
-      _y *= rh;
-      _z *= rh;
+      mX *= rh;
+      mY *= rh;
+      mZ *= rh;
       return *this;
     }
 
     vec_t& operator/= (const double& rh) {
-      _x /= rh;
-      _y /= rh;
-      _z /= rh;
+      mX /= rh;
+      mY /= rh;
+      mZ /= rh;
       return *this;
     }
 
   private:
-    unit_t _x;
-    unit_t _y;
-    unit_t _z;
+    unit_t mX;
+    unit_t mY;
+    unit_t mZ;
   };
 
   /** Normalize a vector.
@@ -158,19 +158,19 @@ namespace eng {
     operator* (const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return Vector<_numa(MN1, MD1, MN2, MD2),
-      _numa(LN1, LD1, LN2, LD2),
-      _numa(TN1, TD1, TN2, TD2),
-      _numa(CN1, CD1, CN2, CD2),
-      _numa(TeN1, TeD1, TeN2, TeD2),
-      _numa(AN1, AD1, AN2, AD2),
-      _numa(LuN1, LuD1, LuN2, LuD2),
-      _denoma(MN1, MD1, MN2, MD2),
-      _denoma(LN1, LD1, LN2, LD2),
-      _denoma(TN1, TD1, TN2, TD2),
-      _denoma(CN1, CD1, CN2, CD2),
-      _denoma(TeN1, TeD1, TeN2, TeD2),
-      _denoma(AN1, AD1, AN2, AD2),
-      _denoma(LuN1, LuD1, LuN2, LuD2)>(lh.x() * rh,
+      numa(LN1, LD1, LN2, LD2),
+      numa(TN1, TD1, TN2, TD2),
+      numa(CN1, CD1, CN2, CD2),
+      numa(TeN1, TeD1, TeN2, TeD2),
+      numa(AN1, AD1, AN2, AD2),
+      numa(LuN1, LuD1, LuN2, LuD2),
+      denoma(MN1, MD1, MN2, MD2),
+      denoma(LN1, LD1, LN2, LD2),
+      denoma(TN1, TD1, TN2, TD2),
+      denoma(CN1, CD1, CN2, CD2),
+      denoma(TeN1, TeD1, TeN2, TeD2),
+      denoma(AN1, AD1, AN2, AD2),
+      denoma(LuN1, LuD1, LuN2, LuD2)>(lh.x() * rh,
                                        lh.y() * rh,
                                        lh.z() * rh);
   }
@@ -224,20 +224,21 @@ namespace eng {
     auto
     cross(const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
           const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
-    return Vector<_numa(MN1, MD1, MN2, MD2),
-      _numa(LN1, LD1, LN2, LD2),
-      _numa(TN1, TD1, TN2, TD2),
-      _numa(CN1, CD1, CN2, CD2),
-      _numa(TeN1, TeD1, TeN2, TeD2),
-      _numa(AN1, AD1, AN2, AD2),
-      _numa(LuN1, LuD1, LuN2, LuD2),
-      _denoma(MN1, MD1, MN2, MD2),
-      _denoma(LN1, LD1, LN2, LD2),
-      _denoma(TN1, TD1, TN2, TD2),
-      _denoma(CN1, CD1, CN2, CD2),
-      _denoma(TeN1, TeD1, TeN2, TeD2),
-      _denoma(AN1, AD1, AN2, AD2),
-      _denoma(LuN1, LuD1, LuN2, LuD2)>(lh.y()*rh.z() - lh.z()*rh.y(),
+    return Vector<
+      unitManagement::numa(MN1, MD1, MN2, MD2),
+      unitManagement::numa(LN1, LD1, LN2, LD2),
+      unitManagement::numa(TN1, TD1, TN2, TD2),
+      unitManagement::numa(CN1, CD1, CN2, CD2),
+      unitManagement::numa(TeN1, TeD1, TeN2, TeD2),
+      unitManagement::numa(AN1, AD1, AN2, AD2),
+      unitManagement::numa(LuN1, LuD1, LuN2, LuD2),
+      unitManagement::denoma(MN1, MD1, MN2, MD2),
+      unitManagement::denoma(LN1, LD1, LN2, LD2),
+      unitManagement::denoma(TN1, TD1, TN2, TD2),
+      unitManagement::denoma(CN1, CD1, CN2, CD2),
+      unitManagement::denoma(TeN1, TeD1, TeN2, TeD2),
+      unitManagement::denoma(AN1, AD1, AN2, AD2),
+      unitManagement::denoma(LuN1, LuD1, LuN2, LuD2)>(lh.y()*rh.z() - lh.z()*rh.y(),
                                        lh.z()*rh.x() - lh.x()*rh.z(),
                                        lh.x()*rh.y() - lh.y()*rh.x());
   }
@@ -252,20 +253,21 @@ namespace eng {
     auto 
     operator/ (const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh, 
                const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
-    return Vector<_nums(MN1, MD1, MN2, MD2),
-      _nums(LN1, LD1, LN2, LD2),
-      _nums(TN1, TD1, TN2, TD2),
-      _nums(CN1, CD1, CN2, CD2),
-      _nums(TeN1, TeD1, TeN2, TeD2),
-      _nums(AN1, AD1, AN2, AD2),
-      _nums(LuN1, LuD1, LuN2, LuD2),
-      _denoms(MN1, MD1, MN2, MD2),
-      _denoms(LN1, LD1, LN2, LD2),
-      _denoms(TN1, TD1, TN2, TD2),
-      _denoms(CN1, CD1, CN2, CD2),
-      _denoms(TeN1, TeD1, TeN2, TeD2),
-      _denoms(AN1, AD1, AN2, AD2),
-      _denoms(LuN1, LuD1, LuN2, LuD2)>(lh.x()/rh,
+    return Vector<
+      unitManagement::nums(MN1, MD1, MN2, MD2),
+      unitManagement::nums(LN1, LD1, LN2, LD2),
+      unitManagement::nums(TN1, TD1, TN2, TD2),
+      unitManagement::nums(CN1, CD1, CN2, CD2),
+      unitManagement::nums(TeN1, TeD1, TeN2, TeD2),
+      unitManagement::nums(AN1, AD1, AN2, AD2),
+      unitManagement::nums(LuN1, LuD1, LuN2, LuD2),
+      unitManagement::denoms(MN1, MD1, MN2, MD2),
+      unitManagement::denoms(LN1, LD1, LN2, LD2),
+      unitManagement::denoms(TN1, TD1, TN2, TD2),
+      unitManagement::denoms(CN1, CD1, CN2, CD2),
+      unitManagement::denoms(TeN1, TeD1, TeN2, TeD2),
+      unitManagement::denoms(AN1, AD1, AN2, AD2),
+      unitManagement::denoms(LuN1, LuD1, LuN2, LuD2)>(lh.x()/rh,
                                        lh.y()/rh,
                                        lh.z()/rh);
   }

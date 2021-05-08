@@ -24,9 +24,9 @@ namespace eng {
     typedef UnitBase<0, 0, 1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double sec() const { return _value; }
-    double minute() const { return _value / 60; }
-    double hour() const { return _value / 3600; }
+    double sec() const { return mValue; }
+    double minute() const { return mValue / 60; }
+    double hour() const { return mValue / 3600; }
   };
 
   using Time = UnitBase<0, 0, 1, 0, 0, 0, 0>;

@@ -23,9 +23,9 @@ namespace eng {
     typedef UnitBase<0, 0, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double Hz() const { return _value; }
-    double kHz() const { return _value * 0.001; }
-    double MHz() const { return _value * 0.000'001; }
+    double Hz() const { return mValue; }
+    double kHz() const { return mValue * 0.001; }
+    double MHz() const { return mValue * 0.000'001; }
   };
 
   using Frequency = UnitBase<0, 0, -1, 0, 0, 0, 0>;

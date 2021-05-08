@@ -23,10 +23,10 @@ namespace eng {
     typedef UnitBase<0, 1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double mpsec2() const { return _value; }
+    double mpsec2() const { return mValue; }
     
-    double inpsec2() const { return _value * (100/2.54); }
-    double ftpsec2() const { return _value * (100/(30.48)); }
+    double inpsec2() const { return mValue * (100/2.54); }
+    double ftpsec2() const { return mValue * (100/(30.48)); }
   };
 
   using Acceleration = UnitBase<0, 1, -2, 0, 0, 0, 0>;

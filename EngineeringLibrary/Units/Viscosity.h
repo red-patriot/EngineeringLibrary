@@ -23,12 +23,12 @@ namespace eng {
     typedef UnitBase<1, -1, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double kgpms() const { return _value; }
-    double Pas() const { return _value; }
-    double Nspm2() const { return _value; }
-    double P() const { return _value * 10; }
+    double kgpms() const { return mValue; }
+    double Pas() const { return mValue; }
+    double Nspm2() const { return mValue; }
+    double P() const { return mValue * 10; }
 
-    double lbspft2() const { return _value * 0.671968900; }
+    double lbspft2() const { return mValue * 0.671968900; }
   };
 
   using DViscosity = UnitBase<1, -1, -1, 0, 0, 0, 0>;
@@ -57,10 +57,10 @@ namespace eng {
     typedef UnitBase<0, 2, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double m2ps() const { return _value; }
-    double St() const { return _value * 10'000.0; }
+    double m2ps() const { return mValue; }
+    double St() const { return mValue * 10'000.0; }
     
-    double ft2ps() const { return _value * 10.763'91; }
+    double ft2ps() const { return mValue * 10.763'91; }
   };
 
   using  KViscosity = UnitBase<0, 2, -1, 0, 0, 0, 0>;

@@ -23,10 +23,10 @@ namespace eng {
     typedef UnitBase<1, 0, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double g() const { return _value * 1000; }
-    double kg() const { return _value; }
+    double g() const { return mValue * 1000; }
+    double kg() const { return mValue; }
 
-    double slug() const { return _value * 0.06852176556196105; }
+    double slug() const { return mValue * 0.06852176556196105; }
   };
 
   using Mass = UnitBase<1, 0, 0, 0, 0, 0, 0>;

@@ -23,11 +23,11 @@ namespace eng {
     typedef UnitBase<1, 0, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double Nspm() const { return _value; }
-    double kNspm() const { return _value / 1000; }
+    double Nspm() const { return mValue; }
+    double kNspm() const { return mValue / 1000; }
 
-    double lbspin() const { return _value * .0254/4.4482216152605; }
-    double lbspft() const { return _value * .3048/4.4482216152605; }
+    double lbspin() const { return mValue * .0254/4.4482216152605; }
+    double lbspft() const { return mValue * .3048/4.4482216152605; }
   };
 
   using Damping = UnitBase<1, 0, -1, 0, 0, 0, 0>;

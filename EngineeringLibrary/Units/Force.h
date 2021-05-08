@@ -24,11 +24,11 @@ namespace eng {
     typedef UnitBase<1, 1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double N() const { return _value; }
-    double kN() const { return _value * 0.001; }
+    double N() const { return mValue; }
+    double kN() const { return mValue * 0.001; }
 
-    double lbf() const { return _value * 0.224808943099711; }
-    double kips() const { return _value * 0.000224808943099711;  }
+    double lbf() const { return mValue * 0.224808943099711; }
+    double kips() const { return mValue * 0.000224808943099711;  }
   };
 
   using Force = UnitBase<1, 1, -2, 0, 0, 0, 0>;

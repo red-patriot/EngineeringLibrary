@@ -24,14 +24,14 @@ namespace eng {
     typedef UnitBase<0, 1, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double mm() const { return _value * 1000; }
-    double cm() const { return _value * 100; }
-    double m() const { return _value; }
-    double km() const { return _value * 0.001; }
+    double mm() const { return mValue * 1000; }
+    double cm() const { return mValue * 100; }
+    double m() const { return mValue; }
+    double km() const { return mValue * 0.001; }
     
-    double in() const { return _value * (100/2.54); }
-    double ft() const { return _value * (100/30.48); }
-    double mi() const { return _value * (100/160'934.4); }
+    double in() const { return mValue * (100/2.54); }
+    double ft() const { return mValue * (100/30.48); }
+    double mi() const { return mValue * (100/160'934.4); }
   };
 
   using Length = UnitBase<0, 1, 0, 0, 0, 0, 0>;

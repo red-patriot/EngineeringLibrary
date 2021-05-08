@@ -24,21 +24,21 @@ namespace eng {
   class UnitBase<0, 0, 0, 0, 0, 0, 0> {
     typedef UnitBase<0, 0, 0, 0, 0, 0, 0> this_t;
   public:
-    UnitBase(const double& n = 0) : _value(n) { }
-    double value() const { return _value; }
+    UnitBase(const double& n = 0) : mValue(n) { }
+    double value() const { return mValue; }
 
-    double rad() const { return _value; }
-    double deg() const { return _value * (pi/180); }
+    double rad() const { return mValue; }
+    double deg() const { return mValue * (pi/180); }
 
-    this_t& operator+= (const this_t& rh) { _value += rh.value(); return *this; }
-    this_t& operator-= (const this_t& rh) { _value -= rh.value(); return *this; }
-    this_t& operator*= (const double& rh) { _value *= rh; return *this; }
-    this_t& operator/= (const double& rh) { _value /= rh; return *this; }
+    this_t& operator+= (const this_t& rh) { mValue += rh.value(); return *this; }
+    this_t& operator-= (const this_t& rh) { mValue -= rh.value(); return *this; }
+    this_t& operator*= (const double& rh) { mValue *= rh; return *this; }
+    this_t& operator/= (const double& rh) { mValue /= rh; return *this; }
 
-    operator double() { return _value; }
+    operator double() { return mValue; }
 
   protected:
-    double _value;
+    double mValue;
   };
 
   using Unitless = UnitBase<0, 0, 0, 0, 0, 0, 0>;

@@ -23,12 +23,12 @@ namespace eng {
     typedef UnitBase<0, 2, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double mm2() const { return _value * 1'000'000; }
-    double cm2() const { return _value * 10'000; }
-    double m2() const { return _value; }
+    double mm2() const { return mValue * 1'000'000; }
+    double cm2() const { return mValue * 10'000; }
+    double m2() const { return mValue; }
 
-    double in2() const { return _value * 10'000/(6.4516); }
-    double ft2() const { return _value * 10'000/(929.0304); }
+    double in2() const { return mValue * 10'000/(6.4516); }
+    double ft2() const { return mValue * 10'000/(929.0304); }
   };
 
   using Area = UnitBase<0, 2, 0, 0, 0, 0, 0>;
