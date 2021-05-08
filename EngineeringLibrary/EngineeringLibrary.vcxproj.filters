@@ -153,14 +153,11 @@
     <ClInclude Include="Statics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Geometry.h">
+    <ClInclude Include="Geometric.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Viscosity.h">
       <Filter>Units\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Geometric\Geometric.h">
-      <Filter>Geometric\Header files</Filter>
     </ClInclude>
     <ClInclude Include="Geometric\Geometry.h">
       <Filter>Geometric\Header files</Filter>

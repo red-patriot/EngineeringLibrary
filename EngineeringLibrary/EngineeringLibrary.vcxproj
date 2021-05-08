@@ -226,8 +226,7 @@
     <ClInclude Include="Geometric\pch.h" />
     <ClInclude Include="Geometric\Rectangle.h" />
     <ClInclude Include="Geometric\SemiCircle.h" />
-    <ClInclude Include="Geometry.h" />
-    <ClInclude Include="Geometric\Geometric.h" />
+    <ClInclude Include="Geometric.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Statics.h" />

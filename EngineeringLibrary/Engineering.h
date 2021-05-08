@@ -6,20 +6,23 @@
 // Include vectors
 #include "Vector.h"
 
-// Materials properties
+// Include Materials
 #include "Material.h"
 #include "Stress.h"
 
-// Geometry
-#include "Geometry.h"
+// Include Geometry
+#include "Geometric.h"
 
-// Bolt calculations
+// Include Bolt calculations
 #include "Bolt.h"
 
-// Buckling analysis
+// Include Buckling analysis
 #include "Buckling.h"
 
-// Dynamic System analysis
+// Include Static Systems Analysis
+#include "Statics.h"
+
+// Include Dynamic System analysis
 #include "SystemDynamics.h"
 
 /* TODO Units:

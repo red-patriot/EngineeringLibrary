@@ -1,13 +1,6 @@
 #pragma once
 
-/*****************************************************************//**
- * \file   Geometric.h
- * \brief  Includes all functionality from the geometric module
- * 
- * 
- * \author bltan
- * \date   January 2021
- *********************************************************************/
+
 
 // Base geometry
 #include "Geometry.h"
