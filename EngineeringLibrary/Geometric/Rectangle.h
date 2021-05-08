@@ -15,6 +15,7 @@ namespace eng {
 
   /** A rectangle
    * \class Rectangle
+   * \addtogroup Geometric
    */
   class Rectangle : public Geometry {
   public:

@@ -18,6 +18,7 @@ namespace eng {
 
   /** A generic 2D geometry
    * \class Geometry
+   * \addtogroup Geometric
    *
    * \note The user may define any children of Geometry not defined here,
    *  but all Geometry children must define calculate_area, which returns the 

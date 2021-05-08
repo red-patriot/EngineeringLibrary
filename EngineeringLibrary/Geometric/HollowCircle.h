@@ -15,6 +15,7 @@ namespace eng {
 
   /** A circle with a circular hole around its center
    * \class HollowCircle
+   * \addtogroup Geometric
    */
   class HollowCircle : public Geometry {
   public:

@@ -15,6 +15,7 @@ namespace eng {
   
   /** A semi circle
    * \class SemiCircle
+   * \addtogroup Geometric
    */
   class SemiCircle : public Geometry {
   public:

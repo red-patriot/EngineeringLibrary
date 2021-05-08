@@ -9,6 +9,11 @@
  * \date   January 2021
  *********************************************************************/
 
+/**
+ * \defgroup Geometric Geometric
+ * This group contains functionality for geometric analysis.
+ */
+
 // Geometry
 #include "Geometric\Geometry.h"
 

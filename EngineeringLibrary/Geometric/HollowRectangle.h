@@ -14,8 +14,9 @@
 namespace eng {
 
   /** A rectangle with a rectangular hole around its center
- * \class HollowRectangle
- */
+   * \class HollowRectangle
+   * \addtogroup Geometric
+   */
   class HollowRectangle : public Geometry {
   public:
     /**

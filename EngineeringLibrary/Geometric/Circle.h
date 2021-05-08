@@ -15,6 +15,7 @@ namespace eng {
 
   /** A circle
    * \class Circle
+   * \addtogroup Geometric
    */
   class Circle : public Geometry {
   public:
