@@ -9,9 +9,9 @@ namespace eng {
     base_(b),
     height_(h),
     Geometry(b*h,
-             {b*h*h*h/12,
-              b*b*b*h/12,
-              0_m4},
+             b*h*h*h/12,
+             b*b*b*h/12,
+             0_m4,
              c) { }
 
 };  // namespace eng

@@ -216,7 +216,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bolt.h" />
-    <ClInclude Include="Buckling.h" />
     <ClInclude Include="Engineering.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Geometric\Circle.h" />
@@ -264,7 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bolt.cpp" />
-    <ClCompile Include="Buckling.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Geometric\Circle.cpp" />
     <ClCompile Include="Geometric\Geometry.cpp" />

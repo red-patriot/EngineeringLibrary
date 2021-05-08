@@ -14,7 +14,7 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace GeometryTests {
   TEST_CLASS(TestGeometry) {
-    eng::Geometry g{2_m2, {5.4_m4, 2.6_m4, 3.5_m4}, {0_m, 0_m, 3.5_m}};
+    eng::Geometry g{2_m2, 5.4_m4, 2.6_m4, 3.5_m4, {0_m, 0_m, 3.5_m}};
   public:
     TEST_METHOD(TestArea) {
       Assert::AreEqual(2_m2, g.area());
@@ -182,7 +182,7 @@ namespace GeometryTests {
 
       eng::Geometry bearing_block = base + ring - hole;
 
-      Assert::AreEqual(886.35986_in4, bearing_block.moment_of_inertia({0_in, 0_in, 0_in}).Ixx);
+      Assert::AreEqual(886.35986_in4, bearing_block.Ixx(0_in));
     }
   };
 };  // namespace GeometryTests

@@ -16,9 +16,6 @@
 // Include Bolt calculations
 #include "Bolt.h"
 
-// Include Buckling analysis
-#include "Buckling.h"
-
 // Include Static Systems Analysis
 #include "Statics.h"
 

@@ -11,11 +11,11 @@ namespace eng {
     inner_base_(ib),
     inner_height_(ih),
     Geometry((ob*oh) - (ib*ih),
-             {((ob*oh*oh*oh) 
-               - (ib*ih*ih*ih))/12,
-              ((ob*ob*ob*oh)
-               - (ib*ib*ib*ih))/12,
-              0_m4},
+             ((ob*oh*oh*oh) 
+              - (ib*ih*ih*ih))/12,
+             ((ob*ob*ob*oh)
+              - (ib*ib*ib*ih))/12,
+             0_m4,
              c) { }
 
 };  // namespace eng
