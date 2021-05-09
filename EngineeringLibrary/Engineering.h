@@ -21,12 +21,3 @@
 
 // Include Dynamic System analysis
 #include "SystemDynamics.h"
-
-/* TODO Units:
- */
-
-/* TODO:
- *    Update sample materials information
- *    Electrical Circuits analysis
- *    Fluids analysis
- */
