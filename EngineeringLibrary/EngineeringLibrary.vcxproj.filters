@@ -40,6 +40,15 @@
     <Filter Include="Geometric\Source files">
       <UniqueIdentifier>{7e986fb9-064d-4025-9b99-49227500e9de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Controls">
+      <UniqueIdentifier>{bedaa1ca-713f-479f-8b49-194e8199c467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controls\Header Files">
+      <UniqueIdentifier>{24d7dce0-56a4-44ef-8e92-9d7fdec15de8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controls\Source Files">
+      <UniqueIdentifier>{5cb03e1f-a771-4e59-8d33-54bfd29e2f34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
