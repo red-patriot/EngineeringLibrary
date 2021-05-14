@@ -18,6 +18,7 @@ namespace eng {
 
   /** A generic 2D geometry
    * \class Geometry
+   * 
    * \addtogroup Geometric
    */
   class Geometry {
