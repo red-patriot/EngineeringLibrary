@@ -58,7 +58,8 @@ namespace eng {
   Length operator"" _mi (unsigned long long val);
 
   // Lengths are commonly used as vectors
-  using LengthVec = Vector<0, 1, 0, 0, 0, 0, 0>;
+  template<size_t N>
+  using LengthVec = Vector<N, 0, 1, 0, 0, 0, 0, 0>;
 
 }; // namespace eng
 

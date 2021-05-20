@@ -3,7 +3,7 @@
 
 namespace eng {
 
-  Circle::Circle(const Length& d, const LengthVec& c) :
+  Circle::Circle(const Length& d, const LengthVec<3>& c) :
     diameter_(d),
     Geometry(pi*d*d/4,
              pi*d*d*d*d/64, 

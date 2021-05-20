@@ -41,13 +41,13 @@ namespace eng {
      *
      * \param M The Moment applied
      */
-    AppliedMoment(const MomentVec M);
+    AppliedMoment(const MomentVec<3> M);
     /**
      * Construct an AppliedMoment with a known direction
      *
      * \param u A unit vector in the direction of the moment.
      */
-    AppliedMoment(const UnitlessVec u);
+    AppliedMoment(const UnitlessVec<3> u);
     /** Construct an AppliedMoment with a known direction
      *
      * \param i_hat The x component of the direction of the moment
@@ -61,7 +61,7 @@ namespace eng {
      * \return A std::optional<eng::UnitlessVec> in the direction in the moment, 
      *   if the direction can be determined
      */
-    std::optional<UnitlessVec> get_direction() const;
+    std::optional<UnitlessVec<3>> get_direction() const;
     /** Get the magnitude of the AppliedMoment, if possible
      *
      * \return A std::optional<eng::Moment> depending on if this moment's 
@@ -73,7 +73,7 @@ namespace eng {
      * \return A std::optional<eng::MomentVec> depending on if the moment is 
      *   known
      */
-    std::optional<MomentVec> get_moment_vector() const;
+    std::optional<MomentVec<3>> get_moment_vector() const;
 
   private:
     enum class State {
@@ -82,12 +82,12 @@ namespace eng {
       KNOWN_DIRECTION,
     } _state;
 
-    UnitlessVec _moment_or_direction;
+    UnitlessVec<3> _moment_or_direction;
 
     /** Set the force in the AppliedMoment.
      * This can only be a known moment, and can only be used in the solving process
      */
-    void set_moment_vector(const MomentVec& new_moment);
+    void set_moment_vector(const MomentVec<3>& new_moment);
   };
 
 };  // namespace eng

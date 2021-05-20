@@ -30,7 +30,7 @@ namespace eng {
      */
     HollowRectangle(const Length& ob = 0_m, const Length& oh = 0_m,
                     const Length& ib = 0_m, const Length& ih = 0_m,
-                    const LengthVec& c = LengthVec(0_m, 0_m, 0_m));
+                    const LengthVec<3>& c = LengthVec<3>({0_m, 0_m, 0_m}));
 
     Length outer_base() const { return outer_base_; }
     Length outer_height() const { return outer_height_; }

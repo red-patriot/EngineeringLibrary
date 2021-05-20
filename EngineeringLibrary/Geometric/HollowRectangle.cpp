@@ -5,7 +5,7 @@ namespace eng {
 
   HollowRectangle::HollowRectangle(const Length& ob, const Length& oh, 
                                    const Length& ib, const Length& ih, 
-                                   const LengthVec& c) :
+                                   const LengthVec<3>& c) :
     outer_base_(ob),
     outer_height_(oh),
     inner_base_(ib),

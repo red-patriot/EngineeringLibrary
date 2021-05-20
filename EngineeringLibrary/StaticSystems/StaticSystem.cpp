@@ -84,9 +84,9 @@ namespace eng {
 
   void StaticSystem::populate_known_loads(SystemModel& system_matrix) const { 
     for (const auto& load : _known_loads) {
-      ForceVec force = *load.get_force_vector();
-      LengthVec position = load.get_position();
-      MomentVec moment = cross(position, force);
+      ForceVec<3> force = *load.get_force_vector();
+      LengthVec<3> position = load.get_position();
+      MomentVec<3> moment = cross(position, force);
 
       system_matrix(0, 6) -= force.x().N();
       system_matrix(1, 6) -= force.y().N();
@@ -117,10 +117,10 @@ namespace eng {
 
   void StaticSystem::populate_unknown_loads(SystemModel& system_matrix, int& index) const {
     for (const auto& load : _unknown_loads) {
-      LengthVec position = load.get_position();
+      LengthVec<3> position = load.get_position();
       // if the direction is known, there is only 1 unknown
       if (auto direction = load.get_direction()) {
-        LengthVec moment_arm = cross(position, *direction);
+        LengthVec<3> moment_arm = cross(position, *direction);
         system_matrix(0, index) = direction->x();
         system_matrix(1, index) = direction->y();
         system_matrix(2, index) = direction->z();

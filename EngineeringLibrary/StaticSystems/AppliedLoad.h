@@ -31,13 +31,13 @@ namespace eng {
      * \param Fz The z component of the Force
      * \param c The location of the load
      */
-    AppliedLoad(const Force Fx, const Force Fy, const Force Fz, const LengthVec c);
+    AppliedLoad(const Force Fx, const Force Fy, const Force Fz, const LengthVec<3> c);
     /** Construct an AppliedLoad with a known or partially known Force
      * 
      * \param F The Force applied
      * \param c The location of the laod
      */
-    AppliedLoad(const ForceVec F, const LengthVec c);
+    AppliedLoad(const ForceVec<3> F, const LengthVec<3> c);
     /** Construct an AppliedLoad with an unknown Force
      * 
      * \param x The x coordinate of the location of the load
@@ -49,27 +49,27 @@ namespace eng {
      * 
      * \param c The location of the Load
      */
-    AppliedLoad(const LengthVec c);
+    AppliedLoad(const LengthVec<3> c);
     /** Construct an AppliedLoad with a known direction
      * 
      * \param u A unit vector in the direction of the load.
      * \param c The location of the load
      */
-    AppliedLoad(const UnitlessVec u, const LengthVec c);
+    AppliedLoad(const UnitlessVec<3> u, const LengthVec<3> c);
     /** Construct an AppliedLoad with a known direction
      * 
      * \param i_hat The x component of the direction of the load
      * \param j_hat The y component of the direction of the load
      * \param k_hat The z component of the direction of the load
      */
-    AppliedLoad(const double i_hat, const double j_hat, const double k_hat, const LengthVec c);
+    AppliedLoad(const double i_hat, const double j_hat, const double k_hat, const LengthVec<3> c);
 
     /** Get the direction of the AppliedLoad, if possible
      * 
      * \return A std::optional<eng::UnitlessVec> in the direction in the Load, if
      *   the direction can be determined
      */
-    std::optional<UnitlessVec> get_direction() const;
+    std::optional<UnitlessVec<3>> get_direction() const;
     /** Get the magnitude of the AppliedLoad, if possible
      * 
      * \return A std::optional<eng::Force> depending on if this load's magnitude 
@@ -81,12 +81,12 @@ namespace eng {
      * \return A std::optional<eng::ForceVec> depending on if this load's 
      *   forces are known.
      */
-    std::optional<ForceVec> get_force_vector() const;
+    std::optional<ForceVec<3>> get_force_vector() const;
     /** An accessor to retrieve the location of the AppliedLoad
      * 
      * \return The position of the AppliedLoad
      */
-    eng::LengthVec get_position() const { return _position; }
+    eng::LengthVec<3> get_position() const { return _position; }
 
   private:
     enum class State { 
@@ -95,14 +95,14 @@ namespace eng {
       KNOWN_DIRECTION,
     } _state;
 
-    UnitlessVec _force_or_direction;
+    UnitlessVec<3> _force_or_direction;
 
-    LengthVec _position;
+    LengthVec<3> _position;
 
     /** Set the force in the AppliedLoad.
      * This can only be a known force, and can only be used in the solving process
      */
-    void set_force_vector(const ForceVec& new_force);
+    void set_force_vector(const ForceVec<3>& new_force);
   };
 
 };  // namespace eng

@@ -39,11 +39,11 @@ namespace eng {
              const SecondMomentOfArea& ixx = 0_m4,
              const SecondMomentOfArea& iyy = 0_m4,
              const SecondMomentOfArea& ixy = 0_m4,
-             const LengthVec& centroid = {0_m, 0_m, 0_m});
+             const LengthVec<3>& centroid = LengthVec<3>({0_m, 0_m, 0_m}));
 
     /** Returns the centroid of the Geometry.
      */
-    LengthVec centroid() const;
+    LengthVec<3> centroid() const;
 
     /** Returns the area of the Geometry.
      */
@@ -110,7 +110,7 @@ namespace eng {
     SecondMomentOfArea Ixy(const Angle& theta) const;
 
   private:
-    LengthVec centroid_;        /**< The centroid of this Geometry in space */
+    LengthVec<3> centroid_;        /**< The centroid of this Geometry in space */
     Area area_;                 /**< The area of this Geometry */
     /* Area moments of inertia for a 2D area about various axes */
     struct AreaMomentofInertia {

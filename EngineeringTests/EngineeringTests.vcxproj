@@ -180,7 +180,7 @@
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="UnitHelperFunctions.h" />
-    <ClInclude Include="VectorHelperFunctions.h" />
+    <ClInclude Include="UnitStrings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

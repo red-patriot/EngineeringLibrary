@@ -26,11 +26,6 @@ namespace eng {
   OptimizationResults<Ret, Arg> quasi_newton(std::function<Ret(Arg)> function, Arg start, 
                                              Ret tau = Ret(1e-6)) {
     OptimizationResults<Ret, Arg> results;
-    
-    results.x = start;
-    results.f = function(x);
-
-    
 
     do {
       // Determine the search direction
@@ -40,7 +35,7 @@ namespace eng {
       // Take the step
 
       // Determine if x is a minimum
-    } while (true);
+    } while (false);
     
     return results;
   }

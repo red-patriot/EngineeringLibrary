@@ -5,8 +5,6 @@
 #include "VectorHelperFunctions.h"
 #include "EngineeringLibrary/Engineering.h"
 
-#include <vector>
-
 #include"EngineeringLibrary/Geometric/Geometric.h"
 #include "EngineeringLibrary/Units/Length.h"
 
@@ -14,13 +12,13 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace GeometryTests {
   TEST_CLASS(TestGeometry) {
-    eng::Geometry g{2_m2, 5.4_m4, 2.6_m4, 3.5_m4, {0_m, 0_m, 3.5_m}};
+    eng::Geometry g{2_m2, 5.4_m4, 2.6_m4, 3.5_m4, eng::LengthVec<3>({0_m, 0_m, 3.5_m})};
   public:
     TEST_METHOD(TestArea) {
       Assert::AreEqual(2_m2, g.area());
     }
     TEST_METHOD(TestCentroid) {
-      Assert::AreEqual({0_m, 0_m, 3.5_m}, g.centroid());
+      Assert::AreEqual(eng::LengthVec<3>({0_m, 0_m, 3.5_m}), g.centroid());
     }
     TEST_METHOD(TestMomentOfArea) {
       Assert::AreEqual(5.4_m4, g.Ixx());
@@ -79,7 +77,7 @@ namespace GeometryTests {
   };
   
   TEST_CLASS(TestSemiCircle) {
-    eng::SemiCircle sc{2.5_m};
+    eng::SemiCircle sc{2.5_m, eng::LengthVec<3>({0_m, 0_m, 0_m})};
   public:
     TEST_METHOD(TestArea) {
       Assert::AreEqual(2.4543693_m2, sc.area());
@@ -165,9 +163,9 @@ namespace GeometryTests {
   TEST_CLASS(TestCompositeShapes) {
   public:
     TEST_METHOD(ZBeam) {
-      eng::Rectangle top(80_mm, 20_mm, {-50_mm, 70_mm, 0_mm});
-      eng::Rectangle cross(20_mm, 160_mm, {0_mm, 0_mm, 0_mm});
-      eng::Rectangle bottom(80_mm, 20_mm, {50_mm, -70_mm, 0_mm});
+      eng::Rectangle top(80_mm, 20_mm, eng::LengthVec<3>({-50_mm, 70_mm, 0_mm}));
+      eng::Rectangle cross(20_mm, 160_mm, eng::LengthVec<3>({0_mm, 0_mm, 0_mm}));
+      eng::Rectangle bottom(80_mm, 20_mm, eng::LengthVec<3>({50_mm, -70_mm, 0_mm}));
 
       eng::Geometry z_beam = top + cross + bottom;
 
@@ -176,9 +174,9 @@ namespace GeometryTests {
       Assert::AreEqual(0_mm4, z_beam.Ixy(), L"There is a bug in eng::operator== that prevents accurate comparisons around 0");
     }
     TEST_METHOD(BearingBlock) {
-      eng::Rectangle base(12_in, 4_in, {0_in, 2_in, 0_in});
-      eng::SemiCircle ring(8_in, {0_in, 5.6976527_in, 0_in});
-      eng::Circle hole(4_in, {0_in, 4_in, 0_in});
+      eng::Rectangle base(12_in, 4_in, eng::LengthVec<3>({0_in, 2_in, 0_in}));
+      eng::SemiCircle ring(8_in, eng::LengthVec<3>({0_in, 5.6976527_in, 0_in}));
+      eng::Circle hole(4_in, eng::LengthVec<3>({0_in, 4_in, 0_in}));
 
       eng::Geometry bearing_block = base + ring - hole;
 

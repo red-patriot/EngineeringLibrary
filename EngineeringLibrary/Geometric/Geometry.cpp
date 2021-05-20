@@ -7,12 +7,12 @@ namespace eng {
                      const SecondMomentOfArea & ixx,
                      const SecondMomentOfArea & iyy, 
                      const SecondMomentOfArea & ixy, 
-                     const LengthVec & centroid) :
+                     const LengthVec<3>& centroid) :
   area_(area),
   MOI_(ixx, iyy, ixy),
   centroid_(centroid) { }
 
-  LengthVec Geometry::centroid() const {
+  LengthVec<3> Geometry::centroid() const {
     return centroid_;
   }
 
@@ -59,9 +59,9 @@ namespace eng {
   Geometry eng::operator+(const Geometry& lh, const Geometry& rh) {
     Area composite_area = lh.area_ + rh.area_;
 
-    LengthVec composite_centroid = {(lh.centroid_.x()*lh.area_ + rh.centroid_.x()*rh.area_)/composite_area,
+    LengthVec<3> composite_centroid({(lh.centroid_.x()*lh.area_ + rh.centroid_.x()*rh.area_)/composite_area,
       (lh.centroid_.y()*lh.area_ + rh.centroid_.y()*rh.area_)/composite_area,
-      (lh.centroid_.z()*lh.area_ + rh.centroid_.z()*rh.area_)/composite_area};
+      (lh.centroid_.z()*lh.area_ + rh.centroid_.z()*rh.area_)/composite_area});
 
     auto composite_ixx = rh.Ixx(composite_centroid.y()) + lh.Ixx(composite_centroid.y());
     auto composite_iyy = rh.Iyy(composite_centroid.x()) + lh.Iyy(composite_centroid.x());
@@ -74,9 +74,9 @@ namespace eng {
   Geometry eng::operator-(const Geometry& lh, const Geometry& rh) {
     Area composite_area = lh.area_ - rh.area_;
 
-    LengthVec composite_centroid = {(lh.centroid_.x()*lh.area_ - rh.centroid_.x()*rh.area_)/composite_area,
+    LengthVec<3> composite_centroid({(lh.centroid_.x()*lh.area_ - rh.centroid_.x()*rh.area_)/composite_area,
       (lh.centroid_.y()*lh.area_ - rh.centroid_.y()*rh.area_)/composite_area,
-      (lh.centroid_.z()*lh.area_ - rh.centroid_.z()*rh.area_)/composite_area};
+      (lh.centroid_.z()*lh.area_ - rh.centroid_.z()*rh.area_)/composite_area});
 
     auto composite_ixx = rh.Ixx(composite_centroid.y()) - lh.Ixx(composite_centroid.y());
     auto composite_iyy = rh.Iyy(composite_centroid.x()) - lh.Iyy(composite_centroid.x());

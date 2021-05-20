@@ -27,7 +27,7 @@ namespace eng {
      * \param c The centroid of the HollowCircle
      */
     HollowCircle(const Length& od = 0_m, const Length& id = 0_m,
-                 const LengthVec& c = {0_m, 0_m, 0_m});
+                 const LengthVec<3>& c = LengthVec<3>({0_m, 0_m, 0_m}));
 
     Length outer_diameter() const { return outer_diameter_; }
     Length inner_diameter() const { return inner_diameter_; }

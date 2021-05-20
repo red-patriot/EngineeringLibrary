@@ -42,8 +42,10 @@ namespace eng {
   using Moment = Torque;
 
   // Torques are commonly used as vectors
-  using TorqueVec = Vector<1, 2, -2, 0, 0, 0, 0>;
-  using MomentVec = TorqueVec;
+  template<size_t N>
+  using TorqueVec = Vector<N, 1, 2, -2, 0, 0, 0, 0>;
+  template<size_t N>
+  using MomentVec = TorqueVec<N>;
 
 };  // namespace eng
 

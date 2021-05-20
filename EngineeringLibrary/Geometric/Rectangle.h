@@ -27,7 +27,7 @@ namespace eng {
      * \param c The centroid of the Rectangle
      */
     Rectangle(const Length& b = 0_m, const Length& h = 0_m,
-              const LengthVec& c = {0_m, 0_m, 0_m});
+              const LengthVec<3>& c = LengthVec<3>({0_m, 0_m, 0_m}));
 
     Length base() const { return base_; }
     Length height() const { return height_; }

@@ -25,7 +25,7 @@ namespace eng {
      * \param d the diameter of the Circle
      * \param c the location of the centroid of the Circle
      */
-    Circle(const Length& d = 0_m, const LengthVec& c = {0_m, 0_m, 0_m});
+    Circle(const Length& d = 0_m, const LengthVec<3>& c = LengthVec<3>({0_m, 0_m, 0_m}));
 
     /** Returns the diameter of the circle
      */

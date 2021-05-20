@@ -5,7 +5,7 @@ namespace eng {
 
   Rectangle::Rectangle(const Length& b, 
                        const Length& h, 
-                       const LengthVec& c) :
+                       const LengthVec<3>& c) :
     base_(b),
     height_(h),
     Geometry(b*h,

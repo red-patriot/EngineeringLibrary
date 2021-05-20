@@ -25,7 +25,7 @@ namespace eng {
     * \param d The diameter of the SemiCircle
     * \param c The location of the centroid of the SemiCircle
     */
-    SemiCircle(const Length& d = 0_m, const LengthVec& c = {0_m, 0_m, 0_m});
+    SemiCircle(const Length& d = 0_m, const LengthVec<3>& c = LengthVec<3>({0_m, 0_m, 0_m}));
   
     /** Returns the diameter of the SemiCircle
      */

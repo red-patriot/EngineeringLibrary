@@ -5,7 +5,7 @@ namespace eng {
 
   HollowCircle::HollowCircle(const Length& od, 
                              const Length& id, 
-                             const LengthVec& c) :
+                             const LengthVec<3>& c) :
     outer_diameter_(od),
     inner_diameter_(id),
     Geometry(pi*((od*od) - (id*id))/4,
