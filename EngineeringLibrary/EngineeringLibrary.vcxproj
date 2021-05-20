@@ -227,6 +227,9 @@
     <ClInclude Include="Geometric\SemiCircle.h" />
     <ClInclude Include="Geometric.h" />
     <ClInclude Include="Material.h" />
+    <ClInclude Include="Optimization\OptimizationResults.h" />
+    <ClInclude Include="Optimization\pch.h" />
+    <ClInclude Include="Optimization\Unconstrained.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Statics.h" />
     <ClInclude Include="StaticSystems\AppliedLoad.h" />

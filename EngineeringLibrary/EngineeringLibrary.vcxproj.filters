@@ -40,6 +40,15 @@
     <Filter Include="Geometric\Source files">
       <UniqueIdentifier>{7e986fb9-064d-4025-9b99-49227500e9de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Optimization">
+      <UniqueIdentifier>{267dbed7-9a6c-412a-bb6c-2ba1958ecccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Optimization\Header Files">
+      <UniqueIdentifier>{2ea3421a-b52a-40e7-89f8-9fdf48e9d263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Optimization\Source Files">
+      <UniqueIdentifier>{43629dee-0d07-4b35-a4b2-325500346050}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -176,6 +185,15 @@
     </ClInclude>
     <ClInclude Include="Geometric\HollowRectangle.h">
       <Filter>Geometric\Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Optimization\pch.h">
+      <Filter>Optimization\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Optimization\Unconstrained.h">
+      <Filter>Optimization\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Optimization\OptimizationResults.h">
+      <Filter>Optimization\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
