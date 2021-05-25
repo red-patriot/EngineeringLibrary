@@ -15,7 +15,7 @@
 
 #include "TestFunctions.h"
 
-std::string to_string(const std::array<double, 2> a);
+std::string to_string(const eng::UnitlessVec<2> a);
 
 template<typename Res, typename Arg>
 std::ostream& operator<< (std::ostream& os, const eng::OptimizationResults<Res, Arg>& opt_res);
@@ -27,9 +27,11 @@ int main() {
 
   // Quadratic
   {
-    std::array<double, 2> start = {1, 1};
+    eng::UnitlessVec<2> start({1, 1});
 
-    auto res = eng::quasi_newton<double, std::array<double, 2>>(quadratic, start);
+    auto res = eng::steepest_descent<double, 
+      eng::UnitlessVec<2>, 
+      eng::UnitlessVec<2>>(quadratic, start, gradient_quadratic);
 
     std::cout << res << '\n';
 
@@ -41,9 +43,10 @@ int main() {
 }
 
 
-std::string to_string(const std::array<double, 2> a) {
-  return "[" + std::to_string(a[0]) + ", " + std::to_string(a[1]) + "]";
+std::string to_string(const eng::UnitlessVec<2> a) {
+  return "[" + std::to_string(a.x()) + ", " + std::to_string(a.y()) + "]";
 }
+
 
 /** OptimizationResults output operator */
 template<typename Res, typename Arg>

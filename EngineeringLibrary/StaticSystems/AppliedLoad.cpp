@@ -74,7 +74,7 @@ namespace eng {
   std::optional<Force> AppliedLoad::get_magnitude() const {
     switch (_state) {
       case State::KNOWN_FORCE:
-        return Force(_force_or_direction.norm());
+        return Force(norm(_force_or_direction));
         break;
       case State::UNKNOWN_FORCE:
         [[fallthrough]];

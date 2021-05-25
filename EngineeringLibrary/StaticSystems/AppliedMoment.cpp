@@ -61,7 +61,7 @@ namespace eng {
   std::optional<Moment> eng::AppliedMoment::get_magnitude() const {
     switch (_state) {
       case State::KNOWN_MOMENT:
-        return Moment(_moment_or_direction.norm());
+        return Moment(norm(_moment_or_direction));
         break;
       case State::UNKNOWN_MOMENT:
         [[fallthrough]];

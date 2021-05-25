@@ -9,6 +9,7 @@
  *********************************************************************/
 
 #include "UnitBase.h"
+#include "../Vector.h"
 
 #include <eigen3/Eigen/Core>
 
@@ -43,6 +44,9 @@ namespace eng {
 
   using Unitless = UnitBase<0, 0, 0, 0, 0, 0, 0>;
   using Angle = UnitBase<0, 0, 0, 0, 0, 0, 0>;
+
+  template<size_t N>
+  using UnitlessVec = Vector<N, 0, 0, 0, 0, 0, 0, 0>;
 
 }; // namespace eng
 

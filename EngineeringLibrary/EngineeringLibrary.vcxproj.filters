@@ -195,6 +195,9 @@
     <ClInclude Include="Optimization\OptimizationResults.h">
       <Filter>Optimization\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Units\UnitTraits.h">
+      <Filter>Units\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

@@ -2,7 +2,6 @@
 #include "CppUnitTest.h"
 
 #include "UnitHelperFunctions.h"
-#include "VectorHelperFunctions.h"
 #include "EngineeringLibrary/Engineering.h"
 
 #include"EngineeringLibrary/Geometric/Geometric.h"

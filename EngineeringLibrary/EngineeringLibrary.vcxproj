@@ -258,6 +258,7 @@
     <ClInclude Include="Units\Torque.h" />
     <ClInclude Include="Units\UnitBase.h" />
     <ClInclude Include="Units\Unitless.h" />
+    <ClInclude Include="Units\UnitTraits.h" />
     <ClInclude Include="Units\Velocity.h" />
     <ClInclude Include="Units\Viscosity.h" />
     <ClInclude Include="Units\Volume.h" />

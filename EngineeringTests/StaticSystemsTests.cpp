@@ -6,7 +6,6 @@
 #include <algorithm>
 
 #include "UnitHelperFunctions.h"
-#include "VectorHelperFunctions.h"
 
 #include "EngineeringLibrary/Engineering.h"
 #include "EngineeringLibrary/StaticSystems/AppliedLoad.h"
