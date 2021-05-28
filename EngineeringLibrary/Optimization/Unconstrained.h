@@ -24,36 +24,45 @@ namespace eng {
    * \return the optimal value of the function
    */
 
-  template <typename Ret, typename Arg, typename Grad>
-  OptimizationResults<Ret, Arg> steepest_descent(std::function<Ret(Arg)> function, 
-                                                 Arg start,
-                                                 std::function<Grad(Arg)> grad_func) {
-    OptimizationResults<Ret, Arg> results;
+  template <size_t N>
+  OptimizationResults<N> steepest_descent(std::function<double(UnitlessVec<N>)> function, 
+                                          UnitlessVec<N> start,
+                                          std::function<UnitlessVec<N>(UnitlessVec<N>)> gradient_function) {
+    OptimizationResults<N> results;
 
-    auto func = [&results, function](Arg x) {
+    auto func = [&results, function](UnitlessVec<N> x) {
       ++results.numevals;
       return function(x);
     };
+    auto grad_func = [&results, gradient_function](UnitlessVec<N> x) {
+      ++results.numevals;
+      return gradient_function(x);
+    };
 
-    // Determine the starting values of the function
+    // Determine the starting values
     results.x = start;
-    results.f = func(start);
-    auto del_f = grad_func(results.x);
+    const double tau = 1.0e-6;
+    UnitlessVec<N> del_f;
         
     do {
-      // Determine the search direction
-      auto p = -normalize(del_f);
+      ++results.numiters;
+      // Calculate the gradient at the current location
+      del_f = grad_func(results.x);
 
-      // Determine the step size
-      auto alpha = norm(del_f);
-
-      // Take the step
-      results.x = results.x + p*alpha;
-      results.f = func(results.x);
+      // Take a step
+      UnitlessVec<N> p = -normalize(del_f);
+      double alpha = norm(del_f);
+      results.x = results.x + (p*alpha);
 
       // Determine if x is a minimum
-    } while (norm_inf(del_f).value() > 10.0e-6);
+    } while (norm_inf(del_f) > tau);
+
+    if (norm_inf(del_f) <= tau) {
+      results.success = true;
+      results.message = "optimization completed successfully";
+    }
     
+    results.f = func(results.x);
     return results;
   }
 

@@ -74,7 +74,7 @@ template<size_t N,
 
     Vector& operator+= (const Vector& rh) {
       for (size_t i = 0; i < N; ++i) {
-        this->elements_[i] += rh.elements[i];
+        this->elements_[i] += rh.elements_[i];
       }
       return *this;
     }
@@ -170,8 +170,8 @@ template<size_t N,
   int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
   int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
   Vector<N, MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
-  operator+ (const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
-             const Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
+  operator+ (const Vector<N, MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& lh,
+             const Vector<N, MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& rh) {
   Vector<N, MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> ret(lh);
   ret += rh;
   return ret;

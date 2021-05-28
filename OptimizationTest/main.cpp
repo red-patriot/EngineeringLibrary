@@ -17,8 +17,8 @@
 
 std::string to_string(const eng::UnitlessVec<2> a);
 
-template<typename Res, typename Arg>
-std::ostream& operator<< (std::ostream& os, const eng::OptimizationResults<Res, Arg>& opt_res);
+template<size_t N>
+std::ostream& operator<< (std::ostream& os, const eng::OptimizationResults<N>& opt_res);
 
 int main() {
   /*****************************************************************************
@@ -29,9 +29,7 @@ int main() {
   {
     eng::UnitlessVec<2> start({1, 1});
 
-    auto res = eng::steepest_descent<double, 
-      eng::UnitlessVec<2>, 
-      eng::UnitlessVec<2>>(quadratic, start, gradient_quadratic);
+    auto res = eng::steepest_descent<2>(quadratic, start, gradient_quadratic);
 
     std::cout << res << '\n';
 
@@ -49,8 +47,8 @@ std::string to_string(const eng::UnitlessVec<2> a) {
 
 
 /** OptimizationResults output operator */
-template<typename Res, typename Arg>
-std::ostream& operator<< (std::ostream& os, const eng::OptimizationResults<Res, Arg>& opt_res) {
+template<size_t N>
+std::ostream& operator<< (std::ostream& os, const eng::OptimizationResults<N>& opt_res) {
   using namespace std;
   os << "x = " << to_string(opt_res.x) << '\n'
     << "f(x) = " << to_string(opt_res.f) << '\n'

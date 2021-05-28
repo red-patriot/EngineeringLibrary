@@ -10,17 +10,18 @@
 
 #include <ostream>
 #include <string>
-#include <type_traits>
+
+#include "../Units/Unitless.h"
 
 namespace eng {
 
   /**
    * Report the status of an optimization upon completion
    */
-  template <typename Res, typename Arg>
+  template<size_t N>
   struct OptimizationResults {
-    Arg x;  /**< The location of the optimum. */
-    Res f;  /**< The function value at x, the minimum value of the function. */
+    UnitlessVec<N> x;  /**< The location of the optimum. */
+    double f;  /**< The function value at x, the minimum value of the function. */
     size_t numevals;  /**< The number of function evaluations performed 
                           * during the optimization. */
     size_t numiters;  /**< The number of iterations to optimize the function. */
