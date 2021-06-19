@@ -28,3 +28,8 @@ eng::UnitlessVec<2> gradient_quadratic(eng::UnitlessVec<2> x) {
 double rosenbrock(eng::UnitlessVec<2> x) {
   return (1 - x[0])*(1 - x[0]) + 100*(x[1] - x[0]*x[0])*(x[1] - x[0]*x[0]);
 }
+
+eng::UnitlessVec<2> gradient_rosenbrock(eng::UnitlessVec<2> x) {
+  return eng::UnitlessVec<2>({2*(1-x[0]) + 200*(x[1] - x[0]*x[0])*2*x[0],
+                             200*(x[1] - x[0]*x[0])});
+}

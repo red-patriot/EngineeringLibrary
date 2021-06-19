@@ -31,11 +31,18 @@ int main() {
 
     auto res = eng::steepest_descent<2>(quadratic, start, gradient_quadratic);
 
-    std::cout << res << '\n';
+    std::cout << "QUADRATIC:\n" << res << '\n' << '\n';
 
   }
 
   // Rosenbrock
+  {
+    eng::UnitlessVec<2> start({2.0, -1.5});
+
+    auto res = eng::steepest_descent<2>(rosenbrock, start, gradient_rosenbrock);
+
+    std::cout << "ROSENBROCK:\n" << res << '\n';
+  }
 
   return 0;
 }

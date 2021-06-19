@@ -207,7 +207,7 @@ namespace eng {
      * either of them. */
     inline bool fuzzy_equals(const double& lh, const double& rh) {
       auto flh = fabs(lh), frh = fabs(rh);
-      return fabs(lh - rh) <= fabs((flh < frh ? flh : frh) * 0.000001);
+      return fabs(lh - rh) <= ((flh < frh ? flh : frh) * 0.000001) || fabs(lh - rh) <= 1.0e-9;
     }
     /* Tests that lh is greater than rh by an accaptable margin of error. */
     inline bool fuzzy_greater(const double& lh, const double& rh) {

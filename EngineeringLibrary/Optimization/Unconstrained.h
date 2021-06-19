@@ -23,7 +23,6 @@ namespace eng {
    * \param start the starting point to begin the optimization
    * \return the optimal value of the function
    */
-
   template <size_t N>
   OptimizationResults<N> steepest_descent(std::function<double(UnitlessVec<N>)> function, 
                                           UnitlessVec<N> start,

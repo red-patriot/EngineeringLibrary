@@ -165,6 +165,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseTests.cpp" />
+    <ClCompile Include="DimensionsTest.cpp" />
     <ClCompile Include="GeometryTests.cpp" />
     <ClCompile Include="IntegrationTests.cpp" />
     <ClCompile Include="pch.cpp">

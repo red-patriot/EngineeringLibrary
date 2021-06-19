@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 
+#include <chrono>
+
 #include "UnitHelperFunctions.h"
 #include "EngineeringLibrary/Engineering.h"
 
@@ -33,6 +35,45 @@ namespace UnitTests {
       eng::UnitBase<1, 1, 1, 1, 1, 1, 1> a(2.5);
       eng::UnitBase<1, 1, 1, 1, 1, 1, 1> b(5.0);
       Assert::AreEqual(2.0, b / a);
+    }
+    TEST_METHOD(TestEqualityCompareAtZero) {
+      eng::UnitBase<1, 1, 1, 1, 1, 1, 1> a(1.0000001e-5);
+      eng::UnitBase<1, 1, 1, 1, 1, 1, 1> b(1.0e-5);
+      Assert::AreEqual(a, b);
+    }
+  };
+
+  TEST_CLASS(TestsUnitBaseBenchmark) {
+    TEST_METHOD(TestSize) {
+      Assert::AreEqual(sizeof(double), sizeof(eng::UnitBase<1, 1, 1, 1, 1, 1, 1>));
+    }
+    TEST_METHOD(TestConstruct) {
+      std::chrono::time_point start = std::chrono::high_resolution_clock::now();
+      std::chrono::time_point stop = std::chrono::high_resolution_clock::now();
+
+      start = std::chrono::high_resolution_clock::now();
+      double d = 5.0;
+      stop = std::chrono::high_resolution_clock::now();
+      int ddur = std::chrono::duration<double>(stop - start).count();
+
+      start = std::chrono::high_resolution_clock::now();
+      eng::UnitBase<1, 1, 1, 1, 1, 1, 1> u(5.0);
+      stop = std::chrono::high_resolution_clock::now();
+      int udur = std::chrono::duration<double>(stop - start).count();
+
+      Assert::AreEqual(ddur, udur);
+    }
+    TEST_METHOD(TestAdd) {
+
+    }
+    TEST_METHOD(TestSubtract) {
+
+    }
+    TEST_METHOD(TestMultiply) {
+
+    }
+    TEST_METHOD(TestDivide) {
+
     }
   };
 
