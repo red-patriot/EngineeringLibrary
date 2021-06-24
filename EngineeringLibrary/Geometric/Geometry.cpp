@@ -25,7 +25,7 @@ namespace eng {
   }
 
   SecondMomentOfArea Geometry::Ixx(const Length& y) const {
-    return Ixx() + area()*(y*y);
+    return MOI_.Ixx + area_*((y-centroid_.y())*(y-centroid_.y()));
   }
 
   SecondMomentOfArea Geometry::Ixx(const Angle& theta) const {
@@ -37,7 +37,7 @@ namespace eng {
   }
 
   SecondMomentOfArea Geometry::Iyy(const Length& x) const {
-    return Iyy() + area()*(x*x);
+    return MOI_.Iyy + area_*((x-centroid_.x())*(x-centroid_.x()));
   }
 
   SecondMomentOfArea Geometry::Iyy(const Angle& theta) const {
@@ -49,7 +49,7 @@ namespace eng {
   }
 
   SecondMomentOfArea Geometry::Ixy(const Length& x, const Length& y) const {
-    return MOI_.Ixy + area_*x*y;
+    return MOI_.Ixy + area_*(x-centroid_.x())*(y-centroid_.y());
   }
 
   SecondMomentOfArea Geometry::Ixy(const Angle& theta) const {
@@ -63,10 +63,10 @@ namespace eng {
       (lh.centroid_.y()*lh.area_ + rh.centroid_.y()*rh.area_)/composite_area,
       (lh.centroid_.z()*lh.area_ + rh.centroid_.z()*rh.area_)/composite_area});
 
-    auto composite_ixx = rh.Ixx(composite_centroid.y()) + lh.Ixx(composite_centroid.y());
-    auto composite_iyy = rh.Iyy(composite_centroid.x()) + lh.Iyy(composite_centroid.x());
-    auto composite_ixy = rh.Ixy(composite_centroid.x(), composite_centroid.y())
-      + lh.Ixy(composite_centroid.x(), composite_centroid.y());
+    auto composite_ixx = lh.Ixx(composite_centroid.y()) + rh.Ixx(composite_centroid.y());
+    auto composite_iyy = lh.Iyy(composite_centroid.x()) + rh.Iyy(composite_centroid.x());
+    auto composite_ixy = lh.Ixy(composite_centroid.x(), composite_centroid.y())
+      + rh.Ixy(composite_centroid.x(), composite_centroid.y());
 
     return Geometry(composite_area, composite_ixx, composite_iyy, composite_ixy, composite_centroid);
   }
@@ -78,10 +78,10 @@ namespace eng {
       (lh.centroid_.y()*lh.area_ - rh.centroid_.y()*rh.area_)/composite_area,
       (lh.centroid_.z()*lh.area_ - rh.centroid_.z()*rh.area_)/composite_area});
 
-    auto composite_ixx = rh.Ixx(composite_centroid.y()) - lh.Ixx(composite_centroid.y());
-    auto composite_iyy = rh.Iyy(composite_centroid.x()) - lh.Iyy(composite_centroid.x());
-    auto composite_ixy = rh.Ixy(composite_centroid.x(), composite_centroid.y())
-      - lh.Ixy(composite_centroid.x(), composite_centroid.y());
+    auto composite_ixx = lh.Ixx(composite_centroid.y()) - rh.Ixx(composite_centroid.y());
+    auto composite_iyy = lh.Iyy(composite_centroid.x()) - rh.Iyy(composite_centroid.x());
+    auto composite_ixy = lh.Ixy(composite_centroid.x(), composite_centroid.y())
+      - rh.Ixy(composite_centroid.x(), composite_centroid.y());
 
     return Geometry(composite_area, composite_ixx, composite_iyy, composite_ixy, composite_centroid);
   }

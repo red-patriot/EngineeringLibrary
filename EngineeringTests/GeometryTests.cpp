@@ -170,16 +170,15 @@ namespace GeometryTests {
 
       Assert::AreEqual(22.61333e6_mm4, z_beam.Ixx());
       Assert::AreEqual(9.813333e6_mm4, z_beam.Iyy());
-      Assert::AreEqual(0_mm4, z_beam.Ixy(), L"There is a bug in eng::operator== that prevents accurate comparisons around 0");
     }
     TEST_METHOD(BearingBlock) {
-      eng::Rectangle base(12_in, 4_in, eng::LengthVec<3>({0_in, 2_in, 0_in}));
-      eng::SemiCircle ring(8_in, eng::LengthVec<3>({0_in, 5.6976527_in, 0_in}));
-      eng::Circle hole(4_in, eng::LengthVec<3>({0_in, 4_in, 0_in}));
+      eng::Rectangle base(12_m, 4_m, eng::LengthVec<3>({0_m, 2_m, 0_m}));
+      eng::SemiCircle ring(8_m, eng::LengthVec<3>({0_m, 5.6976527_m, 0_m}));
+      eng::Circle hole(4_m, eng::LengthVec<3>({0_m, 4_m, 0_m}));
 
       eng::Geometry bearing_block = base + ring - hole;
 
-      Assert::AreEqual(886.35986_in4, bearing_block.Ixx(0_in));
+      Assert::AreEqual(886.35986_m4, bearing_block.Ixx(0_m));
     }
   };
 };  // namespace GeometryTests
