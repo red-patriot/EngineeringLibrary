@@ -242,6 +242,7 @@
     <ClInclude Include="Units\Angle.h" />
     <ClInclude Include="Units\Area.h" />
     <ClInclude Include="Units\Damping.h" />
+    <ClInclude Include="Units\ElectricalCurrent.h" />
     <ClInclude Include="Units\Energy.h" />
     <ClInclude Include="Units\Force.h" />
     <ClInclude Include="Units\Frequency.h" />

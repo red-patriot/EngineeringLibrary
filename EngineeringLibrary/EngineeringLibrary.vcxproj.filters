@@ -177,6 +177,9 @@
     <ClInclude Include="Geometric\HollowRectangle.h">
       <Filter>Geometric\Header files</Filter>
     </ClInclude>
+    <ClInclude Include="Units\ElectricalCurrent.h">
+      <Filter>Units</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

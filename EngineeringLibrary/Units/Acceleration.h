@@ -14,7 +14,7 @@
 
 namespace eng {
 
-  /** The change in speed of an object moginv through space
+  /** The change in speed of an object moving through space
    * \class Acceleration 
    * \addtogroup Units
    */
