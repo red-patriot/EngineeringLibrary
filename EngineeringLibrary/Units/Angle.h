@@ -15,7 +15,7 @@
 
 namespace eng {
 
-  /** The geometry formed by two non-colinear, coplanar lines. 
+  /**
    * \class Angle 
    * \addtogroup Units
    */

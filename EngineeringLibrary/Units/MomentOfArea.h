@@ -15,22 +15,23 @@
 
 namespace eng {
 
-  /** First moment of Area and Volume have the same units and functionality
+  /**
    * \typedef FirstMomentOfArea Volume
    * \see Volume
    * \addtogroup Units
    */
   using FirstMomentOfArea = Volume;
 
-  /** A 4D measure of the Area Moment of Inertia of a geometry
+  /**
    * \class SecondMomentOfArea 
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 4, 0, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<0, 4, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double mm4() const { return value_ * 1'000'000'000'000; }
     double m4() const { return value_; }
 

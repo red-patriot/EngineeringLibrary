@@ -14,15 +14,16 @@
 
 namespace eng {
 
-  /** A mass
+  /**
    * \class Mass
    * \addtogroup Units
    */
   template<>
   class SIUnit<1, 0, 0, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<1, 0, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double g() const { return value_ * 1000; }
     double kg() const { return value_; }
 

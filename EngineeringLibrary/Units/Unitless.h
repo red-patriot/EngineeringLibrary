@@ -16,14 +16,15 @@ namespace eng {
 
   static constexpr long double pi = 3.141592653589793238462643383279;
 
-  /** A class to manage unitless Units
+  /** 
    * \class Unitless
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 0, 0, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<0, 0, 0, 0, 0, 0, 0> this_t;
-  public:
+   public:
     SIUnit(const double& n = 0) : value_(n) { }
     double value() const { return value_; }
 

@@ -15,15 +15,16 @@
 
 namespace eng {
 
-  /** A 1D geometry
+  /** 
    * \class Length 
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 1, 0, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<0, 1, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double mm() const { return value_ * 1000; }
     double cm() const { return value_ * 100; }
     double m() const { return value_; }

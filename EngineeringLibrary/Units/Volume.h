@@ -13,15 +13,17 @@
 #include <eigen3/Eigen/Core>
 
 namespace eng {
-  /** A measure of the 3D space taken up an object
+
+  /**
    * \class Volume
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 3, 0, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<0, 3, 0, 0, 0, 0, 0> this_t; 
       UnitBaseCOMMON
-  public:
+   public:
     double mm3() const { return value_ * 1'000'000'000; }
     double cm3() const { return value_ * 1'000'000; }
     double m3() const { return value_; }

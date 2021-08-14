@@ -15,15 +15,16 @@
 
 namespace eng {
 
-  /** A time
+  /**
    * \class Time 
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 0, 1, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<0, 0, 1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double sec() const { return value_; }
     double minute() const { return value_ / 60; }
     double hour() const { return value_ / 3600; }

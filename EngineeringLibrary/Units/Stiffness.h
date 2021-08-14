@@ -14,15 +14,16 @@
 
 namespace eng {
 
-  /** A linear resistance to deformation measured in force/length
+  /**
    * \class Stiffness 
    * \addtogroup Units
    */
   template<>
   class SIUnit<1, 0, -2, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<1, 0, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double Npm() const { return value_; }
     double Npmm() const { return value_ * 0.001; }
     

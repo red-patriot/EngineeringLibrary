@@ -14,15 +14,16 @@
 
 namespace eng {
 
-  /** The speed of an object moving through space.
+  /**
    * \class Velocity
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 1, -1, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<0, 1, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double mpsec() const { return value_; }
     double kph() const { return value_ * 3.600; }
 

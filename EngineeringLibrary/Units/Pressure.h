@@ -15,14 +15,15 @@
 namespace eng {
 
   /**
-   * \class Pressure A force distributed over an area
+   * \class Pressure
    * \addtogroup Units
    */
   template<>
   class SIUnit<1, -1, -2, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<1, -1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double Pa() const { return value_; }
     double kPa() const { return value_ * 0.001; }
     double MPa() const { return value_ * 0.000'001; }

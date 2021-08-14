@@ -14,15 +14,16 @@
 
 namespace eng {
 
-  /** The change in speed of an object moving through space
+  /**
    * \class Acceleration 
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 1, -2, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<0, 1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double mpsec2() const { return value_; }
     
     double inpsec2() const { return value_ * (100/2.54); }

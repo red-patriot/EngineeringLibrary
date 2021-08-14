@@ -15,15 +15,16 @@
 
 namespace eng {
 
-  /** A representation of any kind of energy
+  /**
    * \class Energy
    * \addtogroup Units
    */
   template<>
   class SIUnit<1, 2, -2, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<1, 2, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double J() const { return value_; }
     double kJ() const { return value_ * 0.001; }
     double MJ() const { return value_ * 0.000'001; }

@@ -14,15 +14,16 @@
 
 namespace eng {
 
-  /** A measure of how readily a fluid flows
+  /**
    * \class DViscosity
    * \addtogroup Units
    */
   template<>
   class SIUnit<1, -1, -1, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<1, -1, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double kgpms() const { return value_; }
     double Pas() const { return value_; }
     double Nspm2() const { return value_; }
@@ -48,7 +49,7 @@ namespace eng {
   DViscosity operator""_lbspft2(long double val);
   DViscosity operator""_lbspft2(unsigned long long val);
 
-  /** A measure of how readily a fluid flows
+  /**
    * \class KViscosity
    * \addtogroup Units
    */

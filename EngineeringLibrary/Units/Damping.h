@@ -14,15 +14,16 @@
 
 namespace eng {
 
-  /** A resistance to motion proportional to velocity
+  /**
    * \class Damping
    * \addtogroup Units
    */
   template<>
   class SIUnit<1, 0, -1, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<1, 0, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double Nspm() const { return value_; }
     double kNspm() const { return value_ / 1000; }
 

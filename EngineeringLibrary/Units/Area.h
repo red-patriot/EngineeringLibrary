@@ -14,15 +14,16 @@
 
 namespace eng {
 
-  /** A 2D geometry
+  /**
    * \class Area
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 2, 0, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<0, 2, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double mm2() const { return value_ * 1'000'000; }
     double cm2() const { return value_ * 10'000; }
     double m2() const { return value_; }

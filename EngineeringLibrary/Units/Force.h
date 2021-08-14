@@ -15,7 +15,7 @@
 
 namespace eng {
 
-  /** The magnitude of a force in space
+  /**
    * \class Force 
    * \addtogroup Units
    */

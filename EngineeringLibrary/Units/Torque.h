@@ -17,7 +17,7 @@
 
 namespace eng {
 
-  /** A representation of a Torque or Moment of Force
+  /**
    * \class Torque
    * \addtogroup Units
    */

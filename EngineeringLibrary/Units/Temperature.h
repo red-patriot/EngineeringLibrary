@@ -14,15 +14,16 @@
 
 namespace eng {
 
-  /** A Temperature
+  /**
    * \class Temperature
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 0, 0, 0, 1, 0, 0> {
+   public:
     typedef SIUnit<0, 0, 0, 0, 1, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double Kelvin() { return value_; }
     double deg_C() { return value_ - 273.15; }
 

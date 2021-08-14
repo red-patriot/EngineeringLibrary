@@ -14,15 +14,16 @@
 
 namespace eng {
 
-  /** A measure of cycles/repetitions per unit time
+  /**
    * \class Frequency
    * \addtogroup Units
    */
   template<>
   class SIUnit<0, 0, -1, 0, 0, 0, 0> {
+   public:
     typedef SIUnit<0, 0, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
+   public:
     double Hz() const { return value_; }
     double kHz() const { return value_ * 0.001; }
     double MHz() const { return value_ * 0.000'001; }
