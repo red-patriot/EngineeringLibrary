@@ -177,8 +177,8 @@
     <ClInclude Include="Geometric\HollowRectangle.h">
       <Filter>Geometric\Header files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\ElectricalCurrent.h">
-      <Filter>Units</Filter>
+    <ClInclude Include="Units\ElectricCurrent.h">
+      <Filter>Units\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -286,6 +286,9 @@
     </ClCompile>
     <ClCompile Include="Geometric\HollowRectangle.cpp">
       <Filter>Geometric\Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\ElectricCurrent.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

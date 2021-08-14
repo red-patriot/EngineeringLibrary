@@ -242,7 +242,7 @@
     <ClInclude Include="Units\Angle.h" />
     <ClInclude Include="Units\Area.h" />
     <ClInclude Include="Units\Damping.h" />
-    <ClInclude Include="Units\ElectricalCurrent.h" />
+    <ClInclude Include="Units\ElectricCurrent.h" />
     <ClInclude Include="Units\Energy.h" />
     <ClInclude Include="Units\Force.h" />
     <ClInclude Include="Units\Frequency.h" />
@@ -288,6 +288,7 @@
     <ClCompile Include="Units\Angle.cpp" />
     <ClCompile Include="Units\Area.cpp" />
     <ClCompile Include="Units\Damping.cpp" />
+    <ClCompile Include="Units\ElectricCurrent.cpp" />
     <ClCompile Include="Units\Energy.cpp" />
     <ClCompile Include="Units\Force.cpp" />
     <ClCompile Include="Units\Frequency.cpp" />
