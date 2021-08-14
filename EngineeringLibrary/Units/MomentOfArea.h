@@ -27,18 +27,18 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 4, 0, 0, 0, 0, 0> {
-    typedef UnitBase<0, 4, 0, 0, 0, 0, 0> this_t;
+  class SIUnit<0, 4, 0, 0, 0, 0, 0> {
+    typedef SIUnit<0, 4, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double mm4() const { return mValue * 1'000'000'000'000; }
-    double m4() const { return mValue; }
+    double mm4() const { return value_ * 1'000'000'000'000; }
+    double m4() const { return value_; }
 
-    double in4() const { return mValue * 100'000'000 / 41.623'142'56; }
-    double ft4() const { return mValue * 100'000'000 / 863'097.481'241'6; }
+    double in4() const { return value_ * 100'000'000 / 41.623'142'56; }
+    double ft4() const { return value_ * 100'000'000 / 863'097.481'241'6; }
   };
 
-  using SecondMomentOfArea = UnitBase<0, 4, 0, 0, 0, 0, 0>;
+  using SecondMomentOfArea = SIUnit<0, 4, 0, 0, 0, 0, 0>;
 
   // Literal operators
   SecondMomentOfArea operator"" _mm4(long double val);

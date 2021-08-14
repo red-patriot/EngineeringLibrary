@@ -19,17 +19,17 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<1, 0, 0, 0, 0, 0, 0> {
-    typedef UnitBase<1, 0, 0, 0, 0, 0, 0> this_t;
+  class SIUnit<1, 0, 0, 0, 0, 0, 0> {
+    typedef SIUnit<1, 0, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double g() const { return mValue * 1000; }
-    double kg() const { return mValue; }
+    double g() const { return value_ * 1000; }
+    double kg() const { return value_; }
 
-    double slug() const { return mValue * 0.06852176556196105; }
+    double slug() const { return value_ * 0.06852176556196105; }
   };
 
-  using Mass = UnitBase<1, 0, 0, 0, 0, 0, 0>;
+  using Mass = SIUnit<1, 0, 0, 0, 0, 0, 0>;
 
   Mass operator"" _g (long double val);
   Mass operator"" _g (unsigned long long val);

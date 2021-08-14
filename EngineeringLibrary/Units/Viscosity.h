@@ -19,19 +19,19 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<1, -1, -1, 0, 0, 0, 0> {
-    typedef UnitBase<1, -1, -1, 0, 0, 0, 0> this_t;
+  class SIUnit<1, -1, -1, 0, 0, 0, 0> {
+    typedef SIUnit<1, -1, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double kgpms() const { return mValue; }
-    double Pas() const { return mValue; }
-    double Nspm2() const { return mValue; }
-    double P() const { return mValue * 10; }
+    double kgpms() const { return value_; }
+    double Pas() const { return value_; }
+    double Nspm2() const { return value_; }
+    double P() const { return value_ * 10; }
 
-    double lbspft2() const { return mValue * 0.671968900; }
+    double lbspft2() const { return value_ * 0.671968900; }
   };
 
-  using DViscosity = UnitBase<1, -1, -1, 0, 0, 0, 0>;
+  using DViscosity = SIUnit<1, -1, -1, 0, 0, 0, 0>;
 
   DViscosity operator""_kgpms(long double val);
   DViscosity operator""_kgpms(unsigned long long val);
@@ -53,17 +53,17 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 2, -1, 0, 0, 0, 0> {
-    typedef UnitBase<0, 2, -1, 0, 0, 0, 0> this_t;
+  class SIUnit<0, 2, -1, 0, 0, 0, 0> {
+    typedef SIUnit<0, 2, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double m2ps() const { return mValue; }
-    double St() const { return mValue * 10'000.0; }
+    double m2ps() const { return value_; }
+    double St() const { return value_ * 10'000.0; }
     
-    double ft2ps() const { return mValue * 10.763'91; }
+    double ft2ps() const { return value_ * 10.763'91; }
   };
 
-  using  KViscosity = UnitBase<0, 2, -1, 0, 0, 0, 0>;
+  using  KViscosity = SIUnit<0, 2, -1, 0, 0, 0, 0>;
 
   KViscosity operator""_m2ps(long double val);
   KViscosity operator""_m2ps(unsigned long long val);

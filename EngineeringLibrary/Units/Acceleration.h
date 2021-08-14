@@ -19,17 +19,17 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 1, -2, 0, 0, 0, 0> {
-    typedef UnitBase<0, 1, -2, 0, 0, 0, 0> this_t;
+  class SIUnit<0, 1, -2, 0, 0, 0, 0> {
+    typedef SIUnit<0, 1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double mpsec2() const { return mValue; }
+    double mpsec2() const { return value_; }
     
-    double inpsec2() const { return mValue * (100/2.54); }
-    double ftpsec2() const { return mValue * (100/(30.48)); }
+    double inpsec2() const { return value_ * (100/2.54); }
+    double ftpsec2() const { return value_ * (100/(30.48)); }
   };
 
-  using Acceleration = UnitBase<0, 1, -2, 0, 0, 0, 0>;
+  using Acceleration = SIUnit<0, 1, -2, 0, 0, 0, 0>;
 
   Acceleration operator"" _mpsec2 (long double val);
   Acceleration operator"" _mpsec2 (unsigned long long val);

@@ -19,18 +19,18 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 0, 0, 0, 1, 0, 0> {
-    typedef UnitBase<0, 0, 0, 0, 1, 0, 0> this_t;
+  class SIUnit<0, 0, 0, 0, 1, 0, 0> {
+    typedef SIUnit<0, 0, 0, 0, 1, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double Kelvin() { return mValue; }
-    double deg_C() { return mValue - 273.15; }
+    double Kelvin() { return value_; }
+    double deg_C() { return value_ - 273.15; }
 
-    double Rankine() { return mValue * (9.0/5.0); }
-    double deg_F() { return mValue * 9.0/5.0 - 459.67; }
+    double Rankine() { return value_ * (9.0/5.0); }
+    double deg_F() { return value_ * 9.0/5.0 - 459.67; }
   };
 
-  using Temperature = UnitBase<0, 0, 0, 0, 1, 0, 0>;
+  using Temperature = SIUnit<0, 0, 0, 0, 1, 0, 0>;
 
   Temperature operator"" _Kelvin(long double val);
   Temperature operator"" _Kelvin(unsigned long long val);

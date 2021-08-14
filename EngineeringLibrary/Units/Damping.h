@@ -19,18 +19,18 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<1, 0, -1, 0, 0, 0, 0> {
-    typedef UnitBase<1, 0, -1, 0, 0, 0, 0> this_t;
+  class SIUnit<1, 0, -1, 0, 0, 0, 0> {
+    typedef SIUnit<1, 0, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double Nspm() const { return mValue; }
-    double kNspm() const { return mValue / 1000; }
+    double Nspm() const { return value_; }
+    double kNspm() const { return value_ / 1000; }
 
-    double lbspin() const { return mValue * .0254/4.4482216152605; }
-    double lbspft() const { return mValue * .3048/4.4482216152605; }
+    double lbspin() const { return value_ * .0254/4.4482216152605; }
+    double lbspft() const { return value_ * .3048/4.4482216152605; }
   };
 
-  using Damping = UnitBase<1, 0, -1, 0, 0, 0, 0>;
+  using Damping = SIUnit<1, 0, -1, 0, 0, 0, 0>;
 
   // Literal operators
   Damping operator"" _Nspm (long double val);

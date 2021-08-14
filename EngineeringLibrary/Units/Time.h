@@ -20,16 +20,16 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 0, 1, 0, 0, 0, 0> {
-    typedef UnitBase<0, 0, 1, 0, 0, 0, 0> this_t;
+  class SIUnit<0, 0, 1, 0, 0, 0, 0> {
+    typedef SIUnit<0, 0, 1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double sec() const { return mValue; }
-    double minute() const { return mValue / 60; }
-    double hour() const { return mValue / 3600; }
+    double sec() const { return value_; }
+    double minute() const { return value_ / 60; }
+    double hour() const { return value_ / 3600; }
   };
 
-  using Time = UnitBase<0, 0, 1, 0, 0, 0, 0>;
+  using Time = SIUnit<0, 0, 1, 0, 0, 0, 0>;
 
   Time operator"" _sec (long double val);
   Time operator"" _sec (unsigned long long val);

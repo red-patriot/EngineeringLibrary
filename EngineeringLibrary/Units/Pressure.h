@@ -19,20 +19,20 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<1, -1, -2, 0, 0, 0, 0> {
-    typedef UnitBase<1, -1, -2, 0, 0, 0, 0> this_t;
+  class SIUnit<1, -1, -2, 0, 0, 0, 0> {
+    typedef SIUnit<1, -1, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double Pa() const { return mValue; }
-    double kPa() const { return mValue * 0.001; }
-    double MPa() const { return mValue * 0.000'001; }
-    double GPa() const { return mValue * 0.000'000'001; }
+    double Pa() const { return value_; }
+    double kPa() const { return value_ * 0.001; }
+    double MPa() const { return value_ * 0.000'001; }
+    double GPa() const { return value_ * 0.000'000'001; }
 
-    double psi() const { return mValue * 0.000'145'037'737'796'858'691'163; }
-    double ksi() const { return mValue * 0.000'000'145'037'737'796'858'691; }
+    double psi() const { return value_ * 0.000'145'037'737'796'858'691'163; }
+    double ksi() const { return value_ * 0.000'000'145'037'737'796'858'691; }
   };
 
-  using Pressure = UnitBase<1, -1, -2, 0, 0, 0, 0>;
+  using Pressure = SIUnit<1, -1, -2, 0, 0, 0, 0>;
 
   // Literal operators
   Pressure operator"" _Pa (long double val);

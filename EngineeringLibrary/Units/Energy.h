@@ -20,28 +20,28 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<1, 2, -2, 0, 0, 0, 0> {
-    typedef UnitBase<1, 2, -2, 0, 0, 0, 0> this_t;
+  class SIUnit<1, 2, -2, 0, 0, 0, 0> {
+    typedef SIUnit<1, 2, -2, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double J() const { return mValue; }
-    double kJ() const { return mValue * 0.001; }
-    double MJ() const { return mValue * 0.000'001; }
+    double J() const { return value_; }
+    double kJ() const { return value_ * 0.001; }
+    double MJ() const { return value_ * 0.000'001; }
 
-    double Nm() const { return mValue; }
-    double kNm() const { return mValue * 0.001; }
-    double Nmm() const { return mValue * 1000.0; }
+    double Nm() const { return value_; }
+    double kNm() const { return value_ * 0.001; }
+    double Nmm() const { return value_ * 1000.0; }
 
-    double ftlb() const { return mValue * 0.737'562'149; }
-    double inlb() const { return mValue * 8.850'745'8; }
-    double BTU() const { return mValue * 0.000'947'817'12; }
+    double ftlb() const { return value_ * 0.737'562'149; }
+    double inlb() const { return value_ * 8.850'745'8; }
+    double BTU() const { return value_ * 0.000'947'817'12; }
 
-    double lbft() const { return mValue * 0.737'562'149; }
-    double lbin() const { return mValue * 8.850'745'8; }
+    double lbft() const { return value_ * 0.737'562'149; }
+    double lbin() const { return value_ * 8.850'745'8; }
   };
 
-  using Energy = UnitBase<1, 2, -2, 0, 0, 0, 0>;
-  using Torque = UnitBase<1, 2, -2, 0, 0, 0, 0>;
+  using Energy = SIUnit<1, 2, -2, 0, 0, 0, 0>;
+  using Torque = SIUnit<1, 2, -2, 0, 0, 0, 0>;
 
   Energy operator"" _J (long double val);
   Energy operator"" _J (unsigned long long val);

@@ -12,7 +12,7 @@ namespace Microsoft {
       template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
         int MD, int LD, int TD, int CD, int TeD, int AD, int LuD, class ...> 
         static std::wstring
-        ToString(const eng::UnitBase<MN, LN, TN, CN, TeN, AN, LuN,
+        ToString(const eng::SIUnit<MN, LN, TN, CN, TeN, AN, LuN,
                                      MD, LD, TD, CD, TeD, AD, LuD>& t) {
         return ToString(t.value()) + L" <"
           + ToString(MN) + L"/" + ToString(MD) + L" "
@@ -28,7 +28,7 @@ namespace Microsoft {
       /** Convert eng::UnitBase to std::wstring if all denominators are 1 */
       template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN>
       static std::wstring
-        ToString(const eng::UnitBase<MN, LN, TN, CN, TeN, AN, LuN, 1, 1, 1, 1, 1, 1, 1>& t) {
+        ToString(const eng::SIUnit<MN, LN, TN, CN, TeN, AN, LuN, 1, 1, 1, 1, 1, 1, 1>& t) {
         return ToString(t.value()) + L" <"
           + ToString(MN)  + L" "
           + ToString(LN) + L" "
@@ -79,7 +79,7 @@ namespace Microsoft {
 
       /** Convert eng::Frequency to std::wstring */
       template<> static std::wstring
-        ToString(const  eng::UnitBase<0, 0, -1, 0, 0, 0, 0>& t) {
+        ToString(const  eng::SIUnit<0, 0, -1, 0, 0, 0, 0>& t) {
         return ToString(t.value()) + L" Hz";
       }
 

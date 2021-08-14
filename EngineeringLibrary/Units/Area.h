@@ -19,19 +19,19 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 2, 0, 0, 0, 0, 0> {
-    typedef UnitBase<0, 2, 0, 0, 0, 0, 0> this_t;
+  class SIUnit<0, 2, 0, 0, 0, 0, 0> {
+    typedef SIUnit<0, 2, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double mm2() const { return mValue * 1'000'000; }
-    double cm2() const { return mValue * 10'000; }
-    double m2() const { return mValue; }
+    double mm2() const { return value_ * 1'000'000; }
+    double cm2() const { return value_ * 10'000; }
+    double m2() const { return value_; }
 
-    double in2() const { return mValue * 10'000/(6.4516); }
-    double ft2() const { return mValue * 10'000/(929.0304); }
+    double in2() const { return value_ * 10'000/(6.4516); }
+    double ft2() const { return value_ * 10'000/(929.0304); }
   };
 
-  using Area = UnitBase<0, 2, 0, 0, 0, 0, 0>;
+  using Area = SIUnit<0, 2, 0, 0, 0, 0, 0>;
 
   Area operator"" _mm2(long double val);
   Area operator"" _mm2(unsigned long long val);

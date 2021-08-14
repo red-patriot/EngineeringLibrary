@@ -108,12 +108,12 @@ namespace eng {
     void populate_known_loads(SystemModel& system_matrix) const;
     void populate_known_moments(SystemModel& system_matrix) const;
 
-    void populate_unknownmValues(SystemModel& system_matrix) const;
+    void populate_unknown_values(SystemModel& system_matrix) const;
     void populate_unknown_loads(SystemModel& system_matrix, int& index) const;
     void populate_unknown_moments(SystemModel& system_matrix, int& index) const;
 
     void solve_system(SystemModel& system_matrix) const;
-    void save_solvedmValues(SystemModel& system_matrix) const;
+    void save_solved_values(SystemModel& system_matrix) const;
   };
 
 };  // namespace eng

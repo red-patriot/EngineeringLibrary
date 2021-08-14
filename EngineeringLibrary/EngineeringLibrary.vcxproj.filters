@@ -40,15 +40,6 @@
     <Filter Include="Geometric\Source files">
       <UniqueIdentifier>{7e986fb9-064d-4025-9b99-49227500e9de}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Dimensions">
-      <UniqueIdentifier>{88a1bf42-48d5-46f0-84c8-c890777a29c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Dimensions\Header Files">
-      <UniqueIdentifier>{14fb44f1-25fc-41a5-8828-86fda6bf9634}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Dimensions\Source Files">
-      <UniqueIdentifier>{a95b871e-a208-484a-9e94-2e58841b6329}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -188,9 +179,6 @@
     </ClInclude>
     <ClInclude Include="Units\ElectricalCurrent.h">
       <Filter>Units</Filter>
-    </ClInclude>
-    <ClInclude Include="Dimensions\SIDimension.h">
-      <Filter>Dimensions\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

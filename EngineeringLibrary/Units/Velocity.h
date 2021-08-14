@@ -19,19 +19,19 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 1, -1, 0, 0, 0, 0> {
-    typedef UnitBase<0, 1, -1, 0, 0, 0, 0> this_t;
+  class SIUnit<0, 1, -1, 0, 0, 0, 0> {
+    typedef SIUnit<0, 1, -1, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
   public:
-    double mpsec() const { return mValue; }
-    double kph() const { return mValue * 3.600; }
+    double mpsec() const { return value_; }
+    double kph() const { return value_ * 3.600; }
 
-    double inpsec() const { return mValue * 39.370'007'874'015'748; }  // 100/2.54
-    double ftpsec() const { return mValue * 3.280'839'895'013'123; }  // 100/30.48
-    double mph() const { return mValue * 2.236'936'292'054'402; }  // 360'000 / 160'934.4
+    double inpsec() const { return value_ * 39.370'007'874'015'748; }  // 100/2.54
+    double ftpsec() const { return value_ * 3.280'839'895'013'123; }  // 100/30.48
+    double mph() const { return value_ * 2.236'936'292'054'402; }  // 360'000 / 160'934.4
   };
 
-  using Velocity = UnitBase<0, 1, -1, 0, 0, 0, 0>;
+  using Velocity = SIUnit<0, 1, -1, 0, 0, 0, 0>;
 
   Velocity operator"" _mpsec (long double val);
   Velocity operator"" _mpsec (unsigned long long val);

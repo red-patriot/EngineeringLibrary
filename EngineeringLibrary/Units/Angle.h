@@ -19,7 +19,7 @@ namespace eng {
    * \class Angle 
    * \addtogroup Units
    */
-  using Angle = UnitBase<0, 0, 0, 0, 0, 0, 0>;
+  using Angle = SIUnit<0, 0, 0, 0, 0, 0, 0>;
 
   Angle operator"" _deg(long double val);
   Angle operator"" _deg(unsigned long long val);

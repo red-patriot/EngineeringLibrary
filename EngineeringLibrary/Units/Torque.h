@@ -21,7 +21,7 @@ namespace eng {
    * \class Torque
    * \addtogroup Units
    */
-  using Torque = UnitBase<1, 2, -2, 0, 0, 0, 0>;
+  using Torque = SIUnit<1, 2, -2, 0, 0, 0, 0>;
 
   Torque operator"" _Nm (long double val);
   Torque operator"" _Nm (unsigned long long val);

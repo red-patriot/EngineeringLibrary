@@ -21,28 +21,28 @@ namespace eng {
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 0, 0, 0, 0, 0, 0> {
-    typedef UnitBase<0, 0, 0, 0, 0, 0, 0> this_t;
+  class SIUnit<0, 0, 0, 0, 0, 0, 0> {
+    typedef SIUnit<0, 0, 0, 0, 0, 0, 0> this_t;
   public:
-    UnitBase(const double& n = 0) : mValue(n) { }
-    double value() const { return mValue; }
+    SIUnit(const double& n = 0) : value_(n) { }
+    double value() const { return value_; }
 
-    double rad() const { return mValue; }
-    double deg() const { return mValue * (pi/180); }
+    double rad() const { return value_; }
+    double deg() const { return value_ * (pi/180); }
 
-    this_t& operator+= (const this_t& rh) { mValue += rh.value(); return *this; }
-    this_t& operator-= (const this_t& rh) { mValue -= rh.value(); return *this; }
-    this_t& operator*= (const double& rh) { mValue *= rh; return *this; }
-    this_t& operator/= (const double& rh) { mValue /= rh; return *this; }
+    this_t& operator+= (const this_t& rh) { value_ += rh.value(); return *this; }
+    this_t& operator-= (const this_t& rh) { value_ -= rh.value(); return *this; }
+    this_t& operator*= (const double& rh) { value_ *= rh; return *this; }
+    this_t& operator/= (const double& rh) { value_ /= rh; return *this; }
 
-    operator double() { return mValue; }
+    operator double() { return value_; }
 
   protected:
-    double mValue;
+    double value_;
   };
 
-  using Unitless = UnitBase<0, 0, 0, 0, 0, 0, 0>;
-  using Angle = UnitBase<0, 0, 0, 0, 0, 0, 0>;
+  using Unitless = SIUnit<0, 0, 0, 0, 0, 0, 0>;
+  using Angle = SIUnit<0, 0, 0, 0, 0, 0, 0>;
 
 }; // namespace eng
 
