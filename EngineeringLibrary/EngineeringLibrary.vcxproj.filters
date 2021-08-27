@@ -180,6 +180,12 @@
     <ClInclude Include="Units\ElectricCurrent.h">
       <Filter>Units\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Units\Voltage.h">
+      <Filter>Units\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Units\Resistance.h">
+      <Filter>Units\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -287,8 +293,14 @@
     <ClCompile Include="Geometric\HollowRectangle.cpp">
       <Filter>Geometric\Source files</Filter>
     </ClCompile>
+    <ClCompile Include="Units\Voltage.cpp">
+      <Filter>Units\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Resistance.cpp">
+      <Filter>Units\Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Units\ElectricCurrent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Units\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

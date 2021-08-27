@@ -138,6 +138,13 @@ namespace Microsoft {
         return ToString(t.value()) + L" m/s";
       }
 
+      /** Convert eng::Voltage to std::wstring */
+      template <>
+      static std::wstring
+      ToString(const eng::Voltage& t) {
+        return ToString(t.value()) + L" V";
+      }
+
       /** Convert eng::Volume to std::wstring */
       template<> static std::wstring
         ToString(const  eng::Volume& t) {

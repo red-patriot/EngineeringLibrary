@@ -35,4 +35,32 @@ namespace eng {
   ElectricCurrent operator"" _mAmp(long double val);
   ElectricCurrent operator"" _mAmp(unsigned long long val);
 
+  inline ElectricCurrent conj(const ElectricCurrent& x) { return x; }
+  inline ElectricCurrent real(const ElectricCurrent& x) { return x; }
+  inline ElectricCurrent imag(const ElectricCurrent& x) { return 0_Amp; }
+
 };  // namespace eng
+
+/* Integration with Eigen. */
+namespace Eigen {
+
+  template <>
+  struct NumTraits<eng::ElectricCurrent> : NumTraits<double> {
+    typedef eng::ElectricCurrent Real;
+    typedef eng::ElectricCurrent NonInteger;
+    typedef eng::ElectricCurrent Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
+
+using eng::operator"" _Amp;    using eng::operator"" _mAmp;
