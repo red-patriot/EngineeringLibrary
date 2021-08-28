@@ -13,6 +13,8 @@
 #include <cmath>
 #include <numeric>
 
+#include <eigen3/Eigen/Core>
+
 /* This macro allows for all explicit specializations of SIUnit to share the 
  *   necessary base functionality.
  *   Each specialization must define type_t as a typedef for the class type
@@ -336,4 +338,46 @@ namespace eng {
         unit_mgmt::denoma(LuN * 2, LuD, 0, 1)>(x.value() * x.value());
   }
 
+  template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+            int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+  inline auto conj(const SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) { 
+    return x; 
+  }
+
+  template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+            int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+  inline auto real(const SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) { 
+    return x; 
+  }
+
+  template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+            int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+  inline auto imag(const SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>&) {
+    return SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(0.0); 
+  }
+
 };  // namespace eng
+
+/* Integration with Eigen. */
+namespace Eigen {
+
+  template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
+            int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
+  struct NumTraits<eng::SIUnit<MN, LN, TN, CN, TeN, AN, LuN,
+                               MD, LD, TD, CD, TeD, AD, LuD>> : NumTraits<double> {
+    typedef eng::SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> Real;
+    typedef eng::SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> NonInteger;
+    typedef eng::SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
