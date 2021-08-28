@@ -111,7 +111,7 @@
     <ClInclude Include="Units\Torque.h">
       <Filter>Units\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Units\UnitBase.h">
+    <ClInclude Include="Units\SIUnit.h">
       <Filter>Units\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Units\Velocity.h">

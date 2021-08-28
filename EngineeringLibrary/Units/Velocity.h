@@ -8,7 +8,7 @@
  * \date   August 2020
  *********************************************************************/
 
-#include "UnitBase.h"
+#include "SIUnit.h"
 
 #include <eigen3/Eigen/Core>
 

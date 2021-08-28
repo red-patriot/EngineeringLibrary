@@ -9,7 +9,7 @@
 
 #include <eigen3/Eigen/Core>
 
-#include "UnitBase.h"
+#include "SIUnit.h"
 
 namespace eng {
 

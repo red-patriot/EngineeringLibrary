@@ -1,7 +1,7 @@
 #pragma once
 
 /*****************************************************************/ /**
- * \file  UnitBase.h
+ * \file  SIUnit.h
  * \brief A base class for all units to give them a uniform interface and
  *          to simplify the implementation where possible. This class may be 
  *          used outside this library raw, however it is not recommended.

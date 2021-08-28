@@ -256,7 +256,7 @@
     <ClInclude Include="Units\Temperature.h" />
     <ClInclude Include="Units\Time.h" />
     <ClInclude Include="Units\Torque.h" />
-    <ClInclude Include="Units\UnitBase.h" />
+    <ClInclude Include="Units\SIUnit.h" />
     <ClInclude Include="Units\Unitless.h" />
     <ClInclude Include="Units\Velocity.h" />
     <ClInclude Include="Units\Viscosity.h" />
