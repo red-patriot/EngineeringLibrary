@@ -49,32 +49,7 @@ namespace eng {
   Velocity operator"" _mph (long double val);
   Velocity operator"" _mph (unsigned long long val);
 
-  inline Velocity conj(const Velocity& x) { return x; }
-  inline Velocity real(const Velocity& x) { return x; }
-  inline Velocity imag(const Velocity& x) { return 0_mpsec; }
-
 };  // namespace eng
-
-/* Integration with Eigen. */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Velocity> : NumTraits<double> {
-    typedef eng::Velocity Real;
-    typedef eng::Velocity NonInteger;
-    typedef eng::Velocity Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _mpsec;      using eng::operator"" _kph;
 using eng::operator"" _inpsec;     using eng::operator"" _ftpsec;

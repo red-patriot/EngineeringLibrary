@@ -77,43 +77,6 @@ namespace eng {
 
 };  // namespace eng
 
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::DViscosity> : NumTraits<double> {
-    typedef eng::DViscosity Real;
-    typedef eng::DViscosity NonInteger;
-    typedef eng::DViscosity Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-  template<> struct NumTraits<eng::KViscosity> : NumTraits<double> {
-    typedef eng::KViscosity Real;
-    typedef eng::KViscosity NonInteger;
-    typedef eng::KViscosity Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
-
 using eng::operator""_kgpms;        using eng::operator""_Pas;
 using eng::operator""_Nspm2;        using eng::operator""_P;
 using eng::operator""_lbspft2;

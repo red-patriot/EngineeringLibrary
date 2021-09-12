@@ -41,27 +41,6 @@ namespace eng {
 
 };  // namespace eng
 
-/* Integration with Eigen. */
-namespace Eigen {
-
-  template <>
-  struct NumTraits<eng::Resistance> : NumTraits<double> {
-    typedef eng::Resistance Real;
-    typedef eng::Resistance NonInteger;
-    typedef eng::Resistance Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _Ohm;      using eng::operator"" _kOhm;
 using eng::operator"" _MOhm;

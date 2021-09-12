@@ -54,32 +54,7 @@ namespace eng {
   SecondMomentOfArea operator"" _ft4(long double val);
   SecondMomentOfArea operator"" _ft4(unsigned long long val);
 
-  inline SecondMomentOfArea conj(const SecondMomentOfArea& x) { return x; }
-  inline SecondMomentOfArea real(const SecondMomentOfArea& x) { return x; }
-  inline SecondMomentOfArea imag(const SecondMomentOfArea&) { return 0_m4; }
-
 }; // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::SecondMomentOfArea> : NumTraits<double> {
-    typedef eng::SecondMomentOfArea Real;
-    typedef eng::SecondMomentOfArea NonInteger;
-    typedef eng::SecondMomentOfArea Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _mm4;         using eng::operator"" _m4;
 using eng::operator"" _in4;         using eng::operator"" _ft4;

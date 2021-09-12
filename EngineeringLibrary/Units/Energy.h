@@ -64,27 +64,6 @@ namespace eng {
 
 }; // namespace eng
 
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Energy> : NumTraits<double> {
-    typedef eng::Energy Real;
-    typedef eng::Energy NonInteger;
-    typedef eng::Energy Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
-
 using eng::operator"" _J;        using eng::operator"" _kJ;
 using eng::operator"" _MJ;
 using eng::operator"" _ftlb;     using eng::operator"" _inlb;

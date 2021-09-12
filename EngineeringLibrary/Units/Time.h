@@ -41,32 +41,7 @@ namespace eng {
   Time operator"" _hour (long double val);
   Time operator"" _hour (unsigned long long val);
 
-  inline Time conj(const Time& x) { return x; }
-  inline Time real(const Time& x) { return x; }
-  inline Time imag(const Time& x) { return 0_sec; }
-
 };  // namepsace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Time> : NumTraits<double> {
-    typedef eng::Time Real;
-    typedef eng::Time NonInteger;
-    typedef eng::Time Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _sec;        using eng::operator"" _minute;
 using eng::operator"" _hour;

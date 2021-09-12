@@ -23,8 +23,8 @@
  */
 #define UnitBaseCOMMON                                   \
  public:                                                 \
-  explicit SIUnit(const double& n = 0) : value_(n) { } \
-  double value() const { return value_; }                \
+  explicit SIUnit(const T& n = 0) : value_(n) { } \
+  T value() const { return value_; }                \
   this_t& operator+=(const this_t& rh) {                 \
     value_ += rh.value();                                \
     return *this;                                        \
@@ -33,19 +33,34 @@
     value_ -= rh.value();                                \
     return *this;                                        \
   }                                                      \
-  this_t& operator*=(const double& rh) {                 \
+  this_t& operator*=(const T& rh) {                 \
     value_ *= rh;                                        \
     return *this;                                        \
   }                                                      \
-  this_t& operator/=(const double& rh) {                 \
+  this_t& operator/=(const T& rh) {                 \
     value_ /= rh;                                        \
     return *this;                                        \
   }                                                      \
                                                          \
  private:                                                \
-  double value_;
+  T value_;
 
 namespace eng {
+
+  template<typename T>
+  class UnitBase {
+   public:
+    explicit UnitBase(const T& n = T(0)) :
+        value_(n) { }
+
+    T value() const { return value_; }
+
+   protected:
+    void value(const T& n) { value_ = n; }
+    
+   private:
+    T value_;
+  };
 
   /** A class representing and Unit in the SI system.
    * \class SIUnit
@@ -63,7 +78,8 @@ namespace eng {
             int CurrentDen = 1,
             int TemperatureDen = 1,
             int AmountDen = 1,
-            int LuminousityDen = 1>
+            int LuminousityDen = 1,
+            typename T = double>
   class SIUnit {
    public:
     typedef SIUnit this_t;

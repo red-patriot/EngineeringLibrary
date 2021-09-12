@@ -7,35 +7,6 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTests {
-  TEST_CLASS(TestsUnitBase) {
-  public:
-    TEST_METHOD(TestMultiply1) {
-      eng::SIUnit<1, 1, 1, 1, 1, 1, 1> a(5.0);
-      eng::SIUnit<1, 2, 1, 1, 1, 1, 1> b(6.0);
-      Assert::AreEqual(eng::SIUnit<2, 3, 2, 2, 2, 2, 2>(30.0).value(), (a * b).value());
-    }
-    TEST_METHOD(TestMultiply2) {
-      eng::SIUnit<1, 1, 1, 1, 1, 1, 1> a(6.0);
-      eng::SIUnit<1, 2, 1, 1, 1, 1, 1> b(5.0);
-      Assert::AreEqual(eng::SIUnit<0, -1, 0, 0, 0, 0, 0>(1.20).value(), (a / b).value());
-    }
-    TEST_METHOD(TestMultiply3) {
-      eng::SIUnit<1, 1, 1, 1, 1, 1, 1> a(1.0);
-      eng::SIUnit<-1, -1, -1, -1, -1, -1, -1> b(5.0);
-      Assert::AreEqual(5.0, a * b);
-    }
-    TEST_METHOD(TestMultiply4) {
-      eng::SIUnit<1, 0, 0, 0, 1, 1, 1> a(1.0);
-      eng::SIUnit<-1, 0, 0, 0, -1, -1, -1> b(5.0);
-      Assert::AreEqual(5.0, a * b);
-    }
-    TEST_METHOD(TestDivide1) {
-      eng::SIUnit<1, 1, 1, 1, 1, 1, 1> a(2.5);
-      eng::SIUnit<1, 1, 1, 1, 1, 1, 1> b(5.0);
-      Assert::AreEqual(2.0, b / a);
-    }
-  };
-
   TEST_CLASS(TestsAccleration) {
   public:
     TEST_METHOD(TestConstruct) {

@@ -25,7 +25,7 @@ namespace eng {
    public:
     typedef SIUnit<0, 0, 0, 0, 0, 0, 0> this_t;
    public:
-    SIUnit(const double& n = 0) : value_(n) { }
+    SIUnit(const double& n = 0) : value_(n) { } // purposefully implicit.
     double value() const { return value_; }
 
     double rad() const { return value_; }
@@ -36,7 +36,7 @@ namespace eng {
     this_t& operator*= (const double& rh) { value_ *= rh; return *this; }
     this_t& operator/= (const double& rh) { value_ /= rh; return *this; }
 
-    operator double() { return value_; }
+    operator double() { return value_; } // purposefully implicit
 
   protected:
     double value_;
@@ -46,24 +46,3 @@ namespace eng {
   using Angle = SIUnit<0, 0, 0, 0, 0, 0, 0>;
 
 }; // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Unitless> : NumTraits<double> {
-    typedef eng::Unitless Real;
-    typedef eng::Unitless NonInteger;
-    typedef eng::Unitless Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen

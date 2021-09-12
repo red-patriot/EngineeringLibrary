@@ -44,34 +44,8 @@ namespace eng {
 
   Stiffness operator"" _lbpft(long double val);
   Stiffness operator"" _lbpft(unsigned long long val);
-
-  inline Stiffness conj(const Stiffness& x) { return x; }
-  inline Stiffness real(const Stiffness& x) { return x; }
-  inline Stiffness imag(const Stiffness&) { return 0_Npm; }
   
-
 }; // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Stiffness> : NumTraits<double> {
-    typedef eng::Stiffness Real;
-    typedef eng::Stiffness NonInteger;
-    typedef eng::Stiffness Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _Npm;       using eng::operator"" _Npmm;
 using eng::operator"" _lbpin;     using eng::operator"" _lbpft;

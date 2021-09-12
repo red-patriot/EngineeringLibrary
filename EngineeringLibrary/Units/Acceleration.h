@@ -41,32 +41,7 @@ namespace eng {
   Acceleration operator"" _ftpsec2 (long double val);
   Acceleration operator"" _ftpsec2 (unsigned long long val);
 
-  inline Acceleration conj(const Acceleration& x) { return x; }
-  inline Acceleration real(const Acceleration& x) { return x; }
-  inline Acceleration imag(const Acceleration&) { return 0_mpsec2; }
-
 };  // namespace eng
-
-/* Integration with Eigen. */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Acceleration> : NumTraits<double> {
-    typedef eng::Acceleration Real;
-    typedef eng::Acceleration NonInteger;
-    typedef eng::Acceleration Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _mpsec2;
 using eng::operator"" _inpsec2;      using eng::operator"" _ftpsec2;

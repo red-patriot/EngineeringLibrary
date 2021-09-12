@@ -44,27 +44,6 @@ namespace eng {
 
 };  // namespace eng
 
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Temperature> : NumTraits<double> {
-    typedef eng::Temperature Real;
-    typedef eng::Temperature NonInteger;
-    typedef eng::Temperature Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
-
 using eng::operator"" _Kelvin;
 using eng::operator"" _Rankine;
 

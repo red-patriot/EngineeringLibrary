@@ -39,33 +39,6 @@ namespace eng {
   Voltage operator"" _kV(long double val);
   Voltage operator"" _kV(unsigned long long val);
 
-  inline Voltage conj(const Voltage& x) { return x; }
-  inline Voltage real(const Voltage& x) { return x; }
-  inline Voltage imag(const Voltage& x) { return 0_V; }
-
 };  // namespace eng
-
-/* Integration with Eigen. */
-namespace Eigen {
-
-  template <>
-  struct NumTraits<eng::Voltage> : NumTraits<double> {
-    typedef eng::Voltage Real;
-    typedef eng::Voltage NonInteger;
-    typedef eng::Voltage Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
-
 using eng::operator"" _V;        using eng::operator"" _kV;
 using eng::operator"" _mV;

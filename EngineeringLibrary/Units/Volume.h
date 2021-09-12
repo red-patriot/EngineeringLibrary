@@ -49,32 +49,7 @@ namespace eng {
   Volume operator"" _ft3(long double val);
   Volume operator"" _ft3(unsigned long long val);
 
-  inline Volume conj(const Volume& x) { return x; }
-  inline Volume real(const Volume& x) { return x; }
-  inline Volume imag(const Volume&) { return 0_m3; }
-
 }; // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Volume> : NumTraits<double> {
-    typedef eng::Volume Real;
-    typedef eng::Volume NonInteger;
-    typedef eng::Volume Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _mm3;         using eng::operator"" _cm3;
 using eng::operator"" _m3;

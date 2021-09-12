@@ -54,31 +54,7 @@ namespace eng {
   Pressure operator"" _ksi (long double val);
   Pressure operator"" _ksi (unsigned long long val);
 
-  inline Pressure conj(const Pressure& x) { return x; }
-  inline Pressure real(const Pressure& x) { return x; }
-  inline Pressure imag(const Pressure&) { return 0_Pa; }
 }; // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-  
-  template<> struct NumTraits<eng::Pressure> : NumTraits<double> {
-    typedef eng::Pressure Real;
-    typedef eng::Pressure NonInteger;
-    typedef eng::Pressure Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _Pa;        using eng::operator"" _kPa;
 using eng::operator"" _MPa;       using eng::operator"" _GPa;

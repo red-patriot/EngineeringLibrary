@@ -48,29 +48,7 @@ namespace eng {
   // Forces are commonly used as vectors
   using ForceVec = Vector<1, 1, -2, 0, 0, 0, 0>;
   
-
 }; // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Force> : NumTraits<double> {
-    typedef eng::Force Real;
-    typedef eng::Force NonInteger;
-    typedef eng::Force Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator""_N;        using eng::operator""_kN;
 using eng::operator""_lbf;      using eng::operator""_kips;

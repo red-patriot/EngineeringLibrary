@@ -63,27 +63,6 @@ namespace eng {
 
 }; // namespace eng
 
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Length> : NumTraits<double> {
-    typedef eng::Length Real;
-    typedef eng::Length NonInteger;
-    typedef eng::Length Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
-
 using eng::operator"" _mm;      using eng::operator"" _cm;
 using eng::operator"" _m;       using eng::operator"" _km;
 using eng::operator"" _in;      using eng::operator"" _ft;
