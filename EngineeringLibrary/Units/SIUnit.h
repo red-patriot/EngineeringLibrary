@@ -21,46 +21,31 @@
  *     before using this macro.
  *   UnitBaseCOMMON must be used before every other class member except this_t.
  */
-#define UnitBaseCOMMON                                   \
- public:                                                 \
-  explicit SIUnit(const T& n = 0) : value_(n) { } \
-  T value() const { return value_; }                \
-  this_t& operator+=(const this_t& rh) {                 \
-    value_ += rh.value();                                \
-    return *this;                                        \
-  }                                                      \
-  this_t& operator-=(const this_t& rh) {                 \
-    value_ -= rh.value();                                \
-    return *this;                                        \
-  }                                                      \
-  this_t& operator*=(const T& rh) {                 \
-    value_ *= rh;                                        \
-    return *this;                                        \
-  }                                                      \
-  this_t& operator/=(const T& rh) {                 \
-    value_ /= rh;                                        \
-    return *this;                                        \
-  }                                                      \
-                                                         \
- private:                                                \
-  T value_;
+#define UnitBaseCOMMON                            \
+ public:                                          \
+  explicit SIUnit(const double& n = 0) : value_(n) { } \
+  double value() const { return value_; }              \
+  this_t& operator+=(const this_t& rh) {          \
+    value_ += rh.value();                         \
+    return *this;                                 \
+  }                                               \
+  this_t& operator-=(const this_t& rh) {          \
+    value_ -= rh.value();                         \
+    return *this;                                 \
+  }                                               \
+  this_t& operator*=(const double& rh) {               \
+    value_ *= rh;                                 \
+    return *this;                                 \
+  }                                               \
+  this_t& operator/=(const double& rh) {               \
+    value_ /= rh;                                 \
+    return *this;                                 \
+  }                                               \
+                                                  \
+ private:                                         \
+  double value_;
 
 namespace eng {
-
-  template<typename T>
-  class UnitBase {
-   public:
-    explicit UnitBase(const T& n = T(0)) :
-        value_(n) { }
-
-    T value() const { return value_; }
-
-   protected:
-    void value(const T& n) { value_ = n; }
-    
-   private:
-    T value_;
-  };
 
   /** A class representing and Unit in the SI system.
    * \class SIUnit
@@ -78,11 +63,11 @@ namespace eng {
             int CurrentDen = 1,
             int TemperatureDen = 1,
             int AmountDen = 1,
-            int LuminousityDen = 1,
-            typename T = double>
+            int LuminousityDen = 1>
   class SIUnit {
    public:
     typedef SIUnit this_t;
+
     UnitBaseCOMMON
   };
 
@@ -156,21 +141,20 @@ namespace eng {
   auto
   operator*(const SIUnit<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
             const SIUnit<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
-    return SIUnit<
-        unit_mgmt::numa(MN1, MD1, MN2, MD2),
-        unit_mgmt::numa(LN1, LD1, LN2, LD2),
-        unit_mgmt::numa(TN1, TD1, TN2, TD2),
-        unit_mgmt::numa(CN1, CD1, CN2, CD2),
-        unit_mgmt::numa(TeN1, TeD1, TeN2, TeD2),
-        unit_mgmt::numa(AN1, AD1, AN2, AD2),
-        unit_mgmt::numa(LuN1, LuD1, LuN2, LuD2),
-        unit_mgmt::denoma(MN1, MD1, MN2, MD2),
-        unit_mgmt::denoma(LN1, LD1, LN2, LD2),
-        unit_mgmt::denoma(TN1, TD1, TN2, TD2),
-        unit_mgmt::denoma(CN1, CD1, CN2, CD2),
-        unit_mgmt::denoma(TeN1, TeD1, TeN2, TeD2),
-        unit_mgmt::denoma(AN1, AD1, AN2, AD2),
-        unit_mgmt::denoma(LuN1, LuD1, LuN2, LuD2)>(lh.value() * rh.value());
+    return SIUnit<unit_mgmt::numa(MN1, MD1, MN2, MD2),
+                  unit_mgmt::numa(LN1, LD1, LN2, LD2),
+                  unit_mgmt::numa(TN1, TD1, TN2, TD2),
+                  unit_mgmt::numa(CN1, CD1, CN2, CD2),
+                  unit_mgmt::numa(TeN1, TeD1, TeN2, TeD2),
+                  unit_mgmt::numa(AN1, AD1, AN2, AD2),
+                  unit_mgmt::numa(LuN1, LuD1, LuN2, LuD2),
+                  unit_mgmt::denoma(MN1, MD1, MN2, MD2),
+                  unit_mgmt::denoma(LN1, LD1, LN2, LD2),
+                  unit_mgmt::denoma(TN1, TD1, TN2, TD2),
+                  unit_mgmt::denoma(CN1, CD1, CN2, CD2),
+                  unit_mgmt::denoma(TeN1, TeD1, TeN2, TeD2),
+                  unit_mgmt::denoma(AN1, AD1, AN2, AD2),
+                  unit_mgmt::denoma(LuN1, LuD1, LuN2, LuD2)>(lh.value() * rh.value());
   }
   template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
             int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
@@ -204,21 +188,20 @@ namespace eng {
   auto
   operator/(const SIUnit<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
             const SIUnit<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
-    return SIUnit<
-        unit_mgmt::nums(MN1, MD1, MN2, MD2),
-        unit_mgmt::nums(LN1, LD1, LN2, LD2),
-        unit_mgmt::nums(TN1, TD1, TN2, TD2),
-        unit_mgmt::nums(CN1, CD1, CN2, CD2),
-        unit_mgmt::nums(TeN1, TeD1, TeN2, TeD2),
-        unit_mgmt::nums(AN1, AD1, AN2, AD2),
-        unit_mgmt::nums(LuN1, LuD1, LuN2, LuD2),
-        unit_mgmt::denoms(MN1, MD1, MN2, MD2),
-        unit_mgmt::denoms(LN1, LD1, LN2, LD2),
-        unit_mgmt::denoms(TN1, TD1, TN2, TD2),
-        unit_mgmt::denoms(CN1, CD1, CN2, CD2),
-        unit_mgmt::denoms(TeN1, TeD1, TeN2, TeD2),
-        unit_mgmt::denoms(AN1, AD1, AN2, AD2),
-        unit_mgmt::denoms(LuN1, LuD1, LuN2, LuD2)>(lh.value() / rh.value());
+    return SIUnit<unit_mgmt::nums(MN1, MD1, MN2, MD2),
+                  unit_mgmt::nums(LN1, LD1, LN2, LD2),
+                  unit_mgmt::nums(TN1, TD1, TN2, TD2),
+                  unit_mgmt::nums(CN1, CD1, CN2, CD2),
+                  unit_mgmt::nums(TeN1, TeD1, TeN2, TeD2),
+                  unit_mgmt::nums(AN1, AD1, AN2, AD2),
+                  unit_mgmt::nums(LuN1, LuD1, LuN2, LuD2),
+                  unit_mgmt::denoms(MN1, MD1, MN2, MD2),
+                  unit_mgmt::denoms(LN1, LD1, LN2, LD2),
+                  unit_mgmt::denoms(TN1, TD1, TN2, TD2),
+                  unit_mgmt::denoms(CN1, CD1, CN2, CD2),
+                  unit_mgmt::denoms(TeN1, TeD1, TeN2, TeD2),
+                  unit_mgmt::denoms(AN1, AD1, AN2, AD2),
+                  unit_mgmt::denoms(LuN1, LuD1, LuN2, LuD2)>(lh.value() / rh.value());
   }
   template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
             int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
@@ -309,7 +292,7 @@ namespace eng {
   inline SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>
   abs(const SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
     return SIUnit<MN, LN, TN, CN, TeN, AN, LuN,
-                    MD, LD, TD, CD, TeD, AD, LuD>(std::fabs(x.value()));
+                  MD, LD, TD, CD, TeD, AD, LuD>(std::fabs(x.value()));
   }
 
   template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
@@ -356,20 +339,20 @@ namespace eng {
 
   template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
             int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
-  inline auto conj(const SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) { 
-    return x; 
+  inline auto conj(const SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    return x;
   }
 
   template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
             int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
-  inline auto real(const SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) { 
-    return x; 
+  inline auto real(const SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>& x) {
+    return x;
   }
 
   template <int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
             int MD, int LD, int TD, int CD, int TeD, int AD, int LuD>
   inline auto imag(const SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>&) {
-    return SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(0.0); 
+    return SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD>(0.0);
   }
 
 };  // namespace eng

@@ -186,6 +186,9 @@
     <ClInclude Include="Units\Resistance.h">
       <Filter>Units\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Units\Power.h">
+      <Filter>Units\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -300,6 +303,9 @@
       <Filter>Units\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Units\ElectricCurrent.cpp">
+      <Filter>Units\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Units\Power.cpp">
       <Filter>Units\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

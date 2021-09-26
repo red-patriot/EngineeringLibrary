@@ -68,11 +68,5 @@ namespace UnitTests {
       
       Assert::AreEqual(decltype(a)(3.5), eng::conj(a));
     }
-    TEST_METHOD(TestRealAndImag) {
-      eng::SIUnit<7, 6, 5, 4, 3, 2, 1> a(5.329);
-
-      Assert::AreEqual(decltype(a)(5.329), eng::real(a));
-      Assert::AreEqual(decltype(a)(0.0), eng::imag(a));
-    }
   };
 };  // nsmaspace UnitTests

@@ -243,6 +243,7 @@
     <ClInclude Include="Units\Area.h" />
     <ClInclude Include="Units\Damping.h" />
     <ClInclude Include="Units\ElectricCurrent.h" />
+    <ClInclude Include="Units\Power.h" />
     <ClInclude Include="Units\Resistance.h" />
     <ClInclude Include="Units\Voltage.h" />
     <ClInclude Include="Units\Energy.h" />
@@ -297,6 +298,7 @@
     <ClCompile Include="Units\Length.cpp" />
     <ClCompile Include="Units\Mass.cpp" />
     <ClCompile Include="Units\MomentOfArea.cpp" />
+    <ClCompile Include="Units\Power.cpp" />
     <ClCompile Include="Units\Pressure.cpp" />
     <ClCompile Include="Units\Resistance.cpp" />
     <ClCompile Include="Units\Stiffness.cpp" />
