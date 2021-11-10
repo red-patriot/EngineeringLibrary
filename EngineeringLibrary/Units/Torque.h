@@ -9,7 +9,7 @@
  * \date   September 2020
  *********************************************************************/
 
-#include "UnitBase.h"
+#include "SIUnit.h"
 #include "Energy.h"
 #include "../Vector.h"
 
@@ -17,11 +17,11 @@
 
 namespace eng {
 
-  /** A representation of a Torque or Moment of Force
+  /**
    * \class Torque
    * \addtogroup Units
    */
-  using Torque = UnitBase<1, 2, -2, 0, 0, 0, 0>;
+  using Torque = SIUnit<1, 2, -2, 0, 0, 0, 0>;
 
   Torque operator"" _Nm (long double val);
   Torque operator"" _Nm (unsigned long long val);

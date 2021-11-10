@@ -29,9 +29,9 @@ namespace eng {
 
   /* Angry comment:
    * The Celcius and Farenheit functions exist (as opposed to being literal 
-   * operators because temperature scales are the literal worst and whoever 
-   * decided that we would continue using non-absolute temperature scales 
-   * deserves to rot in Hell.
+   * operators like the other operators) because temperature scales are the 
+   * literal worst and whoever decided that we would continue using 
+   * non-absolute temperature scales deserves to rot in Hell.
    * Yes I understand the historical reasons that relative scales are used, but 
    * that does not make them any less frustrating.
    */

@@ -40,5 +40,10 @@
 // Fluids headers
 #include "Units/Viscosity.h"
 
+// Electricity headers
+#include "Units/ElectricCurrent.h"
+#include "Units/Resistance.h"
+#include "Units/Voltage.h"
+
 // Temperature header
 #include "Units/Temperature.h"

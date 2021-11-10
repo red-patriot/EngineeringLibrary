@@ -8,29 +8,30 @@
  * \date   November 2020
  *********************************************************************/
 
-#include "UnitBase.h"
+#include "SIUnit.h"
 
 #include <eigen3/Eigen/Core>
 
 namespace eng {
 
-  /** A Temperature
+  /**
    * \class Temperature
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 0, 0, 0, 1, 0, 0> {
-    typedef UnitBase<0, 0, 0, 0, 1, 0, 0> this_t;
+  class SIUnit<0, 0, 0, 0, 1, 0, 0> {
+   public:
+    typedef SIUnit<0, 0, 0, 0, 1, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
-    double Kelvin() { return mValue; }
-    double deg_C() { return mValue - 273.15; }
+   public:
+    double Kelvin() { return value_; }
+    double deg_C() { return value_ - 273.15; }
 
-    double Rankine() { return mValue * (9.0/5.0); }
-    double deg_F() { return mValue * 9.0/5.0 - 459.67; }
+    double Rankine() { return value_ * (9.0/5.0); }
+    double deg_F() { return value_ * 9.0/5.0 - 459.67; }
   };
 
-  using Temperature = UnitBase<0, 0, 0, 0, 1, 0, 0>;
+  using Temperature = SIUnit<0, 0, 0, 0, 1, 0, 0>;
 
   Temperature operator"" _Kelvin(long double val);
   Temperature operator"" _Kelvin(unsigned long long val);
@@ -42,27 +43,6 @@ namespace eng {
   Temperature Farenheit(const double deg_F);
 
 };  // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Temperature> : NumTraits<double> {
-    typedef eng::Temperature Real;
-    typedef eng::Temperature NonInteger;
-    typedef eng::Temperature Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _Kelvin;
 using eng::operator"" _Rankine;

@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>V142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>V142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>V142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>V142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -242,7 +242,10 @@
     <ClInclude Include="Units\Angle.h" />
     <ClInclude Include="Units\Area.h" />
     <ClInclude Include="Units\Damping.h" />
-    <ClInclude Include="Units\ElectricalCurrent.h" />
+    <ClInclude Include="Units\ElectricCurrent.h" />
+    <ClInclude Include="Units\Power.h" />
+    <ClInclude Include="Units\Resistance.h" />
+    <ClInclude Include="Units\Voltage.h" />
     <ClInclude Include="Units\Energy.h" />
     <ClInclude Include="Units\Force.h" />
     <ClInclude Include="Units\Frequency.h" />
@@ -254,7 +257,7 @@
     <ClInclude Include="Units\Temperature.h" />
     <ClInclude Include="Units\Time.h" />
     <ClInclude Include="Units\Torque.h" />
-    <ClInclude Include="Units\UnitBase.h" />
+    <ClInclude Include="Units\SIUnit.h" />
     <ClInclude Include="Units\Unitless.h" />
     <ClInclude Include="Units\Velocity.h" />
     <ClInclude Include="Units\Viscosity.h" />
@@ -288,19 +291,23 @@
     <ClCompile Include="Units\Angle.cpp" />
     <ClCompile Include="Units\Area.cpp" />
     <ClCompile Include="Units\Damping.cpp" />
+    <ClCompile Include="Units\ElectricCurrent.cpp" />
     <ClCompile Include="Units\Energy.cpp" />
     <ClCompile Include="Units\Force.cpp" />
     <ClCompile Include="Units\Frequency.cpp" />
     <ClCompile Include="Units\Length.cpp" />
     <ClCompile Include="Units\Mass.cpp" />
     <ClCompile Include="Units\MomentOfArea.cpp" />
+    <ClCompile Include="Units\Power.cpp" />
     <ClCompile Include="Units\Pressure.cpp" />
+    <ClCompile Include="Units\Resistance.cpp" />
     <ClCompile Include="Units\Stiffness.cpp" />
     <ClCompile Include="Units\Temperature.cpp" />
     <ClCompile Include="Units\Time.cpp" />
     <ClCompile Include="Units\Torque.cpp" />
     <ClCompile Include="Units\Velocity.cpp" />
     <ClCompile Include="Units\Viscosity.cpp" />
+    <ClCompile Include="Units\Voltage.cpp" />
     <ClCompile Include="Units\Volume.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>

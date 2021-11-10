@@ -35,5 +35,14 @@ namespace IntegrationTests {
       eng::Area b = 1_m2;
       Assert::AreEqual(1_N, a * b);
     }
+    TEST_METHOD(Voltage_Resistance_Current) {
+      eng::Voltage v = 12_V;
+      eng::ElectricCurrent i = 4_Amp;
+      eng::Resistance r = 3_Ohm;
+
+      Assert::AreEqual(12_V, i * r);
+      Assert::AreEqual(4_Amp, v / r);
+      Assert::AreEqual(3_Ohm, v / i);
+    }
   };
 };

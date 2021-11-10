@@ -8,33 +8,34 @@
  * \date   August 2020
  *********************************************************************/
 
-#include "UnitBase.h"
+#include "SIUnit.h"
 #include "../Vector.h"
 
 #include <eigen3/Eigen/Core>
 
 namespace eng {
 
-  /** A 1D geometry
+  /** 
    * \class Length 
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 1, 0, 0, 0, 0, 0> {
-    typedef UnitBase<0, 1, 0, 0, 0, 0, 0> this_t;
+  class SIUnit<0, 1, 0, 0, 0, 0, 0> {
+   public:
+    typedef SIUnit<0, 1, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
-    double mm() const { return mValue * 1000; }
-    double cm() const { return mValue * 100; }
-    double m() const { return mValue; }
-    double km() const { return mValue * 0.001; }
+   public:
+    double mm() const { return value_ * 1000; }
+    double cm() const { return value_ * 100; }
+    double m() const { return value_; }
+    double km() const { return value_ * 0.001; }
     
-    double in() const { return mValue * (100/2.54); }
-    double ft() const { return mValue * (100/30.48); }
-    double mi() const { return mValue * (100/160'934.4); }
+    double in() const { return value_ * (100/2.54); }
+    double ft() const { return value_ * (100/30.48); }
+    double mi() const { return value_ * (100/160'934.4); }
   };
 
-  using Length = UnitBase<0, 1, 0, 0, 0, 0, 0>;
+  using Length = SIUnit<0, 1, 0, 0, 0, 0, 0>;
 
   Length operator"" _mm (long double val);
   Length operator"" _mm (unsigned long long val);
@@ -61,27 +62,6 @@ namespace eng {
   using LengthVec = Vector<0, 1, 0, 0, 0, 0, 0>;
 
 }; // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Length> : NumTraits<double> {
-    typedef eng::Length Real;
-    typedef eng::Length NonInteger;
-    typedef eng::Length Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _mm;      using eng::operator"" _cm;
 using eng::operator"" _m;       using eng::operator"" _km;

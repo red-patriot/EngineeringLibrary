@@ -8,18 +8,18 @@
  * \date   August 2020
  *********************************************************************/
 
-#include "UnitBase.h"
+#include "SIUnit.h"
 #include "Unitless.h"
 
 #include <eigen3/Eigen/Core>
 
 namespace eng {
 
-  /** The geometry formed by two non-colinear, coplanar lines. 
+  /**
    * \class Angle 
    * \addtogroup Units
    */
-  using Angle = UnitBase<0, 0, 0, 0, 0, 0, 0>;
+  using Angle = SIUnit<0, 0, 0, 0, 0, 0, 0>;
 
   Angle operator"" _deg(long double val);
   Angle operator"" _deg(unsigned long long val);

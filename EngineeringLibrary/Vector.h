@@ -9,7 +9,7 @@
  * \date   November 2020
  *********************************************************************/
 
-#include "Units/UnitBase.h"
+#include "Units/SIUnit.h"
 
 namespace eng {
 
@@ -19,7 +19,7 @@ namespace eng {
   template<int MN, int LN, int TN, int CN, int TeN, int AN, int LuN,
     int MD=1, int LD=1, int TD=1, int CD=1, int TeD=1, int AD=1, int LuD=1>
   class Vector {
-    typedef UnitBase<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> unit_t;
+    typedef SIUnit<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> unit_t;
     typedef Vector<MN, LN, TN, CN, TeN, AN, LuN, MD, LD, TD, CD, TeD, AD, LuD> vec_t;
   public:
     Vector(const unit_t& x = unit_t(0), const unit_t& y = unit_t(0), const unit_t& z = unit_t(0)) :
@@ -156,7 +156,7 @@ namespace eng {
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
     auto
     operator* (const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
-               const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+               const SIUnit<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return Vector<_numa(MN1, MD1, MN2, MD2),
       numa(LN1, LD1, LN2, LD2),
       numa(TN1, TD1, TN2, TD2),
@@ -179,7 +179,7 @@ namespace eng {
     int MN2, int LN2, int TN2, int CN2, int TeN2, int AN2, int LuN2,
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
     auto
-    operator* (const UnitBase<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
+    operator* (const SIUnit<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
                const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return rh * lh;
   }
@@ -225,20 +225,20 @@ namespace eng {
     cross(const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh,
           const Vector<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return Vector<
-      unitManagement::numa(MN1, MD1, MN2, MD2),
-      unitManagement::numa(LN1, LD1, LN2, LD2),
-      unitManagement::numa(TN1, TD1, TN2, TD2),
-      unitManagement::numa(CN1, CD1, CN2, CD2),
-      unitManagement::numa(TeN1, TeD1, TeN2, TeD2),
-      unitManagement::numa(AN1, AD1, AN2, AD2),
-      unitManagement::numa(LuN1, LuD1, LuN2, LuD2),
-      unitManagement::denoma(MN1, MD1, MN2, MD2),
-      unitManagement::denoma(LN1, LD1, LN2, LD2),
-      unitManagement::denoma(TN1, TD1, TN2, TD2),
-      unitManagement::denoma(CN1, CD1, CN2, CD2),
-      unitManagement::denoma(TeN1, TeD1, TeN2, TeD2),
-      unitManagement::denoma(AN1, AD1, AN2, AD2),
-      unitManagement::denoma(LuN1, LuD1, LuN2, LuD2)>(lh.y()*rh.z() - lh.z()*rh.y(),
+      unit_mgmt::numa(MN1, MD1, MN2, MD2),
+      unit_mgmt::numa(LN1, LD1, LN2, LD2),
+      unit_mgmt::numa(TN1, TD1, TN2, TD2),
+      unit_mgmt::numa(CN1, CD1, CN2, CD2),
+      unit_mgmt::numa(TeN1, TeD1, TeN2, TeD2),
+      unit_mgmt::numa(AN1, AD1, AN2, AD2),
+      unit_mgmt::numa(LuN1, LuD1, LuN2, LuD2),
+      unit_mgmt::denoma(MN1, MD1, MN2, MD2),
+      unit_mgmt::denoma(LN1, LD1, LN2, LD2),
+      unit_mgmt::denoma(TN1, TD1, TN2, TD2),
+      unit_mgmt::denoma(CN1, CD1, CN2, CD2),
+      unit_mgmt::denoma(TeN1, TeD1, TeN2, TeD2),
+      unit_mgmt::denoma(AN1, AD1, AN2, AD2),
+      unit_mgmt::denoma(LuN1, LuD1, LuN2, LuD2)>(lh.y()*rh.z() - lh.z()*rh.y(),
                                        lh.z()*rh.x() - lh.x()*rh.z(),
                                        lh.x()*rh.y() - lh.y()*rh.x());
   }
@@ -252,22 +252,22 @@ namespace eng {
     int MD2, int LD2, int TD2, int CD2, int TeD2, int AD2, int LuD2>
     auto 
     operator/ (const Vector<MN1, LN1, TN1, CN1, TeN1, AN1, LuN1, MD1, LD1, TD1, CD1, TeD1, AD1, LuD1>& lh, 
-               const UnitBase<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
+               const SIUnit<MN2, LN2, TN2, CN2, TeN2, AN2, LuN2, MD2, LD2, TD2, CD2, TeD2, AD2, LuD2>& rh) {
     return Vector<
-      unitManagement::nums(MN1, MD1, MN2, MD2),
-      unitManagement::nums(LN1, LD1, LN2, LD2),
-      unitManagement::nums(TN1, TD1, TN2, TD2),
-      unitManagement::nums(CN1, CD1, CN2, CD2),
-      unitManagement::nums(TeN1, TeD1, TeN2, TeD2),
-      unitManagement::nums(AN1, AD1, AN2, AD2),
-      unitManagement::nums(LuN1, LuD1, LuN2, LuD2),
-      unitManagement::denoms(MN1, MD1, MN2, MD2),
-      unitManagement::denoms(LN1, LD1, LN2, LD2),
-      unitManagement::denoms(TN1, TD1, TN2, TD2),
-      unitManagement::denoms(CN1, CD1, CN2, CD2),
-      unitManagement::denoms(TeN1, TeD1, TeN2, TeD2),
-      unitManagement::denoms(AN1, AD1, AN2, AD2),
-      unitManagement::denoms(LuN1, LuD1, LuN2, LuD2)>(lh.x()/rh,
+      unit_mgmt::nums(MN1, MD1, MN2, MD2),
+      unit_mgmt::nums(LN1, LD1, LN2, LD2),
+      unit_mgmt::nums(TN1, TD1, TN2, TD2),
+      unit_mgmt::nums(CN1, CD1, CN2, CD2),
+      unit_mgmt::nums(TeN1, TeD1, TeN2, TeD2),
+      unit_mgmt::nums(AN1, AD1, AN2, AD2),
+      unit_mgmt::nums(LuN1, LuD1, LuN2, LuD2),
+      unit_mgmt::denoms(MN1, MD1, MN2, MD2),
+      unit_mgmt::denoms(LN1, LD1, LN2, LD2),
+      unit_mgmt::denoms(TN1, TD1, TN2, TD2),
+      unit_mgmt::denoms(CN1, CD1, CN2, CD2),
+      unit_mgmt::denoms(TeN1, TeD1, TeN2, TeD2),
+      unit_mgmt::denoms(AN1, AD1, AN2, AD2),
+      unit_mgmt::denoms(LuN1, LuD1, LuN2, LuD2)>(lh.x()/rh,
                                        lh.y()/rh,
                                        lh.z()/rh);
   }

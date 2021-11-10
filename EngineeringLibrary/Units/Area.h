@@ -8,30 +8,31 @@
  * \date   August 2020
  *********************************************************************/
 
-#include "UnitBase.h"
+#include "SIUnit.h"
 
 #include <eigen3/Eigen/Core>
 
 namespace eng {
 
-  /** A 2D geometry
+  /**
    * \class Area
    * \addtogroup Units
    */
   template<>
-  class UnitBase<0, 2, 0, 0, 0, 0, 0> {
-    typedef UnitBase<0, 2, 0, 0, 0, 0, 0> this_t;
+  class SIUnit<0, 2, 0, 0, 0, 0, 0> {
+   public:
+    typedef SIUnit<0, 2, 0, 0, 0, 0, 0> this_t;
     UnitBaseCOMMON
-  public:
-    double mm2() const { return mValue * 1'000'000; }
-    double cm2() const { return mValue * 10'000; }
-    double m2() const { return mValue; }
+   public:
+    double mm2() const { return value_ * 1'000'000; }
+    double cm2() const { return value_ * 10'000; }
+    double m2() const { return value_; }
 
-    double in2() const { return mValue * 10'000/(6.4516); }
-    double ft2() const { return mValue * 10'000/(929.0304); }
+    double in2() const { return value_ * 10'000/(6.4516); }
+    double ft2() const { return value_ * 10'000/(929.0304); }
   };
 
-  using Area = UnitBase<0, 2, 0, 0, 0, 0, 0>;
+  using Area = SIUnit<0, 2, 0, 0, 0, 0, 0>;
 
   Area operator"" _mm2(long double val);
   Area operator"" _mm2(unsigned long long val);
@@ -49,27 +50,6 @@ namespace eng {
   Area operator"" _ft2(unsigned long long val);
 
 }; // namespace eng
-
-/* Integration with Eigen */
-namespace Eigen {
-
-  template<> struct NumTraits<eng::Area> : NumTraits<double> {
-    typedef eng::Area Real;
-    typedef eng::Area NonInteger;
-    typedef eng::Area Nested;
-
-    enum {
-      IsComplex = 0,
-      IsInteger = 0,
-      IsSigned = 1,
-      RequireInitialization = 1,
-      ReadCost = 1,
-      AddCost = 3,
-      MulCost = 3
-    };
-  };
-
-};  // namespace Eigen
 
 using eng::operator"" _mm2;       using eng::operator"" _cm2;
 using eng::operator"" _m2;
