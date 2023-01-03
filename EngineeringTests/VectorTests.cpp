@@ -9,7 +9,7 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace VectorTests {
-  TEST_CLASS(VectorTests) {
+  TEST_CLASS(TestVector) {
   public:
     TEST_METHOD(TestCross) {
       Assert::AreEqual(eng::MomentVec(-3_Nm, 6_Nm, -3_Nm), eng::cross(eng::LengthVec{1_m, 2_m, 3_m}, 
