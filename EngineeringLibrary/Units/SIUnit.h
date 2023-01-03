@@ -72,28 +72,28 @@ namespace eng {
   };
 
   namespace unit_mgmt {
-    auto sign = [](const int& n) constexpr {
+    inline auto sign = [](const int& n) constexpr {
       return (0 < n) - (n < 0);
     };
-    auto abs = [](const int& n) constexpr {
+    inline auto abs = [](const int& n) constexpr {
       return n < 0 ? -n : n;
     };
-    auto na = [](const int& a, const int& b, const int& c, const int& d) constexpr { return a * d + b * c; };
-    auto ns = [](const int& a, const int& b, const int& c, const int& d) constexpr { return a * d - b * c; };
-    auto d = [](const int&, const int& b, const int&, const int& d) constexpr { return b * d; };
-    auto numa = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
+    inline auto na = [](const int& a, const int& b, const int& c, const int& d) constexpr { return a * d + b * c; };
+    inline auto ns = [](const int& a, const int& b, const int& c, const int& d) constexpr { return a * d - b * c; };
+    inline auto d = [](const int&, const int& b, const int&, const int& d) constexpr { return b * d; };
+    inline auto numa = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
       int num = na(n1, d1, n2, d2), den = d(n1, d1, n2, d2);
       return sign(num) * sign(den) * abs(num) / std::gcd(num, den);
     };
-    auto denoma = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
+    inline auto denoma = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
       int num = na(n1, d1, n2, d2), den = d(n1, d1, n2, d2);
       return abs(den) / std::gcd(num, den);
     };
-    auto nums = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
+    inline auto nums = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
       int num = ns(n1, d1, n2, d2), den = d(n1, d1, n2, d2);
       return sign(num) * sign(den) * abs(num) / std::gcd(num, den);
     };
-    auto denoms = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
+    inline auto denoms = [](const int& n1, const int& d1, const int& n2, const int& d2) constexpr {
       int num = ns(n1, d1, n2, d2), den = d(n1, d1, n2, d2);
       return abs(den) / std::gcd(num, den);
     };
